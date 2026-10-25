@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from kit import COLORS
 
 S, OUT = sys.argv[1], sys.argv[2]
-orig = json.load(open(f"{S}/original-copy.json"))      # old header copy (script, phone icon, etch base styles)
+orig = json.load(open(f"{S}/original-copy.json"))      # old header copy (script, etch base styles)
 ome = json.load(open(f"{S}/ome-copy.json"))            # Oh My Etch components + their styles
 ome_all = {s["id"]: s for s in json.load(open(f"{S}/ome.json"))["styles"]}
 
@@ -278,20 +278,6 @@ DRAWER_BUTTON_CSS = """display: inline-flex;
     margin-inline-start: 0;
   }"""
 
-# Used in the bar and in the drawer (which lives in <body>). A custom style, because a
-# class record on the element would drop its ACSS btn--* classes on paste.
-PHONE_CSS = """display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  white-space: nowrap;
-
-  svg {
-    inline-size: 1em;
-    block-size: 1em;
-    flex: 0 0 auto;
-  }"""
-
 MLIST_CSS = """display: grid;
   padding-inline: var(--gutter);"""
 
@@ -355,7 +341,6 @@ styles = {
     "mh-drawer-content": style(".main-header__drawer-content", DRAWER_CONTENT_CSS),
     "mh-drawer-head": style(".main-header__drawer-head", DRAWER_HEAD_CSS),
     "mh-drawer-button": style(".main-header__drawer-button", DRAWER_BUTTON_CSS),
-    "mh-phone": style("a.main-header__phone", PHONE_CSS, "custom"),
     "mh-mlist": style(".main-header__mobile-list", MLIST_CSS),
     "mh-mitem": style(".main-header__mobile-item", MITEM_CSS),
     "mh-mlink": style(".main-header__mobile-link", MLINK_CSS),
@@ -437,15 +422,10 @@ js = js.replace("if (config.skipLink) {", "if (config.skipLink && !header.queryS
 assert ".header-wrapper" not in js and "querySelector('.skip-link')" in js
 script = {"code": base64.b64encode(js.encode()).decode(), "id": "mainheader"}
 
-phone_icon = og["innerBlocks"][0]["innerBlocks"][0]["innerBlocks"][2]["innerBlocks"][1]["innerBlocks"][0]
-
-
 def buttons():
     return [
         el("CTA", "a", {"href": "https://line.me/R/ti/p/@example", "target": "_blank", "rel": "noopener", "class": "btn--secondary"}, None,
            [text("Chat on LINE")]),
-        el("Phone", "a", {"href": "tel:+6620000000", "class": "main-header__phone btn--secondary btn--outline"}, None,
-           [phone_icon, el("Number", "span", {}, None, [text("02-000-0000")])]),
     ]
 
 
