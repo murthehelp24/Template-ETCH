@@ -6,8 +6,8 @@
 | `site-header-ohmyetch-light.etch.txt` | เหมือนบรรทัดบน — **พื้นสว่าง**: พื้นสีอ่อน ตัวอักษรเข้ม ปุ่ม `btn--primary` | Oh My Etch |
 | `site-header-ohmyetch-center.etch.txt` | **โลโก้กลาง**: จอ ≥1200px โลโก้กลางแถวบน ปุ่มขวา เมนูกึ่งกลางแถวล่าง | Oh My Etch |
 | `site-header-ohmyetch-topbar.etch.txt` | **แถบข้อมูลด้านบน**: ที่อยู่ · เวลาเปิด · โทร · อีเมล · LINE (มือถือเหลือเวลาเปิด + โทร) | Oh My Etch |
-| `site-header-ohmyetch-floating.etch.txt` | **ลอยมุมโค้ง**: แถบเมนูโค้ง มีเงา เว้นขอบรอบ | Oh My Etch |
-| `site-header-ohmyetch-right.etch.txt` | **เมนูชิดขวา**: เส้นสีเน้นด้านบน เมนูชิดขวาติดปุ่มเดียว (ไม่มีปุ่มเบอร์โทรบนแถบ) | Oh My Etch |
+| `site-header-ohmyetch-floating.etch.txt` | **ลอยมุมโค้ง**: แถบเมนูโค้ง มีเงา เว้นขอบรอบ ปุ่มกลม | Oh My Etch |
+| `site-header-ohmyetch-right.etch.txt` | **เมนูชิดขวา**: เมนูชิดขวาติดปุ่มเดียว (ไม่มีปุ่มเบอร์โทรบนแถบ) | Oh My Etch |
 | `site-header.etch.txt` (เดิม) | ชุด MenuWrapper / MenuDropdown / ToggleButton | ไม่ต้องมีปลั๊กอินเพิ่ม (script อยู่ใน component) |
 
 วิธีวางเหมือนกันทั้งสองไฟล์: เปิดไฟล์ → Select All → Copy → ใน Etch คลิกขวา → **Paste**
