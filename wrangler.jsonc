@@ -11,7 +11,8 @@
   "assets": {
     "directory": "./dist"
   },
-  // the site is reached through Cloudflare Access only — see README "เอา Page Builder ขึ้นเว็บ"
-  "workers_dev": true,
+  // workers.dev stays OFF until a login (Cloudflare Access) protects it: the builder carries every .etch.txt.
+  // Turn it on only together with that protection — see README "เอา Page Builder ขึ้นเว็บ"
+  "workers_dev": false,
   "preview_urls": false
 }

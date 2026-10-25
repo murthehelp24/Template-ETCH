@@ -46,11 +46,12 @@
    - Deploy command: `npx wrangler deploy`
    - Production branch: `main`
    - push / merge เข้า `main` แล้วดูใน Deployments ว่า build ผ่าน (log ต้องมีบรรทัด `ok site: … dist`)
-3. **ล็อกอินก่อนเข้า (Cloudflare Access)** — ทำก่อนเปิดลิงก์ให้ใครดู
-   - Worker → Settings → **Domains & Routes** → แถว `workers.dev` → เปิด **Cloudflare Access** (Cloudflare สร้าง Access application ให้)
+3. **ล็อกอินก่อนเข้า (Cloudflare Access)** — ทำก่อนเปิดลิงก์ให้ใครดู · `wrangler.jsonc` ตั้ง `"workers_dev": false` ไว้ เว็บจึงปิดอยู่จนกว่าจะตั้งล็อกอินเสร็จแล้วเปลี่ยนเป็น `true`
+   - Zero Trust แผน Free ($0) ต้องผูกบัตรตอนเปิดใช้ครั้งแรก
+   - Worker → แท็บ **Domains** → แถว `workers.dev` → **Enable Access** (Cloudflare สร้าง Access application ให้)
    - Zero Trust → Access → Applications → เปิด application ที่เพิ่งสร้าง → Policies: ให้เหลือ Action **Allow** · Include **Emails** = อีเมลของคุณ (ลบ rule ที่กว้างกว่านี้ เช่น Everyone)
    - Login methods: **One-time PIN** (ส่งรหัสเข้าอีเมล ไม่ต้องตั้งรหัสผ่าน)
-4. **ลิงก์ preview ของ branch** — `wrangler.jsonc` ตั้ง `"preview_urls": false` ไว้แล้ว ตรวจใน Domains & Routes ว่า Preview URLs เป็น Disabled
+4. **ลิงก์ preview ของ branch** — `wrangler.jsonc` ตั้ง `"preview_urls": false` ไว้แล้ว ตรวจในแท็บ Domains ว่า Preview URLs เป็น Disabled และปิด build ของ branch อื่นที่ Settings → Builds → "Builds for Preview branches"
 5. **ตรวจ** — เปิด `https://template-etch.<บัญชีของคุณ>.workers.dev` ในหน้าต่างไม่ระบุตัวตน (Incognito) ต้องเจอหน้าล็อกอินของ Cloudflare ก่อน ล็อกอินแล้วต้องเห็น Page Builder
 
 ### หลังจากนั้น
