@@ -30,7 +30,7 @@
 - **แถบบน** — สลับจอ Desktop (1440) / Tablet (768) / Mobile (375) และสลับ **1rem = 10px / 16px** (ขนาดต้องเท่าเดิม ถ้าเปลี่ยนแปลว่ามี rem ดิบหลุดมา)
 - **แผงขวา: สี**
   - **ชุดสีสำเร็จรูป** — คลิกครั้งเดียวได้ทั้งสี template และสีปุ่ม · แผงแสดง 8 ชุดแนะนำ กด **ดูทั้งหมด** เพื่อเลือกจาก 56 ชุดแบ่งตามประเภทธุรกิจ (สุขภาพ อาหาร ความงาม ธุรกิจ ธรรมชาติ พรีเมียม) พร้อมภาพตัวอย่างหน้าเว็บย่อ
-    ชุดสีอยู่ใน `builder/presets.js` (แก้หรือเพิ่มได้ สีละ 9 ค่า) — `_build/check.py` / CI ตรวจว่าทุกชุดผ่านเกณฑ์อ่านง่ายทุกคู่
+    ชุดสีอยู่ใน `builder/presets.js` (แก้หรือเพิ่มได้ ชุดละ 9 สี) — `_build/check.py` / CI ตรวจว่าทุกชุดผ่านเกณฑ์อ่านง่ายทุกคู่
   - **สีของ template** — 5 สี `--main-*` คลิกช่องสีหรือพิมพ์รหัส `#rrggbb` เห็นผลทันที · ปุ่ม ↺ = กลับไปใช้สีตาม ACSS
   - **สีปุ่ม** — ปุ่มหลัก (`btn--primary`) และปุ่มรอง (`btn--secondary`) ตั้งได้ทั้งสีพื้นและสีตัวอักษร มีตัวอย่างปุ่มให้ดู
     ปุ่มเป็นของ ACSS: สีพื้น = สี Primary / Secondary ของ ACSS — หน้า Export บอกค่าที่ต้องไปตั้งใน ACSS Dashboard
@@ -144,5 +144,5 @@ python3 _build/build_preview.py
 - ได้ `preview/<id>.html` ทีละ template, `preview/page.html` (ทุก template ในหน้าเดียว เลือกลำดับด้วย `?t=header,hero,footer`), `preview/index.html` (รายการ preview), `preview/kit.json`, `preview/assets/` (ACSS จำลอง + `frame.js`) และ `builder/kit-data.js` (รายการ template + เนื้อหาไฟล์สำหรับปุ่ม Copy)
 - เพิ่ม template ใหม่: ใส่ใน `CATALOG` ของ `_build/build_preview.py` (id, กลุ่ม header/section/footer, ชื่อ, ไฟล์, คำอธิบาย) แล้ว build ใหม่ — builder จะเห็นเอง
 - ไฟล์ที่เกี่ยวข้อง: `_build/render_preview.py` (แปลง payload ของ Etch เป็น HTML: component/props/slot, condition, loop, รูป placeholder, `to-rem()`), `_build/acss_sim.py` (ACSS จำลอง), `_build/preview_assets/frame.js` (รับสี/ขนาด root จาก builder และส่งความสูงกลับ)
-- หน้าที่เขียนเอง (`builder/index.html`, `builder.css`, `builder.js`) ไม่ต้อง build
+- หน้าที่เขียนเอง (`builder/index.html`, `builder.css`, `builder.js`, `presets.js`) ไม่ต้อง build
 # Template-ETCH
