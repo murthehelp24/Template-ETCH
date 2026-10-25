@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Footer แถวเดียว — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-social__link {
+  /* colour of the ring + icon; the footer sets --main-social-color */
+  display: grid;
+  place-items: center;
+  inline-size: calc(44 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(44 * 1rem / var(--etch-root-px, 10));
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  color: var(--main-social-color, var(--main-primary));
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--main-accent);
+    border-color: var(--main-accent);
+    color: var(--main-on-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.main-social__icon {
+  display: block;
+  inline-size: calc(20 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(20 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-footer {
+  --main-social-color: var(--main-on-primary);
+  --main-footer-logo-width: calc(96 * 1rem / var(--etch-root-px, 10));
+
+  padding-block-start: var(--section-space-s);
+  padding-inline: var(--gutter);
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+}
+
+.main-footer__container {
+  gap: var(--container-gap);
+}
+
+.main-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--grid-gap);
+  padding-block-end: var(--space-l);
+
+  @media (width <= 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width <= 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-s);
+}
+
+.main-footer__brand {
+  max-inline-size: calc(440 * 1rem / var(--etch-root-px, 10));
+
+  @media (width <= 992px) {
+    grid-column: 1 / -1;
+  }
+}
+
+.main-footer__logo-img {
+  display: block;
+  inline-size: var(--main-footer-logo-width);
+  block-size: auto;
+}
+
+.main-footer__text {
+  font-style: normal;
+  font-size: var(--text-s);
+  color: var(--main-on-primary-muted);
+  white-space: pre-line;
+}
+
+.main-footer__title {
+  font-size: var(--text-m);
+  font-weight: 600;
+  color: inherit;
+}
+
+.main-footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--main-accent);
+  }
+}
+
+.main-footer__icon {
+  display: block;
+  inline-size: 1.25em;
+  block-size: 1.25em;
+  flex-shrink: 0;
+}
+
+.main-footer__bottom {
+  margin-block-start: var(--space-l);
+  margin-inline: calc(var(--gutter) * -1);
+  padding: var(--space-xs) var(--gutter);
+  border-block-start: 1px solid var(--main-line-on-primary);
+  font-size: var(--text-s);
+  text-align: center;
+  color: var(--main-on-primary-muted);
+}
+
+.main-float {
+  position: fixed;
+  inset-block-end: var(--space-m);
+  inset-inline-end: var(--space-m);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.main-float__btn {
+  display: grid;
+  place-items: center;
+  inline-size: calc(56 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(56 * 1rem / var(--etch-root-px, 10));
+  border-radius: 50%;
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+  box-shadow: 0 0 0 3px var(--main-light), 0 calc(6 * 1rem / var(--etch-root-px, 10)) calc(16 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+  transition: background-color 0.2s ease, scale 0.2s ease;
+
+  svg {
+    inline-size: calc(26 * 1rem / var(--etch-root-px, 10));
+    block-size: calc(26 * 1rem / var(--etch-root-px, 10));
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--main-accent);
+    scale: 1.06;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.main-footer--compact {
+  /* one row: logo, menu, social */
+  .main-footer__grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    padding-block-end: var(--space-s);
+
+    @media (width <= 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .main-footer__brand {
+    max-inline-size: none;
+  }
+
+  .main-footer__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs) var(--space-l);
+  }
+
+  .main-footer__bottom {
+    margin-block-start: var(--space-s);
+  }
+}
+</style>
+</head>
+<body data-template="footer-compact">
+<footer class="main-footer main-footer--compact"><div data-etch-element="container" class="main-footer__container"><div class="main-footer__grid"><div class="main-footer__col main-footer__brand"><a href="/" aria-label="Your Brand"><img class="main-footer__logo-img" alt="Your Brand" loading="lazy" data-pv-img="i:c.990006.0.0.0.0.0.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 160 40&#x27;&gt; &lt;rect x=&#x27;1&#x27; y=&#x27;1&#x27; width=&#x27;158&#x27; height=&#x27;38&#x27; rx=&#x27;8&#x27; fill=&#x27;none&#x27; stroke=&#x27;%23999&#x27; stroke-width=&#x27;2&#x27; stroke-dasharray=&#x27;5 4&#x27;/&gt; &lt;text x=&#x27;80&#x27; y=&#x27;26&#x27; text-anchor=&#x27;middle&#x27; font-family=&#x27;sans-serif&#x27; font-size=&#x27;16&#x27; font-weight=&#x27;700&#x27; fill=&#x27;%23999&#x27;&gt;LOGO&lt;/text&gt;&lt;/svg&gt;"></a></div><nav class="main-footer__col" aria-label="Menu"><ul class="main-footer__list"><li><a class="main-footer__link" href="/" data-pv-edit="t:c.990006.0.0.0.1.0.0.0.0">Home</a></li><li><a class="main-footer__link" href="/about/" data-pv-edit="t:c.990006.0.0.0.1.0.1.0.0">About</a></li><li><a class="main-footer__link" href="/blog/" data-pv-edit="t:c.990006.0.0.0.1.0.2.0.0">Blog</a></li><li><a class="main-footer__link" href="/contact/" data-pv-edit="t:c.990006.0.0.0.1.0.3.0.0">Contact</a></li><li><a class="main-footer__link" href="/privacy-policy/" data-pv-edit="t:c.990006.0.0.0.1.0.4.0.0">Privacy Policy</a></li></ul></nav><div class="main-footer__col"><ul class="main-social" aria-label="Social media"><li><a class="main-social__link" href="https://line.me/R/ti/p/@example" aria-label="LINE" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="main-social__icon" aria-hidden="true" focusable="false"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.8c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.5-1.7 2.2-3.3 2.2-5C22.4 6.6 17.9 3 12 3Z"/></svg></a></li><li><a class="main-social__link" href="https://facebook.com/" aria-label="Facebook" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="main-social__icon" aria-hidden="true" focusable="false"><path d="M14 8V6.5c0-.7.5-1 1-1h2V2h-3c-3 0-4 2-4 4.5V8H8v3.5h2V22h4V11.5h2.7l.3-3.5H14Z"/></svg></a></li><li><a class="main-social__link" href="https://instagram.com/" aria-label="Instagram" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-social__icon" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg></a></li></ul></div></div></div><div class="main-footer__bottom"><p>Copyright © 2026 Your Brand. All rights reserved.</p></div><div class="main-float"><a class="main-float__btn" href="https://line.me/R/ti/p/@example" aria-label="Chat on LINE" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.8c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.5-1.7 2.2-3.3 2.2-5C22.4 6.6 17.9 3 12 3Z"/></svg></a><a class="main-float__btn" href="tel:02-000-0000" aria-label="Call 02-000-0000"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></a></div></footer>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

@@ -55,6 +55,16 @@ CATALOG = [
     ("single-post", "section", "บทความเดี่ยว", "etch-sections/main-single-post.etch.txt", "template Single"),
     ("404", "section", "404", "etch-sections/main-404.etch.txt", "template 404"),
     ("footer", "footer", "Footer", "etch-footer/main-footer.etch.txt", "component · ปุ่ม LINE/โทรลอย"),
+    ("footer-light", "footer", "Footer พื้นสว่าง", "etch-footer/main-footer-light.etch.txt",
+     "พื้นสีอ่อน · ตัวอักษรเข้ม"),
+    ("footer-center", "footer", "Footer กึ่งกลาง", "etch-footer/main-footer-center.etch.txt",
+     "โลโก้ · เมนูแนวนอน · ติดต่อ · social อยู่กลาง"),
+    ("footer-cta", "footer", "Footer + กล่องชวนติดต่อ", "etch-footer/main-footer-cta.etch.txt",
+     "กล่อง Chat on LINE / โทร บนสุด + 4 คอลัมน์"),
+    ("footer-map", "footer", "Footer + แผนที่", "etch-footer/main-footer-map.etch.txt",
+     "แผนที่ Google แทนคอลัมน์บริการ"),
+    ("footer-compact", "footer", "Footer แถวเดียว", "etch-footer/main-footer-compact.etch.txt",
+     "โลโก้ · เมนู · social ในแถวเดียว"),
 ]
 # where a template belongs in Etch (shown in the builder export)
 PLACE = {
@@ -66,6 +76,7 @@ PLACE = {
     "contact": "component — หน้า Contact",
     "footer": "component — วางใน template ทุกตัว",
 }
+PLACE.update({tid: PLACE["footer"] for tid, group, *_ in CATALOG if group == "footer"})
 
 PAGE = """<!doctype html>
 <html lang="en">
@@ -93,7 +104,7 @@ ASSEMBLE = """
 (function () {
   var q = new URLSearchParams(location.search).get('t');
   var ids = q ? q.split(',') : Array.prototype.map.call(document.querySelectorAll('template[id^="tpl-"]'),
-    function (t) { return t.id.slice(4); }).filter(function (id) { return id.indexOf('header-') !== 0; }); // one header
+    function (t) { return t.id.slice(4); }).filter(function (id) { return !/^(header|footer)-/.test(id); }); // one header, one footer
   var here = document.currentScript;
   ids.forEach(function (id, i) {
     var t = document.getElementById('tpl-' + id);
