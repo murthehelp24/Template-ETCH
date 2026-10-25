@@ -103,8 +103,11 @@
         var pages = s.pages.filter(function (p) { return p && typeof p === 'object' && !Array.isArray(p); })
           .map(function (p, i) { return normalizePage(p, 'หน้า ' + (i + 1)); });
         pages.forEach(function (p) { if (seen[p.id]) p.id = uid(); seen[p.id] = true; });
+        // one look for the whole site: older saves could differ per page — the home page's colours win
+        shareStyle(pages.filter(function (p) { return p.type === 'home'; })[0] || pages[0], pages);
+        if (!s.seeded) seedPages(pages);
         return { pages: pages, current: seen[s.current] ? s.current : pages[0].id,
-                 device: DEVICES[s.device] ? s.device : 'desktop', edit: s.edit !== false };
+                 device: DEVICES[s.device] ? s.device : 'desktop', edit: s.edit !== false, seeded: true };
       }
     } catch (e) { /* storage blocked, empty or not JSON */ }
     var first = newPage('หน้าแรก');
@@ -112,7 +115,41 @@
     ['hero', 'features', 'split', 'stats', 'steps', 'reviews', 'faq', 'cta'].forEach(function (id) {
       first.sections.push({ k: uid(), id: id });
     });
-    return { pages: [first], current: first.id, device: 'desktop', edit: true };
+    var all = [first];
+    seedPages(all);
+    return { pages: all, current: first.id, device: 'desktop', edit: true, seeded: true };
+  }
+
+  // a site starts with every page it needs (once: a page deleted later stays deleted); "+ หน้าใหม่" adds more
+  var SEED_TYPES = ['home', 'about', 'services', 'contact', 'blog', 'single', '404'];
+  function seedPages(pages) {
+    SEED_TYPES.forEach(function (t) {
+      if (!TYPE[t] || pages.some(function (p) { return p.type === t; })) return;
+      var p = newPage(TYPE[t].label.replace(/\s*\(.*\)$/, ''));
+      p.type = t;
+      pages.push(p);
+    });
+    shareStyle(pages[0], pages);
+  }
+
+  // the look belongs to the site, not to a page: colours, ACSS colours, button colours, and the header and footer
+  // (with their edited text and pictures) are the same on every page — change them on one page, all follow
+  var STYLE_KEYS = ['colors', 'acss', 'buttons', 'root', 'header', 'footer'];
+  var SHARED_INST = /^(header|footer):/;
+  function shareStyle(from, pages) {
+    var json = {}, edits = {}, images = {};
+    STYLE_KEYS.forEach(function (k) { json[k] = JSON.stringify(from[k]); });
+    Object.keys(from.edits || {}).forEach(function (k) { if (SHARED_INST.test(k)) edits[k] = JSON.stringify(from.edits[k]); });
+    Object.keys(from.images || {}).forEach(function (k) { if (SHARED_INST.test(k)) images[k] = JSON.stringify(from.images[k]); });
+    pages.forEach(function (p) {
+      if (p === from) return;
+      STYLE_KEYS.forEach(function (k) { p[k] = JSON.parse(json[k]); });
+      [['edits', edits], ['images', images]].forEach(function (pair) {
+        var box = p[pair[0]] = p[pair[0]] || {};
+        Object.keys(box).forEach(function (k) { if (SHARED_INST.test(k) && !(k in pair[1])) delete box[k]; });
+        Object.keys(pair[1]).forEach(function (k) { box[k] = JSON.parse(pair[1][k]); });
+      });
+    });
   }
 
   var state = load();
@@ -123,6 +160,7 @@
   var saveTimer;
   function save() {
     page().updated = Date.now();
+    shareStyle(page(), state.pages); // a colour changed on this page changes every page
     clearTimeout(saveTimer);
     saveTimer = setTimeout(function () {
       try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) { toast('บันทึกลงเบราว์เซอร์ไม่ได้ — ใช้ Export JSON แทน'); }
@@ -658,16 +696,7 @@
       });
       list.appendChild(gap);
     });
-    var sel = $('#pageType');
-    if (!sel.options.length) {
-      PAGE_TYPES.forEach(function (t) {
-        var o = document.createElement('option');
-        o.value = t.id;
-        o.textContent = t.label;
-        sel.appendChild(o);
-      });
-    }
-    sel.value = typeOf(p).id;
+    $('#planType').textContent = typeOf(p).label;
     var skipped = (p.skip || []).filter(function (k) { return typeOf(p).sections.some(function (r) { return r.id === k; }); });
     $('#planNote').textContent = slots.length ? 'ช่องว่าง ' + slots.length + ' ช่อง — คลิกช่องเพื่อเลือกแบบ' : 'ครบตามโครงแล้ว';
     $('#showSkipped').hidden = !skipped.length;
@@ -1264,20 +1293,6 @@
   });
   $('#newCancel').addEventListener('click', function () { $('#newDialog').close(); });
 
-  $('#pageType').addEventListener('change', function (e) {
-    remember();
-    var p = page(), renamed = !p.name.trim() || typeFromName(p.name) === p.type;
-    p.type = TYPE[e.target.value] ? e.target.value : 'other';
-    if (renamed) p.name = uniqueName(shortLabel(typeOf(p)), p);
-    slotKind = null;
-    save();
-    renderCanvas();
-    showGroup(libGroup);
-    renderTop();
-    var gaps = openSlots(p).length;
-    toast('โครงหน้า "' + typeOf(p).label + '"' + (renamed ? ' · ชื่อหน้าเปลี่ยนเป็น "' + p.name + '"' : '') +
-      (gaps ? ' · มีช่องว่าง ' + gaps + ' ช่องให้เลือกแบบ' : ''), true);
-  });
   $('#showSkipped').addEventListener('click', function () {
     remember();
     page().skip = [];

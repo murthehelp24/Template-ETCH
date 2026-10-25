@@ -45,7 +45,7 @@
 ## สี
 
 พื้น footer = `--main-primary`, ตัวอักษร = `--main-on-primary` จากสีกลางของชุด — ดู [README หลัก](../README.md#สี)
-ขนาดโลโก้: `--main-footer-logo-width` ใน `.main-footer`
+ขนาดโลโก้: `--main-footer-logo-width` ใน `.main-footer` (160px · แบบแถวเดียว 180px)
 
 ## Layout
 

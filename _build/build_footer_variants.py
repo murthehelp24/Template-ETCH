@@ -86,7 +86,7 @@ MAP_CSS = """/* the services column becomes a Google map */
 
 COMPACT_CSS = """/* one row: logo, menu, social — roomy, with a larger logo and links */
   &.main-footer {
-    --main-footer-logo-width: 14rem;
+    --main-footer-logo-width: 18rem;
     padding-block-start: var(--section-space-m);
   }
 

@@ -8,7 +8,7 @@ OUT = sys.argv[2]
 COMP_ID = 990001          # any id: Etch maps it to the target's component id by key on paste
 
 ROOT_CSS = """--main-social-color: var(--main-on-primary);
-  --main-footer-logo-width: 9.6rem;
+  --main-footer-logo-width: 16rem;
 
   padding-block-start: var(--section-space-s);
   padding-inline: var(--gutter);
