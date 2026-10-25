@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews รีวิวเด่น — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-reviews-featured {
+  background-color: var(--main-light-alt);
+}
+
+.main-reviews-featured__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-m);
+  max-inline-size: calc(860 * 1rem / var(--etch-root-px, 10));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-reviews-featured__icon {
+  inline-size: calc(64 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(64 * 1rem / var(--etch-root-px, 10));
+  color: var(--main-accent);
+}
+
+.main-reviews-featured__stars {
+  display: flex;
+  gap: calc(var(--space-xs) / 4);
+  color: var(--main-accent);
+
+  svg {
+    inline-size: calc(18 * 1rem / var(--etch-root-px, 10));
+    block-size: calc(18 * 1rem / var(--etch-root-px, 10));
+  }
+}
+
+.main-reviews-featured__quote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: var(--h4);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--main-text);
+
+  p {
+    margin: 0;
+  }
+}
+
+.main-reviews-featured__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  text-align: start;
+}
+
+.main-reviews-featured__photo {
+  inline-size: calc(64 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(64 * 1rem / var(--etch-root-px, 10));
+  border-radius: 50%;
+  background-color: var(--main-line);
+  object-fit: cover;
+}
+
+.main-reviews-featured__who {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-reviews-featured__name {
+  font-weight: 700;
+  color: var(--main-primary);
+}
+
+.main-reviews-featured__meta {
+  font-size: var(--text-s);
+  color: var(--main-text-muted);
+}
+</style>
+</head>
+<body data-template="reviews-featured">
+<section data-etch-element="section" class="main-reviews-featured"><div data-etch-element="container"><figure class="main-reviews-featured__card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="main-reviews-featured__icon" aria-hidden="true" focusable="false"><path d="M9.5 6C6 7.2 4 9.9 4 13.5V18h6v-6H7c0-2.3 1.2-3.9 3.3-4.6Zm10 0C16 7.2 14 9.9 14 13.5V18h6v-6h-3c0-2.3 1.2-3.9 3.3-4.6Z"/></svg><div class="main-reviews-featured__stars" role="img" aria-label="5 out of 5 stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg></div><blockquote class="main-reviews-featured__quote"><p data-pv-edit="t:g.0.0.2.0.0">The best decision I made this year. The team was friendly, honest and the result was better than I expected. I recommend them to everyone.</p></blockquote><figcaption class="main-reviews-featured__author"><img class="main-reviews-featured__photo" loading="lazy" alt="" data-pv-img="i:g.0.0.3.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;"><span class="main-reviews-featured__who"><b class="main-reviews-featured__name" data-pv-edit="t:g.0.0.3.1.0.0">Customer Name</b><span class="main-reviews-featured__meta" data-pv-edit="t:g.0.0.3.1.1.0">Bangkok</span></span></figcaption></figure></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>
