@@ -3,9 +3,19 @@
 | ไฟล์ | เมนูใช้ | ต้องมีที่เว็บปลายทาง |
 |---|---|---|
 | `site-header-ohmyetch.etch.txt` (ใหม่) | Oh My Etch — Navigation Menu + Navigation Menu Mobile | ปลั๊กอิน **Oh My Etch** (ทดสอบกับ 1.5.8) |
+| `site-header-ohmyetch-light.etch.txt` | เหมือนบรรทัดบน — **พื้นสว่าง**: พื้นสีอ่อน ตัวอักษรเข้ม ปุ่ม `btn--primary` | Oh My Etch |
+| `site-header-ohmyetch-center.etch.txt` | **โลโก้กลาง**: จอ ≥1200px โลโก้กลางแถวบน ปุ่มขวา เมนูกึ่งกลางแถวล่าง | Oh My Etch |
+| `site-header-ohmyetch-topbar.etch.txt` | **แถบข้อมูลด้านบน**: ที่อยู่ · เวลาเปิด · โทร · อีเมล · LINE (มือถือเหลือเวลาเปิด + โทร) | Oh My Etch |
+| `site-header-ohmyetch-floating.etch.txt` | **ลอยมุมโค้ง**: แถบเมนูโค้ง มีเงา เว้นขอบรอบ | Oh My Etch |
+| `site-header-ohmyetch-right.etch.txt` | **เมนูชิดขวา**: เส้นสีเน้นด้านบน เมนูชิดขวาติดปุ่มเดียว (ไม่มีปุ่มเบอร์โทรบนแถบ) | Oh My Etch |
 | `site-header.etch.txt` (เดิม) | ชุด MenuWrapper / MenuDropdown / ToggleButton | ไม่ต้องมีปลั๊กอินเพิ่ม (script อยู่ใน component) |
 
 วิธีวางเหมือนกันทั้งสองไฟล์: เปิดไฟล์ → Select All → Copy → ใน Etch คลิกขวา → **Paste**
+**5 แบบใหม่** สร้างจาก header Oh My Etch ตัวเดียวกัน (`_build/build_header_variants.py`): โครงและ style `main-header__*` เหมือนกันทุกตัว ต่างกันที่คลาสเสริม `main-header--light` / `--center` / `--topbar` / `--floating` / `--right` บน `<header>` ซึ่งเก็บ CSS ของแบบนั้นไว้ — วิธีแก้เมนู ปุ่ม สี และ data attributes ใช้ตามหัวข้อ Oh My Etch ด้านล่างได้ทั้งหมด · ใช้ header ทีละแบบต่อเว็บ (ถ้าวางหลายแบบในเว็บเดียวก็ไม่ชนกัน)
+แบบ **แถบข้อมูล**: แก้ข้อความ/ลิงก์ใน **Top Bar** (ที่อยู่, เวลา, `tel:`, `mailto:`, ลิงก์ LINE) · แบบ **ลอยมุมโค้ง** เหมาะกับ `data-overlay-header="true"` ถ้าอยากให้ลอยทับ hero
+
+Page Builder มี header ให้เลือก 6 แบบ (Oh My Etch ทั้งหมด) — header แบบ Menu Builder ยังอยู่ในชุดนี้แต่ไม่อยู่ใน builder แล้ว
+
 ทั้งสองใช้ชื่อคลาสต่างกัน (`main-header` / `site-header`) วางในเว็บเดียวกันได้ไม่ชนกัน
 
 ---

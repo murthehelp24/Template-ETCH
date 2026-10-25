@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Header ลอยมุมโค้ง — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:root:has(.main-header) {
+  /* Colours come from the main colours (:where(:root)) — change them there.
+     Declared on :root because the mobile drawer is moved to <body> when it opens. */
+  --main-header-logo-height: 40px;
+
+  @media (width <= 768px) {
+    --main-header-logo-height: 32px;
+  }
+}
+
+.main-header {
+  pointer-events: none;
+  z-index: 50;
+  padding: 0;
+
+  > * {
+    pointer-events: auto;
+  }
+
+  /* position (data attributes on this element) */
+  &[data-overlay-header='true'],
+  &[data-sticky-header='true'] {
+    inset-block-start: var(--wp-admin--admin-bar--height, 0px);
+  }
+
+  &[data-overlay-header='true'] {
+    position: absolute;
+  }
+
+  &[data-sticky-header='true'] {
+    position: sticky;
+  }
+
+  &[data-sticky-header='true'][data-overlay-header='true'] {
+    position: fixed;
+  }
+
+  &[data-overlay-header='true'][data-overlay-header-offset='true'] + main > :first-child > :first-child {
+    margin-block-start: var(--header-height);
+  }
+
+  &[data-hide-on-scroll='true'] .main-header__bar {
+    transition: transform 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+  }
+
+  &.hide .main-header__bar {
+    transform: translateY(-100%);
+  }
+
+  /* ACSS gives every <button> outside a <nav> button typography — keep menu buttons like links */
+  button.main-header__link {
+    font-weight: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -1500px;
+    left: 32px;
+    z-index: 999;
+    background: var(--main-light);
+    color: var(--main-text);
+
+    &:focus-visible {
+      top: 32px;
+    }
+  }
+}
+
+.main-header__bar {
+  inline-size: 100%;
+  padding: var(--space-xs) var(--gutter);
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+  border-block-end: 1px solid var(--main-line-on-primary);
+}
+
+.main-header__container {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-m);
+
+  /* desktop nav (Oh My Etch root) fills the middle so the links sit centred.
+     Styled from here: Etch drops class-prop ids on paste for the Nav's styling group. */
+  > [data-ome-nav-menu-root] {
+    flex: 1 1 auto;
+
+    @media (width <= 1199px) {
+      display: none;
+    }
+  }
+
+  @media (width >= 1200px) {
+    > [data-ome-mobile-nav-root] {
+      display: none;
+    }
+  }
+}
+
+.main-header__logo {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.main-header__logo-img {
+  block-size: var(--main-header-logo-height);
+  inline-size: auto;
+  max-inline-size: 100%;
+  object-fit: contain;
+}
+
+.main-header__nav-list {
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.main-header__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: var(--btn-padding-block, 0.75em) var(--btn-padding-inline, 1em);
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: var(--text-s);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--main-on-primary);
+  text-decoration: none;
+  cursor: pointer;
+
+  /* animated underline */
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: var(--btn-padding-inline, 1em);
+    inset-block-end: 0.35em;
+    block-size: 2px;
+    background-color: var(--main-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover::after,
+  &[aria-current='page']::after,
+  &[aria-expanded='true']::after {
+    transform: scaleX(1);
+  }
+
+  [data-ome-nav-menu-trigger-chevron] {
+    transition: rotate 0.2s ease;
+  }
+
+  &[aria-expanded='true'] [data-ome-nav-menu-trigger-chevron] {
+    rotate: 180deg;
+  }
+}
+
+.main-header__dropdown {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 220px;
+  padding-block: var(--space-xs);
+  background-color: var(--main-primary);
+  border-block-start: 3px solid var(--main-accent);
+  box-shadow: 0 16px 36px var(--main-shadow);
+  transition: opacity 0.15s ease, translate 0.15s ease;
+
+  &[data-ome-state='closed'] {
+    opacity: 0;
+    translate: 0 8px;
+  }
+}
+
+.main-header__dropdown-link {
+  display: block;
+  padding: 0.6em 1.25em;
+  font-size: var(--text-s);
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--main-on-primary);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+
+  &:not(:last-child) {
+    box-shadow: inset 0 -1px 0 var(--main-line-on-primary);
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--main-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--main-on-primary);
+    outline-offset: -2px;
+  }
+}
+
+.main-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+
+  /* tablet: keep the buttons next to the hamburger */
+  @media (width <= 1199px) {
+    margin-inline-start: auto;
+  }
+
+  @media (width <= 768px) {
+    display: none;
+  }
+}
+
+.main-header__burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--main-on-primary);
+  cursor: pointer;
+
+  svg {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+}
+
+.main-header__drawer {
+  --ome-drawer-overlay-color: color-mix(in srgb, var(--main-text) 60%, transparent);
+  --ome-drawer-animation-duration: 250ms;
+  inline-size: min(360px, 85vw);
+  padding-block-start: var(--wp-admin--admin-bar--height, 0px);
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+  border-block-start: 3px solid var(--main-accent);
+
+  /* ACSS gives every <button> outside a <nav> button typography — keep menu buttons like links */
+  .main-header__mobile-link,
+  .main-header__drawer-button {
+    font-weight: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: none;
+  }
+}
+
+.main-header__drawer-content {
+  --_min-width: 100%;
+  --_min-height: 100dvh;
+  --_background: var(--main-primary);
+  --_color: var(--main-on-primary);
+  --_panel-background: var(--main-primary);
+}
+
+.main-header__drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--gutter);
+  border-block-end: 1px solid var(--main-line-on-primary);
+}
+
+.main-header__drawer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375em;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  margin-inline-start: auto;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  &[data-ome-mobile-nav-back] {
+    margin-inline-start: 0;
+  }
+}
+
+a.main-header__phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  white-space: nowrap;
+
+  svg {
+    inline-size: 1em;
+    block-size: 1em;
+    flex: 0 0 auto;
+  }
+}
+
+.main-header__mobile-list {
+  display: grid;
+  padding-inline: var(--gutter);
+}
+
+.main-header__mobile-item {
+  display: flex;
+  align-items: stretch;
+  border-block-end: 1px solid var(--main-line-on-primary);
+}
+
+.main-header__mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 100%;
+  min-block-size: 48px;
+  padding-block: var(--space-xs);
+  padding-inline: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: start;
+  color: var(--main-on-primary);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--main-accent);
+  }
+}
+
+.main-header__next-icon {
+  display: inline-flex;
+  inline-size: 1em;
+  block-size: 1em;
+  flex-shrink: 0;
+}
+
+.main-header__mobile-slot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-m) var(--gutter);
+}
+
+.ome-nav-menu {
+  
+}
+
+:where([data-ome-nav-menu-root]) {
+  position: relative; > [data-ome-nav-menu-list] { display: flex; list-style: none; margin: 0; padding: 0; } &[data-ome-orientation="vertical"] > [data-ome-nav-menu-list] { flex-direction: column; } > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] { position: relative; } & [data-ome-nav-menu-content][hidden] { display: none !important; } &:not([data-ome-use-animated-menu="true"]) > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] > [data-ome-nav-menu-content] { position: absolute; top: 100%; left: 0; z-index: 100; } &[data-ome-orientation="vertical"]:not([data-ome-use-animated-menu="true"]) > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] > [data-ome-nav-menu-content] { top: 0; left: 100%; } &:not([data-ome-use-animated-menu="true"]) > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] > [data-ome-nav-menu-content][data-ome-state="closed"] { visibility: hidden; } &:not([data-ome-use-animated-menu="true"]) > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] > [data-ome-nav-menu-content][data-ome-state="open"] { visibility: visible; } > [data-ome-nav-menu-viewport] { display: none; } > [data-ome-nav-menu-viewport][data-ome-animated="true"] { display: block; } > [data-ome-nav-menu-viewport][data-ome-preview="true"] { display: block; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport] { position: absolute; left: 0; top: 100%; z-index: 100; overflow: hidden; width: var(--ome-nav-menu-viewport-width, 100%); height: var(--ome-nav-menu-viewport-height, 0px); transform: translateX(var(--ome-nav-menu-viewport-offset-x, 0px)); transition: height var(--_transition-duration, var(--transition-duration, 150ms)) var(--_transition-timing, var(--transition-timing, ease)), transform var(--_transition-duration, var(--transition-duration, 150ms)) var(--_transition-timing, var(--transition-timing, ease)); } &[data-ome-preview-viewport="true"] > [data-ome-nav-menu-viewport] { position: absolute; left: 0; top: 100%; z-index: 100; overflow: hidden; width: var(--ome-nav-menu-viewport-width, 100%); height: var(--ome-nav-menu-viewport-height, 0px); transform: translateX(var(--ome-nav-menu-viewport-offset-x, 0px)); transition: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-state="open"], &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-state="closing"] { visibility: visible; } &[data-ome-preview-viewport="true"] > [data-ome-nav-menu-viewport][data-ome-state="open"] { visibility: visible; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-state="closed"] { --ome-nav-menu-viewport-height: 0px; visibility: hidden; pointer-events: none; } &[data-ome-preview-viewport="true"] > [data-ome-nav-menu-viewport][data-ome-state="closed"] { --ome-nav-menu-viewport-height: 0px; visibility: hidden; pointer-events: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-state="closing"] { pointer-events: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content] { width: 100%; overflow: hidden; } &[data-ome-preview-viewport="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content] { width: 100%; overflow: hidden; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content] > [data-ome-nav-menu-motion-layer] { transform: translateX(0); will-change: transform; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content] { position: absolute; top: 0; left: 0; z-index: 1; visibility: hidden; opacity: 0; transform: translateX(0); pointer-events: none; will-change: transform, opacity; transition: opacity 150ms ease, transform 150ms ease; } &[data-ome-preview-viewport="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content] { position: absolute; top: 0; left: 0; z-index: 1; visibility: hidden; opacity: 0; transform: translateX(0); pointer-events: none; will-change: auto; transition: none; animation: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-presence="mounted"] { visibility: visible; opacity: 1; transform: translateX(0); pointer-events: auto; } &[data-ome-preview-viewport="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-presence="mounted"] { visibility: visible; opacity: 1; transform: translateX(0); pointer-events: auto; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-presence="unmountSuspended"] { visibility: visible; opacity: 0; pointer-events: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-motion="from-start"] { animation: ome-nav-menu-enter-from-start 150ms ease; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content][data-ome-motion="from-start"] { animation: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content][data-ome-motion="from-start"] > [data-ome-nav-menu-motion-layer] { animation: ome-nav-menu-enter-from-start 150ms ease; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-motion="from-end"] { animation: ome-nav-menu-enter-from-end 150ms ease; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content][data-ome-motion="from-end"] { animation: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content][data-ome-motion="from-end"] > [data-ome-nav-menu-motion-layer] { animation: ome-nav-menu-enter-from-end 150ms ease; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-motion="to-start"] { animation: ome-nav-menu-exit-to-start 150ms ease; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content][data-ome-motion="to-start"] { animation: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content][data-ome-motion="to-start"] > [data-ome-nav-menu-motion-layer] { animation: ome-nav-menu-exit-to-start 150ms ease; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-motion="to-end"] { animation: ome-nav-menu-exit-to-end 150ms ease; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content][data-ome-motion="to-end"] { animation: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport][data-ome-full-width="true"] > [data-ome-nav-menu-content][data-ome-motion="to-end"] > [data-ome-nav-menu-motion-layer] { animation: ome-nav-menu-exit-to-end 150ms ease; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport]:not([data-ome-full-width="true"]) > [data-ome-nav-menu-content][data-ome-motion] { animation: none; } &[data-ome-use-animated-menu="true"] > [data-ome-nav-menu-viewport]:not([data-ome-full-width="true"]) > [data-ome-nav-menu-content] { transition: none; } & [data-ome-nav-menu-trigger-chevron] { transition: transform var(--transition-duration, 250ms) ease; } & [data-ome-nav-menu-trigger][data-ome-state="open"] [data-ome-nav-menu-trigger-chevron] { transform: rotate(180deg); }
+}
+
+.ome-nav-menu__viewport {
+  
+}
+
+.ome-nav-menu-default {
+  --_motion-distance: 20%
+}
+
+.ome-nav-menu-default__viewport {
+  --_transition-duration: var(--transition-duration, 150ms); --_transition-timing: var(--transition-timing, ease)
+}
+
+.ome-nav-menu__list {
+  
+}
+
+.ome-nav-menu-default__list {
+  justify-content: flex-start; align-items: stretch; gap: 0
+}
+
+.ome-nav-menu__item {
+  
+}
+
+.ome-nav-menu-default__item {
+  min-inline-size: 0
+}
+
+.ome-nav-menu__trigger {
+  
+}
+
+.ome-nav-menu-default__trigger {
+  cursor: pointer; background: transparent; border: none; display: inline-flex; align-items: center; gap: var(--space-xs, 0.25rem); &[data-ome-disabled="true"] { cursor: not-allowed; }
+}
+
+.ome-nav-menu__content {
+  
+}
+
+.ome-nav-menu-default__content {
+  inline-size: max-content; max-inline-size: none; display: flex; flex-direction: column
+}
+
+[data-ome-inline-docs] {
+  display: flex; flex-direction: column; gap: 12px; margin-block-end: 16px
+}
+
+[data-ome-inline-docs-callout] {
+  display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border: 1px solid transparent; border-radius: 10px
+}
+
+[data-ome-inline-docs-callout][data-ome-inline-docs-tone="warning"] {
+  background: var(--warning-ultra-light, #fff7ed); border-color: var(--warning-light, #fdba74); color: var(--warning-dark, #9a3412)
+}
+
+[data-ome-inline-docs-title] {
+  margin: 0; font-size: 14px; font-weight: 600; line-height: 1.4
+}
+
+[data-ome-inline-docs-body] {
+  margin: 0; font-size: 13px; line-height: 1.55
+}
+
+.ome-mobile-nav {
+  
+}
+
+:where([data-ome-mobile-nav-root]) {
+  display: contents
+}
+
+:where([data-ome-drawer-trigger]),
+:where([data-ome-drawer-close]) {
+  &[data-ome-disabled="true"] { pointer-events: none; }
+}
+
+:where([data-ome-drawer-root]) {
+  display: block; &[hidden] { display: none; }
+}
+
+:where([data-ome-drawer-root][data-ome-drawer-id]) {
+  & [data-ome-mobile-nav-content] { display: flex; flex-direction: column; min-width: var(--_min-width, 280px); min-height: var(--_min-height, 100dvh); background: var(--_background, var(--body-bg-color, #fff)); color: var(--_color, inherit); } & [data-ome-mobile-nav-panels] { position: relative; display: flex; flex: 1; flex-direction: column; overflow: hidden; } & [data-ome-mobile-nav-panels] > [data-ome-mobile-nav-panel] { position: absolute; inset: 0; width: 100%; overflow-y: auto; background: var(--_panel-background, var(--body-bg-color, #fff)); transition: transform var( --_panel-transition-duration, var(--transition-duration, 250ms) ) var(--_panel-transition-timing, var(--transition-timing, ease)), opacity var( --_panel-transition-duration, var(--transition-duration, 250ms) ) var(--_panel-transition-timing, var(--transition-timing, ease)); } & [data-ome-mobile-nav-list] { list-style: none; margin: 0; padding: 0; } & [data-ome-mobile-nav-item] { list-style: none; margin: 0; padding: 0; } & [data-ome-mobile-nav-item][data-ome-mobile-nav-item-type="link-branch"] { display: grid; grid-template-columns: minmax(0, 1fr) auto; } & [data-ome-mobile-nav-item][data-ome-mobile-nav-item-type="link-branch"] > [data-ome-mobile-nav-link] { min-width: 0; } & [data-ome-mobile-nav-item][data-ome-mobile-nav-item-type="link-branch"] > [data-ome-mobile-nav-submenu-trigger] { width: auto; min-width: 44px; justify-content: center; } & [data-ome-mobile-nav-back][hidden] { display: none; } & [data-ome-mobile-nav-sr-label] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; } & [data-ome-mobile-nav-template] { display: none; }
+}
+
+:where([data-ome-mobile-nav-root]) [data-ome-mobile-nav-static-preview] {
+  display: flex; flex-direction: column; gap: var(--space-s, 1rem)
+}
+
+:where([data-ome-mobile-nav-root])
+	[data-ome-mobile-nav-static-preview]
+	> [data-ome-mobile-nav-panel] {
+  position: static; inset: auto; width: 100%; transform: none; opacity: 1; background: var(--_panel-background, var(--body-bg-color, #fff))
+}
+
+.ome-mobile-nav-default {
+  color: var(--text-dark, inherit)
+}
+
+.ome-mobile-nav-default__trigger {
+  --_padding: var(--space-2xs, 0.5rem); --_background: transparent; --_color: inherit; --_border-width: 0; --_border-style: solid; --_border-color: transparent; --_border-radius: var(--radius, 0.5rem); --_target-size: 44px; display: inline-flex; align-items: center; justify-content: center; min-width: var(--_target-size); min-height: var(--_target-size); padding: var(--_padding); background: var(--_background); color: var(--_color); border: var(--_border-width) var(--_border-style) var(--_border-color); border-radius: var(--_border-radius); cursor: pointer
+}
+
+.ome-mobile-nav-default__back {
+  --_gap: var(--space-3xs, 0.375rem); --_padding: var(--space-2xs, 0.5rem); --_background: transparent; --_color: inherit; --_border-width: 0; --_border-style: solid; --_border-color: transparent; --_border-radius: var(--radius, 0.5rem); --_target-size: 44px; display: inline-flex; align-items: center; gap: var(--_gap); min-width: var(--_target-size); min-height: var(--_target-size); padding: var(--_padding); background: var(--_background); color: var(--_color); border: var(--_border-width) var(--_border-style) var(--_border-color); border-radius: var(--_border-radius); cursor: pointer; font: inherit
+}
+
+.ome-mobile-nav-default__close {
+  --_padding: var(--space-2xs, 0.5rem); --_background: transparent; --_color: inherit; --_border-width: 0; --_border-style: solid; --_border-color: transparent; --_border-radius: var(--radius, 0.5rem); --_target-size: 44px; display: inline-flex; align-items: center; justify-content: center; min-width: var(--_target-size); min-height: var(--_target-size); margin-inline-start: auto; padding: var(--_padding); background: var(--_background); color: var(--_color); border: var(--_border-width) var(--_border-style) var(--_border-color); border-radius: var(--_border-radius); cursor: pointer
+}
+
+.ome-mobile-nav-default__drawer {
+  --ome-drawer-overlay-color: rgba(0, 0, 0, 0.5); --ome-drawer-animation-duration: 250ms; background: var(--body-bg-color, #fff); color: var(--text-color, inherit); box-shadow: var(--box-shadow-l, 0 25px 50px -12px rgba(0, 0, 0, 0.25))
+}
+
+.ome-mobile-nav-default__header {
+  --_padding-block: var(--space-2xs, 0.5rem); --_padding-inline: var(--space-s, 1rem); --_border-width: 0 0 1px 0; --_border-style: solid; --_border-color: var(--border-light, #e5e7eb); display: flex; align-items: center; justify-content: space-between; gap: var(--space-xs, 0.75rem); padding: var(--_padding-block) var(--_padding-inline); border-width: var(--_border-width); border-style: var(--_border-style); border-color: var(--_border-color)
+}
+
+.ome-mobile-nav-default__content {
+  --_min-width: 280px; --_min-height: 100dvh; --_background: var(--body-bg-color, #fff); --_color: inherit; --_panel-background: var(--body-bg-color, #fff); --_panel-transition-duration: var(--transition-duration, 250ms); --_panel-transition-timing: var(--transition-timing, ease)
+}
+
+.ome-mobile-nav-default__list {
+  display: grid; gap: 0
+}
+
+.ome-mobile-nav-default__item {
+  display: flex; align-items: stretch; gap: 0
+}
+
+.ome-mobile-nav-default__link {
+  --_padding-block: var(--space-xs, 0.75rem); --_padding-inline: var(--space-s, 1rem); --_color: inherit; --_font-size: var(--text-m, 1rem); --_min-height: 44px; --_border-width: 0 0 1px 0; --_border-style: solid; --_border-color: var(--border-light, #e5e7eb); display: flex; align-items: center; width: 100%; min-height: var(--_min-height); padding: var(--_padding-block) var(--_padding-inline); color: var(--_color); font-size: var(--_font-size); text-decoration: none; border-width: var(--_border-width); border-style: var(--_border-style); border-color: var(--_border-color)
+}
+
+.ome-mobile-nav-default__submenu-trigger {
+  --_padding-block: var(--space-xs, 0.75rem); --_padding-inline: var(--space-s, 1rem); --_background: transparent; --_color: inherit; --_font-size: var(--text-m, 1rem); --_min-height: 44px; --_border-width: 0 0 1px 0; --_border-style: solid; --_border-color: var(--border-light, #e5e7eb); display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: var(--_min-height); padding: var(--_padding-block) var(--_padding-inline); background: var(--_background); color: var(--_color); font: inherit; font-size: var(--_font-size); text-align: start; border-width: var(--_border-width); border-style: var(--_border-style); border-color: var(--_border-color); cursor: pointer
+}
+
+.ome-mobile-nav-default__next-icon {
+  --_size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: var(--_size); height: var(--_size); flex-shrink: 0
+}
+
+.ome-mobile-nav-default__before {
+  --_padding-block: var(--space-xs, 0.75rem); --_padding-inline: var(--space-s, 1rem); padding: var(--_padding-block) var(--_padding-inline)
+}
+
+.ome-mobile-nav-default__after {
+  --_padding-block: var(--space-xs, 0.75rem); --_padding-inline: var(--space-s, 1rem); padding: var(--_padding-block) var(--_padding-inline)
+}
+
+:where([data-ome-drawer-host]) {
+  position: fixed; inset: 0; z-index: 9999; display: none; &[data-ome-state="open"] { display: block; } & [data-ome-drawer-host-overlay] { position: absolute; inset: 0; background: var(--ome-drawer-overlay-color, rgba(0, 0, 0, 0.5)); opacity: 0; transition: opacity var(--ome-drawer-animation-duration, 250ms) ease; } &[data-ome-state="open"] [data-ome-drawer-host-overlay] { opacity: 1; } [data-ome-drawer-host-content] { position: absolute; pointer-events: none; display: flex; flex-direction: column; overflow: auto; } [data-ome-drawer-host-content] > [data-ome-drawer-root] { pointer-events: auto; transition: transform var(--ome-drawer-animation-duration, 250ms) ease; } [data-ome-drawer-host-handle] { display: none; } &[data-ome-direction="bottom"] [data-ome-drawer-host-handle] { display: block; } &[data-ome-direction="bottom"] [data-ome-drawer-host-content] { left: 0; right: 0; bottom: 0; max-height: 90vh; } &[data-ome-direction="top"] [data-ome-drawer-host-content] { left: 0; right: 0; top: 0; max-height: 90vh; } &[data-ome-direction="right"] [data-ome-drawer-host-content] { top: 0; right: 0; bottom: 0; max-width: 90vw; } &[data-ome-direction="left"] [data-ome-drawer-host-content] { top: 0; left: 0; bottom: 0; max-width: 90vw; }
+}
+
+html {
+  &:has([data-ome-drawer-host][data-ome-state="open"]) { scrollbar-gutter: stable; }
+}
+
+.main-header--floating {
+  /* the bar floats: a rounded, shadowed band with space around it */
+  .main-header__bar {
+    background-color: transparent;
+    border-block-end: 0;
+    padding-block: var(--space-s);
+  }
+
+  .main-header__container {
+    padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-l);
+    background-color: var(--main-primary);
+    border-radius: 999px;
+    box-shadow: 0 10px 30px var(--main-shadow);
+
+    @media (width <= 768px) {
+      padding-inline: var(--space-m) var(--space-xs);
+    }
+  }
+}
+</style>
+</head>
+<body data-template="header-floating">
+<header data-etch-element="section" data-overlay-header="false" data-overlay-header-offset="false" data-sticky-header="true" data-hide-on-scroll="true" data-hide-at="200px" data-show-on-scroll-up="true" data-skip-link="true" class="main-header main-header--floating"><div class="main-header__bar"><div data-etch-element="container" class="main-header__container"><a href="/" aria-label="Home" class="main-header__logo"><img class="main-header__logo-img" data-pv-img="i:g.0.0.0.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 160 40&#x27;&gt; &lt;rect x=&#x27;1&#x27; y=&#x27;1&#x27; width=&#x27;158&#x27; height=&#x27;38&#x27; rx=&#x27;8&#x27; fill=&#x27;none&#x27; stroke=&#x27;%23999&#x27; stroke-width=&#x27;2&#x27; stroke-dasharray=&#x27;5 4&#x27;/&gt; &lt;text x=&#x27;80&#x27; y=&#x27;26&#x27; text-anchor=&#x27;middle&#x27; font-family=&#x27;sans-serif&#x27; font-size=&#x27;16&#x27; font-weight=&#x27;700&#x27; fill=&#x27;%23999&#x27;&gt;LOGO&lt;/text&gt;&lt;/svg&gt;" alt=""></a><nav data-ome-nav-menu-root="" data-ome-menu-id="main-menu" data-ome-orientation="horizontal" data-ome-use-animated-menu="false" data-ome-use-full-width="false" data-ome-full-width-target-selector="" aria-label="Main" class="ome-nav-menu ome-nav-menu-default" tag="nav"><ul data-ome-nav-menu-list="" class="ome-nav-menu__list main-header__nav-list"><li data-ome-nav-menu-item="" data-ome-disabled="false" data-ome-state="closed" class="ome-nav-menu__item ome-nav-menu-default__item"><a href="/" class="main-header__link" data-pv-edit="t:g.0.0.1.0.0.0.0.0.0.0">Home</a></li><li data-ome-nav-menu-item="" data-ome-disabled="false" data-ome-state="closed" class="ome-nav-menu__item ome-nav-menu-default__item"><a href="/about/" class="main-header__link" data-pv-edit="t:g.0.0.1.0.0.0.1.0.0.0">About</a></li><li data-ome-nav-menu-item="" data-ome-disabled="false" data-ome-state="closed" class="ome-nav-menu__item ome-nav-menu-default__item"><button type="button" data-ome-nav-menu-trigger="" data-ome-trigger-action="hover" data-ome-state="closed" data-ome-disabled="false" aria-expanded="false" aria-controls="main-menu-services" class="ome-nav-menu__trigger ome-nav-menu-default__trigger main-header__link"><span data-pv-edit="t:g.0.0.1.0.0.0.2.0.0.0.0">Services</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" data-ome-nav-menu-trigger-chevron="" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 9s-4.419 6-6 6s-6-6-6-6" /></svg></button><div data-ome-nav-menu-content="" data-ome-state="closed" hidden id="main-menu-services" class="ome-nav-menu__content main-header__dropdown"><a href="/services/service-1/" class="main-header__dropdown-link" data-pv-edit="t:g.0.0.1.0.0.0.2.0.1.0.0.0">Service 1</a><a href="/services/service-2/" class="main-header__dropdown-link" data-pv-edit="t:g.0.0.1.0.0.0.2.0.1.0.1.0">Service 2</a><a href="/services/service-3/" class="main-header__dropdown-link" data-pv-edit="t:g.0.0.1.0.0.0.2.0.1.0.2.0">Service 3</a></div></li><li data-ome-nav-menu-item="" data-ome-disabled="false" data-ome-state="closed" class="ome-nav-menu__item ome-nav-menu-default__item"><a href="/blog/" class="main-header__link" data-pv-edit="t:g.0.0.1.0.0.0.3.0.0.0">Blog</a></li><li data-ome-nav-menu-item="" data-ome-disabled="false" data-ome-state="closed" class="ome-nav-menu__item ome-nav-menu-default__item"><a href="/contact/" class="main-header__link" data-pv-edit="t:g.0.0.1.0.0.0.4.0.0.0">Contact</a></li></ul></nav><div class="main-header__actions"><a href="/contact/" class="btn--secondary" data-pv-edit="t:g.0.0.2.0.0">Get a Quote</a><a href="tel:+6620000000" class="main-header__phone btn--secondary btn--outline"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.58 3.6a1 1 0 0 1-.25 1z" fill="currentColor" /></svg><span data-pv-edit="t:g.0.0.2.1.1.0">02-000-0000</span></a></div><div data-ome-mobile-nav-root="" data-ome-menu-id="main-menu" class="ome-mobile-nav"><div><button type="button" data-ome-drawer-trigger="" data-ome-target-drawer-id="main-menu" aria-haspopup="dialog" aria-expanded="false" class="main-header__burger" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg></button></div><div data-ome-drawer-root="" data-ome-drawer-id="main-menu" data-ome-state="closed" data-ome-direction="right" data-ome-dismissible="true" class="main-header__drawer" hidden><div data-ome-mobile-nav-content="" class="main-header__drawer-content"><div data-ome-mobile-nav-header="" class="main-header__drawer-head"><span data-ome-drawer-title="" data-ome-mobile-nav-sr-label="">Open menu</span><button type="button" data-ome-mobile-nav-back="" data-ome-mobile-nav-back-label="Back" class="main-header__drawer-button" hidden aria-label="Go back"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" /></svg><span>Back</span></button><button type="button" data-ome-drawer-close="" class="main-header__drawer-button" aria-label="Close menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M18 6L6 18M6 6l12 12" /></svg><span data-ome-mobile-nav-sr-label="">Close menu</span></button></div><div data-ome-mobile-nav-panels=""><div data-ome-mobile-nav-template="" hidden><div data-ome-mobile-nav-panel=""><ul data-ome-mobile-nav-list="" class="main-header__mobile-list" role="menu"><li data-ome-mobile-nav-item="" class="main-header__mobile-item"><a data-ome-mobile-nav-link="" class="main-header__mobile-link"></a></li><li data-ome-mobile-nav-item="" class="main-header__mobile-item"><button type="button" data-ome-mobile-nav-submenu-trigger="" class="main-header__mobile-link"><span data-ome-mobile-nav-next-icon="" class="main-header__next-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /></svg></span></button></li></ul></div></div><div data-ome-mobile-nav-slot-before="" hidden></div><div data-ome-mobile-nav-slot-after="" class="main-header__mobile-slot" hidden><a href="/contact/" class="btn--secondary" data-pv-edit="t:g.0.0.3.0.0.0">Get a Quote</a><a href="tel:+6620000000" class="main-header__phone btn--secondary btn--outline"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.58 3.6a1 1 0 0 1-.25 1z" fill="currentColor" /></svg><span data-pv-edit="t:g.0.0.3.0.1.1.0">02-000-0000</span></a></div></div></div></div></div></div></div></header>
+<script src="assets/frame.js"></script>
+<script type="module">
+// Select the header element
+const header = document.querySelector('.main-header');
+
+// Early exit if header doesn't exist on this page
+if (!header) {
+  if (window.console) console.warn('Header element (.main-header) not found.');
+} else {
+  // 1. CONFIGURATION
+  // Read once and cache to avoid repeated DOM access
+  const ds = header.dataset;
+  const config = {
+    sticky: ds.stickyHeader === 'true',
+    hide: ds.hideOnScroll === 'true',
+    up: ds.showOnScrollUp === 'true',
+    at: parseInt(ds.hideAt, 10) || 0,
+    skipLink: ds.skipLink === 'true'
+  };
+
+  // 2. SKIP LINK
+  // Add accessible skip link for keyboard navigation
+  if (config.skipLink && !header.querySelector('.skip-link')) {
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main';
+    skipLink.className = 'skip-link';
+    skipLink.textContent = 'Skip to main content';
+    header.insertBefore(skipLink, header.firstChild);
+
+    // Set id on main element
+    const main = document.querySelector('main');
+    if (main) {
+      main.id = 'main';
+    }
+  }
+
+  // 3. HEADER HEIGHT
+  // Using ResizeObserver handles initial load, window resize, and content changes
+  // It's more performant and robust than manual event listeners + debounce
+  const updateHeight = () => document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+  
+  if (window.ResizeObserver) {
+    new ResizeObserver(updateHeight).observe(header);
+  } else {
+    window.addEventListener('resize', updateHeight);
+    window.addEventListener('load', updateHeight);
+    updateHeight();
+  }
+
+  // 4. SCROLL LOGIC (Merged into single rAF loop)
+  // Consolidating all scroll updates into one requestAnimationFrame callback
+  // minimizes layout thrashing and synchronizes DOM updates with screen refreshes.
+  if (config.sticky) {
+    let lastY = window.scrollY;
+    let ticking = false;
+    let isHidden = false;
+    const tolerance = 5; // Ignore tiny scroll movements
+
+    const updateHeader = (forceVisible = false) => {
+      const currentY = Math.max(0, window.scrollY); // Normalize for mobile bounce
+      
+      // Toggle 'scrolling' class based on any scroll from top
+      header.classList.toggle('scrolling', currentY > 0);
+
+      // Hide-on-scroll logic
+      if (config.hide && config.at > 0) {
+        const isMenuOpen = document.body.classList.contains('menu-open');
+        const pastThreshold = currentY >= config.at;
+
+        if (isMenuOpen || forceVisible) {
+          isHidden = false;
+        } else if (config.up) {
+          // Mode: responsive to scroll direction past threshold
+          if (!pastThreshold) {
+            isHidden = false;
+          } else {
+            const diff = currentY - lastY;
+            if (diff > tolerance) {
+              isHidden = true; // Hiding because user is scrolling DOWN
+            } else if (diff < -tolerance) {
+              isHidden = false; // Showing because user is scrolling UP
+            }
+          }
+        } else {
+          // Mode: static threshold
+          // If initial load, we don't hide immediately even if past threshold
+          isHidden = pastThreshold;
+        }
+
+        header.classList.toggle('hide', isHidden);
+
+        // Close all open dropdowns when header hides
+        if (isHidden && window.Dropdowns) {
+          window.Dropdowns.getAll()
+            .filter(d => d.isOpen)
+            .forEach(d => d.close({ cascade: true }));
+        }
+      }
+      
+      lastY = currentY;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => updateHeader(false));
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    // Initial state check - force visible on load regardless of position
+    updateHeader(true);
+  }
+}
+
+</script>
+</body>
+</html>

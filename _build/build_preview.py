@@ -23,8 +23,16 @@ ROOT = os.path.dirname(HERE)
 CATALOG = [
     ("header", "header", "Header", "etch-header/site-header-ohmyetch.etch.txt",
      "โลโก้ · เมนูกลาง · ปุ่ม (Oh My Etch)"),
-    ("header-menubuilder", "header", "Header (Menu Builder)", "etch-header/site-header.etch.txt",
-     "แบบเดิม · ไม่ต้องมีปลั๊กอินเพิ่ม"),
+    ("header-light", "header", "Header พื้นสว่าง", "etch-header/site-header-ohmyetch-light.etch.txt",
+     "พื้นสีอ่อน · ตัวอักษรเข้ม · ปุ่มสีหลัก"),
+    ("header-center", "header", "Header โลโก้กลาง", "etch-header/site-header-ohmyetch-center.etch.txt",
+     "โลโก้กลาง · เมนูแถวล่าง"),
+    ("header-topbar", "header", "Header + แถบข้อมูล", "etch-header/site-header-ohmyetch-topbar.etch.txt",
+     "แถบที่อยู่ · เวลาเปิด · โทร · อีเมล · LINE ด้านบน"),
+    ("header-floating", "header", "Header ลอยมุมโค้ง", "etch-header/site-header-ohmyetch-floating.etch.txt",
+     "แถบเมนูโค้งลอย มีเงา"),
+    ("header-right", "header", "Header เมนูชิดขวา", "etch-header/site-header-ohmyetch-right.etch.txt",
+     "เส้นสีด้านบน · เมนูชิดขวา · ปุ่มเดียว"),
     ("hero", "section", "Hero หน้าแรก", "etch-sections/main-hero.etch.txt", "H1 · ปุ่ม 2 ปุ่ม · จุดเด่น · รูป"),
     ("page-hero", "section", "Page Hero", "etch-sections/main-page-hero.etch.txt", "breadcrumb + ชื่อหน้า"),
     ("features", "section", "Features", "etch-sections/main-features.etch.txt", "การ์ดไอคอน 4 ใบ"),
@@ -77,7 +85,7 @@ ASSEMBLE = """
 (function () {
   var q = new URLSearchParams(location.search).get('t');
   var ids = q ? q.split(',') : Array.prototype.map.call(document.querySelectorAll('template[id^="tpl-"]'),
-    function (t) { return t.id.slice(4); }).filter(function (id) { return id !== 'header-menubuilder'; });
+    function (t) { return t.id.slice(4); }).filter(function (id) { return id.indexOf('header-') !== 0; }); // one header
   var here = document.currentScript;
   ids.forEach(function (id, i) {
     var t = document.getElementById('tpl-' + id);
