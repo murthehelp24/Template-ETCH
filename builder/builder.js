@@ -504,18 +504,61 @@
   // ================================================================ library (left)
   var GROUPS = [['header', 'Header'], ['section', 'Sections'], ['footer', 'Footer']];
 
+  // the library shows one kind at a time; clicking a header / section / footer in the page picks its kind.
+  // selected = the placed template that "+" works from: a section's "+" inserts right after it
+  var libGroup = 'section', selected = null;
+  function groupOf(key) {
+    return key.indexOf('header:') === 0 ? 'header' : key.indexOf('footer:') === 0 ? 'footer' : 'section';
+  }
+  function showGroup(group, key) {
+    libGroup = group;
+    if (key !== undefined) selected = key;
+    $$('#libTabs button').forEach(function (b) {
+      var on = b.dataset.group === group;
+      b.setAttribute('aria-selected', String(on));
+      b.tabIndex = on ? 0 : -1;
+    });
+    $$('#library .pb-group').forEach(function (box) { box.hidden = box.dataset.group !== group; });
+    var p = page(), after = group === 'section' && selected && indexOf(selected) >= 0 ? items[selected] : null;
+    var hint = group === 'section'
+      ? (after ? 'กด + เพื่อแทรกต่อจาก "' + T[after.id].label + '" · หรือลากไปวางตรงไหนก็ได้'
+               : 'กด + เพื่อต่อท้ายหน้า (คลิก section ในหน้าเพื่อแทรกต่อจากตัวนั้น) · หรือลากไปวาง')
+      : 'กด + เพื่อใช้ ' + (group === 'header' ? 'header' : 'footer') + ' นี้' +
+        (p[group] ? ' แทนตัวเดิม' : '') + ' · หรือลากไปวางในหน้า';
+    $('#libHint').textContent = hint;
+    $$('.pb-card[data-group="' + group + '"] .pb-add').forEach(function (b) {
+      var t = T[b.closest('.pb-card').dataset.id];
+      b.title = group === 'section' ? (after ? 'แทรกต่อจาก ' + T[after.id].label : 'ต่อท้ายหน้า') : 'ใช้ ' + t.label;
+      b.setAttribute('aria-label', b.title + ': ' + t.label);
+    });
+    markSelected();
+    scaleThumbs();
+  }
+  function markSelected() {
+    Object.keys(items).forEach(function (k) {
+      items[k].el.classList.toggle('is-selected', k === selected && groupOf(k) === libGroup);
+    });
+    ['header', 'footer'].forEach(function (slot) {
+      $('#' + slot + 'Slot').classList.toggle('is-target', libGroup === slot);
+    });
+  }
+
   function renderLibrary() {
     var lib = $('#library');
     lib.innerHTML = '';
     GROUPS.forEach(function (g) {
       var box = document.createElement('section');
       box.className = 'pb-group';
-      box.innerHTML = '<h2>' + g[1] + '</h2>';
+      box.dataset.group = g[0];
+      box.setAttribute('aria-label', g[1]); // the tab above names the group
+      var tab = $('#libTabs button[data-group="' + g[0] + '"]');
+      tab.innerHTML = g[1] + ' <small>' + KIT.templates.filter(function (t) { return t.group === g[0]; }).length + '</small>';
       KIT.templates.filter(function (t) { return t.group === g[0]; }).forEach(function (t) {
         var card = document.createElement('div');
         card.className = 'pb-card pb-card--' + t.group;
         card.draggable = true;
         card.dataset.id = t.id;
+        card.dataset.group = t.group;
         card.innerHTML = '<div class="pb-thumb"><iframe tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div>' +
           '<div class="pb-card__body"><div class="pb-card__text"><div class="pb-card__title"></div>' +
           '<div class="pb-card__note"></div></div><button type="button" class="pb-add">+</button></div>';
@@ -523,9 +566,10 @@
         $('.pb-card__note', card).textContent = t.note;
         $('.pb-card__note', card).title = t.note;
         var add = $('.pb-add', card);
-        add.title = t.group === 'section' ? 'ต่อท้ายหน้า' : 'ใช้ ' + t.label;
-        add.setAttribute('aria-label', add.title + ': ' + t.label);
-        add.addEventListener('click', function () { insert(t.id, null); });
+        add.addEventListener('click', function () {
+          var at = t.group === 'section' && selected && indexOf(selected) >= 0 ? indexOf(selected) + 1 : null;
+          insert(t.id, at);
+        });
         var f = $('iframe', card);
         f.src = t.preview;
         f.title = t.label;
@@ -540,11 +584,11 @@
       });
       lib.appendChild(box);
     });
-    scaleThumbs();
+    showGroup(libGroup);
   }
 
   function scaleThumbs() {
-    $$('.pb-thumb').forEach(function (th) {
+    $$('.pb-group:not([hidden]) .pb-thumb').forEach(function (th) {
       var f = $('iframe', th);
       f.style.transform = 'scale(' + th.clientWidth / 1280 + ')';
     });
@@ -619,6 +663,7 @@
       var label = T[fixed ? p[fixed] : p.sections[indexOf(key)].id].label;
       if (fixed) p[fixed] = null;
       else p.sections = p.sections.filter(function (s) { return s.k !== key; });
+      if (selected === key) selected = null;
       toast('ลบ ' + label + ' แล้ว', true);
     } else {
       var i = indexOf(key), j = what === 'up' ? i - 1 : i + 1;
@@ -669,8 +714,8 @@
       want[key] = true;
       if (!p[slot]) {
         if (!$('.pb-slot-empty', box)) {
-          box.innerHTML = '<div class="pb-slot-empty">ลาก ' + (slot === 'header' ? 'Header' : 'Footer') +
-            ' จากแถบซ้ายมาวางตรงนี้</div>';
+          box.innerHTML = '<div class="pb-slot-empty">คลิกเพื่อเลือก ' + (slot === 'header' ? 'Header' : 'Footer') +
+            ' จากแถบซ้าย หรือลากมาวางตรงนี้</div>';
         }
         return;
       }
@@ -693,6 +738,7 @@
     });
     $('#stage').classList.toggle('is-empty', !p.sections.length);
     markUsed();
+    markSelected();
     updateViewLink();
   }
 
@@ -702,11 +748,13 @@
     remember();
     if (t.group === 'header' || t.group === 'footer') {
       p[t.group] = id;
+      selected = t.group + ':' + id;
       toast('ใช้ ' + t.label + ' แล้ว');
     } else {
       var s = { k: uid(), id: id };
       if (index === null || index === undefined || index > p.sections.length) p.sections.push(s);
       else p.sections.splice(index, 0, s);
+      selected = s.k; // the next "+" goes after this one
       toast('เพิ่ม ' + t.label + ' แล้ว');
       setTimeout(function () {
         var rec = items[s.k];
@@ -715,6 +763,7 @@
     }
     save();
     renderCanvas();
+    showGroup(t.group);
   }
 
   var drag = null;
@@ -793,6 +842,7 @@
     if (!frames.length) return;
     var rec = recOf(e.source);
     if (d.type === 'pv-ready') e.source.postMessage(frameState(rec), '*');
+    if (d.type === 'pv-click' && rec && rec.key !== selected) showGroup(groupOf(rec.key), rec.key);
     if (d.type === 'pv-edit' && rec && EDIT_KEY.test(d.key) && (d.value === null || typeof d.value === 'string')) {
       var p = page();
       remember();
@@ -844,6 +894,7 @@
 
   function switchPage(id) {
     state.current = id;
+    selected = null;
     disarmDelete();
     save();
     renderAll();
@@ -855,6 +906,7 @@
     renderCanvas();
     layout();
     broadcast();
+    showGroup(libGroup); // the hint names the selected section, which an undo or a page switch may change
   }
 
   $('#pageSelect').addEventListener('change', function (e) { switchPage(e.target.value); });
@@ -1212,6 +1264,25 @@
   $('#exportEtch').addEventListener('click', openExport);
 
   $('#allPresets').addEventListener('click', openPresets);
+
+  $$('#libTabs button').forEach(function (b) {
+    b.addEventListener('click', function () { showGroup(b.dataset.group); });
+    b.addEventListener('keydown', function (e) {  // arrow keys move between tabs
+      var tabs = $$('#libTabs button'), i = tabs.indexOf(b);
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      next.focus();
+      showGroup(next.dataset.group);
+    });
+  });
+  // clicks on the page outside the preview frames: a toolbar, an empty header / footer spot, the empty-page hint
+  $('#stage').addEventListener('click', function (e) {
+    var item = e.target.closest('.pb-item');
+    if (item) { if (item.dataset.key !== selected || groupOf(item.dataset.key) !== libGroup) showGroup(groupOf(item.dataset.key), item.dataset.key); return; }
+    var slot = e.target.closest('.pb-slot');
+    if (slot) { showGroup(slot.dataset.slot, null); return; }
+    if (e.target.closest('#emptyHint')) showGroup('section', null);
+  });
 
   $('#editToggle').addEventListener('click', function () {
     state.edit = state.edit === false;
