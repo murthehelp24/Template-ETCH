@@ -31,7 +31,7 @@
     KIT.colors.forEach(function (c) { colors[c.key] = null; });
     return { id: uid(), name: name || 'หน้าใหม่', header: 'header', sections: [], footer: 'footer',
              colors: colors, acss: { primary: null, secondary: null }, buttons: { primaryText: null, secondaryText: null },
-             root: 10, updated: Date.now(), edits: {}, images: {} };
+             root: 10, updated: Date.now(), edits: {}, images: {}, type: 'other' };
   }
 
   // edits[instance][key] = text · images[instance][slot] = image id (picture in IndexedDB)
@@ -60,6 +60,16 @@
   var HEX = /^#[0-9a-f]{6}$/i;
   function isTpl(id, group) { return typeof id === 'string' && !!T[id] && T[id].group === group; }
 
+  // page types and their recommended sections (builder/pages.js)
+  var PAGE_TYPES = (window.ETCH_PAGE_TYPES || []).filter(function (t) {
+    return t && t.id && Array.isArray(t.sections);
+  }).map(function (t) {
+    return { id: t.id, label: t.label, note: t.note,
+             sections: t.sections.filter(function (r) { return r && isTpl(r.id, 'section'); }) };
+  });
+  var TYPE = {};
+  PAGE_TYPES.forEach(function (t) { TYPE[t.id] = t; });
+
   // Saved pages (localStorage or an imported file) may be old, edited by hand or broken: keep what is valid.
   function normalizePage(src, fallbackName) {
     src = src && typeof src === 'object' ? src : {};
@@ -76,6 +86,8 @@
     ['primary', 'secondary'].forEach(function (k) { var v = (src.acss || {})[k]; p.acss[k] = HEX.test(v) ? v : null; });
     ['primaryText', 'secondaryText'].forEach(function (k) { var v = (src.buttons || {})[k]; p.buttons[k] = HEX.test(v) ? v : null; });
     if (typeof src.updated === 'number') p.updated = src.updated;
+    // page type (builder/pages.js); older saves have none: a page named like a home page counts as one
+    p.type = TYPE[src.type] ? src.type : /หน้าแรก|^home/i.test(p.name) ? 'home' : 'other';
     p.edits = cleanMap(src.edits, EDIT_KEY, function (v) { return typeof v === 'string' && v.length <= 5000; });
     p.images = cleanMap(src.images, IMG_KEY, function (v) { return typeof v === 'string' && IMG_ID.test(v); });
     return p;
@@ -94,6 +106,7 @@
       }
     } catch (e) { /* storage blocked, empty or not JSON */ }
     var first = newPage('หน้าแรก');
+    first.type = 'home';
     ['hero', 'features', 'split', 'stats', 'steps', 'reviews', 'faq', 'cta'].forEach(function (id) {
       first.sections.push({ k: uid(), id: id });
     });
@@ -501,6 +514,130 @@
     if (!bad.length) renderContrast.opened = false;
   }
 
+  // ================================================================ page standards (right panel, top)
+  var H1_SECTIONS = ['hero', 'page-hero', 'contact', 'blog', 'single-post', '404'];
+  var ONLY_ON = { blog: 'blog', 'single-post': 'single', '404': '404' }; // sections that need their own template
+  function typeOf(p) { return TYPE[p.type] || TYPE.other || PAGE_TYPES[0]; }
+
+  // what the page has against its type: recipe items (ok / missing) + problems
+  function pageCheck(p) {
+    var t = typeOf(p), ids = p.sections.map(function (s) { return s.id; }), problems = [];
+    var items = (t ? t.sections : []).map(function (r) {
+      return { id: r.id, need: r.need, why: r.why, ok: ids.indexOf(r.id) >= 0 };
+    });
+    var label = function (id) { return T[id] ? T[id].label : id; };
+    if (!p.header) problems.push({ level: 'error', text: 'ยังไม่มี Header' });
+    if (!p.footer) problems.push({ level: 'error', text: 'ยังไม่มี Footer' });
+    var h1 = ids.filter(function (id) { return H1_SECTIONS.indexOf(id) >= 0; });
+    if (h1.length > 1) {
+      problems.push({ level: 'warn', text: 'มี H1 ' + h1.length + ' ตัว (' + h1.map(label).join(', ') +
+        ') — หน้าหนึ่งควรมี H1 ตัวเดียว เก็บไว้ section เดียว' });
+    } else if (!h1.length && ids.length) {
+      problems.push({ level: 'warn', text: 'ยังไม่มี H1 — ใส่ Hero หรือ Page Hero ไว้บนสุด (ช่วยเรื่อง SEO)' });
+    }
+    if (h1.length && H1_SECTIONS.indexOf(ids[0]) < 0) {
+      problems.push({ level: 'warn', text: 'section แรกควรเป็น ' + label(h1[0]) + ' (หัวข้อหลักของหน้า)' });
+    }
+    var seen = {};
+    ids.forEach(function (id) {
+      if (ONLY_ON[id] && ONLY_ON[id] !== (t && t.id) && !seen[id]) {
+        seen[id] = true;
+        problems.push({ level: 'warn', text: label(id) + ' ใช้ได้เฉพาะหน้าประเภท "' +
+          (TYPE[ONLY_ON[id]] ? TYPE[ONLY_ON[id]].label : ONLY_ON[id]) + '" — หน้านี้ไม่ควรมี' });
+      }
+    });
+    if (ids.indexOf('cta') >= 0 && ids[ids.length - 1] !== 'cta') {
+      problems.push({ level: 'warn', text: label('cta') + ' ควรอยู่ท้ายหน้า (ก่อน footer) เพื่อปิดด้วยช่องทางติดต่อ' });
+    }
+    var missing = items.filter(function (i) { return !i.ok; });
+    return { type: t, items: items, problems: problems, missing: missing,
+             done: items.length - missing.length, total: items.length,
+             errors: problems.filter(function (x) { return x.level === 'error'; }).length +
+                     missing.filter(function (i) { return i.need === 'required'; }).length };
+  }
+
+  // add a missing section where the recipe puts it (before the first placed section that comes later)
+  function addRecommended(id) {
+    var p = page(), order = typeOf(p).sections.map(function (r) { return r.id; }), want = order.indexOf(id), at = null;
+    for (var i = 0; i < p.sections.length; i++) {
+      if (order.indexOf(p.sections[i].id) > want) { at = i; break; }
+    }
+    insert(id, at);
+  }
+
+  // rebuild the order from the recipe; sections already on the page keep their edits, extra ones are kept too
+  function layoutFor(p, t) {
+    var used = {}, out = [];
+    t.sections.forEach(function (r) {
+      var s = p.sections.filter(function (x) { return x.id === r.id && !used[x.k]; })[0] || { k: uid(), id: r.id };
+      used[s.k] = true;
+      out.push(s);
+    });
+    var extras = p.sections.filter(function (s) { return !used[s.k]; });
+    // the contact CTA closes a page: anything else goes before it
+    if (out.length && out[out.length - 1].id === 'cta') out.splice.apply(out, [out.length - 1, 0].concat(extras));
+    else out = out.concat(extras);
+    return out;
+  }
+  function applyLayout() {
+    var p = page(), t = typeOf(p);
+    remember();
+    p.sections = layoutFor(p, t);
+    if (!p.header) p.header = 'header';
+    if (!p.footer) p.footer = 'footer';
+    selected = null;
+    save();
+    renderCanvas();
+    showGroup('section');
+    toast('จัดหน้าตามแบบ "' + t.label + '" แล้ว', true);
+  }
+
+  function renderStandards() {
+    var p = page(), c = pageCheck(p);
+    if (!$('#pageType') || !c.type) return;
+    var sel = $('#pageType');
+    if (!sel.options.length) {
+      PAGE_TYPES.forEach(function (t) {
+        var o = document.createElement('option');
+        o.value = t.id;
+        o.textContent = t.label;
+        sel.appendChild(o);
+      });
+    }
+    sel.value = c.type.id;
+    $('#typeNote').textContent = c.type.note || '';
+    var badge = $('#stdScore'), allOk = !c.missing.length && !c.problems.length;
+    badge.textContent = allOk ? 'ครบแล้ว ✓' : c.done + '/' + c.total + (c.problems.length ? ' · ' + c.problems.length + ' ข้อควรแก้' : '');
+    badge.className = 'pb-badge ' + (allOk ? 'is-ok' : c.errors ? 'is-bad' : 'is-warn');
+    var list = $('#stdList');
+    list.innerHTML = '';
+    c.items.forEach(function (it) {
+      var li = el('li', 'pb-std__item ' + (it.ok ? 'is-ok' : it.need === 'required' ? 'is-bad' : 'is-warn'));
+      li.appendChild(el('span', 'pb-std__mark', it.ok ? '✓' : it.need === 'required' ? '!' : '○'));
+      var text = el('div', 'pb-std__text');
+      text.appendChild(el('div', 'pb-std__name', (T[it.id] ? T[it.id].label : it.id) +
+        (it.ok ? '' : it.need === 'required' ? ' · ต้องมี' : ' · แนะนำ')));
+      if (!it.ok) text.appendChild(el('div', 'pb-std__why', it.why));
+      li.title = it.why;
+      li.appendChild(text);
+      if (!it.ok) {
+        var b = el('button', 'pb-btn pb-btn--small', '+ เพิ่ม');
+        b.type = 'button';
+        b.title = 'เพิ่ม ' + T[it.id].label + ' ตรงตำแหน่งที่แนะนำ';
+        b.addEventListener('click', function () { addRecommended(it.id); });
+        li.appendChild(b);
+      }
+      list.appendChild(li);
+    });
+    var pr = $('#stdProblems');
+    pr.innerHTML = '';
+    c.problems.forEach(function (x) { pr.appendChild(el('div', 'pb-std__problem is-' + x.level, x.text)); });
+    var btn = $('#applyLayout');
+    var same = layoutFor(p, c.type).map(function (s) { return s.k; }).join() === p.sections.map(function (s) { return s.k; }).join();
+    btn.disabled = same && p.header && p.footer;
+    btn.title = btn.disabled ? 'หน้านี้เรียงตามแบบแนะนำแล้ว' : 'เพิ่ม section ที่ขาดและเรียงลำดับใหม่ (เลิกทำได้)';
+  }
+
   // ================================================================ library (left)
   var GROUPS = [['header', 'Header'], ['section', 'Sections'], ['footer', 'Footer']];
 
@@ -739,6 +876,7 @@
     $('#stage').classList.toggle('is-empty', !p.sections.length);
     markUsed();
     markSelected();
+    renderStandards();
     updateViewLink();
   }
 
@@ -916,12 +1054,67 @@
     var o = $('#pageSelect option[value="' + page().id + '"]');
     if (o) o.textContent = e.target.value || '(ไม่มีชื่อ)';
   });
+  // new page: pick its type; it can start with the recommended sections
   $('#newPage').addEventListener('click', function () {
-    var p = newPage('หน้าใหม่ ' + (state.pages.length + 1));
+    var box = $('#newTypes');
+    box.innerHTML = '';
+    PAGE_TYPES.forEach(function (t, i) {
+      var lab = el('label', 'pb-type');
+      var r = document.createElement('input');
+      r.type = 'radio';
+      r.name = 'newType';
+      r.value = t.id;
+      r.checked = i === (state.pages.some(function (p) { return p.type === 'home'; }) ? 1 : 0);
+      lab.appendChild(r);
+      var txt = el('span');
+      txt.appendChild(el('b', '', t.label));
+      txt.appendChild(el('small', '', t.sections.map(function (x) { return T[x.id].label; }).join(' · ')));
+      lab.appendChild(txt);
+      box.appendChild(lab);
+    });
+    $('#newName').value = '';
+    $('#newLayout').checked = true;
+    $('#newDialog').showModal();
+    $('#newName').focus();
+  });
+  $('#newForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var type = (($('#newTypes input:checked') || {}).value) || 'other';
+    var p = newPage($('#newName').value.trim() || TYPE[type].label + ' ' + (state.pages.length + 1));
+    p.type = type;
     p.root = page().root;
+    p.colors = JSON.parse(JSON.stringify(page().colors)); // same site: keep the colours
+    p.acss = JSON.parse(JSON.stringify(page().acss));
+    p.buttons = JSON.parse(JSON.stringify(page().buttons));
+    if ($('#newLayout').checked) p.sections = layoutFor(p, TYPE[type]);
+    remember();
     state.pages.push(p);
+    $('#newDialog').close();
     switchPage(p.id);
-    $('#pageName').select();
+    toast('สร้างหน้า "' + p.name + '" แล้ว', true);
+  });
+  $('#newCancel').addEventListener('click', function () { $('#newDialog').close(); });
+
+  $('#pageType').addEventListener('change', function (e) {
+    remember();
+    page().type = TYPE[e.target.value] ? e.target.value : 'other';
+    save();
+    renderStandards();
+  });
+  // asks once in the page (window.confirm() is blocked in embedded viewers) when the page already has sections
+  $('#applyLayout').addEventListener('click', function () {
+    var b = $('#applyLayout');
+    if (page().sections.length && !b.classList.contains('is-armed')) {
+      b.classList.add('is-armed');
+      b.textContent = 'กดอีกครั้งเพื่อจัดหน้าใหม่';
+      clearTimeout(b._h);
+      b._h = setTimeout(function () { b.classList.remove('is-armed'); b.textContent = 'จัดหน้าตามแบบแนะนำ'; }, 4000);
+      return;
+    }
+    clearTimeout(b._h);
+    b.classList.remove('is-armed');
+    b.textContent = 'จัดหน้าตามแบบแนะนำ';
+    applyLayout();
   });
   $('#dupPage').addEventListener('click', function () {
     var p = JSON.parse(JSON.stringify(page()));
@@ -995,7 +1188,7 @@
       return o;
     };
     var data = { format: 'etch-page-builder', version: 2, exported: new Date().toISOString(),
-      page: { name: p.name, root: p.root, colors: p.colors, acss: p.acss, buttons: p.buttons,
+      page: { name: p.name, type: p.type, root: p.root, colors: p.colors, acss: p.acss, buttons: p.buttons,
               header: p.header ? part('header:' + p.header, p.header) : null,
               footer: p.footer ? part('footer:' + p.footer, p.footer) : null,
               sections: p.sections.map(function (s) { return part(s.k, s.id); }) } };
@@ -1030,7 +1223,7 @@
         });
         var hdr = src.header === null ? null : idOf(src.header), ftr = src.footer === null ? null : idOf(src.footer);
         var p = normalizePage({ name: src.name || file.name.replace(/\.json$/i, ''), header: hdr, footer: ftr,
-          sections: secs, root: src.root, colors: src.colors, acss: src.acss, buttons: src.buttons });
+          sections: secs, root: src.root, colors: src.colors, acss: src.acss, buttons: src.buttons, type: src.type });
         if (p.header) add('header:' + p.header, src.header);
         if (p.footer) add('footer:' + p.footer, src.footer);
         var edits = {}, pics = 0;
@@ -1148,10 +1341,11 @@
     intro.querySelector('b').textContent = p.name || '(ไม่มีชื่อ)';
     body.appendChild(intro);
 
-    var special = order.filter(function (id) { return id === 'blog' || id === 'single-post' || id === '404'; });
-    if (special.length && order.length > special.length + 2) {
-      body.appendChild(el('div', 'pb-warn', 'หน้านี้มี ' + special.map(function (id) { return T[id].label; }).join(', ') +
-        ' ซึ่งใช้ได้เฉพาะ template ของ WordPress (Posts page / Single / 404) — ปกติไม่วางรวมกับ section อื่นในหน้าธรรมดา'));
+    var chk = pageCheck(p), notes = [];
+    chk.missing.forEach(function (i) { notes.push('ยังไม่มี ' + T[i.id].label + (i.need === 'required' ? ' (ต้องมี)' : ' (แนะนำ)')); });
+    chk.problems.forEach(function (x) { notes.push(x.text); });
+    if (notes.length) {
+      body.appendChild(el('div', 'pb-warn', 'มาตรฐานหน้า "' + chk.type.label + '": ' + notes.join(' · ')));
     }
 
     var bad = contrastIssues().filter(function (c) { return !c.ok; });

@@ -64,7 +64,22 @@
     </div>
   </main>
 
-  <aside class="pb-panel" aria-label="ตั้งค่าสี">
+  <aside class="pb-panel" aria-label="มาตรฐานหน้าและสี">
+    <section class="pb-sec">
+      <div class="pb-sec__head">
+        <h2>มาตรฐานหน้า</h2>
+        <span class="pb-badge" id="stdScore"></span>
+      </div>
+      <label class="pb-field">
+        <span>หน้านี้คือ</span>
+        <select id="pageType"></select>
+      </label>
+      <p class="pb-muted" id="typeNote"></p>
+      <ul class="pb-std" id="stdList"></ul>
+      <div class="pb-std__problems" id="stdProblems"></div>
+      <button type="button" class="pb-btn pb-btn--full" id="applyLayout">จัดหน้าตามแบบแนะนำ</button>
+    </section>
+
     <section class="pb-sec">
       <div class="pb-sec__head">
         <h2>ชุดสีสำเร็จรูป</h2>
@@ -115,6 +130,24 @@
   <div class="pb-dialog__body" id="etchBody"></div>
 </dialog>
 
+<dialog class="pb-dialog" id="newDialog" aria-labelledby="newTitle">
+  <form class="pb-newform" id="newForm">
+    <div class="pb-dialog__head">
+      <h2 id="newTitle">สร้างหน้าใหม่</h2>
+      <button type="button" class="pb-btn pb-btn--ghost" id="newCancel" aria-label="ปิด">✕</button>
+    </div>
+    <div class="pb-dialog__body">
+      <label class="pb-field"><span>ชื่อหน้า</span><input id="newName" type="text" placeholder="เช่น บริการ ลูกค้า A"></label>
+      <fieldset class="pb-types">
+        <legend>ประเภทหน้า</legend>
+        <div id="newTypes"></div>
+      </fieldset>
+      <label class="pb-check"><input type="checkbox" id="newLayout" checked> ใส่ section ตามแบบแนะนำให้เลย</label>
+      <button type="submit" class="pb-btn pb-btn--primary">สร้างหน้า</button>
+    </div>
+  </form>
+</dialog>
+
 <dialog class="pb-dialog pb-dialog--wide" id="presetDialog" aria-labelledby="presetTitle">
   <form method="dialog" class="pb-dialog__head">
     <h2 id="presetTitle">ชุดสีสำเร็จรูป</h2>
@@ -127,6 +160,7 @@
 
 <script src="kit-data.js"></script>
 <script src="presets.js"></script>
+<script src="pages.js"></script>
 <script src="builder.js"></script>
 </body>
 </html>

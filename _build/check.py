@@ -6,6 +6,7 @@
 3. preview/ and builder/kit-data.js must match a fresh build_preview.py (commit them after editing templates)
 4. build_site.py must be able to put the website together
 5. every colour preset in builder/presets.js passes every contrast pair the builder checks
+6. every page type in builder/pages.js names section templates that exist
 """
 import json, os, re, subprocess, sys
 
@@ -61,8 +62,30 @@ def check_presets():
     return len(presets), problems
 
 
+def check_page_types():
+    """builder/pages.js may only name section templates the builder knows (build_preview.CATALOG)."""
+    sys.path.insert(0, HERE)
+    from build_preview import CATALOG
+    sections = {tid for tid, group, *_ in CATALOG if group == "section"}
+    text = open(os.path.join(ROOT, "builder", "pages.js"), encoding="utf-8").read()
+    types = json.loads(text[text.index("=") + 1:].strip().rstrip(";"))
+    problems = []
+    for t in types:
+        for item in t.get("sections", []):
+            if item.get("id") not in sections:
+                problems.append(f"{t.get('id')}: unknown section '{item.get('id')}'")
+            if item.get("need") not in ("required", "recommended"):
+                problems.append(f"{t.get('id')}/{item.get('id')}: need must be required or recommended")
+    return len(types), problems
+
+
 def main():
     errors = []
+    count, problems = check_page_types()
+    if problems:
+        errors.append("page types:\n  " + "\n  ".join(problems))
+    else:
+        print(f"page types: {count} use known sections")
     count, problems = check_presets()
     if problems:
         errors.append("colour presets fail contrast:\n  " + "\n  ".join(problems))
