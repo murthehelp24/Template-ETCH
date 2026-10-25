@@ -30,7 +30,31 @@
     var colors = {};
     KIT.colors.forEach(function (c) { colors[c.key] = null; });
     return { id: uid(), name: name || 'หน้าใหม่', header: 'header', sections: [], footer: 'footer',
-             colors: colors, acss: { primary: null, secondary: null }, root: 10, updated: Date.now() };
+             colors: colors, acss: { primary: null, secondary: null }, root: 10, updated: Date.now(),
+             edits: {}, images: {} };
+  }
+
+  // edits[instance][key] = text · images[instance][slot] = image id (picture in IndexedDB)
+  // instance = a section's k, or "header:<id>" / "footer:<id>"; keys come from the preview (data-pv-edit / data-pv-img)
+  var EDIT_KEY = /^(t:[gc][\w.]*|p:[gc][\w.]*:\w+)$/, IMG_KEY = /^i:[gc][\w.]*$/, IMG_ID = /^[a-z0-9]{4,20}$/;
+  function cleanMap(src, keyRe, ok) {
+    var out = {};
+    if (!src || typeof src !== 'object') return out;
+    Object.keys(src).forEach(function (inst) {
+      var m = src[inst];
+      if (!m || typeof m !== 'object' || typeof inst !== 'string' || inst.length > 60) return;
+      Object.keys(m).forEach(function (k) {
+        if (keyRe.test(k) && ok(m[k])) (out[inst] = out[inst] || {})[k] = m[k];
+      });
+    });
+    return out;
+  }
+  function instKeys(p) {
+    var keys = [];
+    if (p.header) keys.push('header:' + p.header);
+    p.sections.forEach(function (s) { keys.push(s.k); });
+    if (p.footer) keys.push('footer:' + p.footer);
+    return keys;
   }
 
   var HEX = /^#[0-9a-f]{6}$/i;
@@ -51,6 +75,8 @@
     Object.keys(p.colors).forEach(function (k) { var v = (src.colors || {})[k]; p.colors[k] = HEX.test(v) ? v : null; });
     ['primary', 'secondary'].forEach(function (k) { var v = (src.acss || {})[k]; p.acss[k] = HEX.test(v) ? v : null; });
     if (typeof src.updated === 'number') p.updated = src.updated;
+    p.edits = cleanMap(src.edits, EDIT_KEY, function (v) { return typeof v === 'string' && v.length <= 5000; });
+    p.images = cleanMap(src.images, IMG_KEY, function (v) { return typeof v === 'string' && IMG_ID.test(v); });
     return p;
   }
 
@@ -63,14 +89,14 @@
           .map(function (p, i) { return normalizePage(p, 'หน้า ' + (i + 1)); });
         pages.forEach(function (p) { if (seen[p.id]) p.id = uid(); seen[p.id] = true; });
         return { pages: pages, current: seen[s.current] ? s.current : pages[0].id,
-                 device: DEVICES[s.device] ? s.device : 'desktop' };
+                 device: DEVICES[s.device] ? s.device : 'desktop', edit: s.edit !== false };
       }
     } catch (e) { /* storage blocked, empty or not JSON */ }
     var first = newPage('หน้าแรก');
     ['hero', 'features', 'split', 'stats', 'steps', 'reviews', 'faq', 'cta'].forEach(function (id) {
       first.sections.push({ k: uid(), id: id });
     });
-    return { pages: [first], current: first.id, device: 'desktop' };
+    return { pages: [first], current: first.id, device: 'desktop', edit: true };
   }
 
   var state = load();
@@ -103,6 +129,58 @@
     t._h = setTimeout(function () { t.classList.remove('is-on', 'has-action'); }, withUndo ? 6000 : 2200);
   }
 
+  // ================================================================ pictures (IndexedDB — too big for localStorage)
+  var IMG = {}; // id → data URL, loaded at start
+  var dbp = null;
+  function db() {
+    if (!dbp) {
+      dbp = new Promise(function (ok, fail) {
+        var r = indexedDB.open('etchPageBuilder', 1);
+        r.onupgradeneeded = function () { r.result.createObjectStore('images', { keyPath: 'id' }); };
+        r.onsuccess = function () { ok(r.result); };
+        r.onerror = function () { fail(r.error); };
+      });
+    }
+    return dbp;
+  }
+  function store(mode) {
+    return db().then(function (d) { return d.transaction('images', mode).objectStore('images'); });
+  }
+  function saveImage(rec) {
+    IMG[rec.id] = rec.dataURL;
+    return store('readwrite').then(function (st) { st.put(rec); })
+      .catch(function () { toast('เก็บรูปในเบราว์เซอร์ไม่ได้ — รูปจะหายเมื่อปิดหน้า'); });
+  }
+  function loadImages() {
+    return store('readonly').then(function (st) {
+      return new Promise(function (ok) {
+        var req = st.getAll();
+        req.onsuccess = function () { (req.result || []).forEach(function (r) { IMG[r.id] = r.dataURL; IMGNAME[r.id] = r.name; }); ok(); };
+        req.onerror = function () { ok(); };
+      });
+    }).catch(function () { /* no IndexedDB (private window): pictures last until the page closes */ });
+  }
+  var IMGNAME = {};
+  // drop pictures no saved page uses any more (run once at start, when there is nothing to undo)
+  function cleanImages() {
+    var used = {};
+    state.pages.forEach(function (p) {
+      Object.keys(p.images || {}).forEach(function (i) {
+        Object.keys(p.images[i]).forEach(function (s) { used[p.images[i][s]] = true; });
+      });
+    });
+    Object.keys(IMG).forEach(function (id) {
+      if (used[id]) return;
+      delete IMG[id];
+      store('readwrite').then(function (st) { st.delete(id); }).catch(function () {});
+    });
+  }
+  function imagesFor(inst) {
+    var refs = page().images[inst] || {}, out = {};
+    Object.keys(refs).forEach(function (slot) { if (IMG[refs[slot]]) out[slot] = IMG[refs[slot]]; });
+    return out;
+  }
+
   // ================================================================ undo
   var undoStack = [];
   function snapshot() { return JSON.stringify({ pages: state.pages, current: state.current }); }
@@ -116,7 +194,7 @@
     state.pages = s.pages;
     state.current = s.current;
     save();
-    renderAll(); // sections keep their keys, so only the ones that came back load again
+    renderAll(); // sections keep their keys, so only the ones that came back load again (renderAll re-sends content)
     toast('เลิกทำแล้ว');
   }
   document.addEventListener('keydown', function (e) {
@@ -137,8 +215,19 @@
     return c.value;
   }
 
-  function frameState() {
-    return { type: 'pv-state', colors: page().colors, acss: page().acss, root: page().root };
+  // rec = a placed section; thumbnails in the library get colours only
+  function frameState(rec) {
+    var p = page(), msg = { type: 'pv-state', colors: p.colors, acss: p.acss, root: p.root };
+    if (rec) {
+      msg.edit = state.edit !== false;
+      msg.edits = p.edits[rec.key] || {};
+      msg.images = imagesFor(rec.key);
+    }
+    return msg;
+  }
+  function recOf(win) {
+    for (var k in items) if (items[k].frame.contentWindow === win) return items[k];
+    return null;
   }
 
   // link for "ดูทั้งหน้า": the same page as one document (sticky header and floating buttons behave as on the site)
@@ -150,15 +239,16 @@
     p.sections.forEach(function (s) { ids.push(s.id); });
     if (p.footer) ids.push(p.footer);
     var hex = function (v) { return v ? v.slice(1) : ''; };
-    a.href = KIT.page + '?t=' + ids.join(',') + '&root=' + p.root +
+    a.href = KIT.page + '?pb=' + encodeURIComponent(p.id) + '&t=' + ids.join(',') + '&root=' + p.root +
       '&c=' + KIT.colors.map(function (c) { return hex(p.colors[c.key]); }).join(',') +
       '&a=' + hex(p.acss.primary) + ',' + hex(p.acss.secondary);
   }
 
   function broadcast() {
     updateViewLink();
-    var msg = frameState();
-    $$('iframe').forEach(function (f) { if (f.contentWindow) f.contentWindow.postMessage(msg, '*'); });
+    $$('iframe').forEach(function (f) {
+      if (f.contentWindow) f.contentWindow.postMessage(frameState(recOf(f.contentWindow)), '*');
+    });
   }
 
   function colorRow(key, label, sub, val, custom, onChange, onReset) {
@@ -339,13 +429,14 @@
       (fixed ? '<em class="pb-fixed" title="' + (fixed === 'header' ? 'อยู่บนสุดเสมอ' : 'อยู่ล่างสุดเสมอ') + '">' + (fixed === 'header' ? '⤒' : '⤓') + '</em>' :
         '<button type="button" data-act="up" title="เลื่อนขึ้น" aria-label="เลื่อนขึ้น">↑</button>' +
         '<button type="button" data-act="down" title="เลื่อนลง" aria-label="เลื่อนลง">↓</button>') +
+      '<button type="button" data-act="reset" title="คืนข้อความและรูปเดิมของ section นี้" aria-label="คืนเนื้อหาเดิม" hidden>↺</button>' +
       '<button type="button" data-act="remove" title="ลบออก" aria-label="ลบ ' + t.label + '">✕</button></div>' +
       '<span class="pb-tag"></span><div class="pb-item__frame"><iframe></iframe></div>';
     $('.pb-tag', el).textContent = t.label;
     var frame = $('iframe', el);
     frame.title = t.label;
     frame.src = t.preview;
-    var rec = { el: el, frame: frame, height: 160, id: id };
+    var rec = { el: el, frame: frame, height: 160, id: id, key: key };
     items[key] = rec;
 
     $$('[data-act]', el).forEach(function (b) {
@@ -371,6 +462,16 @@
 
   function act(key, what, fixed) {
     var p = page();
+    if (what === 'reset') {
+      remember();
+      delete p.edits[key];
+      delete p.images[key];
+      save();
+      renderCanvas();
+      sendTo(items[key]);
+      toast('คืนเนื้อหาเดิมของ ' + T[items[key].id].label + ' แล้ว', true);
+      return;
+    }
     if (what === 'remove') {
       remember();
       var label = T[fixed ? p[fixed] : p.sections[indexOf(key)].id].label;
@@ -443,7 +544,10 @@
       down.disabled = i === p.sections.length - 1;
     });
     Object.keys(items).forEach(function (k) {
-      if (!want[k]) { items[k].el.remove(); delete items[k]; }
+      if (!want[k]) { items[k].el.remove(); delete items[k]; return; }
+      var n = editCount(k), reset = $('[data-act="reset"]', items[k].el);
+      reset.hidden = !n;
+      reset.title = 'คืนข้อความและรูปเดิมของ section นี้ (แก้ไว้ ' + n + ' จุด)';
     });
     $('#stage').classList.toggle('is-empty', !p.sections.length);
     markUsed();
@@ -533,11 +637,41 @@
   });
 
   // ================================================================ messages from the preview frames
+  function sendTo(rec) {
+    if (rec && rec.frame.contentWindow) rec.frame.contentWindow.postMessage(frameState(rec), '*');
+  }
+  function editCount(inst) {
+    var p = page();
+    return Object.keys(p.edits[inst] || {}).length + Object.keys(p.images[inst] || {}).length;
+  }
+
   window.addEventListener('message', function (e) {
     var d = e.data || {};
     var frames = $$('iframe').filter(function (f) { return f.contentWindow === e.source; });
     if (!frames.length) return;
-    if (d.type === 'pv-ready') e.source.postMessage(frameState(), '*');
+    var rec = recOf(e.source);
+    if (d.type === 'pv-ready') e.source.postMessage(frameState(rec), '*');
+    if (d.type === 'pv-edit' && rec && EDIT_KEY.test(d.key) && (d.value === null || typeof d.value === 'string')) {
+      var p = page();
+      remember();
+      var m = p.edits[rec.key] = p.edits[rec.key] || {};
+      if (d.value === null) delete m[d.key]; else m[d.key] = d.value.slice(0, 5000);
+      if (!Object.keys(m).length) delete p.edits[rec.key];
+      save();
+      renderCanvas();
+      toast('แก้ข้อความแล้ว', true);
+    }
+    if (d.type === 'pv-image' && rec && IMG_KEY.test(d.key) && /^data:image\/(webp|png);base64,/.test(d.dataURL || '')) {
+      var pg = page(), id = uid();
+      remember();
+      saveImage({ id: id, dataURL: d.dataURL, name: String(d.name || 'image').slice(0, 60) });
+      IMGNAME[id] = String(d.name || 'image').slice(0, 60);
+      (pg.images[rec.key] = pg.images[rec.key] || {})[d.key] = id;
+      save();
+      renderCanvas();
+      sendTo(rec);
+      toast('ใส่รูปแล้ว', true);
+    }
     if (d.type === 'pv-height') {
       Object.keys(items).forEach(function (k) {
         if (items[k].frame === frames[0]) {
@@ -562,6 +696,7 @@
     $('#pageName').value = page().name;
     $$('#deviceSeg button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.device === state.device)); });
     $$('#rootSeg button').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.dataset.root) === page().root)); });
+    $('#editToggle').setAttribute('aria-pressed', String(state.edit !== false));
     $('#delPage').disabled = state.pages.length < 2;
   }
 
@@ -598,7 +733,12 @@
     var p = JSON.parse(JSON.stringify(page()));
     p.id = uid();
     p.name = page().name + ' (สำเนา)';
-    p.sections.forEach(function (s) { s.k = uid(); });
+    p.sections.forEach(function (s) {
+      var k = uid();
+      if (p.edits[s.k]) { p.edits[k] = p.edits[s.k]; delete p.edits[s.k]; }
+      if (p.images[s.k]) { p.images[k] = p.images[s.k]; delete p.images[s.k]; }
+      s.k = k;
+    });
     state.pages.push(p);
     switchPage(p.id);
     toast('ทำสำเนาแล้ว');
@@ -652,9 +792,18 @@
 
   $('#exportJson').addEventListener('click', function () {
     var p = page();
-    var data = { format: 'etch-page-builder', version: 1, exported: new Date().toISOString(),
-      page: { name: p.name, header: p.header, footer: p.footer, root: p.root, colors: p.colors, acss: p.acss,
-              sections: p.sections.map(function (s) { return s.id; }) } };
+    // version 2: each placed template carries its edited text and pictures (as data URLs, so the file is complete)
+    var part = function (inst, id) {
+      var o = { id: id }, ed = p.edits[inst], im = imagesFor(inst);
+      if (ed && Object.keys(ed).length) o.edits = ed;
+      if (Object.keys(im).length) o.images = im;
+      return o;
+    };
+    var data = { format: 'etch-page-builder', version: 2, exported: new Date().toISOString(),
+      page: { name: p.name, root: p.root, colors: p.colors, acss: p.acss,
+              header: p.header ? part('header:' + p.header, p.header) : null,
+              footer: p.footer ? part('footer:' + p.footer, p.footer) : null,
+              sections: p.sections.map(function (s) { return part(s.k, s.id); }) } };
     var a = document.createElement('a');
     // data: URL rather than a blob: URL — Chromium drops the file name of blob downloads on file://
     a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data, null, 2));
@@ -676,13 +825,37 @@
         var src = d.page || d;
         if (d.format && d.format !== 'etch-page-builder') throw new Error('format');
         if (!Array.isArray(src.sections)) throw new Error('sections');
-        var skipped = src.sections.filter(function (id) { return !isTpl(id, 'section'); }).map(String);
-        var p = normalizePage({ name: src.name || file.name.replace(/\.json$/i, ''), header: src.header,
-          footer: src.footer, sections: src.sections, root: src.root, colors: src.colors, acss: src.acss });
+        var idOf = function (x) { return x && typeof x === 'object' ? x.id : x; };
+        var skipped = src.sections.filter(function (x) { return !isTpl(idOf(x), 'section'); }).map(idOf).map(String);
+        var parts = [], add = function (inst, x) { if (x && typeof x === 'object') parts.push([inst, x]); };
+        var secs = src.sections.filter(function (x) { return isTpl(idOf(x), 'section'); }).map(function (x) {
+          var s = { k: uid(), id: idOf(x) };
+          add(s.k, x);
+          return s;
+        });
+        var hdr = src.header === null ? null : idOf(src.header), ftr = src.footer === null ? null : idOf(src.footer);
+        var p = normalizePage({ name: src.name || file.name.replace(/\.json$/i, ''), header: hdr, footer: ftr,
+          sections: secs, root: src.root, colors: src.colors, acss: src.acss });
+        if (p.header) add('header:' + p.header, src.header);
+        if (p.footer) add('footer:' + p.footer, src.footer);
+        var edits = {}, pics = 0;
+        parts.forEach(function (pr) {
+          if (pr[1].edits) edits[pr[0]] = pr[1].edits;
+          Object.keys(pr[1].images || {}).forEach(function (slot) {
+            var url = pr[1].images[slot];
+            if (!IMG_KEY.test(slot) || !/^data:image\/(webp|png|jpeg);base64,/.test(url || '')) return;
+            var id = uid();
+            saveImage({ id: id, dataURL: url, name: 'image' });
+            (p.images[pr[0]] = p.images[pr[0]] || {})[slot] = id;
+            pics++;
+          });
+        });
+        p.edits = cleanMap(edits, EDIT_KEY, function (v) { return typeof v === 'string' && v.length <= 5000; });
         remember();
         state.pages.push(p);
         switchPage(p.id);
-        toast('นำเข้า "' + p.name + '" แล้ว' + (skipped.length ? ' (ข้าม: ' + skipped.join(', ') + ')' : ''));
+        toast('นำเข้า "' + p.name + '" แล้ว' + (pics ? ' พร้อมรูป ' + pics + ' รูป' : '') +
+          (skipped.length ? ' (ข้าม: ' + skipped.join(', ') + ')' : ''));
       } catch (err) {
         toast('ไฟล์นี้ไม่ใช่ JSON ของ Page Builder');
       }
@@ -691,6 +864,46 @@
   });
 
   // ================================================================ export for Etch
+  // the copied .etch.txt with this section's edited text: "t:<path>" → that etch/text block's content,
+  // "p:<path>:<prop>" → an attribute on that component instance (Etch keeps instance values per page)
+  function blockAt(payload, path) {
+    var parts = path.split('.'), node, i;
+    if (parts[0] === 'g') { node = payload.gutenbergBlock; i = 1; }
+    else if (parts[0] === 'c') {
+      var comp = (payload.components || {})[parts[1]];
+      node = comp && comp.blocks && comp.blocks[+parts[2]];
+      i = 3;
+    }
+    for (; node && i < parts.length; i++) node = (node.innerBlocks || [])[+parts[i]];
+    return node || null;
+  }
+  function textForEtch(v) { return v.replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function etchText(t, inst) {
+    var edits = page().edits[inst];
+    if (!edits || !Object.keys(edits).length) return t.etch; // untouched: the file exactly as built
+    var payload = JSON.parse(t.etch);
+    Object.keys(edits).forEach(function (key) {
+      var v = edits[key];
+      if (key.indexOf('t:') === 0) {
+        var b = blockAt(payload, key.slice(2));
+        if (b && b.blockName === 'etch/text') b.attrs.content = textForEtch(v);
+      } else if (key.indexOf('p:') === 0) {
+        var bits = key.slice(2).split(':'), prop = bits.pop(), inst2 = blockAt(payload, bits.join(':'));
+        if (inst2 && inst2.blockName === 'etch/component') {
+          inst2.attrs.attributes = inst2.attrs.attributes || {};
+          inst2.attrs.attributes[prop] = v;
+        }
+      }
+    });
+    return JSON.stringify(payload);
+  }
+  // which picture slot this is, in Etch's own words (the block name in the Structure panel)
+  function slotName(t, key) {
+    try {
+      var b = blockAt(JSON.parse(t.etch), key.slice(2));
+      return (b && b.attrs && b.attrs.metadata && b.attrs.metadata.name) || 'Image';
+    } catch (e) { return 'Image'; }
+  }
   function colorLines() {
     return KIT.colors.map(function (c) {
       var v = page().colors[c.key];
@@ -777,9 +990,11 @@
     s2.appendChild(el('h3', '', '2. วาง template ตามลำดับ'));
     if (!order.length) s2.appendChild(el('p', '', 'ยังไม่มี section ในหน้านี้'));
     var list = el('ol', 'pb-list');
-    var seen = {};
+    var seen = {}, insts = instKeys(p), pictures = [];
     order.forEach(function (id, i) {
-      var t = T[id];
+      var t = T[id], inst = insts[i];
+      var nEdits = Object.keys(p.edits[inst] || {}).length;
+      var refs = p.images[inst] || {};
       var li = el('li', 'pb-row');
       li.appendChild(el('span', 'pb-row__n', String(i + 1)));
       var info = el('div');
@@ -788,32 +1003,77 @@
       var note = [];
       if (t.place) note.push(t.place);
       if (seen[id]) note.push('ซ้ำกับลำดับก่อนหน้า — component/style เดิมจะถูกใช้ซ้ำ ไม่สร้างใหม่');
+      if (nEdits) note.push('แก้ข้อความ ' + nEdits + ' จุด (อยู่ในไฟล์ที่ Copy แล้ว)');
+      if (Object.keys(p.edits[inst] || {}).some(function (k) { return k.indexOf('t:c.') === 0; })) {
+        note.push('มีข้อความที่แก้ใน component — ถ้าเว็บมี component นี้อยู่แล้ว Etch ใช้ของเดิม ต้องแก้ใน component เอง');
+      }
+      Object.keys(refs).forEach(function (slot) {
+        if (IMG[refs[slot]]) pictures.push({ n: i + 1, t: t, slot: slotName(t, slot), url: IMG[refs[slot]] });
+      });
       if (note.length) info.appendChild(el('div', 'pb-row__place', note.join(' · ')));
       seen[id] = true;
       li.appendChild(info);
       var b = el('button', 'pb-btn pb-btn--small', 'Copy');
       b.type = 'button';
       b.title = 'คัดลอกเนื้อหา ' + t.file;
-      b.addEventListener('click', function () { copy(t.etch, b); });
+      b.addEventListener('click', function () { copy(etchText(t, inst), b); });
       li.appendChild(b);
       list.appendChild(li);
     });
     s2.appendChild(list);
 
     var s3 = el('section', 'pb-step');
-    s3.appendChild(el('h3', '', '3. แก้เนื้อหาใน Etch'));
-    s3.appendChild(el('p', '', 'เลือกรูป (Image / Logo Image), แก้ข้อความ และกรอก props ของ Main Footer / Main CTA / Main Contact — ดู README ของแต่ละโฟลเดอร์'));
+    s3.appendChild(el('h3', '', '3. ใส่รูปใน Etch'));
+    if (pictures.length) {
+      s3.appendChild(el('p', '', 'การ Paste นำรูปเข้า Etch ไม่ได้: ดาวน์โหลดรูปด้านล่าง → อัปโหลดเข้า WordPress Media Library → ' +
+        'ใน Etch คลิกช่องรูปตามชื่อในวงเล็บ แล้วเลือกรูปนั้น'));
+      var pl = el('ul', 'pb-list');
+      pictures.forEach(function (pic, j) {
+        var row = el('li', 'pb-row pb-row--pic');
+        var img = el('img', 'pb-pic');
+        img.src = pic.url;
+        img.alt = '';
+        row.appendChild(img);
+        var info = el('div');
+        info.appendChild(el('div', 'pb-card__title', pic.n + '. ' + pic.t.label));
+        info.appendChild(el('div', 'pb-row__file', 'ช่องรูป: ' + pic.slot));
+        row.appendChild(info);
+        var a = el('a', 'pb-btn pb-btn--small', 'ดาวน์โหลด');
+        a.href = pic.url;
+        a.download = ('0' + pic.n).slice(-2) + '-' + pic.t.id + '-' + pic.slot.toLowerCase().replace(/[^a-z0-9]+/g, '-') +
+          (j ? '-' + (j + 1) : '') + (pic.url.indexOf('image/png') > 0 ? '.png' : '.webp');
+        row.appendChild(a);
+        pl.appendChild(row);
+      });
+      s3.appendChild(pl);
+    } else {
+      s3.appendChild(el('p', '', 'ยังไม่ได้ใส่รูป — ใน Etch คลิกช่องรูป (Image / Logo Image) แล้วเลือกรูปจาก Media Library'));
+    }
+    var s4 = el('section', 'pb-step');
+    s4.appendChild(el('h3', '', '4. ตรวจใน Etch'));
+    s4.appendChild(el('p', '', 'ข้อความที่ดึงจากข้อมูลจริง (ชื่อหน้า โพสต์ ปี copyright) ลิงก์ของปุ่ม และข้อมูลใน props ที่ไม่ได้แก้ ' +
+      'ยังต้องตั้งใน Etch — ดู README ของแต่ละโฟลเดอร์'));
 
     body.appendChild(s1);
     body.appendChild(s2);
     body.appendChild(s3);
+    body.appendChild(s4);
     $('#etchDialog').showModal();
   }
   $('#exportEtch').addEventListener('click', openExport);
 
+  $('#editToggle').addEventListener('click', function () {
+    state.edit = state.edit === false;
+    save();
+    renderTop();
+    broadcast();
+    toast(state.edit ? 'คลิกข้อความหรือรูปในหน้าเพื่อแก้ได้เลย' : 'ปิดโหมดแก้เนื้อหาแล้ว');
+  });
+
   // ================================================================ start
   renderLibrary();
   renderAll();
+  loadImages().then(function () { cleanImages(); broadcast(); });
   window.addEventListener('resize', function () { layout(); scaleThumbs(); });
   if ('ResizeObserver' in window) new ResizeObserver(function () { layout(); }).observe($('#canvas'));
 })();

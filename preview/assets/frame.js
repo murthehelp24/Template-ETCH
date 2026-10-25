@@ -2,6 +2,9 @@
    - receives the builder state (colours, root font size) through postMessage — works on file:// too
    - reports its content height so the builder can size the iframe
    - keeps clicks inside the preview (links would navigate away from the static file)
+   - edit mode: click a marked text (data-pv-edit) to type over it, click an image slot (data-pv-img) to pick a picture;
+     changes go to the builder, which keeps them and writes the text into the copied .etch.txt
+   - "ดูทั้งหน้า" (preview/page.html?pb=<page id>): reads the saved page from the builder's storage
    - tiny stand-in for the Oh My Etch menu script (its plugin JS is not available offline) */
 (function () {
   var root = document.documentElement;
@@ -43,7 +46,7 @@
   window.addEventListener('message', function (e) {
     if (e.source !== window.parent || window.parent === window) return; // only the builder that embeds this page
     var d = e.data || {};
-    if (d.type === 'pv-state') apply(d);
+    if (d.type === 'pv-state') { apply(d); content(d); }
   });
 
   // standalone use (preview pages, builder "ดูทั้งหน้า"): ?root=16&c=1e3a5f,,,,ffffff&a=,e8a33d
@@ -64,6 +67,169 @@
     var a = e.target.closest && e.target.closest('a[href]');
     if (a) e.preventDefault();
   }, true);
+
+  // ---------------------------------------------------------------- edited text and pictures
+  var editing = false, scopeOf = function () { return [document]; };
+
+  function each(sel, roots, fn) {
+    roots.forEach(function (r) {
+      if (r.matches && r.matches(sel)) fn(r);
+      r.querySelectorAll(sel).forEach(fn);
+    });
+  }
+
+  // edits: { "t:g.0.1": "new text", "p:g:title": "…" } · images: { "i:g.0.3": "data:image/webp;base64,…" }
+  function show(edits, images, roots) {
+    edits = edits || {};
+    images = images || {};
+    each('[data-pv-edit]', roots, function (el) {
+      if (el.pvOrig === undefined) el.pvOrig = el.textContent;
+      if (el.isContentEditable) return;
+      var v = edits[el.getAttribute('data-pv-edit')];
+      el.textContent = typeof v === 'string' ? v : el.pvOrig;
+    });
+    each('[data-pv-img]', roots, function (img) {
+      if (img.pvOrig === undefined) img.pvOrig = img.getAttribute('src');
+      var v = images[img.getAttribute('data-pv-img')];
+      img.setAttribute('src', typeof v === 'string' && /^data:image\//.test(v) ? v : img.pvOrig);
+    });
+  }
+
+  function content(d) {
+    if (!('edits' in d) && !('edit' in d)) return;
+    show(d.edits, d.images, scopeOf());
+    editing = !!d.edit;
+    root.classList.toggle('pv-editing', editing);
+    document.querySelectorAll('[data-pv-img]').forEach(function (img) {
+      if (editing) img.title = 'คลิกเพื่อใส่รูป'; else img.removeAttribute('title');
+    });
+    report();
+  }
+
+  var css = document.createElement('style');
+  css.textContent =
+    '.pv-editing [data-pv-edit]{cursor:text}' +
+    '.pv-editing [data-pv-edit]:hover{outline:2px dashed rgb(47 91 211/.75);outline-offset:2px}' +
+    '[data-pv-edit][contenteditable]{outline:2px solid #2f5bd3!important;outline-offset:2px;background:rgb(47 91 211/.08)}' +
+    '.pv-editing [data-pv-img]{cursor:pointer}' +
+    '.pv-editing [data-pv-img]:hover{outline:3px dashed rgb(47 91 211/.85);outline-offset:-3px}';
+  document.head.appendChild(css);
+
+  function send(msg) { if (window.parent !== window) window.parent.postMessage(msg, '*'); }
+
+  function startEdit(el, e) {
+    var key = el.getAttribute('data-pv-edit');
+    var before = el.textContent;
+    try { el.contentEditable = 'plaintext-only'; } catch (err) { el.contentEditable = 'true'; }
+    el.focus();
+    var range = document.caretRangeFromPoint && document.caretRangeFromPoint(e.clientX, e.clientY);
+    if (range) { var sel = getSelection(); sel.removeAllRanges(); sel.addRange(range); }
+    function done(keep) {
+      el.removeEventListener('keydown', onKey);
+      el.removeEventListener('blur', onBlur);
+      el.removeEventListener('paste', onPaste);
+      el.removeAttribute('contenteditable');
+      if (!keep) { el.textContent = before; report(); return; }
+      var value = el.innerText.replace(/\n$/, '');
+      // the same text can appear more than once (a loop, the mobile menu copy): keep them in step
+      document.querySelectorAll('[data-pv-edit="' + key + '"]').forEach(function (o) { if (o !== el) o.textContent = value; });
+      if (value !== before) send({ type: 'pv-edit', key: key, value: value === el.pvOrig ? null : value });
+      report();
+    }
+    function onKey(k) {
+      if (k.key === 'Enter' && !k.shiftKey) { k.preventDefault(); el.blur(); }
+      if (k.key === 'Escape') { k.preventDefault(); done(false); el.blur(); }
+    }
+    function onBlur() { done(true); }
+    function onPaste(p) {  // plain text only
+      p.preventDefault();
+      document.execCommand('insertText', false, (p.clipboardData || window.clipboardData).getData('text/plain'));
+    }
+    el.addEventListener('keydown', onKey);
+    el.addEventListener('blur', onBlur);
+    el.addEventListener('paste', onPaste);
+  }
+
+  // shrink to at most 1600 px wide and store as WebP (keeps transparency for logos)
+  function pickImage(img) {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.addEventListener('change', function () {
+      var file = input.files[0];
+      if (!file) return;
+      var r = new FileReader();
+      r.onload = function () {
+        var pic = new Image();
+        pic.onload = function () {
+          var scale = Math.min(1, 1600 / pic.naturalWidth);
+          var cv = document.createElement('canvas');
+          cv.width = Math.round(pic.naturalWidth * scale);
+          cv.height = Math.round(pic.naturalHeight * scale);
+          cv.getContext('2d').drawImage(pic, 0, 0, cv.width, cv.height);
+          var url = cv.toDataURL('image/webp', 0.85);
+          if (url.indexOf('data:image/webp') !== 0) url = cv.toDataURL('image/png');
+          img.setAttribute('src', url);
+          send({ type: 'pv-image', key: img.getAttribute('data-pv-img'), dataURL: url,
+                 name: file.name.replace(/\.[^.]+$/, '') });
+        };
+        pic.src = r.result;
+      };
+      r.readAsDataURL(file);
+    });
+    input.click();
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!editing) return;
+    var el = e.target.closest && e.target.closest('[data-pv-edit]');
+    if (el) {
+      if (el.isContentEditable) return;
+      e.preventDefault();
+      e.stopPropagation();
+      startEdit(el, e);
+      return;
+    }
+    var img = e.target.closest && e.target.closest('[data-pv-img]');
+    if (img) { e.preventDefault(); e.stopPropagation(); pickImage(img); }
+  }, true);
+
+  // "ดูทั้งหน้า": page.html?pb=<id> — the saved page (same browser storage as the builder) gives the edits
+  // and pictures for each stamped template, in the order of ?t=
+  var pb = q.get('pb');
+  if (pb && document.querySelector('[data-pv-inst]')) {
+    var saved = null;
+    try {
+      saved = (JSON.parse(localStorage.getItem('etchPageBuilder.v1')) || { pages: [] }).pages
+        .filter(function (p) { return p && p.id === pb; })[0];
+    } catch (err) { /* storage blocked: colours from the URL still apply */ }
+    if (saved) {
+      var keys = [];
+      if (saved.header) keys.push('header:' + saved.header);
+      (saved.sections || []).forEach(function (s) { keys.push(s.k); });
+      if (saved.footer) keys.push('footer:' + saved.footer);
+      var rootsOf = function (i) { return Array.prototype.slice.call(document.querySelectorAll('[data-pv-inst="' + i + '"]')); };
+      keys.forEach(function (k, i) { show((saved.edits || {})[k], {}, rootsOf(i)); });
+      // pictures live in IndexedDB (too big for localStorage)
+      try {
+        var open = indexedDB.open('etchPageBuilder', 1);
+        open.onupgradeneeded = function () { open.result.createObjectStore('images', { keyPath: 'id' }); };
+        open.onsuccess = function () {
+          var store = open.result.transaction('images').objectStore('images');
+          keys.forEach(function (k, i) {
+            var refs = (saved.images || {})[k] || {}, got = {}, left = Object.keys(refs).length;
+            Object.keys(refs).forEach(function (slot) {
+              var req = store.get(refs[slot]);
+              req.onsuccess = function () {
+                if (req.result) got[slot] = req.result.dataURL;
+                if (--left === 0) show((saved.edits || {})[k], got, rootsOf(i));
+              };
+            });
+          });
+        };
+      } catch (err) { /* no IndexedDB: placeholders stay */ }
+    }
+  }
 
   // ---------------------------------------------------------------- Menu Builder header (site-header.etch.txt)
   // Its CSS targets .menu-dropdown / .toggle … classes that are not in the pasted markup (on a live site they come
