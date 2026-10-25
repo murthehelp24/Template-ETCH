@@ -1253,6 +1253,326 @@ html {
   color: var(--main-text-muted);
 }
 
+.main-features-image {
+  background-color: var(--main-light);
+}
+
+.main-features-image__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(400 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--container-gap);
+  align-items: center;
+}
+
+.main-features-image__media {
+  --main-media-ratio: 4 / 5;
+  margin: 0;
+}
+
+.main-features-image__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+.main-features-image__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(220 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--space-l) var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-features-image__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.main-features-image__icon {
+  inline-size: calc(48 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(48 * 1rem / var(--etch-root-px, 10));
+  padding: calc(11 * 1rem / var(--etch-root-px, 10));
+  border-radius: 50%;
+  background-color: var(--main-accent-soft);
+  color: var(--main-primary);
+}
+
+.main-features-image__title {
+  font-size: var(--h4);
+  color: var(--main-text);
+}
+
+.main-features-image__text {
+  margin: 0;
+  color: var(--main-text-muted);
+}
+
+.main-features-numbered {
+  background-color: var(--main-light-alt);
+}
+
+.main-features-numbered__container {
+  gap: var(--container-gap);
+}
+
+.main-features-numbered__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-l) var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: main-feature;
+
+  @media (width <= 992px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (width <= 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-features-numbered__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-block-start: var(--space-s);
+  border-block-start: 2px solid var(--main-line);
+  counter-increment: main-feature;
+
+  /* 01, 02 … numbered automatically */
+  &::before {
+    content: counter(main-feature, decimal-leading-zero);
+    font-size: var(--h2);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--main-accent);
+  }
+}
+
+.main-features-numbered__title {
+  font-size: var(--h4);
+  color: var(--main-text);
+}
+
+.main-features-numbered__text {
+  margin: 0;
+  color: var(--main-text-muted);
+}
+
+.main-features-band {
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+
+  :is(h1, h2, h3, h4, h5, h6),
+  .main-heading__eyebrow {
+    color: inherit;
+  }
+
+  .main-heading__intro {
+    color: var(--main-on-primary-muted);
+  }
+}
+
+.main-features-band__container {
+  gap: var(--container-gap);
+}
+
+.main-features-band__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(220 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--space-l) var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.main-features-band__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.main-features-band__icon {
+  inline-size: calc(72 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(72 * 1rem / var(--etch-root-px, 10));
+  margin-block-end: var(--space-xs);
+  padding: calc(18 * 1rem / var(--etch-root-px, 10));
+  border-radius: 50%;
+  background-color: var(--main-accent);
+  color: var(--main-on-primary);
+}
+
+.main-features-band__title {
+  font-size: var(--h4);
+  color: inherit;
+}
+
+.main-features-band__text {
+  margin: 0;
+  color: var(--main-on-primary-muted);
+}
+
+.main-features-cards {
+  background-color: var(--main-light);
+}
+
+.main-features-cards__container {
+  gap: var(--container-gap);
+}
+
+.main-features-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(280 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-features-cards__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  background-color: var(--main-light);
+  box-shadow: 0 calc(4 * 1rem / var(--etch-root-px, 10)) calc(12 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+  transition: box-shadow 0.25s ease, translate 0.25s ease;
+
+  --main-media-ratio: 3 / 2;
+
+  .main-media__img {
+    border-radius: 0;
+  }
+
+  &:hover {
+    translate: 0 -3px;
+    box-shadow: 0 calc(12 * 1rem / var(--etch-root-px, 10)) calc(28 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.main-features-cards__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-m);
+}
+
+.main-features-cards__title {
+  font-size: var(--h4);
+  color: var(--main-text);
+}
+
+.main-features-cards__text {
+  margin: 0;
+  color: var(--main-text-muted);
+}
+
+.main-features-cards__link {
+  margin-block-start: auto;
+  padding-block-start: var(--space-xs);
+  font-weight: 700;
+  color: var(--main-primary);
+  text-decoration: none;
+
+  /* the whole card is clickable */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--main-accent);
+  }
+}
+
+.main-features-list {
+  background-color: var(--main-light);
+}
+
+.main-features-list__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: var(--container-gap);
+  align-items: start;
+
+  @media (width <= 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-features-list__intro {
+  position: sticky;
+  inset-block-start: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--content-gap);
+
+  @media (width <= 992px) {
+    position: static;
+  }
+}
+
+.main-features-list__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-features-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-m);
+  padding-block: var(--space-m);
+  border-block-end: 1px solid var(--main-line);
+
+  &:first-child {
+    padding-block-start: 0;
+  }
+}
+
+.main-features-list__icon {
+  flex: none;
+  inline-size: calc(56 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(56 * 1rem / var(--etch-root-px, 10));
+  padding: calc(14 * 1rem / var(--etch-root-px, 10));
+  border-radius: var(--radius-m);
+  background-color: var(--main-accent-soft);
+  color: var(--main-primary);
+}
+
+.main-features-list__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.main-features-list__title {
+  font-size: var(--h4);
+  color: var(--main-text);
+}
+
+.main-features-list__text {
+  margin: 0;
+  color: var(--main-text-muted);
+}
+
 .main-split {
   background-color: var(--main-light);
 
@@ -2267,6 +2587,11 @@ html {
 <template id="tpl-hero-panel"><section data-etch-element="section" class="main-hero-panel"><div class="main-hero-panel__grid"><div class="main-hero-panel__content"><div class="main-heading"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0.0">Welcome</p><h1 data-pv-edit="t:g.0.0.0.1.0">A clear headline that says what you do and for whom</h1><p class="main-heading__intro" data-pv-edit="t:g.0.0.0.2.0">One or two sentences about the main benefit. Keep it short and specific.</p></div><div class="main-buttons"><a class="btn--secondary" href="https://line.me/R/ti/p/@example" target="_blank" rel="noopener" data-pv-edit="t:g.0.0.1.0.0">Chat on LINE</a><a class="btn--secondary btn--outline" href="/services/" data-pv-edit="t:g.0.0.1.1.0">Our services</a></div></div><figure class="main-hero-panel__media"><img class="main-hero-panel__img" loading="eager" data-pv-img="i:g.0.1.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure></div></section></template>
 <template id="tpl-page-hero"><section data-etch-element="section" class="main-page-hero main-band"><div data-etch-element="container" class="main-page-hero__container"><nav class="main-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/" data-pv-edit="t:g.0.0.0.0.0.0">Home</a></li><li aria-current="page">About us</li></ol></nav><h1>About us</h1><p class="main-page-hero__intro">A short page excerpt that introduces what this page is about.</p></div></section></template>
 <template id="tpl-features"><section data-etch-element="section" class="main-features"><div data-etch-element="container" class="main-features__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0">Why choose us</p><h2 data-pv-edit="t:g.0.0.1.0">What we offer</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.2.0">A short line that introduces your services or main benefits.</p></div><ul class="main-features__grid"><li class="main-features__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features__icon" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg><h3 class="main-features__title" data-pv-edit="t:g.0.1.0.1.0">Trusted & safe</h3><p class="main-features__text" data-pv-edit="t:g.0.1.0.2.0">One or two lines about this benefit or service.</p></li><li class="main-features__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features__icon" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M22 21v-1a6 6 0 0 0-4-5.6"/></svg><h3 class="main-features__title" data-pv-edit="t:g.0.1.1.1.0">Expert team</h3><p class="main-features__text" data-pv-edit="t:g.0.1.1.2.0">One or two lines about this benefit or service.</p></li><li class="main-features__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features__icon" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg><h3 class="main-features__title" data-pv-edit="t:g.0.1.2.1.0">Personal care</h3><p class="main-features__text" data-pv-edit="t:g.0.1.2.2.0">One or two lines about this benefit or service.</p></li><li class="main-features__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features__icon" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg><h3 class="main-features__title" data-pv-edit="t:g.0.1.3.1.0">Proven results</h3><p class="main-features__text" data-pv-edit="t:g.0.1.3.2.0">One or two lines about this benefit or service.</p></li></ul></div></section></template>
+<template id="tpl-features-image"><section data-etch-element="section" class="main-features-image"><div data-etch-element="container"><div class="main-features-image__grid"><figure class="main-features-image__media"><img class="main-media__img" loading="lazy" data-pv-img="i:g.0.0.0.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure><div class="main-features-image__content"><div class="main-heading"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.1.0.0.0">Why choose us</p><h2 data-pv-edit="t:g.0.0.1.0.1.0">What we offer</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.1.0.2.0">A short line that introduces your services or main benefits.</p></div><ul class="main-features-image__list"><li class="main-features-image__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-image__icon" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg><h3 class="main-features-image__title" data-pv-edit="t:g.0.0.1.1.0.1.0">Trusted & safe</h3><p class="main-features-image__text" data-pv-edit="t:g.0.0.1.1.0.2.0">One or two lines about this benefit or service.</p></li><li class="main-features-image__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-image__icon" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M22 21v-1a6 6 0 0 0-4-5.6"/></svg><h3 class="main-features-image__title" data-pv-edit="t:g.0.0.1.1.1.1.0">Expert team</h3><p class="main-features-image__text" data-pv-edit="t:g.0.0.1.1.1.2.0">One or two lines about this benefit or service.</p></li><li class="main-features-image__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-image__icon" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg><h3 class="main-features-image__title" data-pv-edit="t:g.0.0.1.1.2.1.0">Personal care</h3><p class="main-features-image__text" data-pv-edit="t:g.0.0.1.1.2.2.0">One or two lines about this benefit or service.</p></li><li class="main-features-image__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-image__icon" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg><h3 class="main-features-image__title" data-pv-edit="t:g.0.0.1.1.3.1.0">Proven results</h3><p class="main-features-image__text" data-pv-edit="t:g.0.0.1.1.3.2.0">One or two lines about this benefit or service.</p></li></ul></div></div></div></section></template>
+<template id="tpl-features-numbered"><section data-etch-element="section" class="main-features-numbered"><div data-etch-element="container" class="main-features-numbered__container"><div class="main-heading"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0">Why choose us</p><h2 data-pv-edit="t:g.0.0.1.0">Six reasons to choose us</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.2.0">A short line that introduces your main benefits.</p></div><ol class="main-features-numbered__grid"><li class="main-features-numbered__item"><h3 class="main-features-numbered__title" data-pv-edit="t:g.0.1.0.0.0">Trusted & safe</h3><p class="main-features-numbered__text" data-pv-edit="t:g.0.1.0.1.0">One or two lines about this benefit or service.</p></li><li class="main-features-numbered__item"><h3 class="main-features-numbered__title" data-pv-edit="t:g.0.1.1.0.0">Expert team</h3><p class="main-features-numbered__text" data-pv-edit="t:g.0.1.1.1.0">One or two lines about this benefit or service.</p></li><li class="main-features-numbered__item"><h3 class="main-features-numbered__title" data-pv-edit="t:g.0.1.2.0.0">Personal care</h3><p class="main-features-numbered__text" data-pv-edit="t:g.0.1.2.1.0">One or two lines about this benefit or service.</p></li><li class="main-features-numbered__item"><h3 class="main-features-numbered__title" data-pv-edit="t:g.0.1.3.0.0">Proven results</h3><p class="main-features-numbered__text" data-pv-edit="t:g.0.1.3.1.0">One or two lines about this benefit or service.</p></li><li class="main-features-numbered__item"><h3 class="main-features-numbered__title" data-pv-edit="t:g.0.1.4.0.0">Clear pricing</h3><p class="main-features-numbered__text" data-pv-edit="t:g.0.1.4.1.0">One or two lines about this benefit or service.</p></li><li class="main-features-numbered__item"><h3 class="main-features-numbered__title" data-pv-edit="t:g.0.1.5.0.0">Easy booking</h3><p class="main-features-numbered__text" data-pv-edit="t:g.0.1.5.1.0">One or two lines about this benefit or service.</p></li></ol></div></section></template>
+<template id="tpl-features-band"><section data-etch-element="section" class="main-features-band"><div data-etch-element="container" class="main-features-band__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0">Why choose us</p><h2 data-pv-edit="t:g.0.0.1.0">What we offer</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.2.0">A short line that introduces your services or main benefits.</p></div><ul class="main-features-band__grid"><li class="main-features-band__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-band__icon" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg><h3 class="main-features-band__title" data-pv-edit="t:g.0.1.0.1.0">Trusted & safe</h3><p class="main-features-band__text" data-pv-edit="t:g.0.1.0.2.0">One or two lines about this benefit or service.</p></li><li class="main-features-band__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-band__icon" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M22 21v-1a6 6 0 0 0-4-5.6"/></svg><h3 class="main-features-band__title" data-pv-edit="t:g.0.1.1.1.0">Expert team</h3><p class="main-features-band__text" data-pv-edit="t:g.0.1.1.2.0">One or two lines about this benefit or service.</p></li><li class="main-features-band__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-band__icon" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg><h3 class="main-features-band__title" data-pv-edit="t:g.0.1.2.1.0">Personal care</h3><p class="main-features-band__text" data-pv-edit="t:g.0.1.2.2.0">One or two lines about this benefit or service.</p></li><li class="main-features-band__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-band__icon" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg><h3 class="main-features-band__title" data-pv-edit="t:g.0.1.3.1.0">Proven results</h3><p class="main-features-band__text" data-pv-edit="t:g.0.1.3.2.0">One or two lines about this benefit or service.</p></li></ul></div></section></template>
+<template id="tpl-features-cards"><section data-etch-element="section" class="main-features-cards"><div data-etch-element="container" class="main-features-cards__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0">Our services</p><h2 data-pv-edit="t:g.0.0.1.0">What we offer</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.2.0">A short line that introduces your services.</p></div><ul class="main-features-cards__grid"><li class="main-features-cards__card"><img class="main-media__img" loading="lazy" data-pv-img="i:g.0.1.0.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""><div class="main-features-cards__body"><h3 class="main-features-cards__title" data-pv-edit="t:g.0.1.0.1.0.0">Service 1</h3><p class="main-features-cards__text" data-pv-edit="t:g.0.1.0.1.1.0">One or two lines about this benefit or service.</p><a class="main-features-cards__link" href="/services/service-1/" data-pv-edit="t:g.0.1.0.1.2.0">Learn more →</a></div></li><li class="main-features-cards__card"><img class="main-media__img" loading="lazy" data-pv-img="i:g.0.1.1.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""><div class="main-features-cards__body"><h3 class="main-features-cards__title" data-pv-edit="t:g.0.1.1.1.0.0">Service 2</h3><p class="main-features-cards__text" data-pv-edit="t:g.0.1.1.1.1.0">One or two lines about this benefit or service.</p><a class="main-features-cards__link" href="/services/service-2/" data-pv-edit="t:g.0.1.1.1.2.0">Learn more →</a></div></li><li class="main-features-cards__card"><img class="main-media__img" loading="lazy" data-pv-img="i:g.0.1.2.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""><div class="main-features-cards__body"><h3 class="main-features-cards__title" data-pv-edit="t:g.0.1.2.1.0.0">Service 3</h3><p class="main-features-cards__text" data-pv-edit="t:g.0.1.2.1.1.0">One or two lines about this benefit or service.</p><a class="main-features-cards__link" href="/services/service-3/" data-pv-edit="t:g.0.1.2.1.2.0">Learn more →</a></div></li></ul></div></section></template>
+<template id="tpl-features-list"><section data-etch-element="section" class="main-features-list"><div data-etch-element="container"><div class="main-features-list__grid"><div class="main-features-list__intro"><div class="main-heading"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0.0.0">Why choose us</p><h2 data-pv-edit="t:g.0.0.0.0.1.0">What we offer</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.0.0.2.0">A short line that introduces your services or main benefits.</p></div><div class="main-buttons"><a class="btn--primary" href="/services/" data-pv-edit="t:g.0.0.0.1.0.0">Our services</a><a class="btn--primary btn--outline" href="/contact/" data-pv-edit="t:g.0.0.0.1.1.0">Contact us</a></div></div><ul class="main-features-list__list"><li class="main-features-list__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-list__icon" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg><div class="main-features-list__body"><h3 class="main-features-list__title" data-pv-edit="t:g.0.0.1.0.1.0.0">Trusted & safe</h3><p class="main-features-list__text" data-pv-edit="t:g.0.0.1.0.1.1.0">One or two lines about this benefit or service.</p></div></li><li class="main-features-list__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-list__icon" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M22 21v-1a6 6 0 0 0-4-5.6"/></svg><div class="main-features-list__body"><h3 class="main-features-list__title" data-pv-edit="t:g.0.0.1.1.1.0.0">Expert team</h3><p class="main-features-list__text" data-pv-edit="t:g.0.0.1.1.1.1.0">One or two lines about this benefit or service.</p></div></li><li class="main-features-list__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-list__icon" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg><div class="main-features-list__body"><h3 class="main-features-list__title" data-pv-edit="t:g.0.0.1.2.1.0.0">Personal care</h3><p class="main-features-list__text" data-pv-edit="t:g.0.0.1.2.1.1.0">One or two lines about this benefit or service.</p></div></li><li class="main-features-list__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-features-list__icon" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg><div class="main-features-list__body"><h3 class="main-features-list__title" data-pv-edit="t:g.0.0.1.3.1.0.0">Proven results</h3><p class="main-features-list__text" data-pv-edit="t:g.0.0.1.3.1.1.0">One or two lines about this benefit or service.</p></div></li></ul></div></div></section></template>
 <template id="tpl-split"><section data-etch-element="section" class="main-split"><div data-etch-element="container"><div class="main-split__grid"><figure class="main-split__media"><img class="main-media__img" loading="lazy" data-pv-img="i:g.0.0.0.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure><div class="main-split__content"><div class="main-heading"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.1.0.0.0">About us</p><h2 data-pv-edit="t:g.0.0.1.0.1.0">A headline for this part of the page</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.1.0.2.0">A paragraph that explains the topic. Two to four sentences work best next to an image.</p></div><ul class="main-checks"><li class="main-checks__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-checks__icon" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span data-pv-edit="t:g.0.0.1.1.0.1.0">First key point</span></li><li class="main-checks__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-checks__icon" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span data-pv-edit="t:g.0.0.1.1.1.1.0">Second key point</span></li><li class="main-checks__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-checks__icon" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span data-pv-edit="t:g.0.0.1.1.2.1.0">Third key point</span></li></ul><div class="main-buttons"><a class="btn--primary" href="/about/" data-pv-edit="t:g.0.0.1.2.0.0">Learn more</a><a class="btn--primary btn--outline" href="/contact/" data-pv-edit="t:g.0.0.1.2.1.0">Contact us</a></div></div></div></div></section></template>
 <template id="tpl-stats"><section data-etch-element="section" class="main-stats main-band"><div data-etch-element="container"><ul class="main-stats__grid"><li class="main-stats__item"><p class="main-stats__number" data-pv-edit="t:g.0.0.0.0.0">15+</p><p class="main-stats__label" data-pv-edit="t:g.0.0.0.1.0">Years of experience</p></li><li class="main-stats__item"><p class="main-stats__number" data-pv-edit="t:g.0.0.1.0.0">2,000+</p><p class="main-stats__label" data-pv-edit="t:g.0.0.1.1.0">Happy customers</p></li><li class="main-stats__item"><p class="main-stats__number" data-pv-edit="t:g.0.0.2.0.0">98%</p><p class="main-stats__label" data-pv-edit="t:g.0.0.2.1.0">Would recommend us</p></li><li class="main-stats__item"><p class="main-stats__number" data-pv-edit="t:g.0.0.3.0.0">24/7</p><p class="main-stats__label" data-pv-edit="t:g.0.0.3.1.0">Online support</p></li></ul></div></section></template>
 <template id="tpl-steps"><section data-etch-element="section" class="main-steps"><div data-etch-element="container" class="main-steps__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0">How it works</p><h2 data-pv-edit="t:g.0.0.1.0">Four simple steps</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.2.0">Explain what the customer can expect from start to finish.</p></div><ol class="main-steps__list"><li class="main-steps__item"><h3 class="main-steps__title" data-pv-edit="t:g.0.1.0.0.0">Contact us</h3><p class="main-steps__text" data-pv-edit="t:g.0.1.0.1.0">Call, chat on LINE or send the form.</p></li><li class="main-steps__item"><h3 class="main-steps__title" data-pv-edit="t:g.0.1.1.0.0">Consultation</h3><p class="main-steps__text" data-pv-edit="t:g.0.1.1.1.0">We listen and recommend the right option.</p></li><li class="main-steps__item"><h3 class="main-steps__title" data-pv-edit="t:g.0.1.2.0.0">Service</h3><p class="main-steps__text" data-pv-edit="t:g.0.1.2.1.0">Our team does the work with care.</p></li><li class="main-steps__item"><h3 class="main-steps__title" data-pv-edit="t:g.0.1.3.0.0">Follow-up</h3><p class="main-steps__text" data-pv-edit="t:g.0.1.3.1.0">We check the result and stay in touch.</p></li></ol></div></section></template>

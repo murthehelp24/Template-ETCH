@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Features การ์ดรูป — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: calc(600 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.main-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--main-primary);
+
+  &::before {
+    content: "";
+    inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+    block-size: 2px;
+    background-color: var(--main-accent);
+  }
+}
+
+.main-heading__intro {
+  color: var(--main-text-muted);
+}
+
+.main-media__img {
+  /* image ratio: set --main-media-ratio on a parent */
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: var(--main-media-ratio, 4 / 3);
+  border-radius: var(--radius-m);
+  background-color: var(--main-light-alt);
+  object-fit: cover;
+}
+
+.main-features-cards {
+  background-color: var(--main-light);
+}
+
+.main-features-cards__container {
+  gap: var(--container-gap);
+}
+
+.main-features-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(280 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-features-cards__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  background-color: var(--main-light);
+  box-shadow: 0 calc(4 * 1rem / var(--etch-root-px, 10)) calc(12 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+  transition: box-shadow 0.25s ease, translate 0.25s ease;
+
+  --main-media-ratio: 3 / 2;
+
+  .main-media__img {
+    border-radius: 0;
+  }
+
+  &:hover {
+    translate: 0 -3px;
+    box-shadow: 0 calc(12 * 1rem / var(--etch-root-px, 10)) calc(28 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.main-features-cards__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-m);
+}
+
+.main-features-cards__title {
+  font-size: var(--h4);
+  color: var(--main-text);
+}
+
+.main-features-cards__text {
+  margin: 0;
+  color: var(--main-text-muted);
+}
+
+.main-features-cards__link {
+  margin-block-start: auto;
+  padding-block-start: var(--space-xs);
+  font-weight: 700;
+  color: var(--main-primary);
+  text-decoration: none;
+
+  /* the whole card is clickable */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--main-accent);
+  }
+}
+</style>
+</head>
+<body data-template="features-cards">
+<section data-etch-element="section" class="main-features-cards"><div data-etch-element="container" class="main-features-cards__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0">Our services</p><h2 data-pv-edit="t:g.0.0.1.0">What we offer</h2><p class="main-heading__intro" data-pv-edit="t:g.0.0.2.0">A short line that introduces your services.</p></div><ul class="main-features-cards__grid"><li class="main-features-cards__card"><img class="main-media__img" loading="lazy" data-pv-img="i:g.0.1.0.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""><div class="main-features-cards__body"><h3 class="main-features-cards__title" data-pv-edit="t:g.0.1.0.1.0.0">Service 1</h3><p class="main-features-cards__text" data-pv-edit="t:g.0.1.0.1.1.0">One or two lines about this benefit or service.</p><a class="main-features-cards__link" href="/services/service-1/" data-pv-edit="t:g.0.1.0.1.2.0">Learn more →</a></div></li><li class="main-features-cards__card"><img class="main-media__img" loading="lazy" data-pv-img="i:g.0.1.1.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""><div class="main-features-cards__body"><h3 class="main-features-cards__title" data-pv-edit="t:g.0.1.1.1.0.0">Service 2</h3><p class="main-features-cards__text" data-pv-edit="t:g.0.1.1.1.1.0">One or two lines about this benefit or service.</p><a class="main-features-cards__link" href="/services/service-2/" data-pv-edit="t:g.0.1.1.1.2.0">Learn more →</a></div></li><li class="main-features-cards__card"><img class="main-media__img" loading="lazy" data-pv-img="i:g.0.1.2.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""><div class="main-features-cards__body"><h3 class="main-features-cards__title" data-pv-edit="t:g.0.1.2.1.0.0">Service 3</h3><p class="main-features-cards__text" data-pv-edit="t:g.0.1.2.1.1.0">One or two lines about this benefit or service.</p><a class="main-features-cards__link" href="/services/service-3/" data-pv-edit="t:g.0.1.2.1.2.0">Learn more →</a></div></li></ul></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

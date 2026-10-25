@@ -12,6 +12,11 @@
 | `main-hero-panel.etch.txt` | Hero พื้นสีหลัก: ข้อความบนสี primary, รูปชิดขอบขวามุมล่างโค้ง | บนสุดของหน้าแรก |
 | `main-page-hero.etch.txt` | หัวหน้าเพจด้านใน: breadcrumb + `{this.title}` + excerpt (ถ้ามี) | template **Page** หรือบนสุดของหน้าด้านใน |
 | `main-features.etch.txt` | การ์ดไอคอน 4 ใบ (บริการ / จุดเด่น) | หน้าไหนก็ได้ |
+| `main-features-image.etch.txt` | Features + รูป: รูปซ้าย · หัวข้อ + จุดเด่น 4 ข้อมีไอคอน (2×2) | หน้าไหนก็ได้ (ใช้ Features แบบเดียวต่อหน้าก็พอ) |
+| `main-features-numbered.etch.txt` | Features เลข 01–06: 6 ข้อ เลขลำดับใหญ่ขึ้นเอง ไม่มีไอคอน | หน้าไหนก็ได้ |
+| `main-features-band.etch.txt` | Features พื้นสีหลัก: ไอคอนวงกลมสีเน้น 4 ข้อ ข้อความกลาง | หน้าไหนก็ได้ |
+| `main-features-cards.etch.txt` | Features การ์ดรูป: บริการ 3 การ์ด รูป + ข้อความ + ลิงก์ (คลิกได้ทั้งการ์ด) | หน้าแรก / หน้าบริการ |
+| `main-features-list.etch.txt` | Features หัวข้อ + รายการ: หัวข้อ + ปุ่มด้านซ้าย (ติดตอนเลื่อน) · รายการไอคอน 4 แถวด้านขวา | หน้าไหนก็ได้ |
 | `main-split.etch.txt` | รูป + ข้อความ + checklist + ปุ่ม | หน้าไหนก็ได้ |
 | `main-stats.etch.txt` | ตัวเลขผลงาน 4 ช่อง บนพื้นสี primary | หน้าไหนก็ได้ |
 | `main-steps.etch.txt` | ขั้นตอน 4 ขั้น (เลขขึ้นเองอัตโนมัติ) | หน้าไหนก็ได้ |
