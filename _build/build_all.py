@@ -16,6 +16,7 @@ JOBS = [
     ("build_sections.py", "etch-sections"),
     ("build_sections_more.py", "etch-sections"),
     ("build_hero_more.py", "etch-sections"),
+    ("build_features_more.py", "etch-sections"),
 ]
 for script, out in JOBS:
     if not os.path.exists(os.path.join(HERE, script)):
