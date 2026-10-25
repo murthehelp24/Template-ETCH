@@ -295,57 +295,88 @@
   var BTN_TEXT = { primaryText: '#ffffff', secondaryText: '#000000' };
   function buttonValue(k) { return page().buttons[k] || BTN_TEXT[k]; }
 
-  // ready-made palettes: the five template colours + both buttons; all pairs pass the contrast check
-  var PRESETS = [
-    ['น้ำเงินทอง', '#1e3a5f', '#b7791f', '#ffffff', '#1a1a1a', '#ffffff', '#1e3a5f', '#ffffff', '#e8a33d', '#1a1a1a'],
-    ['เขียวป่า', '#1f4d3a', '#a8741a', '#ffffff', '#1b1f1d', '#ffffff', '#1f4d3a', '#ffffff', '#d9a441', '#1b1f1d'],
-    ['ฟ้าคลินิก', '#0b5563', '#2aa198', '#ffffff', '#15262b', '#ffffff', '#0b5563', '#ffffff', '#f2a65a', '#15262b'],
-    ['ดำแดง', '#1f1d1a', '#d62828', '#ffffff', '#1a1a1a', '#ffffff', '#c1121f', '#ffffff', '#1f1d1a', '#ffffff'],
-    ['ม่วงหรู', '#3b2a6b', '#a0781a', '#ffffff', '#1d1830', '#ffffff', '#3b2a6b', '#ffffff', '#f2c14e', '#1d1830'],
-    ['น้ำตาลอบอุ่น', '#5c3a21', '#b5651d', '#fffaf3', '#2b1d12', '#ffffff', '#5c3a21', '#ffffff', '#d98f4e', '#2b1d12'],
-    ['เทาเรียบ', '#2b2f36', '#2563eb', '#ffffff', '#1f2328', '#ffffff', '#2563eb', '#ffffff', '#2b2f36', '#ffffff'],
-    ['ชมพูอ่อนโยน', '#7a2e4f', '#c2577a', '#fff9fa', '#2a1820', '#ffffff', '#7a2e4f', '#ffffff', '#e7a1b0', '#2a1820']
-  ];
+  // ready-made palettes (builder/presets.js): the five template colours + both buttons.
+  // check.py makes sure every preset passes all contrast pairs (keep its PAIRS in step with the ones below)
+  var PRESETS = (window.ETCH_PRESETS || []).filter(function (pr) {
+    return pr && Array.isArray(pr.colors) && pr.colors.length === 9 && pr.colors.every(function (c) { return HEX.test(c); });
+  });
   function presetValues() {
     return KIT.colors.map(effective).concat([acssValue('primary'), buttonValue('primaryText'),
       acssValue('secondary'), buttonValue('secondaryText')]);
   }
   function applyPreset(pr) {
-    var p = page();
+    var p = page(), c = pr.colors;
     remember();
-    KIT.colors.forEach(function (c, i) { p.colors[c.key] = pr[i + 1]; });
-    p.acss = { primary: pr[6], secondary: pr[8] };
-    p.buttons = { primaryText: pr[7], secondaryText: pr[9] };
+    KIT.colors.forEach(function (col, i) { p.colors[col.key] = c[i]; });
+    p.acss = { primary: c[5], secondary: c[7] };
+    p.buttons = { primaryText: c[6], secondaryText: c[8] };
     save();
     broadcast();
     renderColors();
-    toast('ใช้ชุดสี "' + pr[0] + '" แล้ว', true);
+    toast('ใช้ชุดสี "' + pr.name + '" แล้ว', true);
+  }
+  function presetButton(pr, now, big) {
+    var b = document.createElement('button'), c = pr.colors;
+    b.type = 'button';
+    b.className = big ? 'pb-preset pb-preset--big' : 'pb-preset';
+    b.setAttribute('aria-pressed', String(c.join(',') === now));
+    b.title = 'ใช้ชุดสี ' + pr.name;
+    if (big) {
+      // a tiny page: header bar with its button, heading, text, the two buttons
+      b.innerHTML = '<span class="pb-mini" aria-hidden="true">' +
+        '<span class="pb-mini__bar"><i></i><b></b></span>' +
+        '<span class="pb-mini__body"><em></em><span class="pb-mini__h"></span><span class="pb-mini__t"></span>' +
+        '<span class="pb-mini__t pb-mini__t--short"></span><span class="pb-mini__btns"><b></b><b></b></span></span></span>';
+      var m = $('.pb-mini', b);
+      ['--m-primary', '--m-accent', '--m-light', '--m-text', '--m-onp', '--m-bp', '--m-bpt', '--m-bs', '--m-bst']
+        .forEach(function (v, i) { m.style.setProperty(v, c[i]); });
+    } else {
+      var chips = document.createElement('span');
+      chips.className = 'pb-preset__chips';
+      [c[0], c[1], c[2], c[5], c[7]].forEach(function (x) {
+        var i = document.createElement('i');
+        i.style.background = x;
+        chips.appendChild(i);
+      });
+      b.appendChild(chips);
+    }
+    var name = document.createElement('span');
+    name.className = 'pb-preset__name';
+    name.textContent = pr.name;
+    b.appendChild(name);
+    b.addEventListener('click', function () {
+      applyPreset(pr);
+      if (big) $('#presetDialog').close();
+    });
+    return b;
   }
   function renderPresets() {
     var box = $('#presets');
     if (!box) return;
     box.innerHTML = '';
-    var now = presetValues().join(',');
-    PRESETS.forEach(function (pr) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'pb-preset';
-      b.setAttribute('aria-pressed', String(pr.slice(1).join(',') === now));
-      b.title = 'ใช้ชุดสี ' + pr[0];
-      var chips = document.createElement('span');
-      chips.className = 'pb-preset__chips';
-      [pr[1], pr[2], pr[3], pr[6], pr[8]].forEach(function (c) {
-        var i = document.createElement('i');
-        i.style.background = c;
-        chips.appendChild(i);
-      });
-      var name = document.createElement('span');
-      name.textContent = pr[0];
-      b.appendChild(chips);
-      b.appendChild(name);
-      b.addEventListener('click', function () { applyPreset(pr); });
-      box.appendChild(b);
+    var now = presetValues().join(','), first = PRESETS.length ? PRESETS[0].group : '';
+    PRESETS.filter(function (pr) { return pr.group === first; }).forEach(function (pr) {
+      box.appendChild(presetButton(pr, now, false));
     });
+    var all = $('#allPresets');
+    all.textContent = 'ดูทั้งหมด (' + PRESETS.length + ')';
+    all.hidden = PRESETS.length <= box.children.length;
+  }
+  function openPresets() {
+    var body = $('#presetBody'), now = presetValues().join(','), groups = [];
+    body.innerHTML = '';
+    PRESETS.forEach(function (pr) { if (groups.indexOf(pr.group) < 0) groups.push(pr.group); });
+    groups.forEach(function (g) {
+      var sec = el('section', 'pb-presetgroup');
+      sec.appendChild(el('h3', '', g));
+      var grid = el('div', 'pb-presetgrid');
+      PRESETS.filter(function (pr) { return pr.group === g; }).forEach(function (pr) {
+        grid.appendChild(presetButton(pr, now, true));
+      });
+      sec.appendChild(grid);
+      body.appendChild(sec);
+    });
+    $('#presetDialog').showModal();
   }
 
   function changed(final) {
@@ -429,7 +460,8 @@
     ['main-on-primary', 'main-accent', 'ไอคอนตอน hover (บนสีเน้น)', 3],
     ['btn-primary-text', 'btn-primary', 'ตัวอักษรบนปุ่มหลัก', 4.5],
     ['btn-secondary-text', 'btn-secondary', 'ตัวอักษรบนปุ่มรอง', 4.5],
-    ['btn-primary', 'main-light', 'ปุ่มหลักแบบเส้นขอบบนพื้นอ่อน', 4.5]
+    ['btn-primary', 'main-light', 'ปุ่มหลักแบบเส้นขอบบนพื้นอ่อน', 4.5],
+    ['btn-secondary', 'main-primary', 'ปุ่มรองบน header (ปุ่มทึบ + เส้นขอบ)', 4.5]
   ];
   function contrastIssues() {
     var eff = {};
@@ -1178,6 +1210,8 @@
     $('#etchDialog').showModal();
   }
   $('#exportEtch').addEventListener('click', openExport);
+
+  $('#allPresets').addEventListener('click', openPresets);
 
   $('#editToggle').addEventListener('click', function () {
     state.edit = state.edit === false;
