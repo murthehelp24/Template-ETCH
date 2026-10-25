@@ -708,14 +708,22 @@
   var GROUPS = [['header', 'Header'], ['section', 'Sections'], ['footer', 'Footer']];
 
   // the library shows one kind at a time; clicking a header / section / footer in the page picks its kind.
-  // selected = the placed template that "+" works from: a section's "+" inserts right after it
+  // selected = the placed template that "+" works from: a clicked section narrows the library to its kind and "+" swaps
+  // its look; after "ดู section ทั้งหมด" (or right after adding one) "+" inserts right after it
   var libGroup = 'section', selected = null;
+  var allKinds = false; // "ดู section ทั้งหมด" after clicking a placed section: list every kind, "+" inserts after it
+  // the kind the section library is narrowed to: an empty slot's kind, or the clicked section's kind (its "+" swaps the look)
+  function libKind() {
+    if (slotKind) return slotKind;
+    var i = libGroup === 'section' && selected && !allKinds ? indexOf(selected) : -1;
+    return i >= 0 ? baseOf(page().sections[i].id) : null;
+  }
   function groupOf(key) {
     return key.indexOf('header:') === 0 ? 'header' : key.indexOf('footer:') === 0 ? 'footer' : 'section';
   }
   function showGroup(group, key) {
     libGroup = group;
-    if (key !== undefined) selected = key;
+    if (key !== undefined) { selected = key; allKinds = false; }
     $$('#libTabs button').forEach(function (b) {
       var on = b.dataset.group === group;
       b.setAttribute('aria-selected', String(on));
@@ -723,11 +731,14 @@
     });
     $$('#library .pb-group').forEach(function (box) { box.hidden = box.dataset.group !== group; });
     if (group !== 'section') slotKind = null;
-    $$('.pb-card[data-group="section"]').forEach(function (c) { c.hidden = !!slotKind && baseOf(c.dataset.id) !== slotKind; });
-    $('#libAll').hidden = !slotKind;
+    var kind = libKind();
+    $$('.pb-card[data-group="section"]').forEach(function (c) { c.hidden = !!kind && baseOf(c.dataset.id) !== kind; });
+    $('#libAll').hidden = !kind;
     var p = page(), after = group === 'section' && selected && indexOf(selected) >= 0 ? items[selected] : null;
+    var swap = kind && !slotKind ? after : null;
     var hint = group === 'section' && slotKind
       ? 'เลือกแบบ ' + kindLabel(slotKind) + ' สำหรับช่องที่เลือก — กด + เพื่อใส่ หรือลากไปวาง'
+      : swap ? 'แบบอื่นของ ' + kindLabel(kind) + ' — กด + เพื่อเปลี่ยน "' + T[swap.id].label + '" เป็นแบบนี้'
       : group === 'section'
       ? (after ? 'กด + เพื่อแทรกต่อจาก "' + T[after.id].label + '" · หรือลากไปวางตรงไหนก็ได้'
                : 'กด + เพื่อต่อท้ายหน้า (คลิก section ในหน้าเพื่อแทรกต่อจากตัวนั้น) · หรือลากไปวาง')
@@ -736,7 +747,7 @@
     $('#libHint').textContent = hint;
     $$('.pb-card[data-group="' + group + '"] .pb-add').forEach(function (b) {
       var t = T[b.closest('.pb-card').dataset.id];
-      b.title = group === 'section' ? (slotKind ? 'ใส่ในช่อง ' + kindLabel(slotKind) :
+      b.title = group === 'section' ? (slotKind ? 'ใส่ในช่อง ' + kindLabel(slotKind) : swap ? 'เปลี่ยนเป็นแบบนี้' :
         after ? 'แทรกต่อจาก ' + T[after.id].label : 'ต่อท้ายหน้า') : 'ใช้ ' + t.label;
       b.setAttribute('aria-label', b.title + ': ' + t.label);
     });
@@ -780,6 +791,7 @@
         add.addEventListener('click', function () {
           var at = t.group === 'section' && selected && indexOf(selected) >= 0 ? indexOf(selected) + 1 : null;
           if (t.group === 'section' && slotKind) { at = slotIndex(slotKind); slotKind = null; } // fill the picked slot
+          else if (t.group === 'section' && libKind()) return swapSection(selected, t.id);
           insert(t.id, at);
         });
         var f = $('iframe', card);
@@ -968,6 +980,7 @@
       if (index === null || index === undefined || index > p.sections.length) p.sections.push(s);
       else p.sections.splice(index, 0, s);
       selected = s.k; // the next "+" goes after this one
+      allKinds = true; // and may be any kind (click it to swap its look instead)
       toast('เพิ่ม ' + t.label + ' แล้ว');
       setTimeout(function () {
         var rec = items[s.k];
@@ -977,6 +990,22 @@
     save();
     renderCanvas();
     showGroup(t.group);
+  }
+
+  // a clicked section's "+" swaps it for another look of the same kind, in the same place
+  function swapSection(key, id) {
+    var p = page(), s = p.sections[indexOf(key)];
+    if (s.id === id) return toast('ใช้แบบนี้อยู่แล้ว');
+    remember();
+    delete p.edits[key];
+    delete p.images[key];
+    s.k = uid();
+    s.id = id;
+    selected = s.k;
+    toast('เปลี่ยนเป็น ' + T[id].label + ' แล้ว');
+    save();
+    renderCanvas();
+    showGroup('section');
   }
 
   var drag = null;
@@ -1055,7 +1084,7 @@
     if (!frames.length) return;
     var rec = recOf(e.source);
     if (d.type === 'pv-ready') e.source.postMessage(frameState(rec), '*');
-    if (d.type === 'pv-click' && rec && rec.key !== selected) showGroup(groupOf(rec.key), rec.key);
+    if (d.type === 'pv-click' && rec) showGroup(groupOf(rec.key), rec.key);
     if (d.type === 'pv-edit' && rec && EDIT_KEY.test(d.key) && (d.value === null || typeof d.value === 'string')) {
       var p = page();
       remember();
@@ -1308,6 +1337,7 @@
   });
   $('#libAll').addEventListener('click', function () {
     slotKind = null;
+    allKinds = true;
     showGroup('section');
     renderSlots();
   });
@@ -1629,7 +1659,7 @@
     if (gap) { pickSlot(gap.dataset.kind); return; }
     var item = e.target.closest('.pb-item');
     if (item) { slotKind = null; }
-    if (item) { if (item.dataset.key !== selected || groupOf(item.dataset.key) !== libGroup) showGroup(groupOf(item.dataset.key), item.dataset.key); return; }
+    if (item) { showGroup(groupOf(item.dataset.key), item.dataset.key); return; }
     var slot = e.target.closest('.pb-slot');
     if (slot) { slotKind = null; showGroup(slot.dataset.slot, null); return; }
     if (e.target.closest('#emptyHint')) showGroup('section', null);
