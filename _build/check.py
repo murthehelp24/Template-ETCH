@@ -5,8 +5,9 @@
    differ only by it are restored so they do not show up as changes
 3. preview/ and builder/kit-data.js must match a fresh build_preview.py (commit them after editing templates)
 4. build_site.py must be able to put the website together
+5. every colour preset in builder/presets.js passes every contrast pair the builder checks
 """
-import os, re, subprocess, sys
+import json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -25,8 +26,48 @@ def strip_ts(text):
     return re.sub(r'"timestamp":"[^"]*"', "", text)
 
 
+def luminance(hex_colour):
+    rgb = [int(hex_colour[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    rgb = [v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4 for v in rgb]
+    return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]
+
+
+def contrast(a, b):
+    x, y = luminance(a), luminance(b)
+    return (max(x, y) + 0.05) / (min(x, y) + 0.05)
+
+
+# same pairs as PAIRS in builder/builder.js — preset colours: primary, accent, light, text, on-primary,
+# button primary bg, its text, button secondary bg, its text
+PRESET_PAIRS = [("text on light", 3, 2, 4.5), ("text on primary", 4, 0, 4.5), ("primary on light", 0, 2, 4.5),
+                ("icon on accent", 4, 1, 3), ("primary button text", 6, 5, 4.5),
+                ("secondary button text", 8, 7, 4.5), ("outline primary button on light", 5, 2, 4.5),
+                ("secondary button on the header", 7, 0, 4.5)]
+
+
+def check_presets():
+    text = open(os.path.join(ROOT, "builder", "presets.js"), encoding="utf-8").read()
+    presets = json.loads(text[text.index("=") + 1:].strip().rstrip(";"))
+    problems = []
+    for pr in presets:
+        c = pr["colors"]
+        if len(c) != 9 or not all(re.fullmatch(r"#[0-9a-f]{6}", x, re.I) for x in c):
+            problems.append(f"{pr['name']}: needs 9 colours as #rrggbb")
+            continue
+        for label, fg, bg, need in PRESET_PAIRS:
+            got = contrast(c[fg], c[bg])
+            if got < need:
+                problems.append(f"{pr['name']}: {label} {got:.2f}:1 (needs {need}:1)")
+    return len(presets), problems
+
+
 def main():
     errors = []
+    count, problems = check_presets()
+    if problems:
+        errors.append("colour presets fail contrast:\n  " + "\n  ".join(problems))
+    else:
+        print(f"presets: {count} pass every contrast pair")
     run(PY, "_build/build_all.py")  # check=True: audit errors stop here
 
     changed = []

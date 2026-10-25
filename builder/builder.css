@@ -178,6 +178,23 @@ body.is-dragging iframe { pointer-events: none; }
 .pb-preset__chips { display: flex; width: 100%; height: 14px; border-radius: 4px; overflow: hidden; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%); }
 .pb-preset__chips i { flex: 1; }
 
+.pb-preset__name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.pb-dialog--wide { width: min(980px, 94vw); }
+.pb-presetgroup h3 { font-size: 14px; margin-bottom: 8px; }
+.pb-presetgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.pb-preset--big { padding: 6px; gap: 6px; font-size: 12.5px; font-weight: 600; }
+.pb-mini { display: flex; flex-direction: column; width: 100%; height: 92px; border-radius: 6px; overflow: hidden; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%); background: var(--m-light); }
+.pb-mini__bar { display: flex; align-items: center; justify-content: space-between; height: 18px; padding: 0 6px; background: var(--m-primary); }
+.pb-mini__bar i { width: 22px; height: 4px; border-radius: 2px; background: var(--m-onp); opacity: .85; }
+.pb-mini__bar b { width: 22px; height: 9px; border-radius: 3px; background: var(--m-bs); }
+.pb-mini__body { display: flex; flex-direction: column; gap: 4px; padding: 7px 8px; }
+.pb-mini__body em { width: 18px; height: 2px; background: var(--m-accent); }
+.pb-mini__h { width: 75%; height: 7px; border-radius: 2px; background: var(--m-primary); }
+.pb-mini__t { width: 90%; height: 3px; border-radius: 2px; background: var(--m-text); opacity: .55; }
+.pb-mini__t--short { width: 60%; }
+.pb-mini__btns { display: flex; gap: 4px; margin-top: 3px; }
+.pb-mini__btns b { width: 30px; height: 10px; border-radius: 3px; background: var(--m-bp); }
+.pb-mini__btns b + b { background: transparent; box-shadow: inset 0 0 0 1.5px var(--m-bp); }
 .pb-color { display: grid; grid-template-columns: 30px minmax(0, 1fr) 74px 22px; gap: 8px; align-items: center; padding: 4px 0; }
 .pb-color__group { margin-top: 4px; font-size: 12px; font-weight: 600; color: var(--muted); }
 .pb-swatch { position: relative; width: 30px; height: 30px; border-radius: 8px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 15%); cursor: pointer; }

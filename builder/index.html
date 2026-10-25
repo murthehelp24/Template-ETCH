@@ -60,7 +60,10 @@
 
   <aside class="pb-panel" aria-label="ตั้งค่าสี">
     <section class="pb-sec">
-      <h2>ชุดสีสำเร็จรูป</h2>
+      <div class="pb-sec__head">
+        <h2>ชุดสีสำเร็จรูป</h2>
+        <button type="button" class="pb-link" id="allPresets">ดูทั้งหมด</button>
+      </div>
       <div class="pb-presets" id="presets"></div>
     </section>
 
@@ -106,9 +109,18 @@
   <div class="pb-dialog__body" id="etchBody"></div>
 </dialog>
 
+<dialog class="pb-dialog pb-dialog--wide" id="presetDialog" aria-labelledby="presetTitle">
+  <form method="dialog" class="pb-dialog__head">
+    <h2 id="presetTitle">ชุดสีสำเร็จรูป</h2>
+    <button class="pb-btn pb-btn--ghost" value="close" aria-label="ปิด">✕</button>
+  </form>
+  <div class="pb-dialog__body" id="presetBody"></div>
+</dialog>
+
 <div class="pb-toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="kit-data.js"></script>
+<script src="presets.js"></script>
 <script src="builder.js"></script>
 </body>
 </html>
