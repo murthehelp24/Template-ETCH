@@ -68,6 +68,6 @@
 Etch 1.6+, ACSS (`--text-*`, `--space-*`, `--section-space-*`, `--h1…h5`, `--radius-*`, `--grid-gap`, `--container-gap`, `--content-gap`) และปุ่ม `btn--primary` / `btn--outline`
 
 ## ทดสอบแล้ว
-- ชุดแรก (FAQ, CTA, Contact, Blog, Single) บน Pinn Pain
-- ทั้ง 13 ไฟล์ + header + footer วางรวมหน้าเดียวบน Win Win Esco (1rem = 16px) — สีมาจากชุดเดียวกัน, layout ถูกต้องที่ 1440px และ 375px ไม่ล้นจอ, ลบของทดสอบออกแล้ว
+- ชุดแรก (FAQ, CTA, Contact, Blog, Single) บนเว็บลูกค้าเว็บแรก
+- ทั้ง 13 ไฟล์ + header + footer วางรวมหน้าเดียวบนเว็บลูกค้าอีกเว็บ (1rem = 16px) — สีมาจากชุดเดียวกัน, layout ถูกต้องที่ 1440px และ 375px ไม่ล้นจอ, ลบของทดสอบออกแล้ว
 - ยังไม่ได้ทดสอบ: การ์ดใน Blog archive บน Posts page จริง

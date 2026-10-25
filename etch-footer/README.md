@@ -42,7 +42,7 @@
 - 769–992px: แบรนด์เต็มแถว แล้ว 2 คอลัมน์
 - ≤768px: คอลัมน์เดียว
 
-## ต่างจาก footer ของ Pinn Pain
+## ต่างจาก footer ต้นแบบ (เว็บลูกค้าเดิม)
 
 - ข้อมูลติดต่อใช้ **component properties** แทน Meta Box options — เว็บใหม่ไม่ต้องสร้าง options page
 - คอลัมน์ Services เป็นลิงก์ธรรมดาแทน loop ของ CPT `service`

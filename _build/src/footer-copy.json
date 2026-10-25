@@ -235,7 +235,7 @@
                "tag": "a",
                "attributes": {
                 "href": "/",
-                "aria-label": "Pinn Pain Clinic หน้าแรก"
+                "aria-label": "Sample"
                }
               },
               "innerBlocks": [
@@ -249,7 +249,7 @@
                  "attributes": {
                   "class": "site-footer__logo-img",
                   "mediaId": "1684",
-                  "alt": "Pinn Pain Clinic",
+                  "alt": "Sample",
                   "loading": "lazy"
                  },
                  "styles": [
@@ -292,7 +292,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "Pinn Pain Clinic คลินิกรักษาอาการปวดที่เกิดจากกล้ามเนื้อ กระดูก ข้อต่อ เส้นเอ็น และเส้นประสาท โดยแพทย์เฉพาะทางเวชศาสตร์ฟื้นฟู ตรวจหาต้นเหตุด้วยอัลตราซาวด์ และรักษาด้วยหัตถการลดปวดโดยไม่ต้องผ่าตัด"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -325,7 +325,7 @@
              "tag": "nav",
              "attributes": {
               "class": "site-footer__col",
-              "aria-label": "เมนูท้ายเว็บ"
+              "aria-label": "Sample"
              },
              "styles": [
               "2z9xwxk"
@@ -353,7 +353,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "เมนู"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -414,7 +414,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "หน้าแรก"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -468,7 +468,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "เกี่ยวกับเรา"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -522,7 +522,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "บทความ"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -576,7 +576,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "ติดต่อเรา"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -630,7 +630,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "นโยบายความเป็นส่วนตัว"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -687,7 +687,7 @@
              "tag": "nav",
              "attributes": {
               "class": "site-footer__col",
-              "aria-label": "การรักษา"
+              "aria-label": "Sample"
              },
              "styles": [
               "2z9xwxk"
@@ -715,7 +715,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "การรักษา"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -870,7 +870,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "ติดต่อเรา"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -963,7 +963,7 @@
                "tag": "a",
                "attributes": {
                 "class": "site-footer__link site-footer__icon-link",
-                "href": "tel:{options.metabox.clinic.phone}"
+                "href": "#"
                },
                "styles": [
                 "9d9xdbr",
@@ -1001,7 +1001,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "โทร {options.metabox.clinic.phone}"
+                 "content": "Sample text{options.metabox.clinic.phone}"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -1040,7 +1040,7 @@
                  "tag": "a",
                  "attributes": {
                   "class": "site-footer__link site-footer__icon-link",
-                  "href": "mailto:{options.metabox.clinic.email}"
+                  "href": "#"
                  },
                  "styles": [
                   "9d9xdbr",
@@ -1111,7 +1111,7 @@
                "tag": "a",
                "attributes": {
                 "class": "site-footer__link site-footer__icon-link",
-                "href": "{options.metabox.clinic.map_url}",
+                "href": "#",
                 "target": "_blank",
                 "rel": "noopener"
                },
@@ -1151,7 +1151,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "ดูแผนที่ Google Maps"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -1215,10 +1215,10 @@
                      "tag": "a",
                      "attributes": {
                       "class": "contact-split__social-link",
-                      "href": "{options.metabox.clinic.facebook_url}",
+                      "href": "#",
                       "target": "_blank",
                       "rel": "noopener",
-                      "aria-label": "Facebook"
+                      "aria-label": "Sample"
                      },
                      "styles": [
                       "pnsocl1"
@@ -1236,7 +1236,7 @@
                         "class": "contact-split__social-icon",
                         "aria-hidden": "true",
                         "focusable": "false",
-                        "src": "/wp-content/uploads/2026/10/social-facebook.svg"
+                        "src": "/sample-icons/social-facebook.svg"
                        },
                        "styles": [
                         "pnsoci1"
@@ -1292,10 +1292,10 @@
                    "tag": "a",
                    "attributes": {
                     "class": "contact-split__social-link",
-                    "href": "{options.metabox.clinic.instagram_url}",
+                    "href": "#",
                     "target": "_blank",
                     "rel": "noopener",
-                    "aria-label": "Instagram"
+                    "aria-label": "Sample"
                    },
                    "styles": [
                     "pnsocl1"
@@ -1313,7 +1313,7 @@
                       "class": "contact-split__social-icon",
                       "aria-hidden": "true",
                       "focusable": "false",
-                      "src": "/wp-content/uploads/2026/10/social-instagram.svg"
+                      "src": "/sample-icons/social-instagram.svg"
                      },
                      "styles": [
                       "pnsoci1"
@@ -1375,10 +1375,10 @@
                      "tag": "a",
                      "attributes": {
                       "class": "contact-split__social-link",
-                      "href": "{options.metabox.clinic.tiktok_url}",
+                      "href": "#",
                       "target": "_blank",
                       "rel": "noopener",
-                      "aria-label": "TikTok"
+                      "aria-label": "Sample"
                      },
                      "styles": [
                       "pnsocl1"
@@ -1396,7 +1396,7 @@
                         "class": "contact-split__social-icon",
                         "aria-hidden": "true",
                         "focusable": "false",
-                        "src": "/wp-content/uploads/2026/10/social-tiktok.svg"
+                        "src": "/sample-icons/social-tiktok.svg"
                        },
                        "styles": [
                         "pnsoci1"
@@ -1466,7 +1466,7 @@
                      "tag": "a",
                      "attributes": {
                       "class": "site-footer__link site-footer__icon-link",
-                      "href": "{options.metabox.clinic.google_review_url}",
+                      "href": "#",
                       "target": "_blank",
                       "rel": "noopener"
                      },
@@ -1506,7 +1506,7 @@
                        "metadata": {
                         "name": "Text"
                        },
-                       "content": "รีวิวบน Google"
+                       "content": "Sample text"
                       },
                       "innerBlocks": [],
                       "innerHTML": "",
@@ -1625,7 +1625,7 @@
              "metadata": {
               "name": "Text"
              },
-             "content": "Copyright © {site.currentDate.dateFormat(\"Y\")} Pinn Pain Clinic. สงวนลิขสิทธิ์"
+             "content": "Sample text{site.currentDate.dateFormat(\"Y\")}Sample text"
             },
             "innerBlocks": [],
             "innerHTML": "",
