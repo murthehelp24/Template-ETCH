@@ -533,8 +533,9 @@ header = el("Site Header", "header", {
                ]),
                menu,
                el("Actions", "div", {"class": "site-header__actions"}, ["sh-actions"], [
-                   el("CTA", "a", {"href": "/contact/", "class": "btn--secondary"},
-                      None, [text("Get a Quote")]),
+                   el("CTA", "a", {"href": "https://line.me/R/ti/p/@example", "target": "_blank", "rel": "noopener",
+                                   "class": "btn--secondary"},
+                      None, [text("Chat on LINE")]),
                    el("Phone", "a", {"href": "tel:+6620000000",
                                      "class": "site-header__phone btn--secondary btn--outline"},
                       None, [

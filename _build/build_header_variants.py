@@ -147,7 +147,7 @@ TOPBAR_CSS = """/* a thin info strip above the bar (inside it, so hide-on-scroll
     }
   }"""
 
-FLOATING_CSS = """/* the bar floats: a rounded, shadowed band with space around it */
+FLOATING_CSS = """/* the bar floats: a rounded, shadowed band with space around it; round buttons to match */
   .main-header__bar {
     background-color: transparent;
     border-block-end: 0;
@@ -163,11 +163,14 @@ FLOATING_CSS = """/* the bar floats: a rounded, shadowed band with space around 
     @media (width <= 768px) {
       padding-inline: var(--space-m) var(--space-xs);
     }
+  }
+
+  .main-header__actions > a {
+    border-radius: 999px;
   }"""
 
-RIGHT_CSS = """/* accent line on top, menu next to a single button on the right */
+RIGHT_CSS = """/* menu next to a single button on the right */
   .main-header__bar {
-    border-block-start: 4px solid var(--main-accent);
     padding-block: var(--space-s);
   }
 

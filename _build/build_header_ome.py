@@ -442,7 +442,8 @@ phone_icon = og["innerBlocks"][0]["innerBlocks"][0]["innerBlocks"][2]["innerBloc
 
 def buttons():
     return [
-        el("CTA", "a", {"href": "/contact/", "class": "btn--secondary"}, None, [text("Get a Quote")]),
+        el("CTA", "a", {"href": "https://line.me/R/ti/p/@example", "target": "_blank", "rel": "noopener", "class": "btn--secondary"}, None,
+           [text("Chat on LINE")]),
         el("Phone", "a", {"href": "tel:+6620000000", "class": "main-header__phone btn--secondary btn--outline"}, None,
            [phone_icon, el("Number", "span", {}, None, [text("02-000-0000")])]),
     ]
