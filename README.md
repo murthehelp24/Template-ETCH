@@ -11,7 +11,7 @@
 | [etch-sections](etch-sections/README.md) | hero · page-hero · features · split · stats · steps · reviews · faq · cta · contact · blog · single-post · 404 |
 | [builder](#page-builder-ประกอบหน้าก่อนไปทำใน-etch) | **Page Builder** — ลากวาง section ประกอบหน้า ดูผลก่อนไปทำใน Etch (เปิด `builder/index.html`) |
 | `preview` | หน้า preview ของแต่ละ template (สร้างอัตโนมัติจาก `.etch.txt`) |
-| [เว็บจริง](#เอา-page-builder-ขึ้นเว็บ-cloudflare-workers) | วิธีเอา builder ขึ้น Cloudflare Workers + ล็อกอินด้วย Cloudflare Access |
+| [เว็บจริง](#เอา-page-builder-ขึ้นเว็บ-cloudflare-workers) | วิธีเอา builder ขึ้น Cloudflare Workers + ตั้งรหัสผ่าน |
 | `_build` | ไฟล์สร้าง template (Python) — ไม่ต้องใช้ตอนวาง ใช้ตอนแก้ template แล้วสร้างไฟล์ใหม่ |
 
 ## Page Builder (ประกอบหน้าก่อนไปทำใน Etch)
@@ -32,34 +32,37 @@
 
 ## เอา Page Builder ขึ้นเว็บ (Cloudflare Workers)
 
-เว็บเป็นไฟล์ static ล้วน ใช้ **Cloudflare Workers (static assets)** โฮสต์ (แผนฟรีพอ ใช้กับ repo private ได้) และ **Cloudflare Access** ล็อกอินกันคนนอก — สำคัญ เพราะใน builder มีเนื้อหา `.etch.txt` ทุกไฟล์ ใครเปิดเว็บได้ก็ copy template ไปได้
+เว็บเป็นไฟล์ static ล้วน ใช้ **Cloudflare Workers (static assets)** โฮสต์ (แผนฟรีพอ ใช้กับ repo private ได้) และกันคนนอกด้วย **รหัสผ่าน** — สำคัญ เพราะใน builder มีเนื้อหา `.etch.txt` ทุกไฟล์ ใครเปิดเว็บได้ก็ copy template ไปได้
 
-- `wrangler.jsonc` บอก Cloudflare ว่า Worker ชื่อ `template-etch` เสิร์ฟไฟล์จาก `dist/` และให้รัน `python3 _build/build_site.py` ก่อน deploy ทุกครั้ง (`"name"` ต้องตรงกับชื่อ Worker ใน dashboard)
+- `wrangler.jsonc` — Worker ชื่อ `template-etch` (`"name"` ต้องตรงกับใน dashboard) รัน `python3 _build/build_site.py` ก่อน deploy ทุกครั้ง แล้วเสิร์ฟไฟล์จาก `dist/`
+- `worker/index.js` — ด่านรหัสผ่าน: ทุก request (หน้าเว็บ, script, หน้า preview) ต้องผ่านด่านนี้ก่อน (`run_worker_first`) เบราว์เซอร์จะเด้งกล่องถามชื่อผู้ใช้ + รหัสผ่าน (ช่องชื่อผู้ใช้ใส่อะไรก็ได้) **ถ้ายังไม่ได้ตั้งรหัส เว็บจะปฏิเสธทุก request** (ขึ้น 503) จึงไม่มีทางเปิดเป็นสาธารณะโดยไม่ตั้งใจ
 - `build_site.py` รวมเฉพาะไฟล์ที่ต้องขึ้นเว็บไว้ใน `dist/` (`builder/`, `preview/`, หน้าแรกที่พาไป builder, `_headers`, `robots.txt`) — `_build/`, README, ไฟล์ `.etch.txt` และ `preview/kit.json` ไม่ขึ้นเว็บ (แต่เนื้อหา `.etch.txt` อยู่ในปุ่ม Copy ของ builder)
-- ลองในเครื่องแบบเดียวกับบน Cloudflare: `npx wrangler dev` แล้วเปิด `http://localhost:8787`
+- ลองในเครื่องแบบเดียวกับบน Cloudflare: สร้างไฟล์ `.dev.vars` ที่มีบรรทัด `BUILDER_PASSWORD="รหัสทดสอบ"` (ไฟล์นี้ไม่ถูก commit) แล้ว `npx wrangler dev` เปิด `http://localhost:8787`
 
 ### ตั้งค่าครั้งแรก (Cloudflare dashboard — ชื่อเมนูอาจต่างเล็กน้อยตามเวอร์ชัน)
 
 1. **เชื่อม repo** — Workers & Pages → Create → **Import a repository** (Connect to Git) → เลือก `Template-ETCH` → ตั้งชื่อ Worker `template-etch`
-2. **ตั้งค่า build** — Worker → Settings → **Build**
-   - Build command: ว่างไว้ (`wrangler.jsonc` สั่ง build เอง)
-   - Deploy command: `npx wrangler deploy`
-   - Production branch: `main`
-   - push / merge เข้า `main` แล้วดูใน Deployments ว่า build ผ่าน (log ต้องมีบรรทัด `ok site: … dist`)
-3. **ล็อกอินก่อนเข้า (Cloudflare Access)** — ทำก่อนเปิดลิงก์ให้ใครดู · `wrangler.jsonc` ตั้ง `"workers_dev": false` ไว้ เว็บจึงปิดอยู่จนกว่าจะตั้งล็อกอินเสร็จแล้วเปลี่ยนเป็น `true`
-   - Zero Trust แผน Free ($0) ต้องผูกบัตรตอนเปิดใช้ครั้งแรก
-   - Worker → แท็บ **Domains** → แถว `workers.dev` → **Enable Access** (Cloudflare สร้าง Access application ให้)
-   - Zero Trust → Access → Applications → เปิด application ที่เพิ่งสร้าง → Policies: ให้เหลือ Action **Allow** · Include **Emails** = อีเมลของคุณ (ลบ rule ที่กว้างกว่านี้ เช่น Everyone)
-   - Login methods: **One-time PIN** (ส่งรหัสเข้าอีเมล ไม่ต้องตั้งรหัสผ่าน)
-4. **ลิงก์ preview ของ branch** — `wrangler.jsonc` ตั้ง `"preview_urls": false` ไว้แล้ว ตรวจในแท็บ Domains ว่า Preview URLs เป็น Disabled และปิด build ของ branch อื่นที่ Settings → Builds → "Builds for Preview branches"
-5. **ตรวจ** — เปิด `https://template-etch.<บัญชีของคุณ>.workers.dev` ในหน้าต่างไม่ระบุตัวตน (Incognito) ต้องเจอหน้าล็อกอินของ Cloudflare ก่อน ล็อกอินแล้วต้องเห็น Page Builder
+2. **ตั้งค่า build** — Worker → Settings → **Builds**
+   - Build command: ว่างไว้ (`wrangler.jsonc` สั่ง build เอง) · Deploy command: `npx wrangler deploy` · Production branch: `main`
+   - ปิด **Builds for Preview branches** (build เฉพาะ `main`)
+3. **ตั้งรหัสผ่าน** — Worker → Settings → **Variables and Secrets** → Add
+   - Type: **Secret** · Name: `BUILDER_PASSWORD` · Value: รหัสยาว ๆ ที่เดายาก (แนะนำ 20 ตัวขึ้นไป สุ่มจาก password manager)
+   - Deploy / Save — รหัสเก็บใน Cloudflare เท่านั้น ไม่อยู่ใน repo และไม่หายตอน deploy ใหม่
+   - เปลี่ยนรหัส: แก้ค่า secret เดิม (คนที่ล็อกอินค้างไว้ต้องปิดเบราว์เซอร์แล้วล็อกอินใหม่)
+4. **ลิงก์ preview ของ branch** — `wrangler.jsonc` ตั้ง `"preview_urls": false` ไว้แล้ว ตรวจในแท็บ **Domains** ว่า Preview URLs เป็น Disabled
+5. **เปิดเว็บ** — แท็บ **Domains** → workers.dev ต้องเป็น Enabled (`wrangler.jsonc` ตั้ง `"workers_dev": true` deploy แล้วจะเปิดเอง)
+6. **ตรวจ** — เปิด `https://template-etch.<บัญชีของคุณ>.workers.dev` ในหน้าต่างไม่ระบุตัวตน (Incognito)
+   - ต้องเด้งกล่องถามรหัสก่อน กด Cancel ต้องเห็น "Password required." · ใส่รหัสผิดต้องถามซ้ำ · ใส่ถูกต้องเห็น Page Builder
+   - ถ้าขึ้น "Page Builder is locked" แปลว่ายังไม่ได้ตั้ง secret ในข้อ 3
+
+> อยากได้ล็อกอินด้วยอีเมลแทนรหัสผ่าน: ใช้ Cloudflare Access (Zero Trust แผน Free ต้องผูกบัตร) — แท็บ Domains → workers.dev → Enable Access แล้วจำกัด Policy เป็นอีเมลของคุณ ใช้คู่กับรหัสผ่านได้
 
 ### หลังจากนั้น
 
 - merge เข้า `main` → Cloudflare build + deploy ให้เองภายในไม่กี่นาที
 - เว็บใช้ไฟล์ preview ที่ commit ไว้ ถ้าแก้ template ต้อง build + commit ก่อน (CI จะเตือนถ้าลืม — ดูด้านล่าง)
 - `_build/site/_headers` กำหนด security headers ของเว็บ (CSP, ห้ามเว็บอื่นฝัง, `noindex`) ถ้าเพิ่มของที่โหลดจากเว็บอื่น ต้องเพิ่มโดเมนใน CSP ด้วย
-- อยากใช้โดเมนของตัวเอง: Worker → Settings → Domains & Routes → Add → Custom domain แล้วเพิ่มโดเมนนั้นใน Access application ด้วย
+- อยากใช้โดเมนของตัวเอง: Worker → แท็บ Domains → Add → Custom domain (รหัสผ่านใช้กับทุกโดเมนของ Worker อยู่แล้ว)
 
 ### ตรวจอัตโนมัติ (GitHub Actions)
 
