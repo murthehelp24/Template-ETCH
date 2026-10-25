@@ -3,7 +3,7 @@
 Fails on: the same selector with different CSS in two files, a component / loop key with different content,
 a file without the shared colour variables, a hard-coded colour in a template-owned style, a style id used by a
 block but missing from the file."""
-import collections, glob, json, re, sys
+import collections, glob, json, os, re, sys
 
 files = sorted(glob.glob("etch-*/*.etch.txt"))
 P = {f: json.load(open(f)) for f in files}
@@ -83,9 +83,15 @@ for f, p in P.items():
         warnings.append(f"{f}: has customMediaDefinitions (overwrites the target's)")
 
 # ---------------------------------------------------------------- 4. leftovers from the source sites
-LEFT = re.compile(r"pinn|win ?win|winwinesco|wp-content/uploads/(?!2026/01/menu-1\.svg)", re.I)
-for f, p in P.items():
-    hits = set(m.group(0) for m in LEFT.finditer(json.dumps(p, ensure_ascii=False)))
+# Uploads from the source sites and real phone numbers (the samples are 02-000-0000 / +6620000000).
+# Client names are not written here: list them one per line in _build/private-terms.txt (git-ignored).
+SAMPLE_PHONES = {"02-000-0000", "+6620000000"}
+terms = [t.strip() for t in open("_build/private-terms.txt", encoding="utf-8")
+         if t.strip() and not t.startswith("#")] if os.path.exists("_build/private-terms.txt") else []
+LEFT = re.compile(r"wp-content/uploads/(?!2026/01/menu-1\.svg)|(?<![\w-])(?:\+66|0)\d{1,2}-\d{3}-\d{4}(?![\w-])"
+                  + "".join("|" + re.escape(t) for t in terms), re.I)
+for f in files + sorted(glob.glob("_build/src/*.json")):
+    hits = set(m.group(0) for m in LEFT.finditer(open(f, encoding="utf-8").read())) - SAMPLE_PHONES
     if hits:
         warnings.append(f"{f}: source-site leftovers {sorted(hits)}")
 

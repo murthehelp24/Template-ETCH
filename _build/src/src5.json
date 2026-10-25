@@ -73,7 +73,7 @@
             "metadata": {
              "name": "Text"
             },
-            "content": "FAQ"
+            "content": "Sample text"
            },
            "innerBlocks": [],
            "innerHTML": "",
@@ -103,7 +103,7 @@
             "metadata": {
              "name": "Text"
             },
-            "content": "คำถามที่พบบ่อย"
+            "content": "Sample text"
            },
            "innerBlocks": [],
            "innerHTML": "",
@@ -178,7 +178,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "Pinn Pain Clinic รักษาอาการอะไรบ้าง?"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -210,7 +210,7 @@
             {
              "blockName": "etch/raw-html",
              "attrs": {
-              "content": "อาการปวดจากกล้ามเนื้อ กระดูก ข้อต่อ เส้นเอ็น และเส้นประสาท ตั้งแต่ศีรษะ คอ บ่า ไหล่ หลัง สะโพก ไปจนถึงข้อเข่า ข้อศอก ข้อมือ และข้อเท้า"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -270,7 +270,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "ต้องนัดล่วงหน้าไหม?"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -302,7 +302,7 @@
             {
              "blockName": "etch/raw-html",
              "attrs": {
-              "content": "แนะนำให้นัดล่วงหน้าผ่าน LINE @pinnpainclinic หรือโทร 080-893-6388"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -362,7 +362,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "ค่ารักษาเท่าไร?"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -394,7 +394,7 @@
             {
              "blockName": "etch/raw-html",
              "attrs": {
-              "content": "เริ่มต้น 1,500 บาทต่อบริเวณ ขึ้นกับอาการและการประเมินของแพทย์"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -454,7 +454,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "เบิกประกันได้ไหม?"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -486,7 +486,7 @@
             {
              "blockName": "etch/raw-html",
              "attrs": {
-              "content": "ออกใบรับรองแพทย์และใบเสร็จเพื่อเบิกประกันได้ตามเงื่อนไขของแต่ละบริษัท"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -546,7 +546,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "การฉีดยาหรือฝังเข็มเจ็บไหม?"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -578,7 +578,7 @@
             {
              "blockName": "etch/raw-html",
              "attrs": {
-              "content": "อาจรู้สึกตึงหรือระบมเล็กน้อย 1–2 วัน แพทย์ใช้อัลตราซาวด์นำทางเพื่อให้ตรงจุดและลดการบาดเจ็บ"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -638,7 +638,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "ต้องรักษากี่ครั้ง?"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -670,7 +670,7 @@
             {
              "blockName": "etch/raw-html",
              "attrs": {
-              "content": "ขึ้นกับอาการ บางหัตถการ เช่น Prolotherapy ทำ 3–6 ครั้ง ห่างกัน 3–6 สัปดาห์"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -730,7 +730,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "มีที่จอดรถไหม?"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -762,7 +762,7 @@
             {
              "blockName": "etch/raw-html",
              "attrs": {
-              "content": "มีที่จอดรถ คลินิกอยู่ถนนเทพารักษ์ บางพลี สมุทรปราการ"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -1003,7 +1003,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "ติดต่อเรา"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -1033,7 +1033,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "ปวดตรงไหน ปรึกษาแพทย์เฉพาะทางได้เลย"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -1065,7 +1065,7 @@
             {
              "blockName": "etch/raw-html",
              "attrs": {
-              "content": "นัดหมายล่วงหน้าผ่าน LINE หรือโทร มีที่จอดรถ"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -1137,7 +1137,7 @@
                 "metadata": {
                  "name": "Text"
                 },
-                "content": "ที่อยู่ "
+                "content": "Sample text"
                },
                "innerBlocks": [],
                "innerHTML": "",
@@ -1204,7 +1204,7 @@
                 "metadata": {
                  "name": "Text"
                 },
-                "content": "เวลาทำการ "
+                "content": "Sample text"
                },
                "innerBlocks": [],
                "innerHTML": "",
@@ -1271,7 +1271,7 @@
                 "metadata": {
                  "name": "Text"
                 },
-                "content": "โทร "
+                "content": "Sample text"
                },
                "innerBlocks": [],
                "innerHTML": "",
@@ -1294,7 +1294,7 @@
               "tag": "a",
               "attributes": {
                "class": "contact-split__link",
-               "href": "tel:{options.metabox.clinic.phone}"
+               "href": "#"
               },
               "styles": [
                "hi9m0wy"
@@ -1376,7 +1376,7 @@
                   "metadata": {
                    "name": "Text"
                   },
-                  "content": "อีเมล "
+                  "content": "Sample text"
                  },
                  "innerBlocks": [],
                  "innerHTML": "",
@@ -1399,7 +1399,7 @@
                 "tag": "a",
                 "attributes": {
                  "class": "contact-split__link",
-                 "href": "mailto:{options.metabox.clinic.email}"
+                 "href": "#"
                 },
                 "styles": [
                  "hi9m0wy"
@@ -1475,7 +1475,7 @@
                 "metadata": {
                  "name": "Text"
                 },
-                "content": "แผนที่ "
+                "content": "Sample text"
                },
                "innerBlocks": [],
                "innerHTML": "",
@@ -1498,7 +1498,7 @@
               "tag": "a",
               "attributes": {
                "class": "contact-split__link",
-               "href": "{options.metabox.clinic.map_url}",
+               "href": "#",
                "target": "_blank",
                "rel": "noopener"
               },
@@ -1513,7 +1513,7 @@
                 "metadata": {
                  "name": "Text"
                 },
-                "content": "เปิด Google Maps"
+                "content": "Sample text"
                },
                "innerBlocks": [],
                "innerHTML": "",
@@ -1562,7 +1562,7 @@
           "tag": "ul",
           "attributes": {
            "class": "contact-split__social",
-           "aria-label": "โซเชียลมีเดีย"
+           "aria-label": "Sample"
           },
           "styles": [
            "pnsoc01"
@@ -1602,10 +1602,10 @@
                 "tag": "a",
                 "attributes": {
                  "class": "contact-split__social-link",
-                 "href": "{options.metabox.clinic.facebook_url}",
+                 "href": "#",
                  "target": "_blank",
                  "rel": "noopener",
-                 "aria-label": "Facebook"
+                 "aria-label": "Sample"
                 },
                 "styles": [
                  "pnsocl1"
@@ -1623,7 +1623,7 @@
                    "class": "contact-split__social-icon",
                    "aria-hidden": "true",
                    "focusable": "false",
-                   "src": "/wp-content/uploads/2026/10/social-facebook.svg"
+                   "src": "/sample-icons/social-facebook.svg"
                   },
                   "styles": [
                    "pnsoci1"
@@ -1679,10 +1679,10 @@
               "tag": "a",
               "attributes": {
                "class": "contact-split__social-link",
-               "href": "{options.metabox.clinic.instagram_url}",
+               "href": "#",
                "target": "_blank",
                "rel": "noopener",
-               "aria-label": "Instagram"
+               "aria-label": "Sample"
               },
               "styles": [
                "pnsocl1"
@@ -1700,7 +1700,7 @@
                  "class": "contact-split__social-icon",
                  "aria-hidden": "true",
                  "focusable": "false",
-                 "src": "/wp-content/uploads/2026/10/social-instagram.svg"
+                 "src": "/sample-icons/social-instagram.svg"
                 },
                 "styles": [
                  "pnsoci1"
@@ -1762,10 +1762,10 @@
                 "tag": "a",
                 "attributes": {
                  "class": "contact-split__social-link",
-                 "href": "{options.metabox.clinic.tiktok_url}",
+                 "href": "#",
                  "target": "_blank",
                  "rel": "noopener",
-                 "aria-label": "TikTok"
+                 "aria-label": "Sample"
                 },
                 "styles": [
                  "pnsocl1"
@@ -1783,7 +1783,7 @@
                    "class": "contact-split__social-icon",
                    "aria-hidden": "true",
                    "focusable": "false",
-                   "src": "/wp-content/uploads/2026/10/social-tiktok.svg"
+                   "src": "/sample-icons/social-tiktok.svg"
                   },
                   "styles": [
                    "pnsoci1"
@@ -1855,7 +1855,7 @@
             },
             "tag": "a",
             "attributes": {
-             "href": "{options.metabox.clinic.line_url}",
+             "href": "#",
              "target": "_blank",
              "rel": "noopener",
              "class": "btn--primary"
@@ -1896,7 +1896,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "ติดต่อผ่านไลน์"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -1920,7 +1920,7 @@
             },
             "tag": "a",
             "attributes": {
-             "href": "tel:{options.metabox.clinic.phone}",
+             "href": "#",
              "class": "btn--primary btn--outline"
             },
             "styles": [
@@ -1935,7 +1935,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "โทร {options.metabox.clinic.phone}"
+              "content": "Sample text{options.metabox.clinic.phone}"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -1982,8 +1982,8 @@
         "tag": "iframe",
         "attributes": {
          "class": "contact-split__map",
-         "src": "https://www.google.com/maps?q=Pinn%20Pain%20Clinic%20130%20%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%88%206%20%E0%B8%96%E0%B8%99%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B9%8C%20%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B5%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%20%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B5%20%E0%B8%AA%E0%B8%A1%E0%B8%B8%E0%B8%97%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3&output=embed",
-         "title": "แผนที่ Pinn Pain Clinic",
+         "src": "https://www.google.com/maps?q=Bangkok&output=embed",
+         "title": "Sample",
          "loading": "lazy",
          "referrerpolicy": "no-referrer-when-downgrade"
         },
@@ -2234,7 +2234,7 @@
             "metadata": {
              "name": "Text"
             },
-            "content": "บทความ"
+            "content": "Sample text"
            },
            "innerBlocks": [],
            "innerHTML": "",
@@ -2264,7 +2264,7 @@
             "metadata": {
              "name": "Text"
             },
-            "content": "บทความล่าสุดจากแพทย์"
+            "content": "Sample text"
            },
            "innerBlocks": [],
            "innerHTML": "",
@@ -2568,7 +2568,7 @@
                 "metadata": {
                  "name": "Text"
                 },
-                "content": "อ่านต่อ →"
+                "content": "Sample text"
                },
                "innerBlocks": [],
                "innerHTML": "",
@@ -2652,7 +2652,7 @@
             "metadata": {
              "name": "Text"
             },
-            "content": "ดูบทความทั้งหมด"
+            "content": "Sample text"
            },
            "innerBlocks": [],
            "innerHTML": "",
@@ -3067,7 +3067,7 @@
               "metadata": {
                "name": "Text"
               },
-              "content": "บทความจากแพทย์"
+              "content": "Sample text"
              },
              "innerBlocks": [],
              "innerHTML": "",
@@ -3396,7 +3396,7 @@
                       "metadata": {
                        "name": "Text"
                       },
-                      "content": "อ่านต่อ →"
+                      "content": "Sample text"
                      },
                      "innerBlocks": [],
                      "innerHTML": "",
@@ -3459,7 +3459,7 @@
             "tag": "nav",
             "attributes": {
              "class": "blog-pager",
-             "aria-label": "หน้าบทความ"
+             "aria-label": "Sample"
             },
             "styles": [
              "pq000dg"
@@ -3963,7 +3963,7 @@
              "tag": "div",
              "attributes": {
               "class": "post-share",
-              "aria-label": "แชร์บทความ"
+              "aria-label": "Sample"
              },
              "styles": [
               "pq000dd"
@@ -3991,7 +3991,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "แชร์บทความ"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -4017,7 +4017,7 @@
                 "href": "https://www.facebook.com/sharer/sharer.php?u={this.permalink.full}",
                 "target": "_blank",
                 "rel": "noopener",
-                "aria-label": "แชร์ไป Facebook"
+                "aria-label": "Sample"
                },
                "styles": [
                 "pq000de"
@@ -4064,7 +4064,7 @@
                 "href": "https://twitter.com/intent/tweet?url={this.permalink.full}",
                 "target": "_blank",
                 "rel": "noopener",
-                "aria-label": "แชร์ไป X"
+                "aria-label": "Sample"
                },
                "styles": [
                 "pq000de"
@@ -4108,10 +4108,10 @@
                "tag": "a",
                "attributes": {
                 "class": "post-share__link",
-                "href": "https://social-plugins.line.me/lineit/share?url={this.permalink.full}",
+                "href": "#",
                 "target": "_blank",
                 "rel": "noopener",
-                "aria-label": "แชร์ไป LINE"
+                "aria-label": "Sample"
                },
                "styles": [
                 "pq000de"
@@ -4252,7 +4252,7 @@
                "metadata": {
                 "name": "Text"
                },
-               "content": "บทความที่เกี่ยวข้อง"
+               "content": "Sample text"
               },
               "innerBlocks": [],
               "innerHTML": "",
@@ -4593,7 +4593,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "อ่านต่อ →"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -5028,7 +5028,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "ติดต่อเรา"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -5055,7 +5055,7 @@
                {
                 "blockName": "etch/raw-html",
                 "attrs": {
-                 "content": "Pinn Pain Clinic<span class=\"contact-page__th\">พินน์ เพน คลินิก</span>"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -5090,7 +5090,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "ปวดตรงไหน ปรึกษาแพทย์เฉพาะทางได้เลย นัดหมายล่วงหน้าผ่าน LINE หรือโทร มีที่จอดรถ"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -5201,7 +5201,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "ที่อยู่"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -5224,7 +5224,7 @@
                    "tag": "a",
                    "attributes": {
                     "class": "contact-page__link",
-                    "href": "{options.metabox.clinic.map_url}",
+                    "href": "#",
                     "target": "_blank",
                     "rel": "noopener"
                    },
@@ -5343,7 +5343,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "เวลาทำการ"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -5477,7 +5477,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "โทร"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -5500,7 +5500,7 @@
                    "tag": "a",
                    "attributes": {
                     "class": "contact-page__link",
-                    "href": "tel:{options.metabox.clinic.phone}"
+                    "href": "#"
                    },
                    "styles": [
                     "pq000dp"
@@ -5618,7 +5618,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "LINE"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -5641,7 +5641,7 @@
                    "tag": "a",
                    "attributes": {
                     "class": "contact-page__link",
-                    "href": "{options.metabox.clinic.line_url}",
+                    "href": "#",
                     "target": "_blank",
                     "rel": "noopener"
                    },
@@ -5656,7 +5656,7 @@
                      "metadata": {
                       "name": "Text"
                      },
-                     "content": "@pinnpainclinic"
+                     "content": "Sample text"
                     },
                     "innerBlocks": [],
                     "innerHTML": "",
@@ -5774,7 +5774,7 @@
                        "metadata": {
                         "name": "Text"
                        },
-                       "content": "อีเมล"
+                       "content": "Sample text"
                       },
                       "innerBlocks": [],
                       "innerHTML": "",
@@ -5797,7 +5797,7 @@
                      "tag": "a",
                      "attributes": {
                       "class": "contact-page__link",
-                      "href": "mailto:{options.metabox.clinic.email}"
+                      "href": "#"
                      },
                      "styles": [
                       "pq000dp"
@@ -5904,7 +5904,7 @@
                  "metadata": {
                   "name": "Text"
                  },
-                 "content": "Social Media"
+                 "content": "Sample text"
                 },
                 "innerBlocks": [],
                 "innerHTML": "",
@@ -5927,7 +5927,7 @@
                "tag": "ul",
                "attributes": {
                 "class": "contact-split__social",
-                "aria-label": "โซเชียลมีเดีย"
+                "aria-label": "Sample"
                },
                "styles": [
                 "pnsoc01"
@@ -5967,10 +5967,10 @@
                      "tag": "a",
                      "attributes": {
                       "class": "contact-split__social-link",
-                      "href": "{options.metabox.clinic.facebook_url}",
+                      "href": "#",
                       "target": "_blank",
                       "rel": "noopener",
-                      "aria-label": "Facebook"
+                      "aria-label": "Sample"
                      },
                      "styles": [
                       "pnsocl1"
@@ -5988,7 +5988,7 @@
                         "class": "contact-split__social-icon",
                         "aria-hidden": "true",
                         "focusable": "false",
-                        "src": "/wp-content/uploads/2026/10/social-facebook.svg"
+                        "src": "/sample-icons/social-facebook.svg"
                        },
                        "styles": [
                         "pnsoci1"
@@ -6044,10 +6044,10 @@
                    "tag": "a",
                    "attributes": {
                     "class": "contact-split__social-link",
-                    "href": "{options.metabox.clinic.instagram_url}",
+                    "href": "#",
                     "target": "_blank",
                     "rel": "noopener",
-                    "aria-label": "Instagram"
+                    "aria-label": "Sample"
                    },
                    "styles": [
                     "pnsocl1"
@@ -6065,7 +6065,7 @@
                       "class": "contact-split__social-icon",
                       "aria-hidden": "true",
                       "focusable": "false",
-                      "src": "/wp-content/uploads/2026/10/social-instagram.svg"
+                      "src": "/sample-icons/social-instagram.svg"
                      },
                      "styles": [
                       "pnsoci1"
@@ -6127,10 +6127,10 @@
                      "tag": "a",
                      "attributes": {
                       "class": "contact-split__social-link",
-                      "href": "{options.metabox.clinic.tiktok_url}",
+                      "href": "#",
                       "target": "_blank",
                       "rel": "noopener",
-                      "aria-label": "TikTok"
+                      "aria-label": "Sample"
                      },
                      "styles": [
                       "pnsocl1"
@@ -6148,7 +6148,7 @@
                         "class": "contact-split__social-icon",
                         "aria-hidden": "true",
                         "focusable": "false",
-                        "src": "/wp-content/uploads/2026/10/social-tiktok.svg"
+                        "src": "/sample-icons/social-tiktok.svg"
                        },
                        "styles": [
                         "pnsoci1"
@@ -6243,8 +6243,8 @@
              "tag": "iframe",
              "attributes": {
               "class": "contact-page__map",
-              "src": "https://www.google.com/maps?q=Pinn%20Pain%20Clinic%20130%20%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%88%206%20%E0%B8%96%E0%B8%99%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B9%8C%20%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B5%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%20%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B5%20%E0%B8%AA%E0%B8%A1%E0%B8%B8%E0%B8%97%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3&output=embed",
-              "title": "แผนที่ Pinn Pain Clinic",
+              "src": "https://www.google.com/maps?q=Bangkok&output=embed",
+              "title": "Sample",
               "loading": "lazy",
               "referrerpolicy": "no-referrer-when-downgrade"
              },

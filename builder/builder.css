@@ -128,7 +128,7 @@ h2, h3, p { margin: 0; }
   /* toolbar lives in the gutter left of the page so it never covers template content */
   position: absolute; top: 0; left: -46px; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 2px;
   padding: 4px; border-radius: 9px; background: #1d2330; color: #fff;
-  opacity: .28; transition: opacity .15s; box-shadow: var(--shadow);
+  opacity: .55; transition: opacity .15s; box-shadow: var(--shadow);
 }
 .pb-item:hover .pb-bar, .pb-item:focus-within .pb-bar { opacity: 1; }
 .pb-bar button {
@@ -164,6 +164,13 @@ body.is-dragging iframe { pointer-events: none; }
 .pb-color__hex { width: 80px; height: 28px; padding: 0 6px; border: 1px solid var(--line); border-radius: 6px; font-family: ui-monospace, monospace; font-size: 12px; grid-row: 1; grid-column: 3; }
 .pb-color__state { grid-column: 3; justify-self: end; border: 0; background: none; padding: 0; font-size: 11.5px; color: var(--muted); cursor: default; }
 .pb-color__state.is-custom { color: var(--brand); cursor: pointer; text-decoration: underline; }
+.pb-contrast { display: flex; flex-direction: column; gap: 4px; }
+.pb-contrast__row { display: grid; grid-template-columns: 20px 1fr auto; gap: 6px; align-items: center; padding: 5px 8px; border-radius: 6px; background: #eef8f1; color: #1d5b36; font-size: 12.5px; }
+.pb-contrast__row b { font-variant-numeric: tabular-nums; }
+.pb-contrast__row.is-bad { background: #fdeceb; color: #9b2a23; }
+.pb-contrast__mark { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: currentColor; color: inherit; font-size: 11px; font-weight: 700; }
+.pb-contrast__mark { color: #fff; background: #2d8a55; }
+.pb-contrast__row.is-bad .pb-contrast__mark { background: #c2372f; }
 .pb-note { margin-top: auto; padding: 10px 12px; border-radius: 8px; background: #fff7e6; color: #6b4b10; font-size: 12.5px; line-height: 1.5; }
 
 /* ---------------------------------------------------------------- export dialog */
@@ -187,6 +194,9 @@ body.is-dragging iframe { pointer-events: none; }
   background: #1d2330; color: #fff; font-size: 13px; opacity: 0; pointer-events: none; transition: opacity .2s, translate .2s; z-index: 50;
 }
 .pb-toast.is-on { opacity: 1; translate: -50% 0; }
+.pb-toast.has-action { pointer-events: auto; display: flex; align-items: center; gap: 12px; padding-right: 6px; }
+.pb-toast button { height: 28px; padding: 0 12px; border: 0; border-radius: 99px; background: #fff; color: #1d2330; font-weight: 600; cursor: pointer; }
+.pb-btn.is-armed { background: var(--danger); border-color: var(--danger); color: #fff; }
 
 /* small screens: stack the side panels */
 @media (max-width: 1100px) {
