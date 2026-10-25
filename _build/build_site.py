@@ -1,4 +1,4 @@
-"""Put together the website for Cloudflare Pages in dist/ (build command on Cloudflare, or run it yourself).
+"""Put together the website in dist/ — wrangler.jsonc runs this before every Cloudflare deploy; you can run it too.
 
     python3 _build/build_site.py
 
