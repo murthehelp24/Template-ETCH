@@ -13,12 +13,20 @@
     <span>Etch Template Kit</span>
   </div>
 
-  <div class="pb-page" aria-label="หน้าที่ประกอบไว้">
-    <select id="pageSelect" title="เลือกหน้าที่บันทึกไว้"></select>
-    <input id="pageName" type="text" placeholder="ชื่อหน้า เช่น หน้าแรก ลูกค้า A" aria-label="ชื่อหน้า">
-    <button type="button" class="pb-btn" id="newPage" title="สร้างหน้าใหม่">+ หน้าใหม่</button>
-    <button type="button" class="pb-btn" id="dupPage" title="ทำสำเนาหน้านี้">สำเนา</button>
-    <button type="button" class="pb-btn pb-btn--ghost" id="delPage" title="ลบหน้านี้">ลบ</button>
+  <div class="pb-page">
+    <div class="pb-pagepick">
+      <button type="button" class="pb-btn pb-pagebtn" id="pageMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="pageMenu" title="สลับหน้า · ทำสำเนา · ลบ">
+        <span class="pb-pagebtn__text"><b id="pageMenuName"></b><small id="pageMenuType"></small></span>
+        <span class="pb-pagebtn__caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="pb-pagemenu" id="pageMenu" hidden>
+        <div class="pb-pagemenu__head">หน้าทั้งหมดในเว็บนี้ <span id="pageCount"></span></div>
+        <ul class="pb-pagelist" id="pageList"></ul>
+        <button type="button" class="pb-btn pb-btn--primary pb-btn--full" id="newPageMenu">+ สร้างหน้าใหม่</button>
+      </div>
+    </div>
+    <input id="pageName" type="text" placeholder="ชื่อหน้า เช่น หน้าแรก ลูกค้า A" aria-label="ชื่อหน้า" title="แก้ชื่อหน้านี้">
+    <button type="button" class="pb-btn" id="newPage" title="สร้างหน้าใหม่ (เลือกประเภทหน้าได้)">+ หน้าใหม่</button>
   </div>
 
   <div class="pb-seg" role="group" aria-label="ขนาดจอ" id="deviceSeg">
