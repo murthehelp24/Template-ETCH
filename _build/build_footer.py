@@ -1,4 +1,4 @@
-"""Paste-ready, project-agnostic footer (MainFooter component) + floating LINE / phone buttons.
+"""Paste-ready, project-agnostic footer (MainFooter component).
 Colours come from kit.COLORS, social icons from kit.social_list."""
 import sys
 from lib_etch import el, text, img, svg, cond, block, style, prop, write
@@ -40,39 +40,6 @@ LINK_CSS = """display: inline-flex;
     text-decoration-color: var(--main-accent);
   }"""
 
-FLOAT_CSS = """position: fixed;
-  inset-block-end: var(--space-m);
-  inset-inline-end: var(--space-m);
-  z-index: 40;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);"""
-
-FLOAT_BTN_CSS = """display: grid;
-  place-items: center;
-  inline-size: 5.6rem;
-  block-size: 5.6rem;
-  border-radius: 50%;
-  background-color: var(--main-primary);
-  color: var(--main-on-primary);
-  box-shadow: 0 0 0 3px var(--main-light), 0 0.6rem 1.6rem var(--main-shadow);
-  transition: background-color 0.2s ease, scale 0.2s ease;
-
-  svg {
-    inline-size: 2.6rem;
-    block-size: 2.6rem;
-  }
-
-  &:hover,
-  &:focus-visible {
-    background-color: var(--main-accent);
-    scale: 1.06;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }"""
-
 styles = {
     "etch-container-style": BASE["etch-container-style"],
     **SOCIAL_STYLES,
@@ -100,8 +67,6 @@ styles = {
   font-size: var(--text-s);
   text-align: center;
   color: var(--main-on-primary-muted);"""),
-    "mf-float": style(".main-float", FLOAT_CSS),
-    "mf-float-btn": style(".main-float__btn", FLOAT_BTN_CSS),
 }
 
 
@@ -121,13 +86,6 @@ def icon_link(name, href, icon_name, label, extra=None):
     a = {"class": "main-footer__link", "href": href, **(extra or {})}
     return el(name, "a", a, ["mf-link"], [svg(f"{name} icon", icon(icon_name), "main-footer__icon", ["mf-icon"]),
                                           text(label)])
-
-
-def float_btn(name, href, icon_name, label, blank=False):
-    a = {"class": "main-float__btn", "href": href, "aria-label": label}
-    if blank:
-        a.update({"target": "_blank", "rel": "noopener"})
-    return el(name, "a", a, ["mf-float-btn"], [svg(f"{name} icon", icon(icon_name))])
 
 
 blocks = [el("Main Footer", "footer", {"class": "main-footer"}, ["mf-root"], [
@@ -164,10 +122,6 @@ blocks = [el("Main Footer", "footer", {"class": "main-footer"}, ["mf-root"], [
     el("Bottom", "div", {"class": "main-footer__bottom"}, ["mf-bottom"], [
         el("Copyright", "p", {}, None, [
             text('Copyright © {site.currentDate.dateFormat("Y")} {site.name}. {props.copyrightNote}')])]),
-    cond("If floating buttons", "props.showFloat", el("Floating Buttons", "div", {"class": "main-float"}, ["mf-float"], [
-        cond("If LINE", "props.lineUrl", float_btn("LINE", "{props.lineUrl}", "line", "Chat on LINE", True)),
-        cond("If phone", "props.phone", float_btn("Phone", "tel:{props.phone}", "phone", "Call {props.phone}")),
-    ])),
 ])]
 
 properties = [
@@ -181,12 +135,10 @@ properties = [
     prop("Map Label", "mapLabel", "View on Google Maps"),
     *SOCIAL_PROPS,
     prop("Copyright Note", "copyrightNote", "All rights reserved."),
-    prop("Floating Buttons", "showFloat", True, "Round LINE / phone buttons fixed to the bottom corner of every page",
-         "boolean"),
 ]
 
 component = {"id": COMP_ID, "legacyId": "", "name": "Main Footer", "key": "MainFooter",
-             "description": "Project-agnostic site footer with floating LINE / phone buttons. Edit the property "
+             "description": "Project-agnostic site footer. Edit the property "
                             "defaults here so every template's footer updates at once.",
              "blocks": blocks, "properties": properties}
 

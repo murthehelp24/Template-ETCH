@@ -1,18 +1,17 @@
 # Main Footer — Etch template
 
-`main-footer.etch.txt` วางครั้งเดียวได้ทั้ง component, styles, ไอคอน และปุ่ม LINE / โทรแบบลอยมุมจอ
+`main-footer.etch.txt` วางครั้งเดียวได้ทั้ง component, styles และไอคอน
 
-## Footer 5 แบบเพิ่ม
+## Footer 4 แบบเพิ่ม
 
 | ไฟล์ | component | หน้าตา |
 |---|---|---|
 | `main-footer-light.etch.txt` | `MainFooterLight` | พื้นสีอ่อน ตัวอักษรเข้ม หัวข้อสีหลัก |
 | `main-footer-center.etch.txt` | `MainFooterCenter` | ทุกอย่างกึ่งกลาง: โลโก้ · เมนูแนวนอน · ข้อมูลติดต่อ · social (ไม่มีคอลัมน์ Services) |
-| `main-footer-cta.etch.txt` | `MainFooterCta` | กล่องชวนติดต่อบนสุด (Chat on LINE + โทร) แล้วตาม 4 คอลัมน์ · แก้ข้อความที่ property **CTA Title / CTA Text** |
 | `main-footer-map.etch.txt` | `MainFooterMap` | แผนที่ Google แทนคอลัมน์ Services · ใส่ลิงก์ที่ property **Map Embed URL** (Google Maps → Share → Embed a map → copy src) |
-| `main-footer-compact.etch.txt` | `MainFooterCompact` | แถวเดียว: โลโก้ · เมนู · social แล้ว copyright (ไม่มีคำอธิบาย / ข้อมูลติดต่อ — ปุ่มลอย LINE / โทรยังอยู่) |
+| `main-footer-compact.etch.txt` | `MainFooterCompact` | แถวเดียว: โลโก้ · เมนู · social แล้ว copyright (ไม่มีคำอธิบาย / ข้อมูลติดต่อ) · โลโก้และตัวเมนูใหญ่กว่าแบบอื่น |
 
-- สร้างจาก Main Footer ด้วย `_build/build_footer_variants.py`: style `main-footer__*` เหมือนกันทุกตัว ต่างกันที่คลาสเสริม `main-footer--<แบบ>` บน `<footer>` · property ชุดเดียวกับ Main Footer (บวก CTA / Map ตามแบบ) — วิธีแก้ด้านล่างใช้ได้ทุกแบบ
+- สร้างจาก Main Footer ด้วย `_build/build_footer_variants.py`: style `main-footer__*` เหมือนกันทุกตัว ต่างกันที่คลาสเสริม `main-footer--<แบบ>` บน `<footer>` · property ชุดเดียวกับ Main Footer (แบบแผนที่มี Map Embed URL เพิ่ม) — วิธีแก้ด้านล่างใช้ได้ทุกแบบ
 - แต่ละแบบเป็น component แยก key กัน วางหลายแบบในเว็บเดียวก็ไม่ทับกัน แต่ใช้แบบเดียวทั้งเว็บจะดีที่สุด
 
 ## วิธีใช้
@@ -35,7 +34,6 @@
 | Map Label | ข้อความลิงก์แผนที่ |
 | LINE / Facebook / Instagram / TikTok / YouTube URL | ว่าง = ซ่อนไอคอนนั้น |
 | Copyright Note | ต่อท้าย copyright |
-| **Floating Buttons** | เปิด/ปิดปุ่มลอยมุมขวาล่าง (LINE + โทร) ใช้ LINE URL และ Phone ชุดเดียวกัน |
 
 - **ชื่อเว็บ** ใน copyright และ alt ของโลโก้ดึงจาก **Settings → General → Site Title** อัตโนมัติ (`{site.name}`) ปีขึ้นเอง
 - ถ้าต้องการให้บางหน้าต่างออกไป แก้ property บน instance นั้นแทน
