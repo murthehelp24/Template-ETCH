@@ -28,7 +28,7 @@ CATALOG = [
     ("header-center", "header", "Header โลโก้กลาง", "etch-header/site-header-ohmyetch-center.etch.txt",
      "โลโก้กลาง · เมนูแถวล่าง"),
     ("header-topbar", "header", "Header + แถบข้อมูล", "etch-header/site-header-ohmyetch-topbar.etch.txt",
-     "แถบที่อยู่ · เวลาเปิด · อีเมล · LINE ด้านบน"),
+     "แถบที่อยู่ · เวลาเปิด · โทร · อีเมล · LINE ด้านบน"),
     ("header-floating", "header", "Header ลอยมุมโค้ง", "etch-header/site-header-ohmyetch-floating.etch.txt",
      "แถบเมนูโค้งลอย มีเงา · ปุ่มกลม"),
     ("header-right", "header", "Header เมนูชิดขวา", "etch-header/site-header-ohmyetch-right.etch.txt",

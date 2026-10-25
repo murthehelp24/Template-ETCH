@@ -135,7 +135,7 @@ TOPBAR_CSS = """/* a thin info strip above the bar (inside it, so hide-on-scroll
     text-decoration: underline;
   }
 
-  /* phones: the opening hours only */
+  /* phones: the hours and phone only */
   @media (width <= 768px) {
     .main-header__topbar-inner {
       justify-content: center;
@@ -218,6 +218,7 @@ def topbar():
                el("Info", "div", {"class": "main-header__topbar-group"}, None, [
                    topbar_item("Address", "address", "123 Example Road, Bangkok", extra="address"),
                    topbar_item("Hours", "hours", "Mon–Sat 09:00–18:00"),
+                   topbar_item("Phone", "phone", "02-000-0000", "tel:+6620000000"),
                ]),
                el("Links", "div", {"class": "main-header__topbar-group main-header__topbar-group--extra"}, None, [
                    topbar_item("Email", "email", "hello@example.com", "mailto:hello@example.com"),
