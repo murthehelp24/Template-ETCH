@@ -7,13 +7,14 @@ Reads only — never writes a .etch.txt. Outputs:
   preview/<id>.html           one page per template, rendered from the same payload that is pasted into Etch
   preview/assets/             ACSS stand-in (acss_sim.py) + frame.js (talks to the builder)
   preview/index.html          list of all previews
+  preview/page.html           every template in one page; ?t=header,hero,footer picks and orders them (builder "ดูทั้งหน้า")
   builder/kit-data.js         template list + .etch.txt contents for builder/index.html (works on file://)
 """
 import html, json, os, re, shutil
 
 from acss_sim import css as acss_css, COLORS as ACSS_COLORS
 from kit import COLORS_CSS
-from render_preview import render
+from render_preview import compile_css, render
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -70,6 +71,22 @@ PAGE = """<!doctype html>
 """
 
 
+ASSEMBLE = """
+<script>
+/* ?t=header,hero,footer → stamp those templates here, in that order (default: header + every section + footer) */
+(function () {
+  var q = new URLSearchParams(location.search).get('t');
+  var ids = q ? q.split(',') : Array.prototype.map.call(document.querySelectorAll('template[id^="tpl-"]'),
+    function (t) { return t.id.slice(4); }).filter(function (id) { return id !== 'header-menubuilder'; });
+  var here = document.currentScript;
+  ids.forEach(function (id) {
+    var t = document.getElementById('tpl-' + id);
+    if (t) here.parentNode.insertBefore(t.content.cloneNode(true), here);
+  });
+})();
+</script>"""
+
+
 def main_colors():
     """The five --main-* defaults from kit.COLORS_CSS: which ACSS variable each follows + the preview value."""
     out = []
@@ -91,18 +108,32 @@ def main():
     write(os.path.join(preview, "assets", "acss-sim.css"), acss_css())
     shutil.copyfile(os.path.join(HERE, "preview_assets", "frame.js"), os.path.join(preview, "assets", "frame.js"))
 
+    bodies, all_styles, all_scripts = [], {}, {}
     for tid, group, label, path, note in CATALOG:
         raw = open(os.path.join(ROOT, path), encoding="utf-8").read()
         payload = json.loads(raw)
         kit["templates"].append({"id": tid, "group": group, "label": label, "note": note,
                                  "file": os.path.basename(path), "payload": payload})
         body, css, scripts = render(payload)
+        bodies.append((tid, body))
+        for st in payload["styles"].values():  # the audit guarantees one CSS per selector across files
+            all_styles.setdefault((st["type"], st["selector"], st["css"]), st)
+        for code in scripts:
+            all_scripts.setdefault(code, None)
         js = "\n".join(f'<script type="module">\n{s}\n</script>' for s in scripts)
         write(os.path.join(preview, f"{tid}.html"),
               PAGE.format(title=html.escape(label), css=css, id=tid, body=body, scripts=js))
         data["templates"].append({"id": tid, "group": group, "label": label, "note": note, "place": PLACE.get(tid, ""),
                                   "file": os.path.basename(path), "path": path, "preview": f"../preview/{tid}.html",
                                   "etch": raw})
+
+    # one page with every template kept in <template>; a small script stamps the ones named in ?t= in order
+    tpls = "\n".join(f'<template id="tpl-{tid}">{body}</template>' for tid, body in bodies)
+    css = compile_css({str(i): st for i, st in enumerate(all_styles.values())})
+    js = "\n".join(f'<script type="module">\n{code}\n</script>' for code in all_scripts)
+    write(os.path.join(preview, "page.html"), PAGE.format(title="Page", css=css, id="page", body=tpls + ASSEMBLE,
+                                                         scripts=js))
+    data["page"] = "../preview/page.html"
 
     dest = os.path.join(preview, "kit.json")
     json.dump(kit, open(dest, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))

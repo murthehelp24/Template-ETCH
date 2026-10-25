@@ -33,6 +33,7 @@
   </div>
 
   <div class="pb-actions">
+    <a class="pb-btn" id="viewPage" href="#" target="_blank" rel="noopener" title="เปิดหน้านี้ต่อกันเป็นหน้าเดียวในแท็บใหม่ (ใช้เปิดให้ลูกค้าดูได้)">ดูทั้งหน้า ↗</a>
     <button type="button" class="pb-btn" id="exportJson">Export JSON</button>
     <label class="pb-btn" for="importJson">Import JSON</label>
     <input type="file" id="importJson" accept="application/json,.json" hidden>
@@ -60,6 +61,10 @@
     <p class="pb-muted">ค่าใน <code>:where(:root)</code> — เปลี่ยนแล้วเห็นผลทันทีทุก section</p>
     <div id="mainColors"></div>
     <button type="button" class="pb-btn pb-btn--ghost pb-btn--full" id="resetColors">คืนค่าทั้งหมดให้ตาม ACSS</button>
+
+    <h3>อ่านง่ายไหม</h3>
+    <p class="pb-muted">contrast ของสีที่ใช้คู่กัน (WCAG: ตัวอักษรทั่วไปควรได้ 4.5:1 ขึ้นไป)</p>
+    <div class="pb-contrast" id="contrast" aria-live="polite"></div>
 
     <h3>จำลองสี ACSS</h3>
     <p class="pb-muted">สีตั้งต้นของเว็บ (ตั้งใน ACSS ไม่ได้ export) — ปุ่ม <code>btn--*</code> ใช้สีชุดนี้</p>

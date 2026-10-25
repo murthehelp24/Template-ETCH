@@ -10,19 +10,21 @@
   var ACSS = ['primary', 'secondary'];
   var expanded = 0; // extra height while a menu / drawer is open
 
+  var HEX = /^#[0-9a-f]{6}$/i; // only plain colours reach the page's CSS
+
   function apply(state) {
-    if (state.root) {
+    if (state.root === 10 || state.root === 16) {
       root.style.fontSize = state.root === 16 ? '100%' : '62.5%';
       root.style.setProperty('--etch-root-px', String(state.root));
     }
     var c = state.colors || {};
     MAIN.forEach(function (k) {
-      if (c[k]) root.style.setProperty('--' + k, c[k]);
+      if (HEX.test(c[k])) root.style.setProperty('--' + k, c[k]);
       else root.style.removeProperty('--' + k);
     });
     var a = state.acss || {};
     ACSS.forEach(function (k) {
-      if (a[k]) root.style.setProperty('--' + k, a[k]);
+      if (HEX.test(a[k])) root.style.setProperty('--' + k, a[k]);
       else root.style.removeProperty('--' + k);
     });
     report();
@@ -39,13 +41,21 @@
   }
 
   window.addEventListener('message', function (e) {
+    if (e.source !== window.parent || window.parent === window) return; // only the builder that embeds this page
     var d = e.data || {};
     if (d.type === 'pv-state') apply(d);
   });
 
-  // standalone use: ?root=16 in the URL
-  var m = /[?&]root=(10|16)/.exec(location.search);
-  if (m) apply({ root: Number(m[1]) });
+  // standalone use (preview pages, builder "ดูทั้งหน้า"): ?root=16&c=1e3a5f,,,,ffffff&a=,e8a33d
+  // c = the five --main-* colours in order, a = ACSS primary, secondary; empty = default
+  var q = new URLSearchParams(location.search);
+  if (q.has('root') || q.has('c') || q.has('a')) {
+    var list = function (s) { return (s || '').split(',').map(function (v) { return v ? '#' + v : null; }); };
+    var cs = list(q.get('c')), as = list(q.get('a')), st = { root: Number(q.get('root')), colors: {}, acss: {} };
+    MAIN.forEach(function (k, i) { st.colors[k] = cs[i]; });
+    ACSS.forEach(function (k, i) { st.acss[k] = as[i]; });
+    apply(st);
+  }
 
   if ('ResizeObserver' in window) new ResizeObserver(report).observe(document.body);
   window.addEventListener('load', report);

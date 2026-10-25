@@ -33,11 +33,39 @@
              colors: colors, acss: { primary: null, secondary: null }, root: 10, updated: Date.now() };
   }
 
+  var HEX = /^#[0-9a-f]{6}$/i;
+  function isTpl(id, group) { return typeof id === 'string' && !!T[id] && T[id].group === group; }
+
+  // Saved pages (localStorage or an imported file) may be old, edited by hand or broken: keep what is valid.
+  function normalizePage(src, fallbackName) {
+    src = src && typeof src === 'object' ? src : {};
+    var p = newPage(typeof src.name === 'string' ? src.name : fallbackName);
+    if (typeof src.id === 'string' && src.id) p.id = src.id;
+    p.header = src.header === null ? null : isTpl(src.header, 'header') ? src.header : 'header';
+    p.footer = src.footer === null ? null : isTpl(src.footer, 'footer') ? src.footer : 'footer';
+    p.sections = (Array.isArray(src.sections) ? src.sections : []).map(function (s) {
+      if (typeof s === 'string') return { k: uid(), id: s };
+      return s && typeof s === 'object' ? { k: typeof s.k === 'string' && s.k ? s.k : uid(), id: s.id } : null;
+    }).filter(function (s) { return s && isTpl(s.id, 'section'); });
+    p.root = src.root === 16 ? 16 : 10;
+    Object.keys(p.colors).forEach(function (k) { var v = (src.colors || {})[k]; p.colors[k] = HEX.test(v) ? v : null; });
+    ['primary', 'secondary'].forEach(function (k) { var v = (src.acss || {})[k]; p.acss[k] = HEX.test(v) ? v : null; });
+    if (typeof src.updated === 'number') p.updated = src.updated;
+    return p;
+  }
+
   function load() {
     try {
       var s = JSON.parse(localStorage.getItem(STORE));
-      if (s && s.pages && s.pages.length) return s;
-    } catch (e) { /* storage blocked or empty */ }
+      if (s && Array.isArray(s.pages) && s.pages.some(function (p) { return p && typeof p === 'object'; })) {
+        var seen = {};
+        var pages = s.pages.filter(function (p) { return p && typeof p === 'object' && !Array.isArray(p); })
+          .map(function (p, i) { return normalizePage(p, 'หน้า ' + (i + 1)); });
+        pages.forEach(function (p) { if (seen[p.id]) p.id = uid(); seen[p.id] = true; });
+        return { pages: pages, current: seen[s.current] ? s.current : pages[0].id,
+                 device: DEVICES[s.device] ? s.device : 'desktop' };
+      }
+    } catch (e) { /* storage blocked, empty or not JSON */ }
     var first = newPage('หน้าแรก');
     ['hero', 'features', 'split', 'stats', 'steps', 'reviews', 'faq', 'cta'].forEach(function (id) {
       first.sections.push({ k: uid(), id: id });
@@ -59,13 +87,45 @@
     }, 150);
   }
 
-  function toast(msg) {
+  function toast(msg, withUndo) {
     var t = $('#toast');
     t.textContent = msg;
+    if (withUndo) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = 'เลิกทำ';
+      b.addEventListener('click', undo);
+      t.appendChild(b);
+    }
     t.classList.add('is-on');
+    t.classList.toggle('has-action', !!withUndo);
     clearTimeout(t._h);
-    t._h = setTimeout(function () { t.classList.remove('is-on'); }, 2200);
+    t._h = setTimeout(function () { t.classList.remove('is-on', 'has-action'); }, withUndo ? 6000 : 2200);
   }
+
+  // ================================================================ undo
+  var undoStack = [];
+  function snapshot() { return JSON.stringify({ pages: state.pages, current: state.current }); }
+  function remember(snap) {
+    undoStack.push(snap || snapshot());
+    if (undoStack.length > 50) undoStack.shift();
+  }
+  function undo() {
+    if (!undoStack.length) { toast('ไม่มีอะไรให้เลิกทำ'); return; }
+    var s = JSON.parse(undoStack.pop());
+    state.pages = s.pages;
+    state.current = s.current;
+    save();
+    renderAll(); // sections keep their keys, so only the ones that came back load again
+    toast('เลิกทำแล้ว');
+  }
+  document.addEventListener('keydown', function (e) {
+    var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName);
+    if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z' && !typing && !$('dialog[open]')) {
+      e.preventDefault();
+      undo();
+    }
+  });
 
   // ================================================================ colours
   function acssValue(k) { return page().acss[k] || KIT.acss[k]; }
@@ -81,7 +141,22 @@
     return { type: 'pv-state', colors: page().colors, acss: page().acss, root: page().root };
   }
 
+  // link for "ดูทั้งหน้า": the same page as one document (sticky header and floating buttons behave as on the site)
+  function updateViewLink() {
+    var p = page(), a = $('#viewPage');
+    if (!a || !KIT.page) return;
+    var ids = [];
+    if (p.header) ids.push(p.header);
+    p.sections.forEach(function (s) { ids.push(s.id); });
+    if (p.footer) ids.push(p.footer);
+    var hex = function (v) { return v ? v.slice(1) : ''; };
+    a.href = KIT.page + '?t=' + ids.join(',') + '&root=' + p.root +
+      '&c=' + KIT.colors.map(function (c) { return hex(p.colors[c.key]); }).join(',') +
+      '&a=' + hex(p.acss.primary) + ',' + hex(p.acss.secondary);
+  }
+
   function broadcast() {
+    updateViewLink();
     var msg = frameState();
     $$('iframe').forEach(function (f) { if (f.contentWindow) f.contentWindow.postMessage(msg, '*'); });
   }
@@ -102,14 +177,18 @@
     st.textContent = custom ? '↺ ตาม ACSS' : 'ตาม ACSS';
     st.classList.toggle('is-custom', custom);
     st.title = custom ? 'คลิกเพื่อกลับไปใช้ค่าจาก ACSS' : 'ใช้ค่าตั้งต้น (ยังไม่ได้แก้)';
-    picker.addEventListener('input', function () { hex.value = picker.value; onChange(picker.value, false); });
-    picker.addEventListener('change', function () { onChange(picker.value, true); });
+    // one undo step per finished colour change (dragging the picker sends many 'input' events)
+    var before = null;
+    function start() { if (!before) before = snapshot(); }
+    function finish() { if (before) { remember(before); before = null; } }
+    picker.addEventListener('input', function () { start(); hex.value = picker.value; onChange(picker.value, false); });
+    picker.addEventListener('change', function () { start(); finish(); onChange(picker.value, true); });
     hex.addEventListener('change', function () {
       var v = hex.value.trim();
-      if (/^#?[0-9a-f]{6}$/i.test(v)) { v = v[0] === '#' ? v : '#' + v; onChange(v.toLowerCase(), true); }
-      else { hex.value = picker.value; toast('ใส่สีแบบ #rrggbb'); }
+      if (/^#?[0-9a-f]{6}$/i.test(v)) { start(); finish(); v = v[0] === '#' ? v : '#' + v; onChange(v.toLowerCase(), true); }
+      else { hex.value = picker.value; toast('ใส่สีแบบ #rrggbb เช่น #1e3a5f'); }
     });
-    st.addEventListener('click', function () { if (custom) onReset(); });
+    st.addEventListener('click', function () { if (custom) { remember(); onReset(); } });
     return row;
   }
 
@@ -122,10 +201,12 @@
         function (v, final) {
           page().colors[c.key] = v;
           broadcast();
+          renderContrast();
           if (final) { save(); renderColors(); }
         },
         function () { page().colors[c.key] = null; broadcast(); save(); renderColors(); }));
     });
+    renderContrast();
     var ab = $('#acssColors');
     ab.innerHTML = '';
     ['primary', 'secondary'].forEach(function (k) {
@@ -134,9 +215,57 @@
         function (v, final) {
           page().acss[k] = v;
           broadcast();
+          renderContrast();
           if (final) { save(); renderColors(); }
         },
         function () { page().acss[k] = null; broadcast(); save(); renderColors(); }));
+    });
+  }
+
+  // ================================================================ contrast (WCAG 2.x)
+  function luminance(hex) {
+    var n = parseInt(hex.slice(1), 16);
+    return [n >> 16, (n >> 8) & 255, n & 255].map(function (v) {
+      v /= 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    }).reduce(function (sum, v, i) { return sum + v * [0.2126, 0.7152, 0.0722][i]; }, 0);
+  }
+  function ratio(a, b) {
+    var x = luminance(a), y = luminance(b);
+    return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+  }
+  // text colour, background colour, where it is used, minimum ratio (4.5 body text, 3 large text / icons)
+  var PAIRS = [
+    ['main-text', 'main-light', 'ตัวอักษรบนพื้นอ่อน', 4.5],
+    ['main-on-primary', 'main-primary', 'ตัวอักษรบน header / footer / FAQ', 4.5],
+    ['main-primary', 'main-light', 'หัวข้อและลิงก์บนพื้นอ่อน', 4.5],
+    ['main-on-primary', 'main-accent', 'ไอคอนตอน hover (บนสีเน้น)', 3]
+  ];
+  function contrastIssues() {
+    var eff = {};
+    KIT.colors.forEach(function (c) { eff[c.key] = effective(c); });
+    return PAIRS.map(function (pr) {
+      var r = ratio(eff[pr[0]], eff[pr[1]]);
+      return { label: pr[2], ratio: r, min: pr[3], ok: r >= pr[3] };
+    });
+  }
+  function renderContrast() {
+    var box = $('#contrast');
+    if (!box) return;
+    box.innerHTML = '';
+    contrastIssues().forEach(function (c) {
+      var row = document.createElement('div');
+      row.className = 'pb-contrast__row' + (c.ok ? '' : ' is-bad');
+      row.title = 'ค่าที่แนะนำอย่างน้อย ' + c.min + ':1';
+      var mark = document.createElement('span');
+      mark.className = 'pb-contrast__mark';
+      mark.textContent = c.ok ? '✓' : '!';
+      var text = document.createElement('span');
+      text.textContent = c.label;
+      var val = document.createElement('b');
+      val.textContent = c.ratio.toFixed(1) + ':1';
+      row.appendChild(mark); row.appendChild(text); row.appendChild(val);
+      box.appendChild(row);
     });
   }
 
@@ -243,12 +372,15 @@
   function act(key, what, fixed) {
     var p = page();
     if (what === 'remove') {
+      remember();
+      var label = T[fixed ? p[fixed] : p.sections[indexOf(key)].id].label;
       if (fixed) p[fixed] = null;
       else p.sections = p.sections.filter(function (s) { return s.k !== key; });
-      toast('ลบออกแล้ว');
+      toast('ลบ ' + label + ' แล้ว', true);
     } else {
       var i = indexOf(key), j = what === 'up' ? i - 1 : i + 1;
       if (j < 0 || j >= p.sections.length) return;
+      remember();
       var s = p.sections.splice(i, 1)[0];
       p.sections.splice(j, 0, s);
     }
@@ -315,11 +447,13 @@
     });
     $('#stage').classList.toggle('is-empty', !p.sections.length);
     markUsed();
+    updateViewLink();
   }
 
   // ================================================================ insert / drag & drop
   function insert(id, index) {
     var t = T[id], p = page();
+    remember();
     if (t.group === 'header' || t.group === 'footer') {
       p[t.group] = id;
       toast('ใช้ ' + t.label + ' แล้ว');
@@ -390,6 +524,7 @@
     var from = indexOf(d.key);
     if (from < 0) return;
     var p = page();
+    remember();
     var s = p.sections.splice(from, 1)[0];
     if (idx > from) idx--;
     p.sections.splice(idx, 0, s);
@@ -432,10 +567,7 @@
 
   function switchPage(id) {
     state.current = id;
-    Object.keys(items).forEach(function (k) { items[k].el.remove(); });
-    items = {};
-    $('#headerSlot').innerHTML = '';
-    $('#footerSlot').innerHTML = '';
+    disarmDelete();
     save();
     renderAll();
   }
@@ -471,14 +603,30 @@
     switchPage(p.id);
     toast('ทำสำเนาแล้ว');
   });
+  // confirm in the page itself (window.confirm() is blocked in some embedded viewers): click twice within 4 s
   $('#delPage').addEventListener('click', function () {
+    var b = $('#delPage');
     if (state.pages.length < 2) return;
-    if (!confirm('ลบหน้า "' + page().name + '" ?')) return;
-    var id = page().id;
-    state.pages = state.pages.filter(function (p) { return p.id !== id; });
+    if (!b.classList.contains('is-armed')) {
+      b.classList.add('is-armed');
+      b.textContent = 'กดอีกครั้งเพื่อลบ';
+      clearTimeout(b._h);
+      b._h = setTimeout(disarmDelete, 4000);
+      return;
+    }
+    disarmDelete();
+    remember();
+    var gone = page();
+    state.pages = state.pages.filter(function (p) { return p.id !== gone.id; });
     switchPage(state.pages[0].id);
-    toast('ลบหน้าแล้ว');
+    toast('ลบหน้า "' + (gone.name || 'ไม่มีชื่อ') + '" แล้ว', true);
   });
+  function disarmDelete() {
+    var b = $('#delPage');
+    clearTimeout(b._h);
+    b.classList.remove('is-armed');
+    b.textContent = 'ลบ';
+  }
   $$('#deviceSeg button').forEach(function (b) {
     b.addEventListener('click', function () { state.device = b.dataset.device; save(); renderTop(); layout(); });
   });
@@ -486,10 +634,11 @@
     b.addEventListener('click', function () { page().root = Number(b.dataset.root); save(); renderTop(); broadcast(); });
   });
   $('#resetColors').addEventListener('click', function () {
+    remember();
     Object.keys(page().colors).forEach(function (k) { page().colors[k] = null; });
     page().acss = { primary: null, secondary: null };
     save(); renderColors(); broadcast();
-    toast('คืนค่าสีแล้ว');
+    toast('คืนค่าสีแล้ว', true);
   });
 
   // ================================================================ export / import JSON
@@ -527,20 +676,10 @@
         var src = d.page || d;
         if (d.format && d.format !== 'etch-page-builder') throw new Error('format');
         if (!Array.isArray(src.sections)) throw new Error('sections');
-        var p = newPage(src.name || file.name.replace(/\.json$/i, ''));
-        var skipped = [];
-        var ok = function (id, group) { return T[id] && T[id].group === group; };
-        p.header = src.header === null ? null : ok(src.header, 'header') ? src.header : 'header';
-        p.footer = src.footer === null ? null : ok(src.footer, 'footer') ? src.footer : 'footer';
-        p.sections = src.sections.filter(function (id) {
-          if (ok(id, 'section')) return true;
-          skipped.push(id);
-          return false;
-        }).map(function (id) { return { k: uid(), id: id }; });
-        p.root = src.root === 16 ? 16 : 10;
-        var hex = /^#[0-9a-f]{6}$/i;
-        Object.keys(p.colors).forEach(function (k) { var v = (src.colors || {})[k]; p.colors[k] = hex.test(v) ? v : null; });
-        ['primary', 'secondary'].forEach(function (k) { var v = (src.acss || {})[k]; p.acss[k] = hex.test(v) ? v : null; });
+        var skipped = src.sections.filter(function (id) { return !isTpl(id, 'section'); }).map(String);
+        var p = normalizePage({ name: src.name || file.name.replace(/\.json$/i, ''), header: src.header,
+          footer: src.footer, sections: src.sections, root: src.root, colors: src.colors, acss: src.acss });
+        remember();
         state.pages.push(p);
         switchPage(p.id);
         toast('นำเข้า "' + p.name + '" แล้ว' + (skipped.length ? ' (ข้าม: ' + skipped.join(', ') + ')' : ''));
@@ -605,6 +744,13 @@
     if (special.length && order.length > special.length + 2) {
       body.appendChild(el('div', 'pb-warn', 'หน้านี้มี ' + special.map(function (id) { return T[id].label; }).join(', ') +
         ' ซึ่งใช้ได้เฉพาะ template ของ WordPress (Posts page / Single / 404) — ปกติไม่วางรวมกับ section อื่นในหน้าธรรมดา'));
+    }
+
+    var bad = contrastIssues().filter(function (c) { return !c.ok; });
+    if (bad.length) {
+      body.appendChild(el('div', 'pb-warn', 'สีบางคู่อ่านยาก: ' + bad.map(function (c) {
+        return c.label + ' ' + c.ratio.toFixed(1) + ':1 (ควรได้ ' + c.min + ':1)';
+      }).join(' · ') + ' — ปรับสีก่อนส่งงานจะดีกว่า'));
     }
 
     // step 1: colours
