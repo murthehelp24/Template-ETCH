@@ -11,6 +11,7 @@
 | [etch-sections](etch-sections/README.md) | hero · page-hero · features · split · stats · steps · reviews · faq · cta · contact · blog · single-post · 404 |
 | [builder](#page-builder-ประกอบหน้าก่อนไปทำใน-etch) | **Page Builder** — ลากวาง section ประกอบหน้า ดูผลก่อนไปทำใน Etch (เปิด `builder/index.html`) |
 | `preview` | หน้า preview ของแต่ละ template (สร้างอัตโนมัติจาก `.etch.txt`) |
+| [เว็บจริง](#เอา-page-builder-ขึ้นเว็บ-cloudflare-pages) | วิธีเอา builder ขึ้น Cloudflare Pages + ล็อกอินด้วย Cloudflare Access |
 | `_build` | ไฟล์สร้าง template (Python) — ไม่ต้องใช้ตอนวาง ใช้ตอนแก้ template แล้วสร้างไฟล์ใหม่ |
 
 ## Page Builder (ประกอบหน้าก่อนไปทำใน Etch)
@@ -28,6 +29,41 @@
 - **Export สำหรับ Etch** — แสดงค่าสี 5 บรรทัดสำหรับวางใน `:where(:root)` และลำดับไฟล์ `.etch.txt` ที่ต้องวาง พร้อมปุ่ม **Copy** เนื้อหาทีละไฟล์ → ใน Etch คลิกขวา → Paste ตามลำดับ (ตั้งใจให้วางทีละ section: ยังไม่ได้ยืนยันว่า Etch รับไฟล์ที่รวมหลาย section เป็นก้อนเดียวได้)
 
 **ข้อจำกัด** — ภาพใน builder จำลอง ACSS แบบใกล้เคียง (สี, สเกลตัวอักษร/ระยะ, ปุ่ม `btn--*`, padding ของ section ใน `_build/acss_sim.py`) ไม่ใช่ค่าจริงของแต่ละเว็บ · รูปเป็น placeholder · ข้อมูล dynamic (ชื่อหน้า, โพสต์, related) เป็นข้อมูลตัวอย่าง · ในหน้า builder แต่ละ section อยู่ใน iframe ของตัวเอง จึงไม่เห็น sticky header และปุ่มลอยของ footer จะอยู่มุมของกรอบ footer (ดูแบบจริงได้ที่ **ดูทั้งหน้า**) · เมนูของ Oh My Etch / Menu Builder ใช้ script จำลองใน preview (เปิด dropdown / drawer ได้พอดูหน้าตา) · แผนที่ Google ต้องต่อเน็ต — ตรวจหน้าจริงใน Etch อีกครั้งก่อนส่งงาน
+
+## เอา Page Builder ขึ้นเว็บ (Cloudflare Pages)
+
+เว็บเป็นไฟล์ static ล้วน ใช้ **Cloudflare Pages** โฮสต์ (แผนฟรีพอ ใช้กับ repo private ได้) และ **Cloudflare Access** ล็อกอินกันคนนอก — สำคัญ เพราะใน builder มีเนื้อหา `.etch.txt` ทุกไฟล์ ใครเปิดเว็บได้ก็ copy template ไปได้
+
+`python3 _build/build_site.py` รวมเฉพาะไฟล์ที่ต้องขึ้นเว็บไว้ใน `dist/` (`builder/`, `preview/`, หน้าแรกที่พาไป builder, `_headers`, `robots.txt`) — โค้ด `_build/`, README และไฟล์ `.etch.txt` ไม่ถูกอัปโหลดแยก (แต่เนื้อหาอยู่ในปุ่ม Copy ของ builder)
+
+### ตั้งค่าครั้งแรก (ทำใน Cloudflare dashboard ชื่อเมนูอาจต่างเล็กน้อยตามเวอร์ชัน)
+
+1. **สร้างโปรเจกต์** — Workers & Pages → Create → แท็บ **Pages** → **Connect to Git** → อนุญาต Cloudflare เข้าถึง GitHub (เลือกเฉพาะ repo `Template-ETCH` ก็พอ) → เลือก repo
+2. **ตั้งค่า build**
+   - Production branch: `main`
+   - Framework preset: `None`
+   - Build command: `python3 _build/build_site.py`
+   - Build output directory: `dist`
+   - Environment variable (ถ้า build ฟ้องเรื่อง Python): `PYTHON_VERSION` = `3.12`
+   → Save and Deploy — ได้ลิงก์ `https://<ชื่อโปรเจกต์>.pages.dev`
+3. **ล็อกอินก่อนเข้า (Cloudflare Access)** — ทำทันทีหลัง deploy แรก
+   - Zero Trust → Access → Applications → **Add an application** → **Self-hosted**
+   - Application domain: `<ชื่อโปรเจกต์>.pages.dev`
+   - Policy: Action **Allow** · Include **Emails** = อีเมลของคุณ
+   - Login method: **One-time PIN** (ส่งรหัสเข้าอีเมล ไม่ต้องตั้งรหัสผ่าน)
+4. **ลิงก์ preview ของ branch / PR** — Cloudflare สร้างลิงก์แยกให้ทุก branch (`<branch>.<ชื่อโปรเจกต์>.pages.dev`) ซึ่ง Access ในข้อ 3 ไม่ครอบ: ไปที่โปรเจกต์ → Settings → เปิด **Access policy** ของ preview deployments หรือปิด preview deployments ไปเลย
+5. **ตรวจ** — เปิดลิงก์ในหน้าต่างไม่ระบุตัวตน (Incognito) ต้องเจอหน้าล็อกอินของ Cloudflare ก่อน ทั้งลิงก์หลักและลิงก์ preview
+
+### หลังจากนั้น
+
+- merge เข้า `main` → Cloudflare deploy ให้เองภายในไม่กี่นาที
+- เว็บใช้ไฟล์ preview ที่ commit ไว้ ถ้าแก้ template ต้อง build + commit ก่อน (CI จะเตือนถ้าลืม — ดูด้านล่าง)
+- `_build/site/_headers` กำหนด security headers ของเว็บ (CSP, ห้ามเว็บอื่นฝัง, `noindex`) ถ้าเพิ่มของที่โหลดจากเว็บอื่น ต้องเพิ่มโดเมนใน CSP ด้วย
+- อยากใช้โดเมนของตัวเอง: โปรเจกต์ → Custom domains แล้วเพิ่มโดเมนนั้นใน Access application ด้วย
+
+### ตรวจอัตโนมัติ (GitHub Actions)
+
+ทุก PR และทุก push เข้า `main` รัน `python3 _build/check.py` (`.github/workflows/check.yml`): build template ใหม่ + audit, ตรวจว่า `.etch.txt` ตรงกับที่ commit (ไม่นับ timestamp), ตรวจว่าไฟล์ preview / builder ทันสมัย และลองรวมเว็บด้วย `build_site.py` — รันเองในเครื่องได้ด้วยคำสั่งเดียวกันก่อน commit
 
 ## เริ่มเว็บใหม่ (ลำดับที่แนะนำ)
 
