@@ -31,7 +31,8 @@ h2, h3, p { margin: 0; }
 .pb-brand { display: flex; flex-direction: column; line-height: 1.2; margin-right: 6px; }
 .pb-brand strong { font-size: 15px; }
 .pb-brand span { color: var(--muted); font-size: 12px; }
-.pb-page { display: flex; align-items: center; gap: 6px; flex: 1 1 380px; } /* no shrinking below its buttons: the bar wraps instead */
+.pb-page { display: flex; align-items: center; gap: 6px; flex: 0 1 auto; min-width: 0; }
+.pb-view { display: flex; align-items: center; gap: 8px; margin: 0 auto; } /* centred between the page controls and the actions */
 .pb-pagepick { position: relative; flex: none; }
 .pb-pagebtn { height: 38px; gap: 8px; padding: 0 10px; max-width: 260px; }
 .pb-pagebtn__text { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; line-height: 1.15; }
@@ -59,11 +60,21 @@ h2, h3, p { margin: 0; }
 .pb-icon:disabled { opacity: .35; cursor: default; }
 .pb-icon.is-armed { background: var(--danger); border-color: var(--danger); color: #fff; }
 .pb-pagerow__main:focus-visible, .pb-icon:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
-.pb-page input { flex: 1; min-width: 120px; width: 120px; }
+.pb-page input { flex: 0 1 200px; min-width: 110px; width: 200px; }
 .pb-page select, .pb-page input {
   height: 34px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
 }
 .pb-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.pb-filemenu { position: relative; }
+.pb-filemenu summary { list-style: none; cursor: pointer; }
+.pb-filemenu summary::-webkit-details-marker { display: none; }
+.pb-filemenu[open] summary { border-color: var(--brand); }
+.pb-filemenu__list {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 30; width: 240px; padding: 8px; display: flex; flex-direction: column; gap: 6px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 12px 32px rgb(16 24 40 / 18%);
+}
+.pb-filemenu__list .pb-btn { justify-content: flex-start; }
+@media (max-width: 1500px) { .pb-brand { display: none; } } /* the tab title names the tool; the page controls need the room */
 
 .pb-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
@@ -322,7 +333,8 @@ body.is-dragging iframe { pointer-events: none; }
 /* phones: the page controls wrap onto their own lines */
 @media (max-width: 600px) {
   .pb-page { flex-wrap: wrap; flex-basis: 100%; }
-  .pb-page select, .pb-page input { flex: 1 1 100%; max-width: none; }
+  .pb-page input { flex: 1 1 100%; width: auto; max-width: none; }
+  .pb-view { margin: 0; }
 }
 
 /* small screens: stack the side panels */

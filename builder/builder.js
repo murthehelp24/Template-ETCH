@@ -518,6 +518,19 @@
   var H1_SECTIONS = ['hero', 'page-hero', 'contact', 'blog', 'single-post', '404'];
   var ONLY_ON = { blog: 'blog', 'single-post': 'single', '404': '404' }; // sections that need their own template
   function typeOf(p) { return TYPE[p.type] || TYPE.other || PAGE_TYPES[0]; }
+  function shortLabel(t) { return t.label.replace(/\s*\(.*\)$/, ''); } // "บทความ (Posts page)" -> "บทความ"
+  // the page name and the page type follow each other: a name that is a type ("เกี่ยวกับเรา", "about", "ติดต่อเรา 2",
+  // "บริการ (สำเนา)") sets the type, and a type change renames a page whose name is still a type name
+  var TYPE_WORDS = { home: ['home', 'หน้าหลัก'], about: ['about', 'about us'], services: ['services', 'service', 'บริการของเรา'],
+    contact: ['contact', 'contact us', 'ติดต่อ'], blog: ['blog', 'posts'], other: [] };
+  function typeFromName(name) {
+    var n = String(name || '').trim().replace(/\s*\(สำเนา\)$/, '').replace(/\s+\d+$/, '').toLowerCase();
+    if (!n) return null;
+    var hit = PAGE_TYPES.filter(function (t) {
+      return t.id === n || shortLabel(t).toLowerCase() === n || (TYPE_WORDS[t.id] || []).indexOf(n) >= 0;
+    })[0];
+    return hit ? hit.id : null;
+  }
 
   // what the page has against its type: recipe items (ok / missing) + problems
   function pageCheck(p) {
@@ -1023,7 +1036,6 @@
     if (document.activeElement !== $('#pageName')) $('#pageName').value = p.name;
     if (!$('#pageMenu').hidden) renderPageMenu();
     $$('#deviceSeg button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.device === state.device)); });
-    $$('#rootSeg button').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.dataset.root) === page().root)); });
     $('#editToggle').setAttribute('aria-pressed', String(state.edit !== false));
   }
 
@@ -1091,8 +1103,8 @@
     $('#pageMenuBtn').setAttribute('aria-expanded', 'false');
     if (focusButton) $('#pageMenuBtn').focus();
   }
-  function uniqueName(base) {
-    var names = state.pages.map(function (p) { return p.name; }), name = base, n = 2;
+  function uniqueName(base, except) {
+    var names = state.pages.filter(function (p) { return p !== except; }).map(function (p) { return p.name; }), name = base, n = 2;
     while (names.indexOf(name) >= 0) name = base + ' ' + n++;
     return name;
   }
@@ -1145,8 +1157,12 @@
   document.addEventListener('pointerdown', function (e) {
     if (!e.target.closest('.pb-pagepick')) closePageMenu();
   });
+  document.addEventListener('pointerdown', function (e) {
+    if (!e.target.closest('#fileMenu')) $('#fileMenu').open = false;
+  });
+  $$('#fileMenu .pb-btn').forEach(function (b) { b.addEventListener('click', function () { $('#fileMenu').open = false; }); });
   // a click inside the preview iframe never reaches this document; it moves focus out of the window instead
-  window.addEventListener('blur', function () { closePageMenu(); });
+  window.addEventListener('blur', function () { closePageMenu(); $('#fileMenu').open = false; });
   $('.pb-pagepick').addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !$('#pageMenu').hidden) { e.preventDefault(); closePageMenu(true); }
   });
@@ -1161,6 +1177,16 @@
     renderTop();
   });
   $('#pageName').addEventListener('change', function () {
+    var p = page(), t = typeFromName(p.name);
+    if (t && t !== p.type) {
+      p.type = t;
+      save();
+      renderStandards();
+      renderTop();
+      var c = pageCheck(p);
+      toast('ประเภทหน้าเปลี่ยนเป็น "' + typeOf(p).label + '" ตามชื่อ' +
+        (c.missing.length ? ' · ยังขาด ' + c.missing.length + ' section' : ''), true);
+    }
     if (nameBefore && JSON.parse(nameBefore).pages.some(function (p) { return p.id === page().id && p.name !== page().name; })) {
       remember(nameBefore);
     }
@@ -1194,7 +1220,7 @@
   $('#newForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var type = (($('#newTypes input:checked') || {}).value) || 'other';
-    var p = newPage($('#newName').value.trim() || uniqueName(TYPE[type].label));
+    var p = newPage($('#newName').value.trim() || uniqueName(shortLabel(TYPE[type])));
     p.type = type;
     p.root = page().root;
     p.colors = JSON.parse(JSON.stringify(page().colors)); // same site: keep the colours
@@ -1211,12 +1237,14 @@
 
   $('#pageType').addEventListener('change', function (e) {
     remember();
-    page().type = TYPE[e.target.value] ? e.target.value : 'other';
+    var p = page(), renamed = !p.name.trim() || typeFromName(p.name) === p.type;
+    p.type = TYPE[e.target.value] ? e.target.value : 'other';
+    if (renamed) p.name = uniqueName(shortLabel(typeOf(p)), p);
     save();
     renderStandards();
     renderTop();
-    var c = pageCheck(page());
-    toast('ตั้งเป็นหน้า "' + typeOf(page()).label + '" แล้ว' +
+    var c = pageCheck(p);
+    toast('ตั้งเป็นหน้า "' + typeOf(p).label + '" แล้ว' + (renamed ? ' · ชื่อหน้าเปลี่ยนเป็น "' + p.name + '"' : '') +
       (c.missing.length ? ' · ยังขาด ' + c.missing.length + ' section กด "จัดหน้าตามแบบ" ได้' : ''), true);
   });
   // asks once in the page (window.confirm() is blocked in embedded viewers) when the page already has sections
@@ -1235,9 +1263,6 @@
   });
   $$('#deviceSeg button').forEach(function (b) {
     b.addEventListener('click', function () { state.device = b.dataset.device; save(); renderTop(); layout(); });
-  });
-  $$('#rootSeg button').forEach(function (b) {
-    b.addEventListener('click', function () { page().root = Number(b.dataset.root); save(); renderTop(); broadcast(); });
   });
   $('#resetColors').addEventListener('click', function () {
     remember();
@@ -1457,7 +1482,6 @@
         'และสีตัวอักษรของปุ่มในหน้าตั้งค่าปุ่มของ ACSS (สี Primary / Secondary ถูกใช้ที่อื่นในเว็บด้วย)'));
       s1.appendChild(el('pre', 'pb-code', lines.join('\n')));
     }
-    s1.appendChild(el('p', '', 'เว็บนี้ทดลองที่ 1rem = ' + p.root + 'px — template ใช้ to-rem() จึงได้ขนาดเท่ากันทั้ง 10px และ 16px'));
 
     // step 2: files in order
     var s2 = el('section', 'pb-step');

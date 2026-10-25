@@ -25,10 +25,11 @@
         <button type="button" class="pb-btn pb-btn--primary pb-btn--full" id="newPageMenu">+ สร้างหน้าใหม่</button>
       </div>
     </div>
-    <input id="pageName" type="text" placeholder="ชื่อหน้า เช่น หน้าแรก ลูกค้า A" aria-label="ชื่อหน้า" title="แก้ชื่อหน้านี้">
+    <input id="pageName" type="text" placeholder="ชื่อหน้า" aria-label="ชื่อหน้า" title="แก้ชื่อหน้านี้ — ถ้าพิมพ์ชื่อประเภทหน้า เช่น เกี่ยวกับเรา ประเภทหน้าจะเปลี่ยนตาม">
     <button type="button" class="pb-btn" id="newPage" title="สร้างหน้าใหม่ (เลือกประเภทหน้าได้)">+ หน้าใหม่</button>
   </div>
 
+  <div class="pb-view">
   <div class="pb-seg" role="group" aria-label="ขนาดจอ" id="deviceSeg">
     <button type="button" data-device="desktop" title="1440px">Desktop</button>
     <button type="button" data-device="tablet" title="768px">Tablet</button>
@@ -36,16 +37,17 @@
   </div>
 
   <button type="button" class="pb-btn pb-toggle" id="editToggle" aria-pressed="true" title="เปิดแล้วคลิกข้อความเพื่อพิมพ์แก้ คลิกช่องรูปเพื่อใส่รูป">✎ แก้เนื้อหา</button>
-
-  <div class="pb-seg" role="group" aria-label="root font size" id="rootSeg">
-    <button type="button" data-root="10" title="html { font-size: 62.5% }">1rem = 10px</button>
-    <button type="button" data-root="16" title="html { font-size: 100% }">1rem = 16px</button>
   </div>
 
   <div class="pb-actions">
     <a class="pb-btn" id="viewPage" href="#" target="_blank" rel="noopener" title="เปิดหน้านี้ต่อกันเป็นหน้าเดียวในแท็บใหม่ (ใช้เปิดให้ลูกค้าดูได้)">ดูทั้งหน้า ↗</a>
-    <button type="button" class="pb-btn" id="exportJson">Export JSON</button>
-    <label class="pb-btn" for="importJson">Import JSON</label>
+    <details class="pb-filemenu" id="fileMenu">
+      <summary class="pb-btn" title="เก็บงานเป็นไฟล์ หรือเปิดไฟล์ที่เก็บไว้">ไฟล์ JSON ▾</summary>
+      <div class="pb-filemenu__list">
+        <button type="button" class="pb-btn pb-btn--full" id="exportJson">Export JSON (ดาวน์โหลดทุกหน้า)</button>
+        <label class="pb-btn pb-btn--full" for="importJson">Import JSON (เปิดไฟล์)</label>
+      </div>
+    </details>
     <input type="file" id="importJson" accept="application/json,.json" hidden>
     <button type="button" class="pb-btn pb-btn--primary" id="exportEtch">Export สำหรับ Etch</button>
   </div>
