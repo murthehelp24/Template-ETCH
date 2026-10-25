@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews พื้นสีหลัก — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: calc(600 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.main-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--main-primary);
+
+  &::before {
+    content: "";
+    inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+    block-size: 2px;
+    background-color: var(--main-accent);
+  }
+}
+
+.main-heading__intro {
+  color: var(--main-text-muted);
+}
+
+.main-band {
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+
+  :is(h1, h2, h3, h4, h5, h6),
+  .main-heading__eyebrow {
+    color: inherit;
+  }
+
+  .main-heading__intro {
+    color: var(--main-on-primary-muted);
+  }
+}
+
+.main-reviews-band {
+  padding-block: var(--section-space-m);
+}
+
+.main-reviews-band__container {
+  gap: var(--container-gap);
+}
+
+.main-reviews-band__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(280 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-reviews-band__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  padding: var(--space-m);
+  border: 1px solid var(--main-line-on-primary);
+  border-radius: var(--radius-m);
+}
+
+.main-reviews-band__stars {
+  display: flex;
+  gap: calc(var(--space-xs) / 4);
+  color: var(--main-accent);
+
+  svg {
+    inline-size: calc(18 * 1rem / var(--etch-root-px, 10));
+    block-size: calc(18 * 1rem / var(--etch-root-px, 10));
+  }
+}
+
+.main-reviews-band__text {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+
+  p {
+    margin: 0;
+  }
+}
+
+.main-reviews-band__author {
+  margin-block-start: auto;
+  padding-block-start: var(--space-s);
+  border-block-start: 1px solid var(--main-line-on-primary);
+}
+
+.main-reviews-band__name {
+  margin: 0;
+  font-weight: 700;
+  color: var(--main-accent);
+}
+
+.main-reviews-band__meta {
+  margin: 0;
+  font-size: var(--text-s);
+  color: var(--main-on-primary-muted);
+}
+</style>
+</head>
+<body data-template="reviews-band">
+<section data-etch-element="section" class="main-reviews-band main-band"><div data-etch-element="container" class="main-reviews-band__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0">Reviews</p><h2 data-pv-edit="t:g.0.0.1.0">What our customers say</h2></div><ul class="main-reviews-band__grid"><li class="main-reviews-band__item"><div class="main-reviews-band__stars" role="img" aria-label="5 out of 5 stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg></div><blockquote class="main-reviews-band__text"><p data-pv-edit="t:g.0.1.0.1.0.0">Great service from start to finish. The team explained everything clearly and I felt well looked after.</p></blockquote><div class="main-reviews-band__author"><p class="main-reviews-band__name" data-pv-edit="t:g.0.1.0.2.0.0">Customer Name</p><p class="main-reviews-band__meta" data-pv-edit="t:g.0.1.0.2.1.0">Bangkok</p></div></li><li class="main-reviews-band__item"><div class="main-reviews-band__stars" role="img" aria-label="5 out of 5 stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg></div><blockquote class="main-reviews-band__text"><p data-pv-edit="t:g.0.1.1.1.0.0">Great service from start to finish. The team explained everything clearly and I felt well looked after.</p></blockquote><div class="main-reviews-band__author"><p class="main-reviews-band__name" data-pv-edit="t:g.0.1.1.2.0.0">Customer Name</p><p class="main-reviews-band__meta" data-pv-edit="t:g.0.1.1.2.1.0">Chiang Mai</p></div></li><li class="main-reviews-band__item"><div class="main-reviews-band__stars" role="img" aria-label="5 out of 5 stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z"/></svg></div><blockquote class="main-reviews-band__text"><p data-pv-edit="t:g.0.1.2.1.0.0">Great service from start to finish. The team explained everything clearly and I felt well looked after.</p></blockquote><div class="main-reviews-band__author"><p class="main-reviews-band__name" data-pv-edit="t:g.0.1.2.2.0.0">Customer Name</p><p class="main-reviews-band__meta" data-pv-edit="t:g.0.1.2.2.1.0">Phuket</p></div></li></ul></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stats การ์ดไอคอน — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-stats-cards {
+  padding-block: var(--section-space-m);
+  background-color: var(--main-light-alt);
+}
+
+.main-stats-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(220 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-stats-cards__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-m);
+  border-radius: var(--radius-l);
+  background-color: var(--main-light);
+  box-shadow: 0 calc(4 * 1rem / var(--etch-root-px, 10)) calc(12 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+}
+
+.main-stats-cards__icon {
+  inline-size: calc(48 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(48 * 1rem / var(--etch-root-px, 10));
+  margin-block-end: var(--space-xs);
+  padding: calc(11 * 1rem / var(--etch-root-px, 10));
+  border-radius: var(--radius-m);
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+}
+
+.main-stats-cards__number {
+  margin: 0;
+  font-size: var(--h2);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--main-primary);
+}
+
+.main-stats-cards__label {
+  margin: 0;
+  color: var(--main-text-muted);
+}
+</style>
+</head>
+<body data-template="stats-cards">
+<section data-etch-element="section" class="main-stats-cards"><div data-etch-element="container"><ul class="main-stats-cards__grid"><li class="main-stats-cards__card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-stats-cards__icon" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg><p class="main-stats-cards__number" data-pv-edit="t:g.0.0.0.1.0">15+</p><p class="main-stats-cards__label" data-pv-edit="t:g.0.0.0.2.0">Years of experience</p></li><li class="main-stats-cards__card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-stats-cards__icon" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M22 21v-1a6 6 0 0 0-4-5.6"/></svg><p class="main-stats-cards__number" data-pv-edit="t:g.0.0.1.1.0">2,000+</p><p class="main-stats-cards__label" data-pv-edit="t:g.0.0.1.2.0">Happy customers</p></li><li class="main-stats-cards__card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-stats-cards__icon" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg><p class="main-stats-cards__number" data-pv-edit="t:g.0.0.2.1.0">98%</p><p class="main-stats-cards__label" data-pv-edit="t:g.0.0.2.2.0">Would recommend us</p></li><li class="main-stats-cards__card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-stats-cards__icon" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><p class="main-stats-cards__number" data-pv-edit="t:g.0.0.3.1.0">24/7</p><p class="main-stats-cards__label" data-pv-edit="t:g.0.0.3.2.0">Online support</p></li></ul></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>
