@@ -45,8 +45,14 @@
 
 <div class="pb-main">
   <aside class="pb-library" aria-label="รายการ template">
-    <p class="pb-hint">ลากการ์ดไปวางในหน้า หรือกด <b>+</b> เพื่อต่อท้าย · เปิด <b>✎ แก้เนื้อหา</b> แล้วคลิกข้อความหรือช่องรูปในหน้าเพื่อแก้</p>
+    <div class="pb-tabs" role="tablist" aria-label="ประเภท template" id="libTabs">
+      <button type="button" role="tab" data-group="header">Header</button>
+      <button type="button" role="tab" data-group="section">Sections</button>
+      <button type="button" role="tab" data-group="footer">Footer</button>
+    </div>
+    <p class="pb-hint" id="libHint"></p>
     <div id="library"></div>
+    <p class="pb-hint pb-hint--edit">เปิด <b>✎ แก้เนื้อหา</b> แล้วคลิกข้อความหรือช่องรูปในหน้าเพื่อแก้</p>
   </aside>
 
   <main class="pb-canvas" id="canvas" aria-label="หน้าที่กำลังประกอบ">

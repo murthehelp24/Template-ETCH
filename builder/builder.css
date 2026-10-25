@@ -72,6 +72,17 @@ h2, h3, p { margin: 0; }
 .pb-muted, .pb-hint { color: var(--muted); font-size: 12.5px; line-height: 1.5; }
 .pb-hint { margin-bottom: 10px; }
 
+/* library tabs: one kind of template at a time */
+.pb-tabs { position: sticky; top: -14px; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: -14px -14px 10px; padding: 10px 14px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.pb-tabs button { display: flex; align-items: center; justify-content: center; gap: 5px; height: 32px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); cursor: pointer; font-size: 13px; }
+.pb-tabs button[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #fff; font-weight: 600; }
+.pb-tabs button:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
+.pb-tabs small { font-size: 11px; opacity: .75; }
+.pb-hint--edit { margin: 4px 0 0; }
+.pb-item.is-selected::before { outline-color: var(--brand); outline-width: 3px; }
+.pb-slot.is-target .pb-slot-empty { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); }
+.pb-slot-empty, .pb-empty { cursor: pointer; }
+
 /* library cards */
 .pb-group { margin-bottom: 16px; }
 .pb-group h2 {

@@ -187,6 +187,9 @@
     input.click();
   }
 
+  // the builder switches its library to this template's kind (header / sections / footer) when it is clicked
+  document.addEventListener('pointerdown', function () { send({ type: 'pv-click' }); }, true);
+
   document.addEventListener('click', function (e) {
     if (!editing) return;
     var el = e.target.closest && e.target.closest('[data-pv-edit]');
