@@ -204,12 +204,12 @@
   }
   function undo() {
     if (!undoStack.length) { toast('ไม่มีอะไรให้เลิกทำ'); return; }
-    var s = JSON.parse(undoStack.pop());
+    var s = JSON.parse(undoStack.pop()), was = state.current;
     state.pages = s.pages;
     state.current = s.current;
     save();
     renderAll(); // sections keep their keys, so only the ones that came back load again (renderAll re-sends content)
-    toast('เลิกทำแล้ว');
+    toast(was !== s.current ? 'เลิกทำแล้ว · กลับไปที่หน้า "' + (page().name || 'ไม่มีชื่อ') + '"' : 'เลิกทำแล้ว');
   }
   document.addEventListener('keydown', function (e) {
     var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName);
@@ -635,6 +635,9 @@
     var btn = $('#applyLayout');
     var same = layoutFor(p, c.type).map(function (s) { return s.k; }).join() === p.sections.map(function (s) { return s.k; }).join();
     btn.disabled = same && p.header && p.footer;
+    if (!btn.classList.contains('is-armed')) {
+      btn.textContent = btn.disabled ? 'เรียงตามแบบ "' + c.type.label + '" แล้ว' : 'จัดหน้าตามแบบ "' + c.type.label + '"';
+    }
     btn.title = btn.disabled ? 'หน้านี้เรียงตามแบบแนะนำแล้ว' : 'เพิ่ม section ที่ขาดและเรียงลำดับใหม่ (เลิกทำได้)';
   }
 
@@ -1014,26 +1017,115 @@
 
   // ================================================================ top bar
   function renderTop() {
-    var sel = $('#pageSelect');
-    sel.innerHTML = '';
-    state.pages.slice().sort(function (a, b) { return b.updated - a.updated; }).forEach(function (p) {
-      var o = document.createElement('option');
-      o.value = p.id;
-      o.textContent = p.name || '(ไม่มีชื่อ)';
-      sel.appendChild(o);
-    });
-    sel.value = page().id;
-    $('#pageName').value = page().name;
+    var p = page();
+    $('#pageMenuName').textContent = p.name || '(ไม่มีชื่อ)';
+    $('#pageMenuType').textContent = typeOf(p).label + ' · ' + state.pages.length + ' หน้า';
+    if (document.activeElement !== $('#pageName')) $('#pageName').value = p.name;
+    if (!$('#pageMenu').hidden) renderPageMenu();
     $$('#deviceSeg button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.device === state.device)); });
     $$('#rootSeg button').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.dataset.root) === page().root)); });
     $('#editToggle').setAttribute('aria-pressed', String(state.edit !== false));
-    $('#delPage').disabled = state.pages.length < 2;
+  }
+
+  // ================================================================ page menu (every page of the site, in the order made)
+  function pageStatus(p) {
+    var c = pageCheck(p);
+    if (!c.missing.length && !c.problems.length) return { text: 'ครบตามมาตรฐาน', cls: 'is-ok' };
+    var n = c.missing.length + c.problems.length;
+    return { text: (c.errors ? 'ต้องแก้ ' : 'ควรแก้ ') + n + ' ข้อ', cls: c.errors ? 'is-bad' : 'is-warn' };
+  }
+  function renderPageMenu() {
+    var list = $('#pageList');
+    list.innerHTML = '';
+    $('#pageCount').textContent = '(' + state.pages.length + ')';
+    state.pages.forEach(function (p) {
+      var li = el('li', 'pb-pagerow' + (p.id === state.current ? ' is-current' : ''));
+      var main = el('button', 'pb-pagerow__main');
+      main.type = 'button';
+      main.appendChild(el('b', '', p.name || '(ไม่มีชื่อ)'));
+      var meta = el('span', 'pb-pagerow__meta');
+      meta.appendChild(el('span', '', typeOf(p).label + ' · ' + p.sections.length + ' section'));
+      var st = pageStatus(p);
+      meta.appendChild(el('span', 'pb-badge ' + st.cls, st.text));
+      main.appendChild(meta);
+      main.title = p.id === state.current ? 'หน้าที่เปิดอยู่' : 'เปิดหน้า ' + (p.name || '');
+      if (p.id === state.current) main.setAttribute('aria-current', 'page');
+      main.addEventListener('click', function () {
+        closePageMenu(true);
+        if (p.id !== state.current) { switchPage(p.id); toast('เปิดหน้า "' + (p.name || 'ไม่มีชื่อ') + '"'); }
+      });
+      var dup = el('button', 'pb-icon', 'สำเนา');
+      dup.type = 'button';
+      dup.title = 'ทำสำเนาหน้า ' + (p.name || '');
+      dup.addEventListener('click', function () { duplicatePage(p); });
+      var del = el('button', 'pb-icon', 'ลบ');
+      del.type = 'button';
+      del.title = state.pages.length < 2 ? 'ต้องมีอย่างน้อย 1 หน้า' : 'ลบหน้า ' + (p.name || '') + ' (กด 2 ครั้ง)';
+      del.disabled = state.pages.length < 2;
+      // confirm in the page itself (window.confirm() is blocked in embedded viewers): click twice within 4 s
+      del.addEventListener('click', function () {
+        if (!del.classList.contains('is-armed')) {
+          del.classList.add('is-armed');
+          del.textContent = 'ลบ?';
+          setTimeout(function () { del.classList.remove('is-armed'); del.textContent = 'ลบ'; }, 4000);
+          return;
+        }
+        deletePage(p);
+      });
+      li.appendChild(main);
+      li.appendChild(dup);
+      li.appendChild(del);
+      list.appendChild(li);
+    });
+  }
+  function openPageMenu() {
+    renderPageMenu();
+    $('#pageMenu').hidden = false;
+    $('#pageMenuBtn').setAttribute('aria-expanded', 'true');
+    var cur = $('#pageList .is-current .pb-pagerow__main');
+    if (cur) cur.focus();
+  }
+  function closePageMenu(focusButton) {
+    if ($('#pageMenu').hidden) return;
+    $('#pageMenu').hidden = true;
+    $('#pageMenuBtn').setAttribute('aria-expanded', 'false');
+    if (focusButton) $('#pageMenuBtn').focus();
+  }
+  function uniqueName(base) {
+    var names = state.pages.map(function (p) { return p.name; }), name = base, n = 2;
+    while (names.indexOf(name) >= 0) name = base + ' ' + n++;
+    return name;
+  }
+  function duplicatePage(src) {
+    var p = JSON.parse(JSON.stringify(src));
+    p.id = uid();
+    p.name = uniqueName((src.name || 'หน้า') + ' (สำเนา)');
+    p.sections.forEach(function (s) {
+      var k = uid();
+      if (p.edits[s.k]) { p.edits[k] = p.edits[s.k]; delete p.edits[s.k]; }
+      if (p.images[s.k]) { p.images[k] = p.images[s.k]; delete p.images[s.k]; }
+      s.k = k;
+    });
+    remember();
+    state.pages.splice(state.pages.indexOf(src) + 1, 0, p); // right after the original
+    closePageMenu();
+    switchPage(p.id);
+    toast('ทำสำเนาเป็น "' + p.name + '" แล้ว', true);
+  }
+  function deletePage(gone) {
+    if (state.pages.length < 2) return;
+    var i = state.pages.indexOf(gone);
+    remember();
+    state.pages.splice(i, 1);
+    if (gone.id === state.current) switchPage(state.pages[Math.max(0, i - 1)].id); // the page next to it
+    else { save(); renderTop(); }
+    if (!$('#pageMenu').hidden) renderPageMenu();
+    toast('ลบหน้า "' + (gone.name || 'ไม่มีชื่อ') + '" แล้ว', true);
   }
 
   function switchPage(id) {
     state.current = id;
     selected = null;
-    disarmDelete();
     save();
     renderAll();
   }
@@ -1047,15 +1139,37 @@
     showGroup(libGroup); // the hint names the selected section, which an undo or a page switch may change
   }
 
-  $('#pageSelect').addEventListener('change', function (e) { switchPage(e.target.value); });
+  $('#pageMenuBtn').addEventListener('click', function () {
+    if ($('#pageMenu').hidden) openPageMenu(); else closePageMenu();
+  });
+  document.addEventListener('pointerdown', function (e) {
+    if (!e.target.closest('.pb-pagepick')) closePageMenu();
+  });
+  // a click inside the preview iframe never reaches this document; it moves focus out of the window instead
+  window.addEventListener('blur', function () { closePageMenu(); });
+  $('.pb-pagepick').addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !$('#pageMenu').hidden) { e.preventDefault(); closePageMenu(true); }
+  });
+  $('#newPageMenu').addEventListener('click', function () { closePageMenu(); openNewPage(); });
+
+  // renaming is one undo step (taken when the field is left), not one per key
+  var nameBefore = null;
+  $('#pageName').addEventListener('focus', function () { nameBefore = snapshot(); });
   $('#pageName').addEventListener('input', function (e) {
     page().name = e.target.value;
     save();
-    var o = $('#pageSelect option[value="' + page().id + '"]');
-    if (o) o.textContent = e.target.value || '(ไม่มีชื่อ)';
+    renderTop();
   });
+  $('#pageName').addEventListener('change', function () {
+    if (nameBefore && JSON.parse(nameBefore).pages.some(function (p) { return p.id === page().id && p.name !== page().name; })) {
+      remember(nameBefore);
+    }
+    nameBefore = snapshot();
+  });
+  $('#pageName').addEventListener('keydown', function (e) { if (e.key === 'Enter') e.target.blur(); });
   // new page: pick its type; it can start with the recommended sections
-  $('#newPage').addEventListener('click', function () {
+  $('#newPage').addEventListener('click', openNewPage);
+  function openNewPage() {
     var box = $('#newTypes');
     box.innerHTML = '';
     PAGE_TYPES.forEach(function (t, i) {
@@ -1076,11 +1190,11 @@
     $('#newLayout').checked = true;
     $('#newDialog').showModal();
     $('#newName').focus();
-  });
+  }
   $('#newForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var type = (($('#newTypes input:checked') || {}).value) || 'other';
-    var p = newPage($('#newName').value.trim() || TYPE[type].label + ' ' + (state.pages.length + 1));
+    var p = newPage($('#newName').value.trim() || uniqueName(TYPE[type].label));
     p.type = type;
     p.root = page().root;
     p.colors = JSON.parse(JSON.stringify(page().colors)); // same site: keep the colours
@@ -1100,6 +1214,10 @@
     page().type = TYPE[e.target.value] ? e.target.value : 'other';
     save();
     renderStandards();
+    renderTop();
+    var c = pageCheck(page());
+    toast('ตั้งเป็นหน้า "' + typeOf(page()).label + '" แล้ว' +
+      (c.missing.length ? ' · ยังขาด ' + c.missing.length + ' section กด "จัดหน้าตามแบบ" ได้' : ''), true);
   });
   // asks once in the page (window.confirm() is blocked in embedded viewers) when the page already has sections
   $('#applyLayout').addEventListener('click', function () {
@@ -1108,52 +1226,13 @@
       b.classList.add('is-armed');
       b.textContent = 'กดอีกครั้งเพื่อจัดหน้าใหม่';
       clearTimeout(b._h);
-      b._h = setTimeout(function () { b.classList.remove('is-armed'); b.textContent = 'จัดหน้าตามแบบแนะนำ'; }, 4000);
+      b._h = setTimeout(function () { b.classList.remove('is-armed'); renderStandards(); }, 4000);
       return;
     }
     clearTimeout(b._h);
     b.classList.remove('is-armed');
-    b.textContent = 'จัดหน้าตามแบบแนะนำ';
     applyLayout();
   });
-  $('#dupPage').addEventListener('click', function () {
-    var p = JSON.parse(JSON.stringify(page()));
-    p.id = uid();
-    p.name = page().name + ' (สำเนา)';
-    p.sections.forEach(function (s) {
-      var k = uid();
-      if (p.edits[s.k]) { p.edits[k] = p.edits[s.k]; delete p.edits[s.k]; }
-      if (p.images[s.k]) { p.images[k] = p.images[s.k]; delete p.images[s.k]; }
-      s.k = k;
-    });
-    state.pages.push(p);
-    switchPage(p.id);
-    toast('ทำสำเนาแล้ว');
-  });
-  // confirm in the page itself (window.confirm() is blocked in some embedded viewers): click twice within 4 s
-  $('#delPage').addEventListener('click', function () {
-    var b = $('#delPage');
-    if (state.pages.length < 2) return;
-    if (!b.classList.contains('is-armed')) {
-      b.classList.add('is-armed');
-      b.textContent = 'กดอีกครั้งเพื่อลบ';
-      clearTimeout(b._h);
-      b._h = setTimeout(disarmDelete, 4000);
-      return;
-    }
-    disarmDelete();
-    remember();
-    var gone = page();
-    state.pages = state.pages.filter(function (p) { return p.id !== gone.id; });
-    switchPage(state.pages[0].id);
-    toast('ลบหน้า "' + (gone.name || 'ไม่มีชื่อ') + '" แล้ว', true);
-  });
-  function disarmDelete() {
-    var b = $('#delPage');
-    clearTimeout(b._h);
-    b.classList.remove('is-armed');
-    b.textContent = 'ลบ';
-  }
   $$('#deviceSeg button').forEach(function (b) {
     b.addEventListener('click', function () { state.device = b.dataset.device; save(); renderTop(); layout(); });
   });
