@@ -1,0 +1,134 @@
+{
+ "e7wy0aw": {
+  "type": "class",
+  "selector": ".menu-wrapper",
+  "collection": "default",
+  "css": "gap: 0;\n  inline-size: fit-content;\n\n  /* - on mobile off canvas mode */\n  &.mobile.off-canvas-mode {\n    position: fixed;\n    inset: 0;\n    visibility: hidden;\n    inline-size: 100%;\n    pointer-events: none;\n    z-index: 999;\n    opacity: 1;\n    transition: visibility var(--mobile-menu-transition-duration, 0.2s) ease-out;\n  }\n\n  /* - on mobile reveal mode */\n  &.mobile.reveal-mode {\n    inline-size: 100%;\n    position: absolute;\n    inset-block-start: 100%;\n    inset-inline: 0;\n    overflow: hidden;\n    visibility: hidden;\n    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);\n    background-color: var(--mobile-menu-bg-color);\n    transition: clip-path, visibility, transform, opacity;\n    transition-duration: var(--mobile-menu-transition-duration, 0.2s);\n    transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);\n\n    .menu-wrapper__inner {\n      overflow-y: auto;\n      overflow-x: clip;\n      transform: translateY(20px);\n    }\n\n    .nav {\n      padding-block-end: var(--mobile-menu-padding-block);\n    }\n  }\n\n  /* - on mobile AND on open */\n  &.mobile.open {\n    visibility: visible;\n    opacity: 1;\n  }\n\n  /* - on mobile AND open AND reveal mode */\n  &.mobile.reveal-mode.open {\n    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n\n    .menu-wrapper__inner {\n      transform: translateY(0);\n    }\n  }\n\n  /* HELPER CLASSES */\n\n  /* - hide item on desktop */\n  &.desktop :is(.hide-from-desktop-menu, [data-menu-hide='desktop']) {\n    display: none;\n  }\n\n  /* - hide item on mobile */\n  &.mobile :is(.hide-from-mobile-menu, [data-menu-hide='mobile']) {\n    display: none;\n  }\n\n  /* hide menu until initialized */\n\n  &:not([data-menu-initialized]) {\n    opacity: 0;\n  }\n\n  /* MORPH MODE (desktop shared morphing container, JS-created) */\n  .morph-container {\n    position: absolute;\n    inset-block-start: 100%;\n    inset-inline-start: 0;\n    z-index: 999;\n    background: var(--dropdown-bg, white);\n    box-shadow: var(--dropdown-box-shadow);\n    border-radius: var(--dropdown-border-radius);\n    border: var(--dropdown-border-width) solid var(--dropdown-border-color);\n    visibility: hidden;\n    opacity: 0;\n    transform: translateY(var(--dropdown-closed-top, 40px));\n    transition-property: opacity, transform, visibility, scale;\n    transition-duration: var(--dropdown-transition-duration, 0.15s);\n    transition-timing-function: var(--dropdown-transition-timing, cubic-bezier(0.4, 0, 0.2, 1));\n    transition-delay: var(--dropdown-transition-delay, 0s);\n\n    /* open / close */\n    &.is-active {\n      visibility: visible;\n      opacity: 1;\n      transform: translateY(var(--dropdown-open-top, 20px));\n    }\n\n    /* JS adds is-morphing while sliding between panels: the container box\n       itself animates position and size, and clips the panel slide */\n    &.is-morphing {\n      overflow: clip;\n      transition-property: opacity, transform, visibility, inset-inline-start, inline-size, block-size;\n      transition-duration: var(--dropdown-transition-duration, 0.3s);\n      transition-timing-function: var(--dropdown-transition-timing, cubic-bezier(0.4, 0, 0.2, 1));\n    }\n\n    /* panels: shown via is-active (the .is-open parent selector no longer\n       applies once JS moves them into the shared container) */\n    .menu-dropdown__content-wrapper.morph-panel {\n      transition-property: opacity, visibility;\n\n      &.is-active {\n        visibility: visible;\n        opacity: 1;\n      }\n\n      /* the shared container carries the dropdown chrome instead */\n      > .menu-dropdown__content {\n        background: transparent;\n        box-shadow: none;\n        border: none;\n      }\n    }\n\n    @media (prefers-reduced-motion: reduce) {\n      transition: none;\n    }\n  }"
+ },
+ "7mwjv8b": {
+  "type": "class",
+  "selector": ".menu-wrapper__inner",
+  "collection": "default",
+  "css": "pointer-events: auto;\n  min-block-size: 0px;\n  transition-property: visibility, opacity, transform;\n      transition-duration: var(--mobile-menu-transition-duration, 0.2s);\n      transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);\n\n  .menu-wrapper.off-canvas-mode.mobile & {\n    position: absolute;\n    inset-block-end: 0;\n    z-index: 999;\n    opacity: 0;\n    visibility: hidden;\n    background: var(--mobile-menu-bg-color);\n    max-inline-size: var(--mobile-menu-width, 500px);\n    inline-size: 100%;\n    overflow: hidden;\n    block-size: 100%;\n    inset-block-start: var(--wp-admin--admin-bar--height, 0px);\n  }\n\n  .menu-wrapper.off-canvas-mode.mobile.open & {\n    opacity: 1;\n    visibility: visible;\n    transform: translate(0, 0) !important;\n  }\n\n  .menu-wrapper.off-canvas-mode.mobile[data-mobile-off-canvas-direction='from right' i] & {\n    transform: translateX(100%);\n    inset-inline-end: 0;\n\n    html[dir='RTL'] & {\n      inset-inline-start: 0;\n      inset-inline-end: unset;\n    }\n  }\n\n  .menu-wrapper.off-canvas-mode.mobile[data-mobile-off-canvas-direction='from left' i] & {\n    transform: translateX(-100%);\n    will-change: inset-inline;\n    inset-inline-start: 0;\n\n    html[dir='RTL'] & {\n      inset-inline-end: 0;\n      inset-inline-start: unset;\n    }\n  }\n\n  .menu-wrapper.off-canvas-mode.mobile[data-mobile-off-canvas-direction='from top' i] & {\n    transform: translateY(-100%);\n    --mobile-menu-width: 100%;\n  }\n\n  .menu-wrapper.off-canvas-mode.mobile[data-mobile-off-canvas-direction='from bottom' i] & {\n    transform: translateY(100%);\n    --mobile-menu-width: 100%;\n  }\n\n  .menu-wrapper:not(.off-canvas-mode).mobile & {\n    max-block-size: 70vh;\n  }"
+ },
+ "8s6v6rr": {
+  "type": "class",
+  "selector": ".menu-wrapper-backdrop",
+  "collection": "default",
+  "css": "position: fixed;\n  inset: 0;\n  z-index: 998;\n  background-color: var(--mobile-menu-backdrop-color);\n  opacity: 0%;\n  visibility: hidden;\n  transition-property: opacity, visibility;\n  transition-duration: var(--mobile-menu-transition-duration);\n  transition-delay: calc(var(--mobile-menu-transition-duration) / 1.5);\n  transition-timing-function: ease-out;\n  pointer-events: none;\n\n  .menu-wrapper.open & {\n    visibility: visible;\n    opacity: var(--mobile-menu-backdrop-opacity);\n  }"
+ },
+ "jc2a19j": {
+  "type": "class",
+  "selector": ".menu-link",
+  "collection": "default",
+  "css": "display: flex;\n  align-items: center;"
+ },
+ "323hxze": {
+  "type": "class",
+  "selector": ".menu-dropdown",
+  "collection": "default",
+  "css": "/* on open */\n  &.is-open > .menu-dropdown__content-wrapper {\n    visibility: visible;\n    opacity: 1;\n  }\n\n  .menu-dropdown .menu-dropdown__trigger {\n    inline-size: 100%;\n    justify-content: space-between;\n    text-align: start;\n  }\n\n  /* DROPDOWN MODE */\n  &.dropdown-mode {\n    position: relative;\n\n    .menu-dropdown__content-wrapper {\n      transform: translateY(var(--dropdown-closed-top, 40px));\n      height: fit-content;\n    }\n\n    .menu-dropdown__content {\n      padding: var(--dropdown-padding);\n      block-size: fit-content;\n      background: var(--dropdown-bg, white);\n      box-shadow: var(--dropdown-box-shadow);\n      border-radius: var(--dropdown-border-radius);\n      border-width: var(--dropdown-border-width);\n      border-color: var(--dropdown-border-color);\n      border-style: solid;\n    }\n\n    /* - nested dropdowns */\n    .menu-dropdown {\n      /* -- Nested trigger styling */\n      .menu-dropdown__trigger {\n        inline-size: 100%;\n        justify-content: space-between;\n        text-align: start;\n\n        /* --- Rotate arrow 90° for nested (pointing right) */\n        .menu-dropdown__trigger-icon {\n          transform: rotate(-90deg);\n\n          html[dir='rtl'] & {\n            transform: rotate(90deg);\n          }\n        }\n\n        &.active .menu-dropdown__trigger-icon {\n          transform: rotate(0deg); /* Back to pointing down when open */\n        }\n      }\n\n      > .menu-dropdown__content-wrapper {\n        position: absolute;\n        inset-inline-start: calc(100% + var(--dropdown-padding));\n      }\n    }\n\n    .menu-dropdown__content-wrapper {\n      inset-block-end: 0;\n    }\n\n    /* - dropdown positioning */\n    .menu-dropdown__content-wrapper.position-left {\n      inset-inline-start: auto;\n      inset-inline-end: 100%;\n      margin-inline-start: 0;\n      margin-inline-end: var(--dropdown-padding);\n\n      &.position-bottom {\n        transform-origin: top right;\n\n        html[dir='rtl'] & {\n          transform-origin: top left;\n        }\n      }\n\n      &.position-top {\n        transform-origin: bottom right;\n\n        html[dir='rtl'] & {\n          transform-origin: bottom left;\n        }\n      }\n    }\n\n    .menu-dropdown__content-wrapper.position-right {\n      &.position-bottom {\n        transform-origin: top left;\n\n        html[dir='rtl'] & {\n          transform-origin: top right;\n        }\n      }\n\n      &.position-top {\n        transform-origin: bottom left;\n\n        html[dir='rtl'] & {\n          transform-origin: bottom right;\n        }\n      }\n    }\n\n    .menu-dropdown__content-wrapper.position-top {\n      inset-block-start: auto;\n      inset-block-end: calc(100% + var(--dropdown-padding));\n    }\n\n    /* - transforming open */\n    &.is-open > .menu-dropdown__content-wrapper {\n      transform: translateY(var(--dropdown-open-top, 20px));\n    }\n\n    .menu-dropdown > .menu-dropdown__content-wrapper {\n      transform: translateY(calc((var(--dropdown-padding) + var(--dropdown-border-width)) * -1));\n\n      &.position-top {\n        transform: translateY(calc(var(--dropdown-padding) + var(--dropdown-border-width)));\n      }\n    }\n  }\n\n  /* ACCORDION MODE */\n  &.accordion-mode {\n    inline-size: 100%;\n\n    .menu-dropdown {\n      flex-direction: column;\n    }\n\n    .menu-dropdown__content-wrapper {\n      position: static;\n    }\n  }\n\n  /* STACKED MODE */\n  &.stacked-mode {\n    .menu-dropdown__trigger-icon-wrapper {\n      transform: rotate(-90deg);\n\n      html[dir='rtl'] & {\n        transform: rotate(90deg);\n      }\n    }\n  }\n\n  /* specifically not stacked mode flip trigger icon */\n  &:not(.stacked-mode) .menu-dropdown__trigger.active .menu-dropdown__trigger-icon {\n    transform: scaley(-1);\n  }"
+ },
+ "wbd14ye": {
+  "type": "class",
+  "selector": ".menu-dropdown__trigger",
+  "collection": "default",
+  "css": "display: flex;\n  flex-direction: row;\n  align-items: center;\n  inline-size: fit-content;\n  gap: var(--dropdown-trigger-gap, 0.5em);"
+ },
+ "r5x7hp9": {
+  "type": "class",
+  "selector": ".menu-dropdown__trigger-label",
+  "collection": "default",
+  "css": "white-space: nowrap;"
+ },
+ "9nqw1ki": {
+  "type": "class",
+  "selector": ".menu-dropdown__trigger-icon-wrapper",
+  "collection": "default",
+  "css": "inline-size: fit-content;"
+ },
+ "t3uhr0s": {
+  "type": "class",
+  "selector": ".menu-dropdown__trigger-icon",
+  "collection": "default",
+  "css": "block-size: var(--dropdown-trigger-icon-size, 1em);\n  inline-size: var(--dropdown-trigger-icon-size, 1em);\n  min-inline-size: var(--dropdown-trigger-icon-size, 1em);\n  transition: transform var(--dropdown-transition-duration, 0.15s) ease-out;\n  color: inherit;\n\n  path {\n    stroke: currentColor\n  }"
+ },
+ "9gmp5iv": {
+  "type": "class",
+  "selector": ".menu-dropdown__content-wrapper",
+  "collection": "default",
+  "css": "position: absolute;\n  inset-block-start: 100%;\n  inset-inline-start: 0;\n  min-inline-size: 200px;\n  z-index: 999;\n  transform-origin: top center;\n  visibility: hidden;\n  transition-property: var(--dropdown-transition-property, all);\n  transition-duration: var(--dropdown-transition-duration, 0.15s);\n  transition-delay: var(--dropdown-transition-delay, 0);\n  transition-timing-function: var(--dropdown-transition-timing, cubic-bezier(0.4, 0, 0.2, 1));\n  opacity: 0;\n\n  &.stacked-mode {\n    position: absolute;\n    inset-block: 0;\n    inset-inline: 0;\n    background: var(--mobile-menu-bg-color);\n    transform: translateX(100%);\n    overflow-y: auto;\n    overflow-x: clip;\n    transform-origin: center center;\n    transition-timing-function: var(--mobile-dropdown-stacked-timing, ease-out);\n    transition-duration: var(--mobile-menu-transition-duration);\n\n    .menu-dropdown-back-button {\n      display: flex;\n    }\n\n    &.open {\n      transform: translateX(0);\n      scale: 1;\n      visibility: visible;\n      opacity: 1;\n    }\n\n    &.open:has(+ .menu-dropdown__content-wrapper.open) {\n      transform: translateX(20px);\n      scale: 0.98;\n\n      /*RTL language flip direction */\n      html[dir='RTL'] & {\n        transform: translateX(-20px);\n      }\n    }\n\n    .nav__list:has(~ &) {\n      transform: translateX(0);\n      scale: 1;\n      transform-origin: center center;\n      transition-property: transform, opacity, scale;\n      opacity: 1;\n      transition-duration: var(--mobile-menu-transition-duration);\n      transition-delay: var(--dropdown-transition-delay, 0);\n      transition-timing-function: var(--mobile-dropdown-stacked-timing, ease-out);\n    }\n\n    /* mobile dropdown stacked animations */\n    .nav__list:has(~ &.open) {\n      transform: translateX(20px);\n      scale: 0.98;\n      opacity: 0;\n\n      /*RTL language flip direction */\n      html[dir='rtl'] & {\n        transform: translateX(-20px);\n      }\n    }\n  }"
+ },
+ "zri6kkw": {
+  "type": "class",
+  "selector": ".menu-dropdown-back-button",
+  "collection": "default",
+  "css": "align-items: center;\n  gap: 0.5em;\n  text-decoration: none;\n  display: none;\n  inline-size: 100%;\n  z-index: 100;\n  position: sticky;\n  inset-block-start: -1px;\n\n  svg {\n    block-size: 1em;\n    inline-size: 1em;\n    order: -1;\n\n    html[dir='rtl'] & {\n      transform: rotate(180deg);\n    }\n  }"
+ },
+ "icwzl9j": {
+  "type": "class",
+  "selector": ".menu-dropdown-back-button__label",
+  "collection": "default",
+  "css": ""
+ },
+ "g2uw1nl": {
+  "type": "class",
+  "selector": ".menu-dropdown__content",
+  "collection": "default",
+  "css": "display: flex;\n  flex-direction: column;\n  --divider-gap: 0.5em;\n\n  > li {\n    display: flex;\n    inline-size: 100%;\n    max-inline-size: 100%;\n  }\n\n  > li > a,\n  > li > button {\n    inline-size: 100%;\n  }"
+ },
+ "l0dqiy7": {
+  "type": "class",
+  "selector": ".toggle",
+  "collection": "default",
+  "css": "--ease-smooth: cubic-bezier(0.25, 0.8, 0.3, 1);\n  display: flex;\n  flex-direction: row;\n  gap: var(--toggle-icon-gap, 0.25em);\n  align-items: center;\n  inline-size: fit-content;\n\n  /*alternating labels */\n  &.active .label-off {\n    transform: translateY(-100%);\n    opacity: 0;\n  }\n\n  &.active .label-on {\n    transform: translateY(-100%);\n    opacity: 1;\n  }"
+ },
+ "sqnzd3p": {
+  "type": "class",
+  "selector": ".toggle__icon",
+  "collection": "default",
+  "css": "color: var(--toggle-icon-color, black);\n  inline-size: var(--toggle-icon-size, 1.25em);\n  block-size: var(--toggle-icon-size, 1.25em);\n\n  path {\n    stroke: currentColor;\n    fill: currentColor;\n  }"
+ },
+ "oy9m9z9": {
+  "type": "class",
+  "selector": ".toggle-animated-hamburger-1",
+  "collection": "default",
+  "css": "--transition-duration-rotate: var(--toggle-transition-duration, 0.2s);\n  --transition-duration-collapse: calc(var(--transition-duration-rotate) / 1.5);\n  inline-size: var(--toggle-icon-size, 1.25em);\n  block-size: var(--toggle-icon-size, 1.25em);\n  color: inherit;\n\n  [class*='hamburger-line'] {\n    stroke: var(--toggle-icon-color, currentColor);\n    stroke-width: var(--toggle-icon-line-width, 8px);\n    stroke-linecap: round;\n    transition:\n      /* rotation starts slightly after collapse begins */\n      rotate var(--transition-duration-rotate) var(--ease-smooth),\n      /* collapse moves start immediately */ transform var(--transition-duration-collapse) var(--ease-smooth) var(--transition-duration-rotate);\n    transform-origin: center;\n    transform: translateX(0) translateY(0);\n    rotate: 0deg;\n  }\n\n  .toggle.active & .hamburger-line--top {\n    transform: translateY(20px) translateX(0px);\n    rotate: 45deg;\n    transition:\n      transform var(--transition-duration-collapse) var(--ease-smooth),\n      rotate var(--transition-duration-rotate) var(--ease-smooth) var(--transition-duration-collapse);\n  }\n\n  .toggle.active & .hamburger-line--bottom {\n    transform: translateY(-20px) translateX(0px);\n    rotate: -45deg;\n    transition:\n      transform var(--transition-duration-collapse) var(--ease-smooth),\n      rotate var(--transition-duration-rotate) var(--ease-smooth) var(--transition-duration-collapse);\n  }"
+ },
+ "x8x9vwt": {
+  "type": "class",
+  "selector": ".toggle-animated-hamburger-2",
+  "collection": "default",
+  "css": "inline-size: var(--toggle-icon-size, 1.25em);\n  block-size: var(--toggle-icon-size, 1.25em);\n  color: inherit;\n\n  [class*='hamburger-line'] {\n    stroke: var(--toggle-icon-color, currentColor);\n    stroke-width: var(--toggle-icon-line-width, 8px);\n    stroke-linecap: round;\n    transition:\n      transform var(--toggle-transition-duration, 0.2s) var(--ease-smooth),\n      opacity calc(var(--toggle-transition-duration, 0.2s) * 0.75) var(--ease-smooth);\n    transform-origin: center;\n    transform: translateX(0) translateY(0) rotate(0);\n  }\n\n  .toggle.active & .hamburger-line--top {\n    transform: translateY(16px) translateX(-16px) rotate(45deg);\n  }\n  .toggle.active & .hamburger-line--middle {\n    opacity: 0;\n    transform: scaleX(0);\n  }\n  .toggle.active & .hamburger-line--bottom {\n    transform: translateY(-16px) translateX(-16px) rotate(-45deg);\n  }"
+ },
+ "uyi8cx7": {
+  "type": "class",
+  "selector": ".toggle-animated-hamburger-3",
+  "collection": "default",
+  "css": "inline-size: var(--toggle-icon-size, 1.25em);\n  block-size: var(--toggle-icon-size, 1.25em);\n  color: inherit;\n\n  [class*='hamburger-line'] {\n    stroke: var(--toggle-icon-color, currentColor);\n    stroke-width: var(--toggle-icon-line-width, 8px);\n    stroke-linecap: round;\n    transition:\n      transform var(--toggle-transition-duration, 0.2s) var(--ease-smooth),\n      opacity calc(var(--toggle-transition-duration, 0.2s) * 0.75) ease,\n      stroke-dasharray var(--toggle-transition-duration, 0.2s) var(--ease-smooth),\n      stroke-dashoffset var(--toggle-transition-duration, 0.2s) var(--ease-smooth);\n    transform-origin: center;\n    transform: translateX(0) translateY(0) rotate(0);\n  }\n\n  .hamburger-line--middle {\n    stroke-dasharray: 45 15;\n    stroke-dashoffset: 45;\n  }\n\n  .hamburger-line--bottom {\n    stroke-dasharray: 30 30;\n    stroke-dashoffset: 30;\n  }\n\n  .toggle.active & .hamburger-line--top {\n    transform: translateY(16px) translateX(-16px) rotate(45deg);\n  }\n  .toggle.active & .hamburger-line--middle {\n    transform: scaleX(0);\n    stroke-dasharray: 0 61;\n    stroke-dashoffset: 1;\n  }\n  .toggle.active & .hamburger-line--bottom {\n    transform: translateY(-16px) translateX(-16px) rotate(-45deg);\n    stroke-dasharray: 60 0;\n    stroke-dashoffset: 60;\n  }"
+ },
+ "li1w3kn": {
+  "type": "class",
+  "selector": ".toggle__label",
+  "collection": "default",
+  "css": "position: relative;\n  display: inline-block;\n  overflow: hidden;\n  transition: inline-size var(--toggle-transition-duration, 0.2s) var(--ease-smooth);\n  inline-size: fit-content;\n\n  .toggle__label-text {\n    display: block;\n    white-space: nowrap;\n    inline-size: fit-content;\n  }\n\n  /* For alternate mode: stack vertically */\n  .label-off,\n  .label-on {\n    transition:\n      transform 0.2s var(--ease-smooth),\n      opacity 0.2s var(--ease-smooth);\n    line-height: 1.2;\n  }\n\n  .label-off {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n\n  .label-on {\n    transform: translateY(100%);\n    opacity: 0;\n    position: absolute;\n  }"
+ },
+ "y38lm00": {
+  "type": "class",
+  "selector": ".toggle__label-text",
+  "collection": "default",
+  "css": ""
+ },
+ "g0j083l": {
+  "type": "id",
+  "selector": "#mobile-menu-toggle",
+  "collection": "default",
+  "css": ""
+ },
+ "brzgtau": {
+  "type": "id",
+  "selector": "#mobile-menu-close",
+  "collection": "default",
+  "css": ""
+ }
+}

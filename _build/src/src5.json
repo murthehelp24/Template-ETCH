@@ -1,0 +1,6452 @@
+{
+ "faq": {
+  "type": "block",
+  "gutenbergBlock": {
+   "blockName": "etch/element",
+   "attrs": {
+    "metadata": {
+     "name": "FAQ"
+    },
+    "tag": "section",
+    "attributes": {
+     "data-etch-element": "section",
+     "class": "faq content-section--alt"
+    },
+    "styles": [
+     "etch-section-style",
+     "thofi54",
+     "b0y7tos"
+    ]
+   },
+   "innerBlocks": [
+    {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Container"
+      },
+      "tag": "div",
+      "attributes": {
+       "data-etch-element": "container",
+       "class": "content-section__container"
+      },
+      "styles": [
+       "etch-container-style",
+       "xdw98hx"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "Section Heading"
+        },
+        "tag": "div",
+        "attributes": {
+         "class": "section-heading section-heading--center"
+        },
+        "styles": [
+         "i3nvnyu",
+         "69jxhqk"
+        ]
+       },
+       "innerBlocks": [
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "eyebrow"
+          },
+          "tag": "p",
+          "attributes": {
+           "class": "eyebrow"
+          },
+          "styles": [
+           "j48sdv7"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/text",
+           "attrs": {
+            "metadata": {
+             "name": "Text"
+            },
+            "content": "FAQ"
+           },
+           "innerBlocks": [],
+           "innerHTML": "",
+           "innerContent": []
+          }
+         ],
+         "innerHTML": "\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "Title"
+          },
+          "tag": "h2",
+          "attributes": {}
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/text",
+           "attrs": {
+            "metadata": {
+             "name": "Text"
+            },
+            "content": "คำถามที่พบบ่อย"
+           },
+           "innerBlocks": [],
+           "innerHTML": "",
+           "innerContent": []
+          }
+         ],
+         "innerHTML": "\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n"
+         ]
+        }
+       ],
+       "innerHTML": "\n\n\n\n",
+       "innerContent": [
+        "\n",
+        null,
+        "\n\n",
+        null,
+        "\n"
+       ]
+      },
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "FAQ List"
+        },
+        "tag": "div",
+        "attributes": {
+         "class": "faq-list"
+        },
+        "styles": [
+         "hye8vq3"
+        ]
+       },
+       "innerBlocks": [
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "item"
+          },
+          "tag": "details",
+          "attributes": {
+           "class": "faq-list__item"
+          },
+          "styles": [
+           "ng10zsl"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "question"
+            },
+            "tag": "summary",
+            "attributes": {
+             "class": "faq-list__question"
+            },
+            "styles": [
+             "1c5igyp"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "Pinn Pain Clinic รักษาอาการอะไรบ้าง?"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "answer"
+            },
+            "tag": "div",
+            "attributes": {
+             "class": "faq-list__answer"
+            },
+            "styles": [
+             "mcoglfw"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/raw-html",
+             "attrs": {
+              "content": "อาการปวดจากกล้ามเนื้อ กระดูก ข้อต่อ เส้นเอ็น และเส้นประสาท ตั้งแต่ศีรษะ คอ บ่า ไหล่ หลัง สะโพก ไปจนถึงข้อเข่า ข้อศอก ข้อมือ และข้อเท้า"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "item"
+          },
+          "tag": "details",
+          "attributes": {
+           "class": "faq-list__item"
+          },
+          "styles": [
+           "ng10zsl"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "question"
+            },
+            "tag": "summary",
+            "attributes": {
+             "class": "faq-list__question"
+            },
+            "styles": [
+             "1c5igyp"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "ต้องนัดล่วงหน้าไหม?"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "answer"
+            },
+            "tag": "div",
+            "attributes": {
+             "class": "faq-list__answer"
+            },
+            "styles": [
+             "mcoglfw"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/raw-html",
+             "attrs": {
+              "content": "แนะนำให้นัดล่วงหน้าผ่าน LINE @pinnpainclinic หรือโทร 080-893-6388"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "item"
+          },
+          "tag": "details",
+          "attributes": {
+           "class": "faq-list__item"
+          },
+          "styles": [
+           "ng10zsl"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "question"
+            },
+            "tag": "summary",
+            "attributes": {
+             "class": "faq-list__question"
+            },
+            "styles": [
+             "1c5igyp"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "ค่ารักษาเท่าไร?"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "answer"
+            },
+            "tag": "div",
+            "attributes": {
+             "class": "faq-list__answer"
+            },
+            "styles": [
+             "mcoglfw"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/raw-html",
+             "attrs": {
+              "content": "เริ่มต้น 1,500 บาทต่อบริเวณ ขึ้นกับอาการและการประเมินของแพทย์"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "item"
+          },
+          "tag": "details",
+          "attributes": {
+           "class": "faq-list__item"
+          },
+          "styles": [
+           "ng10zsl"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "question"
+            },
+            "tag": "summary",
+            "attributes": {
+             "class": "faq-list__question"
+            },
+            "styles": [
+             "1c5igyp"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "เบิกประกันได้ไหม?"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "answer"
+            },
+            "tag": "div",
+            "attributes": {
+             "class": "faq-list__answer"
+            },
+            "styles": [
+             "mcoglfw"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/raw-html",
+             "attrs": {
+              "content": "ออกใบรับรองแพทย์และใบเสร็จเพื่อเบิกประกันได้ตามเงื่อนไขของแต่ละบริษัท"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "item"
+          },
+          "tag": "details",
+          "attributes": {
+           "class": "faq-list__item"
+          },
+          "styles": [
+           "ng10zsl"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "question"
+            },
+            "tag": "summary",
+            "attributes": {
+             "class": "faq-list__question"
+            },
+            "styles": [
+             "1c5igyp"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "การฉีดยาหรือฝังเข็มเจ็บไหม?"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "answer"
+            },
+            "tag": "div",
+            "attributes": {
+             "class": "faq-list__answer"
+            },
+            "styles": [
+             "mcoglfw"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/raw-html",
+             "attrs": {
+              "content": "อาจรู้สึกตึงหรือระบมเล็กน้อย 1–2 วัน แพทย์ใช้อัลตราซาวด์นำทางเพื่อให้ตรงจุดและลดการบาดเจ็บ"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "item"
+          },
+          "tag": "details",
+          "attributes": {
+           "class": "faq-list__item"
+          },
+          "styles": [
+           "ng10zsl"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "question"
+            },
+            "tag": "summary",
+            "attributes": {
+             "class": "faq-list__question"
+            },
+            "styles": [
+             "1c5igyp"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "ต้องรักษากี่ครั้ง?"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "answer"
+            },
+            "tag": "div",
+            "attributes": {
+             "class": "faq-list__answer"
+            },
+            "styles": [
+             "mcoglfw"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/raw-html",
+             "attrs": {
+              "content": "ขึ้นกับอาการ บางหัตถการ เช่น Prolotherapy ทำ 3–6 ครั้ง ห่างกัน 3–6 สัปดาห์"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "item"
+          },
+          "tag": "details",
+          "attributes": {
+           "class": "faq-list__item"
+          },
+          "styles": [
+           "ng10zsl"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "question"
+            },
+            "tag": "summary",
+            "attributes": {
+             "class": "faq-list__question"
+            },
+            "styles": [
+             "1c5igyp"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "มีที่จอดรถไหม?"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "answer"
+            },
+            "tag": "div",
+            "attributes": {
+             "class": "faq-list__answer"
+            },
+            "styles": [
+             "mcoglfw"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/raw-html",
+             "attrs": {
+              "content": "มีที่จอดรถ คลินิกอยู่ถนนเทพารักษ์ บางพลี สมุทรปราการ"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        }
+       ],
+       "innerHTML": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+       "innerContent": [
+        "\n",
+        null,
+        "\n\n",
+        null,
+        "\n\n",
+        null,
+        "\n\n",
+        null,
+        "\n\n",
+        null,
+        "\n\n",
+        null,
+        "\n\n",
+        null,
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n\n",
+      null,
+      "\n"
+     ]
+    }
+   ],
+   "innerHTML": "\n\n",
+   "innerContent": [
+    "\n",
+    null,
+    "\n"
+   ]
+  },
+  "timestamp": "2026-10-24T10:29:30.435Z",
+  "styles": {
+   "etch-section-style": {
+    "type": "element",
+    "selector": ":where([data-etch-element=\"section\"])",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;",
+    "readonly": true
+   },
+   "thofi54": {
+    "type": "class",
+    "selector": ".faq",
+    "collection": "default",
+    "css": "",
+    "readonly": false
+   },
+   "b0y7tos": {
+    "type": "class",
+    "selector": ".content-section--alt",
+    "collection": "default",
+    "css": "background-color: var(--white);",
+    "readonly": false
+   },
+   "etch-container-style": {
+    "type": "element",
+    "selector": ":where([data-etch-element=\"container\"])",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  max-inline-size: var(--content-width, 1366px);\n  align-self: center; margin-inline: auto;",
+    "readonly": true
+   },
+   "xdw98hx": {
+    "type": "class",
+    "selector": ".content-section__container",
+    "collection": "default",
+    "css": "gap: var(--space-l);",
+    "readonly": false
+   },
+   "i3nvnyu": {
+    "type": "class",
+    "selector": ".section-heading",
+    "collection": "default",
+    "css": "display: flex;\n  flex-direction: column;\n  max-inline-size: 50rem;",
+    "readonly": false
+   },
+   "69jxhqk": {
+    "type": "class",
+    "selector": ".section-heading--center",
+    "collection": "default",
+    "css": "align-items: center;\n  margin-inline: auto;\n  text-align: center;",
+    "readonly": false
+   },
+   "j48sdv7": {
+    "type": "class",
+    "selector": ".eyebrow",
+    "collection": "default",
+    "css": "display: flex;\n  align-items: center;\n  gap: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: var(--primary);\n\n  &::before {\n    content: \"\";\n    inline-size: 2.4rem;\n    block-size: 2px;\n    background-color: var(--secondary);\n  }\n\n  .bg--dark & { color: var(--text-light); }",
+    "readonly": false
+   },
+   "hye8vq3": {
+    "type": "class",
+    "selector": ".faq-list",
+    "collection": "default",
+    "css": "display: flex;\n  flex-direction: column;\n  gap: var(--space-s);\n  inline-size: 100%;\n  max-inline-size: 82rem;\n  margin-inline: auto;",
+    "readonly": false
+   },
+   "ng10zsl": {
+    "type": "class",
+    "selector": ".faq-list__item",
+    "collection": "default",
+    "css": "overflow: hidden;\n  background-color: var(--primary);\n  color: var(--white);\n  border: 1px solid transparent;\n  border-radius: var(--radius-m);\n  transition: border-color 0.2s ease;\n\n  &:hover,\n  &[open] { border-color: var(--secondary); }\n\n  &[open] .faq-list__question::after {\n    content: \"−\";\n    background-color: var(--secondary);\n    color: var(--white);\n  }",
+    "readonly": false
+   },
+   "1c5igyp": {
+    "type": "class",
+    "selector": ".faq-list__question",
+    "collection": "default",
+    "css": "display: flex;\n  padding: var(--space-s) var(--space-m);\n  justify-content: space-between;\n  align-items: center;\n  gap: var(--space-s);\n  font-weight: 600;\n  color: var(--white);\n  cursor: pointer;\n  list-style: none;\n\n  &::-webkit-details-marker { display: none; }\n\n  &::after {\n    content: \"+\";\n    display: grid;\n    flex: none;\n    place-items: center;\n    inline-size: 3.2rem;\n    block-size: 3.2rem;\n    border-radius: 50%;\n    background-color: var(--white-trans-20);\n    font-size: var(--text-l);\n    line-height: 1;\n    transition: background-color 0.2s ease, color 0.2s ease;\n  }\n\n  @media (--bp-s) { padding-inline: var(--space-s); }",
+    "readonly": false
+   },
+   "mcoglfw": {
+    "type": "class",
+    "selector": ".faq-list__answer",
+    "collection": "default",
+    "css": "padding: var(--space-s) var(--space-m);\n  background-color: var(--white);\n  color: var(--text-dark);\n\n  @media (--bp-s) { padding-inline: var(--space-s); }",
+    "readonly": false
+   }
+  },
+  "customMediaDefinitions": {
+   "--bp-s": "(width <= 768px)"
+  },
+  "version": 2.1
+ },
+ "contactSplit": {
+  "type": "block",
+  "gutenbergBlock": {
+   "blockName": "etch/element",
+   "attrs": {
+    "metadata": {
+     "name": "Contact Split"
+    },
+    "tag": "section",
+    "attributes": {
+     "data-etch-element": "section",
+     "class": "contact-split"
+    },
+    "styles": [
+     "etch-section-style",
+     "p8zb1yx"
+    ]
+   },
+   "innerBlocks": [
+    {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Container"
+      },
+      "tag": "div",
+      "attributes": {
+       "data-etch-element": "container",
+       "class": "contact-split__container"
+      },
+      "styles": [
+       "etch-container-style",
+       "9o9jy3p"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "content"
+        },
+        "tag": "div",
+        "attributes": {
+         "class": "contact-split__content"
+        },
+        "styles": [
+         "7a7naf0"
+        ]
+       },
+       "innerBlocks": [
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "Section Heading"
+          },
+          "tag": "div",
+          "attributes": {
+           "class": "section-heading"
+          },
+          "styles": [
+           "i3nvnyu"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "eyebrow"
+            },
+            "tag": "p",
+            "attributes": {
+             "class": "eyebrow"
+            },
+            "styles": [
+             "j48sdv7"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "ติดต่อเรา"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "Title"
+            },
+            "tag": "h2",
+            "attributes": {}
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "ปวดตรงไหน ปรึกษาแพทย์เฉพาะทางได้เลย"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "intro"
+            },
+            "tag": "p",
+            "attributes": {
+             "class": "section-heading__intro"
+            },
+            "styles": [
+             "31ish2w"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/raw-html",
+             "attrs": {
+              "content": "นัดหมายล่วงหน้าผ่าน LINE หรือโทร มีที่จอดรถ"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "list"
+          },
+          "tag": "ul",
+          "attributes": {
+           "class": "contact-split__list"
+          },
+          "styles": [
+           "o49724m"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "li"
+            },
+            "tag": "li",
+            "attributes": {}
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "label"
+              },
+              "tag": "span",
+              "attributes": {
+               "class": "contact-split__label"
+              },
+              "styles": [
+               "ke1g02t"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/text",
+               "attrs": {
+                "metadata": {
+                 "name": "Text"
+                },
+                "content": "ที่อยู่ "
+               },
+               "innerBlocks": [],
+               "innerHTML": "",
+               "innerContent": []
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "{options.metabox.clinic.address}"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "li"
+            },
+            "tag": "li",
+            "attributes": {}
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "label"
+              },
+              "tag": "span",
+              "attributes": {
+               "class": "contact-split__label"
+              },
+              "styles": [
+               "ke1g02t"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/text",
+               "attrs": {
+                "metadata": {
+                 "name": "Text"
+                },
+                "content": "เวลาทำการ "
+               },
+               "innerBlocks": [],
+               "innerHTML": "",
+               "innerContent": []
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "{options.metabox.clinic.hours}"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "li"
+            },
+            "tag": "li",
+            "attributes": {}
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "label"
+              },
+              "tag": "span",
+              "attributes": {
+               "class": "contact-split__label"
+              },
+              "styles": [
+               "ke1g02t"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/text",
+               "attrs": {
+                "metadata": {
+                 "name": "Text"
+                },
+                "content": "โทร "
+               },
+               "innerBlocks": [],
+               "innerHTML": "",
+               "innerContent": []
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "link"
+              },
+              "tag": "a",
+              "attributes": {
+               "class": "contact-split__link",
+               "href": "tel:{options.metabox.clinic.phone}"
+              },
+              "styles": [
+               "hi9m0wy"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/text",
+               "attrs": {
+                "metadata": {
+                 "name": "Text"
+                },
+                "content": "{options.metabox.clinic.phone}"
+               },
+               "innerBlocks": [],
+               "innerHTML": "",
+               "innerContent": []
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            }
+           ],
+           "innerHTML": "\n\n\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/condition",
+           "attrs": {
+            "metadata": {
+             "name": "If options.metabox.clinic.email"
+            },
+            "condition": {
+             "leftHand": "options.metabox.clinic.email",
+             "operator": "isTruthy",
+             "rightHand": null
+            },
+            "conditionString": "options.metabox.clinic.email"
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "li"
+              },
+              "tag": "li",
+              "attributes": {}
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/element",
+               "attrs": {
+                "metadata": {
+                 "name": "label"
+                },
+                "tag": "span",
+                "attributes": {
+                 "class": "contact-split__label"
+                },
+                "styles": [
+                 "ke1g02t"
+                ]
+               },
+               "innerBlocks": [
+                {
+                 "blockName": "etch/text",
+                 "attrs": {
+                  "metadata": {
+                   "name": "Text"
+                  },
+                  "content": "อีเมล "
+                 },
+                 "innerBlocks": [],
+                 "innerHTML": "",
+                 "innerContent": []
+                }
+               ],
+               "innerHTML": "\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n"
+               ]
+              },
+              {
+               "blockName": "etch/element",
+               "attrs": {
+                "metadata": {
+                 "name": "link"
+                },
+                "tag": "a",
+                "attributes": {
+                 "class": "contact-split__link",
+                 "href": "mailto:{options.metabox.clinic.email}"
+                },
+                "styles": [
+                 "hi9m0wy"
+                ]
+               },
+               "innerBlocks": [
+                {
+                 "blockName": "etch/text",
+                 "attrs": {
+                  "metadata": {
+                   "name": "Text"
+                  },
+                  "content": "{options.metabox.clinic.email}"
+                 },
+                 "innerBlocks": [],
+                 "innerHTML": "",
+                 "innerContent": []
+                }
+               ],
+               "innerHTML": "\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n"
+               ]
+              }
+             ],
+             "innerHTML": "\n\n\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n\n",
+              null,
+              "\n"
+             ]
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "li"
+            },
+            "tag": "li",
+            "attributes": {}
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "label"
+              },
+              "tag": "span",
+              "attributes": {
+               "class": "contact-split__label"
+              },
+              "styles": [
+               "ke1g02t"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/text",
+               "attrs": {
+                "metadata": {
+                 "name": "Text"
+                },
+                "content": "แผนที่ "
+               },
+               "innerBlocks": [],
+               "innerHTML": "",
+               "innerContent": []
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "link"
+              },
+              "tag": "a",
+              "attributes": {
+               "class": "contact-split__link",
+               "href": "{options.metabox.clinic.map_url}",
+               "target": "_blank",
+               "rel": "noopener"
+              },
+              "styles": [
+               "hi9m0wy"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/text",
+               "attrs": {
+                "metadata": {
+                 "name": "Text"
+                },
+                "content": "เปิด Google Maps"
+               },
+               "innerBlocks": [],
+               "innerHTML": "",
+               "innerContent": []
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            }
+           ],
+           "innerHTML": "\n\n\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n\n\n\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n\n",
+          null,
+          "\n\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "social"
+          },
+          "tag": "ul",
+          "attributes": {
+           "class": "contact-split__social",
+           "aria-label": "โซเชียลมีเดีย"
+          },
+          "styles": [
+           "pnsoc01"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/condition",
+           "attrs": {
+            "metadata": {
+             "name": "If options.metabox.clinic.facebook_url"
+            },
+            "condition": {
+             "leftHand": "options.metabox.clinic.facebook_url",
+             "operator": "isTruthy",
+             "rightHand": null
+            },
+            "conditionString": "options.metabox.clinic.facebook_url"
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "Facebook"
+              },
+              "tag": "li",
+              "attributes": {}
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/element",
+               "attrs": {
+                "metadata": {
+                 "name": "link"
+                },
+                "tag": "a",
+                "attributes": {
+                 "class": "contact-split__social-link",
+                 "href": "{options.metabox.clinic.facebook_url}",
+                 "target": "_blank",
+                 "rel": "noopener",
+                 "aria-label": "Facebook"
+                },
+                "styles": [
+                 "pnsocl1"
+                ]
+               },
+               "innerBlocks": [
+                {
+                 "blockName": "etch/svg",
+                 "attrs": {
+                  "metadata": {
+                   "name": "Facebook icon"
+                  },
+                  "tag": "svg",
+                  "attributes": {
+                   "class": "contact-split__social-icon",
+                   "aria-hidden": "true",
+                   "focusable": "false",
+                   "src": "/wp-content/uploads/2026/10/social-facebook.svg"
+                  },
+                  "styles": [
+                   "pnsoci1"
+                  ]
+                 },
+                 "innerBlocks": [],
+                 "innerHTML": "\n\n",
+                 "innerContent": [
+                  "\n",
+                  "\n"
+                 ]
+                }
+               ],
+               "innerHTML": "\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n"
+               ]
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "Instagram"
+            },
+            "tag": "li",
+            "attributes": {}
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "link"
+              },
+              "tag": "a",
+              "attributes": {
+               "class": "contact-split__social-link",
+               "href": "{options.metabox.clinic.instagram_url}",
+               "target": "_blank",
+               "rel": "noopener",
+               "aria-label": "Instagram"
+              },
+              "styles": [
+               "pnsocl1"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/svg",
+               "attrs": {
+                "metadata": {
+                 "name": "Instagram icon"
+                },
+                "tag": "svg",
+                "attributes": {
+                 "class": "contact-split__social-icon",
+                 "aria-hidden": "true",
+                 "focusable": "false",
+                 "src": "/wp-content/uploads/2026/10/social-instagram.svg"
+                },
+                "styles": [
+                 "pnsoci1"
+                ]
+               },
+               "innerBlocks": [],
+               "innerHTML": "\n\n",
+               "innerContent": [
+                "\n",
+                "\n"
+               ]
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/condition",
+           "attrs": {
+            "metadata": {
+             "name": "If options.metabox.clinic.tiktok_url"
+            },
+            "condition": {
+             "leftHand": "options.metabox.clinic.tiktok_url",
+             "operator": "isTruthy",
+             "rightHand": null
+            },
+            "conditionString": "options.metabox.clinic.tiktok_url"
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "TikTok"
+              },
+              "tag": "li",
+              "attributes": {}
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/element",
+               "attrs": {
+                "metadata": {
+                 "name": "link"
+                },
+                "tag": "a",
+                "attributes": {
+                 "class": "contact-split__social-link",
+                 "href": "{options.metabox.clinic.tiktok_url}",
+                 "target": "_blank",
+                 "rel": "noopener",
+                 "aria-label": "TikTok"
+                },
+                "styles": [
+                 "pnsocl1"
+                ]
+               },
+               "innerBlocks": [
+                {
+                 "blockName": "etch/svg",
+                 "attrs": {
+                  "metadata": {
+                   "name": "TikTok icon"
+                  },
+                  "tag": "svg",
+                  "attributes": {
+                   "class": "contact-split__social-icon",
+                   "aria-hidden": "true",
+                   "focusable": "false",
+                   "src": "/wp-content/uploads/2026/10/social-tiktok.svg"
+                  },
+                  "styles": [
+                   "pnsoci1"
+                  ]
+                 },
+                 "innerBlocks": [],
+                 "innerHTML": "\n\n",
+                 "innerContent": [
+                  "\n",
+                  "\n"
+                 ]
+                }
+               ],
+               "innerHTML": "\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n"
+               ]
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "Contact Buttons"
+          },
+          "tag": "div",
+          "attributes": {
+           "class": "contact-buttons"
+          },
+          "styles": [
+           "ls8k3kw"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "LINE"
+            },
+            "tag": "a",
+            "attributes": {
+             "href": "{options.metabox.clinic.line_url}",
+             "target": "_blank",
+             "rel": "noopener",
+             "class": "btn--primary"
+            },
+            "styles": [
+             "1mvdm17"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/svg",
+             "attrs": {
+              "metadata": {
+               "name": "LINE icon"
+              },
+              "tag": "svg",
+              "attributes": {
+               "class": "btn-icon btn-icon--line",
+               "aria-hidden": "true",
+               "focusable": "false",
+               "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii00IC00IDMyIDMyIiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMgLTRoMThhNyA3IDAgMCAxIDcgN3YxOGE3IDcgMCAwIDEtNyA3SDNhNyA3IDAgMCAxLTctN1YzYTcgNyAwIDAgMSA3LTd6TTE5LjM2NSA5Ljg2M2MuMzQ5IDAgLjYzLjI4NS42My42MzEgMCAuMzQ1LS4yODEuNjMtLjYzLjYzSDE3LjYxdjEuMTI1aDEuNzU1Yy4zNDkgMCAuNjMuMjgzLjYzLjYzIDAgLjM0NC0uMjgxLjYyOS0uNjMuNjI5aC0yLjM4NmMtLjM0NSAwLS42MjctLjI4NS0uNjI3LS42MjlWOC4xMDhjMC0uMzQ1LjI4Mi0uNjMuNjMtLjYzaDIuMzg2Yy4zNDYgMCAuNjI3LjI4NS42MjcuNjMgMCAuMzQ5LS4yODEuNjMtLjYzLjYzSDE3LjYxdjEuMTI1aDEuNzU1em0tMy44NTUgMy4wMTZjMCAuMjctLjE3NC41MS0uNDMyLjU5Ni0uMDY0LjAyMS0uMTMzLjAzMS0uMTk5LjAzMS0uMjExIDAtLjM5MS0uMDktLjUxLS4yNWwtMi40NDMtMy4zMTd2Mi45NGMwIC4zNDQtLjI3OS42MjktLjYzMS42MjktLjM0NiAwLS42MjYtLjI4NS0uNjI2LS42MjlWOC4xMDhjMC0uMjcuMTczLS41MS40My0uNTk1LjA2LS4wMjMuMTM2LS4wMzMuMTk0LS4wMzMuMTk1IDAgLjM3NS4xMDQuNDk1LjI1NGwyLjQ2MiAzLjMzVjguMTA4YzAtLjM0NS4yODItLjYzLjYzLS42My4zNDUgMCAuNjMuMjg1LjYzLjYzdjQuNzcxem0tNS43NDEgMGMwIC4zNDQtLjI4Mi42MjktLjYzMS42MjktLjM0NSAwLS42MjctLjI4NS0uNjI3LS42MjlWOC4xMDhjMC0uMzQ1LjI4Mi0uNjMuNjMtLjYzLjM0NiAwIC42MjguMjg1LjYyOC42M3Y0Ljc3MXptLTIuNDY2LjYyOUg0LjkxN2MtLjM0NSAwLS42My0uMjg1LS42My0uNjI5VjguMTA4YzAtLjM0NS4yODUtLjYzLjYzLS42My4zNDggMCAuNjMuMjg1LjYzLjYzdjQuMTQxaDEuNzU2Yy4zNDggMCAuNjI5LjI4My42MjkuNjMgMCAuMzQ0LS4yODIuNjI5LS42MjkuNjI5TTI0IDEwLjMxNEMyNCA0Ljk0MyAxOC42MTUuNTcyIDEyIC41NzJTMCA0Ljk0MyAwIDEwLjMxNGMwIDQuODExIDQuMjcgOC44NDIgMTAuMDM1IDkuNjA4LjM5MS4wODIuOTIzLjI1OCAxLjA1OC41OS4xMi4zMDEuMDc5Ljc2Ni4wMzggMS4wOGwtLjE2NCAxLjAyYy0uMDQ1LjMwMS0uMjQgMS4xODYgMS4wNDkuNjQ1IDEuMjkxLS41MzkgNi45MTYtNC4wNzggOS40MzYtNi45NzVDMjMuMTc2IDE0LjM5MyAyNCAxMi40NTggMjQgMTAuMzE0Ii8+PC9zdmc+"
+              },
+              "styles": [
+               "pnline1",
+               "pnlnbd1"
+              ]
+             },
+             "innerBlocks": [],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "ติดต่อผ่านไลน์"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "Phone"
+            },
+            "tag": "a",
+            "attributes": {
+             "href": "tel:{options.metabox.clinic.phone}",
+             "class": "btn--primary btn--outline"
+            },
+            "styles": [
+             "1mvdm17",
+             "p6qy15v"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "โทร {options.metabox.clinic.phone}"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        }
+       ],
+       "innerHTML": "\n\n\n\n\n\n\n\n",
+       "innerContent": [
+        "\n",
+        null,
+        "\n\n",
+        null,
+        "\n\n",
+        null,
+        "\n\n",
+        null,
+        "\n"
+       ]
+      },
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "Map"
+        },
+        "tag": "iframe",
+        "attributes": {
+         "class": "contact-split__map",
+         "src": "https://www.google.com/maps?q=Pinn%20Pain%20Clinic%20130%20%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%88%206%20%E0%B8%96%E0%B8%99%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B9%8C%20%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B5%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%20%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B5%20%E0%B8%AA%E0%B8%A1%E0%B8%B8%E0%B8%97%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3&output=embed",
+         "title": "แผนที่ Pinn Pain Clinic",
+         "loading": "lazy",
+         "referrerpolicy": "no-referrer-when-downgrade"
+        },
+        "styles": [
+         "pq000eh"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n\n",
+      null,
+      "\n"
+     ]
+    }
+   ],
+   "innerHTML": "\n\n",
+   "innerContent": [
+    "\n",
+    null,
+    "\n"
+   ]
+  },
+  "timestamp": "2026-10-24T10:29:30.455Z",
+  "styles": {
+   "etch-section-style": {
+    "type": "element",
+    "selector": ":where([data-etch-element=\"section\"])",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;",
+    "readonly": true
+   },
+   "p8zb1yx": {
+    "type": "class",
+    "selector": ".contact-split",
+    "collection": "default",
+    "css": "",
+    "readonly": false
+   },
+   "etch-container-style": {
+    "type": "element",
+    "selector": ":where([data-etch-element=\"container\"])",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  max-inline-size: var(--content-width, 1366px);\n  align-self: center; margin-inline: auto;",
+    "readonly": true
+   },
+   "9o9jy3p": {
+    "type": "class",
+    "selector": ".contact-split__container",
+    "collection": "default",
+    "css": "display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(min(100%, 36rem), 1fr));\n  gap: var(--container-gap);\n  align-items: center;",
+    "readonly": false
+   },
+   "7a7naf0": {
+    "type": "class",
+    "selector": ".contact-split__content",
+    "collection": "default",
+    "css": "display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: var(--content-gap);",
+    "readonly": false
+   },
+   "i3nvnyu": {
+    "type": "class",
+    "selector": ".section-heading",
+    "collection": "default",
+    "css": "display: flex;\n  flex-direction: column;\n  max-inline-size: 50rem;",
+    "readonly": false
+   },
+   "j48sdv7": {
+    "type": "class",
+    "selector": ".eyebrow",
+    "collection": "default",
+    "css": "display: flex;\n  align-items: center;\n  gap: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: var(--primary);\n\n  &::before {\n    content: \"\";\n    inline-size: 2.4rem;\n    block-size: 2px;\n    background-color: var(--secondary);\n  }\n\n  .bg--dark & { color: var(--text-light); }",
+    "readonly": false
+   },
+   "31ish2w": {
+    "type": "class",
+    "selector": ".section-heading__intro",
+    "collection": "default",
+    "css": "color: var(--text-dark-muted);\n\n  .bg--dark & { color: var(--text-light-muted); }",
+    "readonly": false
+   },
+   "o49724m": {
+    "type": "class",
+    "selector": ".contact-split__list",
+    "collection": "default",
+    "css": "display: flex;\n  flex-direction: column;\n  gap: var(--space-xs);\n  padding: 0;\n  list-style: none;\n  color: var(--text-dark-muted);",
+    "readonly": false
+   },
+   "ke1g02t": {
+    "type": "class",
+    "selector": ".contact-split__label",
+    "collection": "default",
+    "css": "font-weight: 600;\n  color: var(--primary);",
+    "readonly": false
+   },
+   "hi9m0wy": {
+    "type": "class",
+    "selector": ".contact-split__link",
+    "collection": "default",
+    "css": "color: var(--primary);",
+    "readonly": false
+   },
+   "pnsoc01": {
+    "type": "class",
+    "selector": ".contact-split__social",
+    "collection": "default",
+    "css": "display: flex;\n  flex-wrap: wrap;\n  gap: var(--space-s);\n  padding: 0;\n  list-style: none;",
+    "readonly": false
+   },
+   "pnsocl1": {
+    "type": "class",
+    "selector": ".contact-split__social-link",
+    "collection": "default",
+    "css": "display: block;\n  transition: scale 0.2s ease;\n\n  &:hover,\n  &:focus-visible { scale: 1.1; }\n\n  @media (prefers-reduced-motion: reduce) { transition: none; }",
+    "readonly": false
+   },
+   "pnsoci1": {
+    "type": "class",
+    "selector": ".contact-split__social-icon",
+    "collection": "default",
+    "css": "display: block;\n  inline-size: 3.2rem;\n  block-size: 3.2rem;",
+    "readonly": false
+   },
+   "ls8k3kw": {
+    "type": "class",
+    "selector": ".contact-buttons",
+    "collection": "default",
+    "css": "display: flex;\n  flex-wrap: wrap;\n  gap: var(--space-s);\n\n  & > a { align-items: center; }",
+    "readonly": false
+   },
+   "1mvdm17": {
+    "type": "class",
+    "selector": ".btn--primary",
+    "collection": "default",
+    "css": "",
+    "readonly": false
+   },
+   "pnline1": {
+    "type": "class",
+    "selector": ".btn-icon",
+    "collection": "default",
+    "css": "display: block;\n  inline-size: 1.25em;\n  block-size: 1.25em;\n  flex-shrink: 0;\n  align-self: center;\n  margin-inline-end: var(--space-xs);\n\n  a:has(> &) { align-items: center; }",
+    "readonly": false
+   },
+   "pnlnbd1": {
+    "type": "class",
+    "selector": ".btn-icon--line",
+    "collection": "default",
+    "css": "inline-size: 1.4em;\n  block-size: 1.4em;\n  translate: 0 -0.1em;",
+    "readonly": false
+   },
+   "p6qy15v": {
+    "type": "class",
+    "selector": ".btn--outline",
+    "collection": "default",
+    "css": "",
+    "readonly": false
+   },
+   "pq000eh": {
+    "type": "class",
+    "selector": ".contact-split__map",
+    "collection": "default",
+    "css": "display: block;\n  inline-size: 100%;\n  block-size: clamp(36rem, 40vw, 52rem);\n  border: 0;\n  border-radius: var(--radius-s);\n  background-color: var(--neutral-ultra-light);",
+    "readonly": false
+   }
+  },
+  "version": 2.1
+ },
+ "latestPosts": {
+  "type": "block",
+  "gutenbergBlock": {
+   "blockName": "etch/element",
+   "attrs": {
+    "metadata": {
+     "name": "Posts"
+    },
+    "tag": "section",
+    "attributes": {
+     "data-etch-element": "section",
+     "class": "latest-posts"
+    },
+    "styles": [
+     "etch-section-style",
+     "i8tvp7k"
+    ]
+   },
+   "innerBlocks": [
+    {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Container"
+      },
+      "tag": "div",
+      "attributes": {
+       "data-etch-element": "container",
+       "class": "content-section__container"
+      },
+      "styles": [
+       "etch-container-style",
+       "xdw98hx"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "Section Heading"
+        },
+        "tag": "div",
+        "attributes": {
+         "class": "section-heading section-heading--center"
+        },
+        "styles": [
+         "i3nvnyu",
+         "69jxhqk"
+        ]
+       },
+       "innerBlocks": [
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "eyebrow"
+          },
+          "tag": "p",
+          "attributes": {
+           "class": "eyebrow"
+          },
+          "styles": [
+           "j48sdv7"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/text",
+           "attrs": {
+            "metadata": {
+             "name": "Text"
+            },
+            "content": "บทความ"
+           },
+           "innerBlocks": [],
+           "innerHTML": "",
+           "innerContent": []
+          }
+         ],
+         "innerHTML": "\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n"
+         ]
+        },
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "Title"
+          },
+          "tag": "h2",
+          "attributes": {}
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/text",
+           "attrs": {
+            "metadata": {
+             "name": "Text"
+            },
+            "content": "บทความล่าสุดจากแพทย์"
+           },
+           "innerBlocks": [],
+           "innerHTML": "",
+           "innerContent": []
+          }
+         ],
+         "innerHTML": "\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n"
+         ]
+        }
+       ],
+       "innerHTML": "\n\n\n\n",
+       "innerContent": [
+        "\n",
+        null,
+        "\n\n",
+        null,
+        "\n"
+       ]
+      },
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "grid"
+        },
+        "tag": "ul",
+        "attributes": {
+         "class": "latest-posts__grid"
+        },
+        "styles": [
+         "cspy2ga"
+        ]
+       },
+       "innerBlocks": [
+        {
+         "blockName": "etch/loop",
+         "attrs": {
+          "metadata": {
+           "name": "Loop"
+          },
+          "loopId": "latestPosts",
+          "itemId": "item"
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "card"
+            },
+            "tag": "li",
+            "attributes": {
+             "class": "latest-posts__card"
+            },
+            "styles": [
+             "4twkb6q"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/condition",
+             "attrs": {
+              "metadata": {
+               "name": "If item.image.id"
+              },
+              "condition": {
+               "leftHand": "item.image.id",
+               "operator": "isTruthy",
+               "rightHand": null
+              },
+              "conditionString": "item.image.id"
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/element",
+               "attrs": {
+                "metadata": {
+                 "name": "media"
+                },
+                "tag": "figure",
+                "attributes": {
+                 "class": "latest-posts__media"
+                },
+                "styles": [
+                 "vb3p9wx",
+                 "yb5gj6c"
+                ]
+               },
+               "innerBlocks": [
+                {
+                 "blockName": "etch/dynamic-image",
+                 "attrs": {
+                  "metadata": {
+                   "name": "Image"
+                  },
+                  "tag": "img",
+                  "attributes": {
+                   "class": "latest-posts__img",
+                   "mediaId": "{item.image.id}",
+                   "loading": "lazy"
+                  },
+                  "styles": [
+                   "xrf6usx"
+                  ]
+                 },
+                 "innerBlocks": [],
+                 "innerHTML": "\n\n",
+                 "innerContent": [
+                  "\n",
+                  "\n"
+                 ]
+                }
+               ],
+               "innerHTML": "\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n"
+               ]
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "date"
+              },
+              "tag": "p",
+              "attributes": {
+               "class": "latest-posts__date"
+              },
+              "styles": [
+               "wo0ydgf"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/text",
+               "attrs": {
+                "metadata": {
+                 "name": "Text"
+                },
+                "content": "{item.date.dateFormat(\"j M Y\")}"
+               },
+               "innerBlocks": [],
+               "innerHTML": "",
+               "innerContent": []
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "title"
+              },
+              "tag": "h3",
+              "attributes": {
+               "class": "latest-posts__title"
+              },
+              "styles": [
+               "ru2jfs1"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/element",
+               "attrs": {
+                "metadata": {
+                 "name": "link"
+                },
+                "tag": "a",
+                "attributes": {
+                 "class": "latest-posts__link clickable-parent",
+                 "href": "{item.permalink.relative}"
+                },
+                "styles": [
+                 "o3xzva7",
+                 "h6h3fu6"
+                ]
+               },
+               "innerBlocks": [
+                {
+                 "blockName": "etch/text",
+                 "attrs": {
+                  "metadata": {
+                   "name": "Text"
+                  },
+                  "content": "{item.title}"
+                 },
+                 "innerBlocks": [],
+                 "innerHTML": "",
+                 "innerContent": []
+                }
+               ],
+               "innerHTML": "\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n"
+               ]
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/condition",
+             "attrs": {
+              "metadata": {
+               "name": "If item.excerpt"
+              },
+              "condition": {
+               "leftHand": "item.excerpt",
+               "operator": "isTruthy",
+               "rightHand": null
+              },
+              "conditionString": "item.excerpt"
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/element",
+               "attrs": {
+                "metadata": {
+                 "name": "excerpt"
+                },
+                "tag": "p",
+                "attributes": {
+                 "class": "latest-posts__excerpt"
+                },
+                "styles": [
+                 "cwbu7s7"
+                ]
+               },
+               "innerBlocks": [
+                {
+                 "blockName": "etch/raw-html",
+                 "attrs": {
+                  "content": "{item.excerpt}"
+                 },
+                 "innerBlocks": [],
+                 "innerHTML": "",
+                 "innerContent": []
+                }
+               ],
+               "innerHTML": "\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n"
+               ]
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            },
+            {
+             "blockName": "etch/element",
+             "attrs": {
+              "metadata": {
+               "name": "more"
+              },
+              "tag": "span",
+              "attributes": {
+               "class": "latest-posts__more",
+               "aria-hidden": "true"
+              },
+              "styles": [
+               "ber6qrd"
+              ]
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/text",
+               "attrs": {
+                "metadata": {
+                 "name": "Text"
+                },
+                "content": "อ่านต่อ →"
+               },
+               "innerBlocks": [],
+               "innerHTML": "",
+               "innerContent": []
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            }
+           ],
+           "innerHTML": "\n\n\n\n\n\n\n\n\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n\n",
+            null,
+            "\n\n",
+            null,
+            "\n\n",
+            null,
+            "\n\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n"
+         ]
+        }
+       ],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        null,
+        "\n"
+       ]
+      },
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "Footer"
+        },
+        "tag": "div",
+        "attributes": {
+         "class": "content-section__footer"
+        },
+        "styles": [
+         "yzcmst9"
+        ]
+       },
+       "innerBlocks": [
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "all posts"
+          },
+          "tag": "a",
+          "attributes": {
+           "class": "btn--primary btn--outline",
+           "href": "/blog/"
+          },
+          "styles": [
+           "1mvdm17",
+           "p6qy15v"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/text",
+           "attrs": {
+            "metadata": {
+             "name": "Text"
+            },
+            "content": "ดูบทความทั้งหมด"
+           },
+           "innerBlocks": [],
+           "innerHTML": "",
+           "innerContent": []
+          }
+         ],
+         "innerHTML": "\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n"
+         ]
+        }
+       ],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        null,
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n\n\n\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n\n",
+      null,
+      "\n\n",
+      null,
+      "\n"
+     ]
+    }
+   ],
+   "innerHTML": "\n\n",
+   "innerContent": [
+    "\n",
+    null,
+    "\n"
+   ]
+  },
+  "timestamp": "2026-10-24T10:29:30.470Z",
+  "styles": {
+   "etch-section-style": {
+    "type": "element",
+    "selector": ":where([data-etch-element=\"section\"])",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;",
+    "readonly": true
+   },
+   "i8tvp7k": {
+    "type": "class",
+    "selector": ".latest-posts",
+    "collection": "default",
+    "css": "background-color: var(--primary);\n  color: var(--text-light);\n\n  h2 { color: var(--white); }\n  .eyebrow { color: var(--secondary); }\n  .section-heading__intro { color: var(--text-light-muted); }\n\n  /* outline button on the dark background */\n  .content-section__footer .btn--outline {\n    --btn-text-color: var(--white);\n    --btn-border-color: var(--white);\n    --btn-outline-text-color: var(--white);\n    --btn-outline-background-hover: var(--secondary);\n    --btn-outline-border-hover: var(--secondary);\n    --btn-outline-text-color-hover: var(--white);\n    --btn-background-hover: var(--secondary);\n    --btn-border-color-hover: var(--secondary);\n    --btn-text-color-hover: var(--white);\n  }",
+    "readonly": false
+   },
+   "etch-container-style": {
+    "type": "element",
+    "selector": ":where([data-etch-element=\"container\"])",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  max-inline-size: var(--content-width, 1366px);\n  align-self: center; margin-inline: auto;",
+    "readonly": true
+   },
+   "xdw98hx": {
+    "type": "class",
+    "selector": ".content-section__container",
+    "collection": "default",
+    "css": "gap: var(--space-l);",
+    "readonly": false
+   },
+   "i3nvnyu": {
+    "type": "class",
+    "selector": ".section-heading",
+    "collection": "default",
+    "css": "display: flex;\n  flex-direction: column;\n  max-inline-size: 50rem;",
+    "readonly": false
+   },
+   "69jxhqk": {
+    "type": "class",
+    "selector": ".section-heading--center",
+    "collection": "default",
+    "css": "align-items: center;\n  margin-inline: auto;\n  text-align: center;",
+    "readonly": false
+   },
+   "j48sdv7": {
+    "type": "class",
+    "selector": ".eyebrow",
+    "collection": "default",
+    "css": "display: flex;\n  align-items: center;\n  gap: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: var(--primary);\n\n  &::before {\n    content: \"\";\n    inline-size: 2.4rem;\n    block-size: 2px;\n    background-color: var(--secondary);\n  }\n\n  .bg--dark & { color: var(--text-light); }",
+    "readonly": false
+   },
+   "cspy2ga": {
+    "type": "class",
+    "selector": ".latest-posts__grid",
+    "collection": "default",
+    "css": "display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));\n  gap: var(--grid-gap);\n  inline-size: 100%;\n  margin: 0;\n  padding: 0;\n  list-style: none;",
+    "readonly": false
+   },
+   "4twkb6q": {
+    "type": "class",
+    "selector": ".latest-posts__card",
+    "collection": "default",
+    "css": "position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: var(--space-xs);\n  padding: var(--space-s) var(--space-s) var(--space-l);\n  overflow: hidden;\n  background-color: var(--white-trans-10);\n  border: 1px solid var(--white-trans-20);\n  border-radius: var(--radius-m);\n  transition:\n    background-color 0.2s ease,\n    border-color 0.2s ease;\n\n  & > :not(.latest-posts__media) {\n    padding-inline: var(--space-xs);\n  }\n\n  &:hover {\n    background-color: var(--white-trans-20);\n    border-color: var(--secondary);\n  }\n\n  &:hover .latest-posts__img {\n    scale: 1.04;\n  }\n  &:hover .latest-posts__title {\n    color: var(--secondary);\n  }",
+    "readonly": false
+   },
+   "vb3p9wx": {
+    "type": "class",
+    "selector": ".latest-posts__media",
+    "collection": "default",
+    "css": "block-size: clamp(20rem, 16vw, 24rem);\n  margin: 0;\n  overflow: hidden;\n  border-radius: var(--radius-s);",
+    "readonly": false
+   },
+   "yb5gj6c": {
+    "type": "custom",
+    "selector": "body figure",
+    "collection": "default",
+    "css": "margin: 0;",
+    "readonly": false
+   },
+   "xrf6usx": {
+    "type": "class",
+    "selector": ".latest-posts__img",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  block-size: 100%;\n  object-fit: cover;\n  transition: scale 0.4s ease;\n\n  @media (prefers-reduced-motion: reduce) { transition: none; }",
+    "readonly": false
+   },
+   "wo0ydgf": {
+    "type": "class",
+    "selector": ".latest-posts__date",
+    "collection": "default",
+    "css": "font-size: var(--text-xs);\n  color: var(--text-light-muted);",
+    "readonly": false
+   },
+   "ru2jfs1": {
+    "type": "class",
+    "selector": ".latest-posts__title",
+    "collection": "default",
+    "css": "font-size: var(--h5);\n  color: var(--white);\n  transition: color 0.2s ease;",
+    "readonly": false
+   },
+   "o3xzva7": {
+    "type": "class",
+    "selector": ".latest-posts__link",
+    "collection": "default",
+    "css": "color: inherit;\n  text-decoration: none;",
+    "readonly": false
+   },
+   "h6h3fu6": {
+    "type": "class",
+    "selector": ".clickable-parent",
+    "collection": "default",
+    "css": "",
+    "readonly": false
+   },
+   "cwbu7s7": {
+    "type": "class",
+    "selector": ".latest-posts__excerpt",
+    "collection": "default",
+    "css": "display: -webkit-box;\n  overflow: hidden;\n  color: var(--text-light-muted);\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;",
+    "readonly": false
+   },
+   "ber6qrd": {
+    "type": "class",
+    "selector": ".latest-posts__more",
+    "collection": "default",
+    "css": "margin-block-start: auto;\n  font-size: var(--text-s);\n  font-weight: 600;\n  color: var(--secondary);",
+    "readonly": false
+   },
+   "yzcmst9": {
+    "type": "class",
+    "selector": ".content-section__footer",
+    "collection": "default",
+    "css": "display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  align-items: center;\n  inline-size: 100%;",
+    "readonly": false
+   },
+   "1mvdm17": {
+    "type": "class",
+    "selector": ".btn--primary",
+    "collection": "default",
+    "css": "",
+    "readonly": false
+   },
+   "p6qy15v": {
+    "type": "class",
+    "selector": ".btn--outline",
+    "collection": "default",
+    "css": "",
+    "readonly": false
+   }
+  },
+  "loops": {
+   "latestPosts": {
+    "name": "Latest Posts",
+    "key": "latestPosts",
+    "global": true,
+    "config": {
+     "type": "wp-query",
+     "args": {
+      "post_status": "publish",
+      "meta_query": [],
+      "tax_query": [],
+      "lang": "$lang ?? ''",
+      "post_type": "post",
+      "posts_per_page": 3,
+      "orderby": "date",
+      "order": "DESC"
+     }
+    }
+   }
+  },
+  "version": 2.1
+ },
+ "blogPage": [
+  {
+   "type": "block",
+   "gutenbergBlock": {
+    "blockName": "etch/component",
+    "attrs": {
+     "ref": 1801,
+     "attributes": {}
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   },
+   "timestamp": "2026-10-24T10:29:33.750Z",
+   "styles": {
+    "etch-section-style": {
+     "type": "element",
+     "selector": ":where([data-etch-element=\"section\"])",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;",
+     "readonly": true
+    },
+    "pq000cs": {
+     "type": "class",
+     "selector": ".blog-list",
+     "collection": "default",
+     "css": "background: linear-gradient(180deg, var(--white) 0%, var(--base) 100%);",
+     "readonly": false
+    },
+    "etch-container-style": {
+     "type": "element",
+     "selector": ":where([data-etch-element=\"container\"])",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  max-inline-size: var(--content-width, 1366px);\n  align-self: center; margin-inline: auto;",
+     "readonly": true
+    },
+    "xdw98hx": {
+     "type": "class",
+     "selector": ".content-section__container",
+     "collection": "default",
+     "css": "gap: var(--space-l);",
+     "readonly": false
+    },
+    "pq000ct": {
+     "type": "class",
+     "selector": ".blog-list__title",
+     "collection": "default",
+     "css": "align-self: center;\n  margin-block-end: var(--space-l);\n  font-size: var(--h1);\n  font-weight: 800;\n  line-height: 1.2;\n  text-align: center;\n  color: color-mix(in srgb, var(--primary) 70%, var(--black));",
+     "readonly": false
+    },
+    "pq000cu": {
+     "type": "class",
+     "selector": ".post-grid",
+     "collection": "default",
+     "css": "display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: var(--grid-gap);\n  inline-size: 100%;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n\n  @media (--bp-m) { grid-template-columns: repeat(2, minmax(0, 1fr)); }\n\n  @media (--bp-s) { grid-template-columns: 1fr; }",
+     "readonly": false
+    },
+    "pq000cv": {
+     "type": "class",
+     "selector": ".post-card",
+     "collection": "default",
+     "css": "position: relative;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  border-radius: var(--radius-l);\n  background-color: var(--white);\n  box-shadow: 0 0.4rem 1rem color-mix(in srgb, var(--black) 8%, transparent);\n  transition: box-shadow 0.25s ease, translate 0.25s ease;\n\n  &:hover {\n    translate: 0 -3px;\n    box-shadow: 0 1.2rem 2.8rem color-mix(in srgb, var(--black) 14%, transparent);\n  }\n\n  @media (prefers-reduced-motion: reduce) { transition: none; }",
+     "readonly": false
+    },
+    "pq000cw": {
+     "type": "class",
+     "selector": ".post-card__media",
+     "collection": "default",
+     "css": "margin: 0;",
+     "readonly": false
+    },
+    "pq000cx": {
+     "type": "class",
+     "selector": ".post-card__img",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  block-size: auto;\n  aspect-ratio: 6 / 5;\n  object-fit: cover;",
+     "readonly": false
+    },
+    "pq000cy": {
+     "type": "class",
+     "selector": ".post-card__body",
+     "collection": "default",
+     "css": "display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: var(--space-xs);\n  padding: var(--space-s) var(--space-m) var(--space-m);",
+     "readonly": false
+    },
+    "pq000cz": {
+     "type": "class",
+     "selector": ".post-pill",
+     "collection": "default",
+     "css": "align-self: flex-start;\n  padding: calc(var(--space-xs) / 2) var(--space-s);\n  border-radius: var(--radius-circle);\n  background-color: var(--primary);\n  color: var(--white);\n  font-size: var(--text-xs);\n  font-weight: 500;\n  line-height: 1.6;",
+     "readonly": false
+    },
+    "pq000d0": {
+     "type": "class",
+     "selector": ".post-card__title",
+     "collection": "default",
+     "css": "font-size: var(--h5);\n  font-weight: 700;\n  line-height: 1.45;\n  color: var(--text-dark);",
+     "readonly": false
+    },
+    "pq000d1": {
+     "type": "class",
+     "selector": ".post-card__link",
+     "collection": "default",
+     "css": "color: inherit;\n  text-decoration: none;",
+     "readonly": false
+    },
+    "h6h3fu6": {
+     "type": "class",
+     "selector": ".clickable-parent",
+     "collection": "default",
+     "css": "",
+     "readonly": false
+    },
+    "pq000d2": {
+     "type": "class",
+     "selector": ".post-card__excerpt",
+     "collection": "default",
+     "css": "display: -webkit-box;\n  overflow: hidden;\n  font-size: var(--text-s);\n  color: var(--text-dark-muted);\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;",
+     "readonly": false
+    },
+    "pq000d3": {
+     "type": "class",
+     "selector": ".post-card__more",
+     "collection": "default",
+     "css": "margin-block-start: auto;\n  padding-block-start: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 700;\n  color: color-mix(in srgb, var(--secondary) 70%, var(--black));",
+     "readonly": false
+    },
+    "pq000dg": {
+     "type": "class",
+     "selector": ".blog-pager",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  margin-block-start: var(--space-l);\n\n  & .wp-block-query-pagination {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    align-items: center;\n    gap: var(--space-xs);\n  }\n\n  & .wp-block-query-pagination-numbers {\n    display: flex;\n    gap: var(--space-xs);\n  }\n\n  & .page-numbers,\n  & .wp-block-query-pagination-previous,\n  & .wp-block-query-pagination-next {\n    display: inline-grid;\n    place-items: center;\n    min-inline-size: 4.4rem;\n    block-size: 4.4rem;\n    padding-inline: var(--space-s);\n    border-radius: var(--radius-circle);\n    background-color: var(--white);\n    box-shadow: 0 0.2rem 0.6rem color-mix(in srgb, var(--black) 8%, transparent);\n    color: var(--primary);\n    font-weight: 600;\n    text-decoration: none;\n    transition: background-color 0.2s ease, color 0.2s ease;\n  }\n\n  & a.page-numbers:hover,\n  & .wp-block-query-pagination-previous:hover,\n  & .wp-block-query-pagination-next:hover {\n    background-color: var(--secondary-trans-20);\n  }\n\n  & .page-numbers.current {\n    background-color: var(--primary);\n    color: var(--white);\n  }\n\n  & .page-numbers.dots {\n    background: none;\n    box-shadow: none;\n  }",
+     "readonly": false
+    }
+   },
+   "loops": {},
+   "components": {
+    "1801": {
+     "id": 1801,
+     "legacyId": "",
+     "name": "Blog List",
+     "key": "BlogList",
+     "blocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "Blog List"
+        },
+        "tag": "section",
+        "attributes": {
+         "data-etch-element": "section",
+         "class": "blog-list"
+        },
+        "styles": [
+         "etch-section-style",
+         "pq000cs"
+        ]
+       },
+       "innerBlocks": [
+        {
+         "blockName": "etch/element",
+         "attrs": {
+          "metadata": {
+           "name": "Container"
+          },
+          "tag": "div",
+          "attributes": {
+           "data-etch-element": "container",
+           "class": "content-section__container"
+          },
+          "styles": [
+           "etch-container-style",
+           "xdw98hx"
+          ]
+         },
+         "innerBlocks": [
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "Title"
+            },
+            "tag": "h1",
+            "attributes": {
+             "class": "blog-list__title"
+            },
+            "styles": [
+             "pq000ct"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/text",
+             "attrs": {
+              "metadata": {
+               "name": "Text"
+              },
+              "content": "บทความจากแพทย์"
+             },
+             "innerBlocks": [],
+             "innerHTML": "",
+             "innerContent": []
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "grid"
+            },
+            "tag": "ul",
+            "attributes": {
+             "class": "post-grid"
+            },
+            "styles": [
+             "pq000cu"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "etch/loop",
+             "attrs": {
+              "metadata": {
+               "name": "Loop"
+              },
+              "loopId": "mainQuery",
+              "itemId": "item"
+             },
+             "innerBlocks": [
+              {
+               "blockName": "etch/element",
+               "attrs": {
+                "metadata": {
+                 "name": "card"
+                },
+                "tag": "li",
+                "attributes": {
+                 "class": "post-card"
+                },
+                "styles": [
+                 "pq000cv"
+                ]
+               },
+               "innerBlocks": [
+                {
+                 "blockName": "etch/condition",
+                 "attrs": {
+                  "metadata": {
+                   "name": "If item.image.id"
+                  },
+                  "condition": {
+                   "leftHand": "item.image.id",
+                   "operator": "isTruthy",
+                   "rightHand": null
+                  },
+                  "conditionString": "item.image.id"
+                 },
+                 "innerBlocks": [
+                  {
+                   "blockName": "etch/element",
+                   "attrs": {
+                    "metadata": {
+                     "name": "media"
+                    },
+                    "tag": "figure",
+                    "attributes": {
+                     "class": "post-card__media"
+                    },
+                    "styles": [
+                     "pq000cw"
+                    ]
+                   },
+                   "innerBlocks": [
+                    {
+                     "blockName": "etch/dynamic-image",
+                     "attrs": {
+                      "metadata": {
+                       "name": "Image"
+                      },
+                      "tag": "img",
+                      "attributes": {
+                       "class": "post-card__img",
+                       "mediaId": "{item.image.id}",
+                       "loading": "lazy"
+                      },
+                      "styles": [
+                       "pq000cx"
+                      ]
+                     },
+                     "innerBlocks": [],
+                     "innerHTML": "\n\n",
+                     "innerContent": [
+                      "\n",
+                      "\n"
+                     ]
+                    }
+                   ],
+                   "innerHTML": "\n\n",
+                   "innerContent": [
+                    "\n",
+                    null,
+                    "\n"
+                   ]
+                  }
+                 ],
+                 "innerHTML": "\n\n",
+                 "innerContent": [
+                  "\n",
+                  null,
+                  "\n"
+                 ]
+                },
+                {
+                 "blockName": "etch/element",
+                 "attrs": {
+                  "metadata": {
+                   "name": "body"
+                  },
+                  "tag": "div",
+                  "attributes": {
+                   "class": "post-card__body"
+                  },
+                  "styles": [
+                   "pq000cy"
+                  ]
+                 },
+                 "innerBlocks": [
+                  {
+                   "blockName": "etch/loop",
+                   "attrs": {
+                    "metadata": {
+                     "name": "Loop"
+                    },
+                    "target": "item.categories",
+                    "itemId": "cat"
+                   },
+                   "innerBlocks": [
+                    {
+                     "blockName": "etch/element",
+                     "attrs": {
+                      "metadata": {
+                       "name": "pill"
+                      },
+                      "tag": "span",
+                      "attributes": {
+                       "class": "post-pill"
+                      },
+                      "styles": [
+                       "pq000cz"
+                      ]
+                     },
+                     "innerBlocks": [
+                      {
+                       "blockName": "etch/text",
+                       "attrs": {
+                        "metadata": {
+                         "name": "Text"
+                        },
+                        "content": "{cat.name}"
+                       },
+                       "innerBlocks": [],
+                       "innerHTML": "",
+                       "innerContent": []
+                      }
+                     ],
+                     "innerHTML": "\n\n",
+                     "innerContent": [
+                      "\n",
+                      null,
+                      "\n"
+                     ]
+                    }
+                   ],
+                   "innerHTML": "\n\n",
+                   "innerContent": [
+                    "\n",
+                    null,
+                    "\n"
+                   ]
+                  },
+                  {
+                   "blockName": "etch/element",
+                   "attrs": {
+                    "metadata": {
+                     "name": "title"
+                    },
+                    "tag": "h2",
+                    "attributes": {
+                     "class": "post-card__title"
+                    },
+                    "styles": [
+                     "pq000d0"
+                    ]
+                   },
+                   "innerBlocks": [
+                    {
+                     "blockName": "etch/element",
+                     "attrs": {
+                      "metadata": {
+                       "name": "link"
+                      },
+                      "tag": "a",
+                      "attributes": {
+                       "class": "post-card__link clickable-parent",
+                       "href": "{item.permalink.relative}"
+                      },
+                      "styles": [
+                       "pq000d1",
+                       "h6h3fu6"
+                      ]
+                     },
+                     "innerBlocks": [
+                      {
+                       "blockName": "etch/text",
+                       "attrs": {
+                        "metadata": {
+                         "name": "Text"
+                        },
+                        "content": "{item.title}"
+                       },
+                       "innerBlocks": [],
+                       "innerHTML": "",
+                       "innerContent": []
+                      }
+                     ],
+                     "innerHTML": "\n\n",
+                     "innerContent": [
+                      "\n",
+                      null,
+                      "\n"
+                     ]
+                    }
+                   ],
+                   "innerHTML": "\n\n",
+                   "innerContent": [
+                    "\n",
+                    null,
+                    "\n"
+                   ]
+                  },
+                  {
+                   "blockName": "etch/condition",
+                   "attrs": {
+                    "metadata": {
+                     "name": "If item.excerpt"
+                    },
+                    "condition": {
+                     "leftHand": "item.excerpt",
+                     "operator": "isTruthy",
+                     "rightHand": null
+                    },
+                    "conditionString": "item.excerpt"
+                   },
+                   "innerBlocks": [
+                    {
+                     "blockName": "etch/element",
+                     "attrs": {
+                      "metadata": {
+                       "name": "excerpt"
+                      },
+                      "tag": "p",
+                      "attributes": {
+                       "class": "post-card__excerpt"
+                      },
+                      "styles": [
+                       "pq000d2"
+                      ]
+                     },
+                     "innerBlocks": [
+                      {
+                       "blockName": "etch/text",
+                       "attrs": {
+                        "metadata": {
+                         "name": "Text"
+                        },
+                        "content": "{item.excerpt}"
+                       },
+                       "innerBlocks": [],
+                       "innerHTML": "",
+                       "innerContent": []
+                      }
+                     ],
+                     "innerHTML": "\n\n",
+                     "innerContent": [
+                      "\n",
+                      null,
+                      "\n"
+                     ]
+                    }
+                   ],
+                   "innerHTML": "\n\n",
+                   "innerContent": [
+                    "\n",
+                    null,
+                    "\n"
+                   ]
+                  },
+                  {
+                   "blockName": "etch/element",
+                   "attrs": {
+                    "metadata": {
+                     "name": "more"
+                    },
+                    "tag": "span",
+                    "attributes": {
+                     "class": "post-card__more",
+                     "aria-hidden": "true"
+                    },
+                    "styles": [
+                     "pq000d3"
+                    ]
+                   },
+                   "innerBlocks": [
+                    {
+                     "blockName": "etch/text",
+                     "attrs": {
+                      "metadata": {
+                       "name": "Text"
+                      },
+                      "content": "อ่านต่อ →"
+                     },
+                     "innerBlocks": [],
+                     "innerHTML": "",
+                     "innerContent": []
+                    }
+                   ],
+                   "innerHTML": "\n\n",
+                   "innerContent": [
+                    "\n",
+                    null,
+                    "\n"
+                   ]
+                  }
+                 ],
+                 "innerHTML": "\n\n\n\n\n\n\n\n",
+                 "innerContent": [
+                  "\n",
+                  null,
+                  "\n\n",
+                  null,
+                  "\n\n",
+                  null,
+                  "\n\n",
+                  null,
+                  "\n"
+                 ]
+                }
+               ],
+               "innerHTML": "\n\n\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n\n",
+                null,
+                "\n"
+               ]
+              }
+             ],
+             "innerHTML": "\n\n",
+             "innerContent": [
+              "\n",
+              null,
+              "\n"
+             ]
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          },
+          {
+           "blockName": "etch/element",
+           "attrs": {
+            "metadata": {
+             "name": "pager"
+            },
+            "tag": "nav",
+            "attributes": {
+             "class": "blog-pager",
+             "aria-label": "หน้าบทความ"
+            },
+            "styles": [
+             "pq000dg"
+            ]
+           },
+           "innerBlocks": [
+            {
+             "blockName": "core/query",
+             "innerBlocks": [
+              {
+               "blockName": "core/query-pagination",
+               "innerBlocks": [
+                {
+                 "blockName": "core/query-pagination-previous",
+                 "innerBlocks": [],
+                 "innerHTML": "",
+                 "innerContent": [],
+                 "attrs": {}
+                },
+                {
+                 "blockName": "core/query-pagination-numbers",
+                 "innerBlocks": [],
+                 "innerHTML": "",
+                 "innerContent": [],
+                 "attrs": {}
+                },
+                {
+                 "blockName": "core/query-pagination-next",
+                 "innerBlocks": [],
+                 "innerHTML": "",
+                 "innerContent": [],
+                 "attrs": {}
+                }
+               ],
+               "innerHTML": "\n\n\n\n",
+               "innerContent": [
+                "\n",
+                null,
+                "\n",
+                null,
+                "\n",
+                null,
+                "\n"
+               ],
+               "attrs": {
+                "paginationArrow": "arrow",
+                "showLabel": false
+               }
+              }
+             ],
+             "innerHTML": "\n<div class=\"wp-block-query\"></div>\n",
+             "innerContent": [
+              "\n<div class=\"wp-block-query\">",
+              null,
+              "</div>\n"
+             ],
+             "attrs": {
+              "queryId": 91,
+              "query": {
+               "inherit": true
+              }
+             }
+            }
+           ],
+           "innerHTML": "\n\n",
+           "innerContent": [
+            "\n",
+            null,
+            "\n"
+           ]
+          }
+         ],
+         "innerHTML": "\n\n\n\n\n\n",
+         "innerContent": [
+          "\n",
+          null,
+          "\n\n",
+          null,
+          "\n\n",
+          null,
+          "\n"
+         ]
+        }
+       ],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        null,
+        "\n"
+       ]
+      }
+     ],
+     "properties": [],
+     "description": "รายการบทความหน้า /blog/ (ใช้ใน template home) — loop main query + แบ่งหน้า"
+    }
+   },
+   "customMediaDefinitions": {
+    "--bp-m": "(width <= 992px)",
+    "--bp-s": "(width <= 768px)"
+   },
+   "version": 2.1
+  }
+ ],
+ "single": [
+  [
+   null,
+   1656,
+   null
+  ],
+  [
+   "Main Container",
+   null,
+   null
+  ],
+  [
+   null,
+   1657,
+   null
+  ]
+ ],
+ "singleCopies": [
+  {
+   "type": "block",
+   "gutenbergBlock": {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Main Container"
+     },
+     "tag": "main",
+     "attributes": {
+      "id": "main"
+     },
+     "styles": [
+      "t9ikvlr"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Post Head"
+       },
+       "tag": "section",
+       "attributes": {
+        "data-etch-element": "section",
+        "class": "post-head"
+       },
+       "styles": [
+        "etch-section-style",
+        "pq000d4"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Container"
+         },
+         "tag": "div",
+         "attributes": {
+          "data-etch-element": "container",
+          "class": "content-section__container"
+         },
+         "styles": [
+          "etch-container-style",
+          "xdw98hx"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "inner"
+           },
+           "tag": "div",
+           "attributes": {
+            "class": "post-head__inner"
+           },
+           "styles": [
+            "pq000d5"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/element",
+            "attrs": {
+             "metadata": {
+              "name": "Title"
+             },
+             "tag": "h1",
+             "attributes": {
+              "class": "post-head__title"
+             },
+             "styles": [
+              "pq000d6"
+             ]
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/text",
+              "attrs": {
+               "metadata": {
+                "name": "Text"
+               },
+               "content": "{this.title}"
+              },
+              "innerBlocks": [],
+              "innerHTML": "",
+              "innerContent": []
+             }
+            ],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n"
+            ]
+           },
+           {
+            "blockName": "etch/element",
+            "attrs": {
+             "metadata": {
+              "name": "meta"
+             },
+             "tag": "div",
+             "attributes": {
+              "class": "post-head__meta"
+             },
+             "styles": [
+              "pq000d7"
+             ]
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/loop",
+              "attrs": {
+               "metadata": {
+                "name": "Loop"
+               },
+               "target": "this.categories",
+               "itemId": "cat"
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/element",
+                "attrs": {
+                 "metadata": {
+                  "name": "pill"
+                 },
+                 "tag": "span",
+                 "attributes": {
+                  "class": "post-pill"
+                 },
+                 "styles": [
+                  "pq000cz"
+                 ]
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/text",
+                  "attrs": {
+                   "metadata": {
+                    "name": "Text"
+                   },
+                   "content": "{cat.name}"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                 }
+                ],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "date"
+               },
+               "tag": "time",
+               "attributes": {
+                "class": "post-head__date",
+                "datetime": "{this.date}"
+               },
+               "styles": [
+                "pq000d8"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/text",
+                "attrs": {
+                 "metadata": {
+                  "name": "Text"
+                 },
+                 "content": "{this.date.dateFormat(\"j F Y\")}"
+                },
+                "innerBlocks": [],
+                "innerHTML": "",
+                "innerContent": []
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             }
+            ],
+            "innerHTML": "\n\n\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n\n",
+             null,
+             "\n"
+            ]
+           },
+           {
+            "blockName": "etch/condition",
+            "attrs": {
+             "metadata": {
+              "name": "If this.image.id"
+             },
+             "condition": {
+              "leftHand": "this.image.id",
+              "operator": "isTruthy",
+              "rightHand": null
+             },
+             "conditionString": "this.image.id"
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "cover"
+               },
+               "tag": "figure",
+               "attributes": {
+                "class": "post-head__cover"
+               },
+               "styles": [
+                "pq000d9",
+                "yb5gj6c"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/dynamic-image",
+                "attrs": {
+                 "metadata": {
+                  "name": "Image"
+                 },
+                 "tag": "img",
+                 "attributes": {
+                  "class": "post-head__img",
+                  "mediaId": "{this.image.id}",
+                  "loading": "eager"
+                 },
+                 "styles": [
+                  "pq000da"
+                 ]
+                },
+                "innerBlocks": [],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             }
+            ],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n\n\n\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n\n",
+           null,
+           "\n\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Post Body"
+       },
+       "tag": "section",
+       "attributes": {
+        "data-etch-element": "section",
+        "class": "post-body"
+       },
+       "styles": [
+        "etch-section-style",
+        "pq000db"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Container"
+         },
+         "tag": "div",
+         "attributes": {
+          "data-etch-element": "container",
+          "class": "content-section__container"
+         },
+         "styles": [
+          "etch-container-style",
+          "xdw98hx"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "prose"
+           },
+           "tag": "div",
+           "attributes": {
+            "class": "post-prose"
+           },
+           "styles": [
+            "pq000dc"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "core/post-content",
+            "attrs": {
+             "align": "full",
+             "layout": {
+              "type": "default"
+             }
+            },
+            "innerBlocks": [],
+            "innerHTML": "",
+            "innerContent": []
+           },
+           {
+            "blockName": "etch/element",
+            "attrs": {
+             "metadata": {
+              "name": "share"
+             },
+             "tag": "div",
+             "attributes": {
+              "class": "post-share",
+              "aria-label": "แชร์บทความ"
+             },
+             "styles": [
+              "pq000dd"
+             ]
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "label"
+               },
+               "tag": "span",
+               "attributes": {
+                "class": "post-share__label"
+               },
+               "styles": [
+                "yw0vnip"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/text",
+                "attrs": {
+                 "metadata": {
+                  "name": "Text"
+                 },
+                 "content": "แชร์บทความ"
+                },
+                "innerBlocks": [],
+                "innerHTML": "",
+                "innerContent": []
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "Facebook"
+               },
+               "tag": "a",
+               "attributes": {
+                "class": "post-share__link",
+                "href": "https://www.facebook.com/sharer/sharer.php?u={this.permalink.full}",
+                "target": "_blank",
+                "rel": "noopener",
+                "aria-label": "แชร์ไป Facebook"
+               },
+               "styles": [
+                "pq000de"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/svg",
+                "attrs": {
+                 "metadata": {
+                  "name": "Facebook icon"
+                 },
+                 "tag": "svg",
+                 "attributes": {
+                  "aria-hidden": "true",
+                  "focusable": "false",
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTQgOFY2LjVjMC0uNy41LTEgMS0xaDJWMmgtM2MtMyAwLTQgMi00IDQuNVY4SDh2My41aDJWMjJoNFYxMS41aDIuN2wuMy0zLjVIMTRaIi8+PC9zdmc+"
+                 }
+                },
+                "innerBlocks": [],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "X"
+               },
+               "tag": "a",
+               "attributes": {
+                "class": "post-share__link",
+                "href": "https://twitter.com/intent/tweet?url={this.permalink.full}",
+                "target": "_blank",
+                "rel": "noopener",
+                "aria-label": "แชร์ไป X"
+               },
+               "styles": [
+                "pq000de"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/svg",
+                "attrs": {
+                 "metadata": {
+                  "name": "X icon"
+                 },
+                 "tag": "svg",
+                 "attributes": {
+                  "aria-hidden": "true",
+                  "focusable": "false",
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTcuOCAzaDMuMWwtNi44IDcuOEwyMiAyMWgtNi4ybC00LjktNi40TDUuMyAyMUgyLjJsNy4zLTguM0wyIDNoNi40bDQuNCA1LjhMMTcuOCAzWm0tMS4xIDE2LjJoMS43TDcuNCA0LjdINS42bDExLjEgMTQuNVoiLz48L3N2Zz4="
+                 }
+                },
+                "innerBlocks": [],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "LINE"
+               },
+               "tag": "a",
+               "attributes": {
+                "class": "post-share__link",
+                "href": "https://social-plugins.line.me/lineit/share?url={this.permalink.full}",
+                "target": "_blank",
+                "rel": "noopener",
+                "aria-label": "แชร์ไป LINE"
+               },
+               "styles": [
+                "pq000de"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/svg",
+                "attrs": {
+                 "metadata": {
+                  "name": "LINE icon"
+                 },
+                 "tag": "svg",
+                 "attributes": {
+                  "aria-hidden": "true",
+                  "focusable": "false",
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTIgM0M2LjUgMyAyIDYuNiAyIDExYzAgMy45IDMuNSA3LjIgOC4zIDcuOS4zLjEuOC4yLjkuNS4xLjMuMS43IDAgMWwtLjEuOGMwIC4zLS4yIDEgLjkuNiAxLjEtLjUgNi0zLjUgOC4yLTYgMS41LTEuNyAyLjItMy4zIDIuMi01QzIyLjQgNi42IDE3LjkgMyAxMiAzWiIvPjwvc3ZnPg=="
+                 }
+                },
+                "innerBlocks": [],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             }
+            ],
+            "innerHTML": "\n\n\n\n\n\n\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n\n",
+             null,
+             "\n\n",
+             null,
+             "\n\n",
+             null,
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Related Posts"
+       },
+       "tag": "section",
+       "attributes": {
+        "data-etch-element": "section",
+        "class": "post-related"
+       },
+       "styles": [
+        "etch-section-style",
+        "pq000df"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Container"
+         },
+         "tag": "div",
+         "attributes": {
+          "data-etch-element": "container",
+          "class": "content-section__container"
+         },
+         "styles": [
+          "etch-container-style",
+          "xdw98hx"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Section Heading"
+           },
+           "tag": "div",
+           "attributes": {
+            "class": "section-heading section-heading--center"
+           },
+           "styles": [
+            "i3nvnyu",
+            "69jxhqk"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/element",
+            "attrs": {
+             "metadata": {
+              "name": "Title"
+             },
+             "tag": "h2",
+             "attributes": {}
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/text",
+              "attrs": {
+               "metadata": {
+                "name": "Text"
+               },
+               "content": "บทความที่เกี่ยวข้อง"
+              },
+              "innerBlocks": [],
+              "innerHTML": "",
+              "innerContent": []
+             }
+            ],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         },
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "grid"
+           },
+           "tag": "ul",
+           "attributes": {
+            "class": "post-grid"
+           },
+           "styles": [
+            "pq000cu"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/loop",
+            "attrs": {
+             "metadata": {
+              "name": "Loop"
+             },
+             "loopId": "relatedPosts",
+             "loopParams": {
+              "$post_id": "this.id"
+             },
+             "itemId": "rp"
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "card"
+               },
+               "tag": "li",
+               "attributes": {
+                "class": "post-card"
+               },
+               "styles": [
+                "pq000cv"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/condition",
+                "attrs": {
+                 "metadata": {
+                  "name": "If rp.image.id"
+                 },
+                 "condition": {
+                  "leftHand": "rp.image.id",
+                  "operator": "isTruthy",
+                  "rightHand": null
+                 },
+                 "conditionString": "rp.image.id"
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "media"
+                   },
+                   "tag": "figure",
+                   "attributes": {
+                    "class": "post-card__media"
+                   },
+                   "styles": [
+                    "pq000cw",
+                    "yb5gj6c"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/dynamic-image",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Image"
+                     },
+                     "tag": "img",
+                     "attributes": {
+                      "class": "post-card__img",
+                      "mediaId": "{rp.image.id}",
+                      "loading": "lazy"
+                     },
+                     "styles": [
+                      "pq000cx"
+                     ]
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     "\n"
+                    ]
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n"
+                ]
+               },
+               {
+                "blockName": "etch/element",
+                "attrs": {
+                 "metadata": {
+                  "name": "body"
+                 },
+                 "tag": "div",
+                 "attributes": {
+                  "class": "post-card__body"
+                 },
+                 "styles": [
+                  "pq000cy"
+                 ]
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/loop",
+                  "attrs": {
+                   "metadata": {
+                    "name": "Loop"
+                   },
+                   "target": "rp.categories",
+                   "itemId": "cat"
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/element",
+                    "attrs": {
+                     "metadata": {
+                      "name": "pill"
+                     },
+                     "tag": "span",
+                     "attributes": {
+                      "class": "post-pill"
+                     },
+                     "styles": [
+                      "pq000cz"
+                     ]
+                    },
+                    "innerBlocks": [
+                     {
+                      "blockName": "etch/text",
+                      "attrs": {
+                       "metadata": {
+                        "name": "Text"
+                       },
+                       "content": "{cat.name}"
+                      },
+                      "innerBlocks": [],
+                      "innerHTML": "",
+                      "innerContent": []
+                     }
+                    ],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     null,
+                     "\n"
+                    ]
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 },
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "title"
+                   },
+                   "tag": "h2",
+                   "attributes": {
+                    "class": "post-card__title"
+                   },
+                   "styles": [
+                    "pq000d0"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/element",
+                    "attrs": {
+                     "metadata": {
+                      "name": "link"
+                     },
+                     "tag": "a",
+                     "attributes": {
+                      "class": "post-card__link clickable-parent",
+                      "href": "{rp.permalink.relative}"
+                     },
+                     "styles": [
+                      "pq000d1",
+                      "h6h3fu6"
+                     ]
+                    },
+                    "innerBlocks": [
+                     {
+                      "blockName": "etch/text",
+                      "attrs": {
+                       "metadata": {
+                        "name": "Text"
+                       },
+                       "content": "{rp.title}"
+                      },
+                      "innerBlocks": [],
+                      "innerHTML": "",
+                      "innerContent": []
+                     }
+                    ],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     null,
+                     "\n"
+                    ]
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 },
+                 {
+                  "blockName": "etch/condition",
+                  "attrs": {
+                   "metadata": {
+                    "name": "If rp.excerpt"
+                   },
+                   "condition": {
+                    "leftHand": "rp.excerpt",
+                    "operator": "isTruthy",
+                    "rightHand": null
+                   },
+                   "conditionString": "rp.excerpt"
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/element",
+                    "attrs": {
+                     "metadata": {
+                      "name": "excerpt"
+                     },
+                     "tag": "p",
+                     "attributes": {
+                      "class": "post-card__excerpt"
+                     },
+                     "styles": [
+                      "pq000d2"
+                     ]
+                    },
+                    "innerBlocks": [
+                     {
+                      "blockName": "etch/text",
+                      "attrs": {
+                       "metadata": {
+                        "name": "Text"
+                       },
+                       "content": "{rp.excerpt}"
+                      },
+                      "innerBlocks": [],
+                      "innerHTML": "",
+                      "innerContent": []
+                     }
+                    ],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     null,
+                     "\n"
+                    ]
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 },
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "more"
+                   },
+                   "tag": "span",
+                   "attributes": {
+                    "class": "post-card__more",
+                    "aria-hidden": "true"
+                   },
+                   "styles": [
+                    "pq000d3"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "อ่านต่อ →"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n\n\n\n\n\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n\n",
+                 null,
+                 "\n\n",
+                 null,
+                 "\n\n",
+                 null,
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n\n",
+               null,
+               "\n"
+              ]
+             }
+            ],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   },
+   "timestamp": "2026-10-24T10:29:37.003Z",
+   "styles": {
+    "t9ikvlr": {
+     "type": "id",
+     "selector": "#main",
+     "collection": "default",
+     "css": "",
+     "readonly": false
+    },
+    "etch-section-style": {
+     "type": "element",
+     "selector": ":where([data-etch-element=\"section\"])",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;",
+     "readonly": true
+    },
+    "pq000d4": {
+     "type": "class",
+     "selector": ".post-head",
+     "collection": "default",
+     "css": "position: relative;\n  z-index: 1;\n  padding-block: var(--section-space-l) 0;\n  background: linear-gradient(180deg, var(--white) calc(100% - min(27rem, 18vw)), transparent 0);",
+     "readonly": false
+    },
+    "etch-container-style": {
+     "type": "element",
+     "selector": ":where([data-etch-element=\"container\"])",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  max-inline-size: var(--content-width, 1366px);\n  align-self: center; margin-inline: auto;",
+     "readonly": true
+    },
+    "xdw98hx": {
+     "type": "class",
+     "selector": ".content-section__container",
+     "collection": "default",
+     "css": "gap: var(--space-l);",
+     "readonly": false
+    },
+    "pq000d5": {
+     "type": "class",
+     "selector": ".post-head__inner",
+     "collection": "default",
+     "css": "display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: var(--content-gap);\n  inline-size: 100%;\n  text-align: center;",
+     "readonly": false
+    },
+    "pq000d6": {
+     "type": "class",
+     "selector": ".post-head__title",
+     "collection": "default",
+     "css": "max-inline-size: 96rem;\n  font-size: var(--h1);\n  font-weight: 800;\n  line-height: 1.25;\n  color: color-mix(in srgb, var(--primary) 70%, var(--black));",
+     "readonly": false
+    },
+    "pq000d7": {
+     "type": "class",
+     "selector": ".post-head__meta",
+     "collection": "default",
+     "css": "display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: var(--space-xs);",
+     "readonly": false
+    },
+    "pq000cz": {
+     "type": "class",
+     "selector": ".post-pill",
+     "collection": "default",
+     "css": "align-self: flex-start;\n  padding: calc(var(--space-xs) / 2) var(--space-s);\n  border-radius: var(--radius-circle);\n  background-color: var(--primary);\n  color: var(--white);\n  font-size: var(--text-xs);\n  font-weight: 500;\n  line-height: 1.6;",
+     "readonly": false
+    },
+    "pq000d8": {
+     "type": "class",
+     "selector": ".post-head__date",
+     "collection": "default",
+     "css": "font-size: var(--text-s);\n  font-weight: 600;\n  color: color-mix(in srgb, var(--secondary) 70%, var(--black));",
+     "readonly": false
+    },
+    "pq000d9": {
+     "type": "class",
+     "selector": ".post-head__cover",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  max-inline-size: 96rem;\n  margin: var(--space-m) 0 0;",
+     "readonly": false
+    },
+    "yb5gj6c": {
+     "type": "custom",
+     "selector": "body figure",
+     "collection": "default",
+     "css": "margin: 0;",
+     "readonly": false
+    },
+    "pq000da": {
+     "type": "class",
+     "selector": ".post-head__img",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  block-size: auto;\n",
+     "readonly": false
+    },
+    "pq000db": {
+     "type": "class",
+     "selector": ".post-body",
+     "collection": "default",
+     "css": "--cover-overlap: min(27rem, 18vw);\n  margin-block-start: calc(var(--cover-overlap) * -1);\n  padding-block: var(--cover-overlap) var(--section-space-l);\n  background-color: var(--base);",
+     "readonly": false
+    },
+    "pq000dc": {
+     "type": "class",
+     "selector": ".post-prose",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  max-inline-size: 96rem;\n  margin-inline: auto;\n  padding: var(--space-xl) var(--space-xl) var(--space-l);\n  background-color: var(--white);\n  font-size: var(--text-m);\n  line-height: 1.85;\n\n  display: flex;\n  flex-direction: column;\n  gap: var(--space-s);\n\n  & h2 {\n    margin-block-start: var(--space-s);\n    font-size: var(--h3);\n    font-weight: 800;\n    line-height: 1.35;\n    color: color-mix(in srgb, var(--primary) 70%, var(--black));\n  }\n\n  & ul,\n  & ol {\n    display: flex;\n    flex-direction: column;\n    gap: var(--space-xs);\n    padding-inline-start: var(--space-m);\n  }\n\n  & li::marker { color: var(--secondary); }\n\n  & strong { color: color-mix(in srgb, var(--primary) 70%, var(--black)); }\n\n  & img { border-radius: var(--radius-m); }\n\n  @media (--bp-s) { padding: var(--space-l) var(--space-m) var(--space-m); }",
+     "readonly": false
+    },
+    "pq000dd": {
+     "type": "class",
+     "selector": ".post-share",
+     "collection": "default",
+     "css": "display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: var(--space-xs);\n  margin-block-start: var(--space-s);\n  padding-block-start: var(--space-m);\n  border-block-start: 1px solid var(--primary-trans-20);\n\n  & .post-share__label {\n    margin-inline-end: var(--space-xs);\n    font-size: var(--text-s);\n    font-weight: 600;\n    color: var(--primary);\n  }",
+     "readonly": false
+    },
+    "yw0vnip": {
+     "type": "class",
+     "selector": ".post-share__label",
+     "collection": "default",
+     "css": "",
+     "readonly": false
+    },
+    "pq000de": {
+     "type": "class",
+     "selector": ".post-share__link",
+     "collection": "default",
+     "css": "display: grid;\n  place-items: center;\n  inline-size: 4.4rem;\n  block-size: 4.4rem;\n  border: 1.5px solid var(--primary);\n  border-radius: var(--radius-circle);\n  color: var(--primary);\n  transition: background-color 0.2s ease, color 0.2s ease;\n\n  & svg {\n    inline-size: 2rem;\n    block-size: 2rem;\n  }\n\n  &:hover,\n  &:focus-visible {\n    background-color: var(--primary);\n    color: var(--white);\n  }",
+     "readonly": false
+    },
+    "pq000df": {
+     "type": "class",
+     "selector": ".post-related",
+     "collection": "default",
+     "css": "",
+     "readonly": false
+    },
+    "i3nvnyu": {
+     "type": "class",
+     "selector": ".section-heading",
+     "collection": "default",
+     "css": "display: flex;\n  flex-direction: column;\n  max-inline-size: 50rem;",
+     "readonly": false
+    },
+    "69jxhqk": {
+     "type": "class",
+     "selector": ".section-heading--center",
+     "collection": "default",
+     "css": "align-items: center;\n  margin-inline: auto;\n  text-align: center;",
+     "readonly": false
+    },
+    "pq000cu": {
+     "type": "class",
+     "selector": ".post-grid",
+     "collection": "default",
+     "css": "display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: var(--grid-gap);\n  inline-size: 100%;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n\n  @media (--bp-m) { grid-template-columns: repeat(2, minmax(0, 1fr)); }\n\n  @media (--bp-s) { grid-template-columns: 1fr; }",
+     "readonly": false
+    },
+    "pq000cv": {
+     "type": "class",
+     "selector": ".post-card",
+     "collection": "default",
+     "css": "position: relative;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  border-radius: var(--radius-l);\n  background-color: var(--white);\n  box-shadow: 0 0.4rem 1rem color-mix(in srgb, var(--black) 8%, transparent);\n  transition: box-shadow 0.25s ease, translate 0.25s ease;\n\n  &:hover {\n    translate: 0 -3px;\n    box-shadow: 0 1.2rem 2.8rem color-mix(in srgb, var(--black) 14%, transparent);\n  }\n\n  @media (prefers-reduced-motion: reduce) { transition: none; }",
+     "readonly": false
+    },
+    "pq000cw": {
+     "type": "class",
+     "selector": ".post-card__media",
+     "collection": "default",
+     "css": "margin: 0;",
+     "readonly": false
+    },
+    "pq000cx": {
+     "type": "class",
+     "selector": ".post-card__img",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  block-size: auto;\n  aspect-ratio: 6 / 5;\n  object-fit: cover;",
+     "readonly": false
+    },
+    "pq000cy": {
+     "type": "class",
+     "selector": ".post-card__body",
+     "collection": "default",
+     "css": "display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: var(--space-xs);\n  padding: var(--space-s) var(--space-m) var(--space-m);",
+     "readonly": false
+    },
+    "pq000d0": {
+     "type": "class",
+     "selector": ".post-card__title",
+     "collection": "default",
+     "css": "font-size: var(--h5);\n  font-weight: 700;\n  line-height: 1.45;\n  color: var(--text-dark);",
+     "readonly": false
+    },
+    "pq000d1": {
+     "type": "class",
+     "selector": ".post-card__link",
+     "collection": "default",
+     "css": "color: inherit;\n  text-decoration: none;",
+     "readonly": false
+    },
+    "h6h3fu6": {
+     "type": "class",
+     "selector": ".clickable-parent",
+     "collection": "default",
+     "css": "",
+     "readonly": false
+    },
+    "pq000d2": {
+     "type": "class",
+     "selector": ".post-card__excerpt",
+     "collection": "default",
+     "css": "display: -webkit-box;\n  overflow: hidden;\n  font-size: var(--text-s);\n  color: var(--text-dark-muted);\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;",
+     "readonly": false
+    },
+    "pq000d3": {
+     "type": "class",
+     "selector": ".post-card__more",
+     "collection": "default",
+     "css": "margin-block-start: auto;\n  padding-block-start: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 700;\n  color: color-mix(in srgb, var(--secondary) 70%, var(--black));",
+     "readonly": false
+    }
+   },
+   "loops": {
+    "relatedPosts": {
+     "name": "Related Posts",
+     "key": "relatedPosts",
+     "global": true,
+     "config": {
+      "type": "wp-query",
+      "args": {
+       "post_type": "post",
+       "post_status": "publish",
+       "posts_per_page": 3,
+       "orderby": "date",
+       "order": "DESC",
+       "post__not_in": [
+        "$post_id"
+       ],
+       "meta_query": [],
+       "tax_query": [],
+       "lang": "$lang ?? ''"
+      }
+     }
+    }
+   },
+   "customMediaDefinitions": {
+    "--bp-s": "(width <= 768px)",
+    "--bp-m": "(width <= 992px)"
+   },
+   "version": 2.1
+  }
+ ],
+ "contact": [
+  {
+   "type": "block",
+   "gutenbergBlock": {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Contact Page"
+     },
+     "tag": "section",
+     "attributes": {
+      "data-etch-element": "section"
+     },
+     "styles": [
+      "etch-section-style"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Container"
+       },
+       "tag": "div",
+       "attributes": {
+        "data-etch-element": "container",
+        "class": "contact-page__container"
+       },
+       "styles": [
+        "etch-container-style",
+        "pq000dh"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "grid"
+         },
+         "tag": "div",
+         "attributes": {
+          "class": "contact-page__grid"
+         },
+         "styles": [
+          "pq000di"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "info"
+           },
+           "tag": "div",
+           "attributes": {
+            "class": "contact-page__info"
+           },
+           "styles": [
+            "pq000dj"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/element",
+            "attrs": {
+             "metadata": {
+              "name": "Section Heading"
+             },
+             "tag": "div",
+             "attributes": {
+              "class": "section-heading"
+             },
+             "styles": [
+              "i3nvnyu"
+             ]
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "eyebrow"
+               },
+               "tag": "p",
+               "attributes": {
+                "class": "eyebrow"
+               },
+               "styles": [
+                "j48sdv7"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/text",
+                "attrs": {
+                 "metadata": {
+                  "name": "Text"
+                 },
+                 "content": "ติดต่อเรา"
+                },
+                "innerBlocks": [],
+                "innerHTML": "",
+                "innerContent": []
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "Title"
+               },
+               "tag": "h1",
+               "attributes": {}
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/raw-html",
+                "attrs": {
+                 "content": "Pinn Pain Clinic<span class=\"contact-page__th\">พินน์ เพน คลินิก</span>"
+                },
+                "innerBlocks": [],
+                "innerHTML": "",
+                "innerContent": []
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "intro"
+               },
+               "tag": "p",
+               "attributes": {
+                "class": "section-heading__intro"
+               },
+               "styles": [
+                "31ish2w"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/text",
+                "attrs": {
+                 "metadata": {
+                  "name": "Text"
+                 },
+                 "content": "ปวดตรงไหน ปรึกษาแพทย์เฉพาะทางได้เลย นัดหมายล่วงหน้าผ่าน LINE หรือโทร มีที่จอดรถ"
+                },
+                "innerBlocks": [],
+                "innerHTML": "",
+                "innerContent": []
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             }
+            ],
+            "innerHTML": "\n\n\n\n\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n\n",
+             null,
+             "\n\n",
+             null,
+             "\n"
+            ]
+           },
+           {
+            "blockName": "etch/element",
+            "attrs": {
+             "metadata": {
+              "name": "list"
+             },
+             "tag": "ul",
+             "attributes": {
+              "class": "contact-page__list"
+             },
+             "styles": [
+              "pq000dl"
+             ]
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "Address"
+               },
+               "tag": "li",
+               "attributes": {
+                "class": "contact-page__item"
+               },
+               "styles": [
+                "pq000dm"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/svg",
+                "attrs": {
+                 "metadata": {
+                  "name": "Address icon"
+                 },
+                 "tag": "svg",
+                 "attributes": {
+                  "class": "contact-page__icon",
+                  "aria-hidden": "true",
+                  "focusable": "false",
+                  "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%2010c0%206-8%2012-8%2012s-8-6-8-12a8%208%200%200%201%2016%200Z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%223%22%2F%3E%3C%2Fsvg%3E"
+                 },
+                 "styles": [
+                  "pq000dn"
+                 ]
+                },
+                "innerBlocks": [],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 "\n"
+                ]
+               },
+               {
+                "blockName": "etch/element",
+                "attrs": {
+                 "metadata": {
+                  "name": "body"
+                 },
+                 "tag": "div",
+                 "attributes": {}
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "label"
+                   },
+                   "tag": "span",
+                   "attributes": {
+                    "class": "contact-page__label"
+                   },
+                   "styles": [
+                    "pq000do"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "ที่อยู่"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 },
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "link"
+                   },
+                   "tag": "a",
+                   "attributes": {
+                    "class": "contact-page__link",
+                    "href": "{options.metabox.clinic.map_url}",
+                    "target": "_blank",
+                    "rel": "noopener"
+                   },
+                   "styles": [
+                    "pq000dp"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "{options.metabox.clinic.address}"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n\n",
+                 null,
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "Hours"
+               },
+               "tag": "li",
+               "attributes": {
+                "class": "contact-page__item"
+               },
+               "styles": [
+                "pq000dm"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/svg",
+                "attrs": {
+                 "metadata": {
+                  "name": "Hours icon"
+                 },
+                 "tag": "svg",
+                 "attributes": {
+                  "class": "contact-page__icon",
+                  "aria-hidden": "true",
+                  "focusable": "false",
+                  "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%3Cpath%20d%3D%22M12%206v6l4%202%22%2F%3E%3C%2Fsvg%3E"
+                 },
+                 "styles": [
+                  "pq000dn"
+                 ]
+                },
+                "innerBlocks": [],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 "\n"
+                ]
+               },
+               {
+                "blockName": "etch/element",
+                "attrs": {
+                 "metadata": {
+                  "name": "body"
+                 },
+                 "tag": "div",
+                 "attributes": {}
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "label"
+                   },
+                   "tag": "span",
+                   "attributes": {
+                    "class": "contact-page__label"
+                   },
+                   "styles": [
+                    "pq000do"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "เวลาทำการ"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 },
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "value"
+                   },
+                   "tag": "span",
+                   "attributes": {}
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "{options.metabox.clinic.hours}"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n\n",
+                 null,
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "Phone"
+               },
+               "tag": "li",
+               "attributes": {
+                "class": "contact-page__item"
+               },
+               "styles": [
+                "pq000dm"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/svg",
+                "attrs": {
+                 "metadata": {
+                  "name": "Phone icon"
+                 },
+                 "tag": "svg",
+                 "attributes": {
+                  "class": "contact-page__icon",
+                  "aria-hidden": "true",
+                  "focusable": "false",
+                  "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M22%2016.9v3a2%202%200%200%201-2.2%202%2019.8%2019.8%200%200%201-8.6-3.1%2019.5%2019.5%200%200%201-6-6A19.8%2019.8%200%200%201%202.1%204.2%202%202%200%200%201%204.1%202h3a2%202%200%200%201%202%201.7c.1.9.4%201.8.7%202.7a2%202%200%200%201-.5%202.1L8%209.8a16%2016%200%200%200%206%206l1.3-1.3a2%202%200%200%201%202.1-.4c.9.3%201.8.6%202.7.7a2%202%200%200%201%201.7%202Z%22%2F%3E%3C%2Fsvg%3E"
+                 },
+                 "styles": [
+                  "pq000dn"
+                 ]
+                },
+                "innerBlocks": [],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 "\n"
+                ]
+               },
+               {
+                "blockName": "etch/element",
+                "attrs": {
+                 "metadata": {
+                  "name": "body"
+                 },
+                 "tag": "div",
+                 "attributes": {}
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "label"
+                   },
+                   "tag": "span",
+                   "attributes": {
+                    "class": "contact-page__label"
+                   },
+                   "styles": [
+                    "pq000do"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "โทร"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 },
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "link"
+                   },
+                   "tag": "a",
+                   "attributes": {
+                    "class": "contact-page__link",
+                    "href": "tel:{options.metabox.clinic.phone}"
+                   },
+                   "styles": [
+                    "pq000dp"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "{options.metabox.clinic.phone}"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n\n",
+                 null,
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "LINE"
+               },
+               "tag": "li",
+               "attributes": {
+                "class": "contact-page__item"
+               },
+               "styles": [
+                "pq000dm"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/svg",
+                "attrs": {
+                 "metadata": {
+                  "name": "LINE icon"
+                 },
+                 "tag": "svg",
+                 "attributes": {
+                  "class": "contact-page__icon contact-page__icon--line",
+                  "aria-hidden": "true",
+                  "focusable": "false",
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii00IC00IDMyIDMyIiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMgLTRoMThhNyA3IDAgMCAxIDcgN3YxOGE3IDcgMCAwIDEtNyA3SDNhNyA3IDAgMCAxLTctN1YzYTcgNyAwIDAgMSA3LTd6TTE5LjM2NSA5Ljg2M2MuMzQ5IDAgLjYzLjI4NS42My42MzEgMCAuMzQ1LS4yODEuNjMtLjYzLjYzSDE3LjYxdjEuMTI1aDEuNzU1Yy4zNDkgMCAuNjMuMjgzLjYzLjYzIDAgLjM0NC0uMjgxLjYyOS0uNjMuNjI5aC0yLjM4NmMtLjM0NSAwLS42MjctLjI4NS0uNjI3LS42MjlWOC4xMDhjMC0uMzQ1LjI4Mi0uNjMuNjMtLjYzaDIuMzg2Yy4zNDYgMCAuNjI3LjI4NS42MjcuNjMgMCAuMzQ5LS4yODEuNjMtLjYzLjYzSDE3LjYxdjEuMTI1aDEuNzU1em0tMy44NTUgMy4wMTZjMCAuMjctLjE3NC41MS0uNDMyLjU5Ni0uMDY0LjAyMS0uMTMzLjAzMS0uMTk5LjAzMS0uMjExIDAtLjM5MS0uMDktLjUxLS4yNWwtMi40NDMtMy4zMTd2Mi45NGMwIC4zNDQtLjI3OS42MjktLjYzMS42MjktLjM0NiAwLS42MjYtLjI4NS0uNjI2LS42MjlWOC4xMDhjMC0uMjcuMTczLS41MS40My0uNTk1LjA2LS4wMjMuMTM2LS4wMzMuMTk0LS4wMzMuMTk1IDAgLjM3NS4xMDQuNDk1LjI1NGwyLjQ2MiAzLjMzVjguMTA4YzAtLjM0NS4yODItLjYzLjYzLS42My4zNDUgMCAuNjMuMjg1LjYzLjYzdjQuNzcxem0tNS43NDEgMGMwIC4zNDQtLjI4Mi42MjktLjYzMS42MjktLjM0NSAwLS42MjctLjI4NS0uNjI3LS42MjlWOC4xMDhjMC0uMzQ1LjI4Mi0uNjMuNjMtLjYzLjM0NiAwIC42MjguMjg1LjYyOC42M3Y0Ljc3MXptLTIuNDY2LjYyOUg0LjkxN2MtLjM0NSAwLS42My0uMjg1LS42My0uNjI5VjguMTA4YzAtLjM0NS4yODUtLjYzLjYzLS42My4zNDggMCAuNjMuMjg1LjYzLjYzdjQuMTQxaDEuNzU2Yy4zNDggMCAuNjI5LjI4My42MjkuNjMgMCAuMzQ0LS4yODIuNjI5LS42MjkuNjI5TTI0IDEwLjMxNEMyNCA0Ljk0MyAxOC42MTUuNTcyIDEyIC41NzJTMCA0Ljk0MyAwIDEwLjMxNGMwIDQuODExIDQuMjcgOC44NDIgMTAuMDM1IDkuNjA4LjM5MS4wODIuOTIzLjI1OCAxLjA1OC41OS4xMi4zMDEuMDc5Ljc2Ni4wMzggMS4wOGwtLjE2NCAxLjAyYy0uMDQ1LjMwMS0uMjQgMS4xODYgMS4wNDkuNjQ1IDEuMjkxLS41MzkgNi45MTYtNC4wNzggOS40MzYtNi45NzVDMjMuMTc2IDE0LjM5MyAyNCAxMi40NTggMjQgMTAuMzE0Ii8+PC9zdmc+"
+                 },
+                 "styles": [
+                  "pq000dn",
+                  "pq000dt"
+                 ]
+                },
+                "innerBlocks": [],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 "\n"
+                ]
+               },
+               {
+                "blockName": "etch/element",
+                "attrs": {
+                 "metadata": {
+                  "name": "body"
+                 },
+                 "tag": "div",
+                 "attributes": {}
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "label"
+                   },
+                   "tag": "span",
+                   "attributes": {
+                    "class": "contact-page__label"
+                   },
+                   "styles": [
+                    "pq000do"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "LINE"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 },
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "link"
+                   },
+                   "tag": "a",
+                   "attributes": {
+                    "class": "contact-page__link",
+                    "href": "{options.metabox.clinic.line_url}",
+                    "target": "_blank",
+                    "rel": "noopener"
+                   },
+                   "styles": [
+                    "pq000dp"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/text",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Text"
+                     },
+                     "content": "@pinnpainclinic"
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "",
+                    "innerContent": []
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n\n",
+                 null,
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/condition",
+              "attrs": {
+               "metadata": {
+                "name": "If options.metabox.clinic.email"
+               },
+               "condition": {
+                "leftHand": "options.metabox.clinic.email",
+                "operator": "isTruthy",
+                "rightHand": null
+               },
+               "conditionString": "options.metabox.clinic.email"
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/element",
+                "attrs": {
+                 "metadata": {
+                  "name": "Email"
+                 },
+                 "tag": "li",
+                 "attributes": {
+                  "class": "contact-page__item"
+                 },
+                 "styles": [
+                  "pq000dm"
+                 ]
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/svg",
+                  "attrs": {
+                   "metadata": {
+                    "name": "Email icon"
+                   },
+                   "tag": "svg",
+                   "attributes": {
+                    "class": "contact-page__icon",
+                    "aria-hidden": "true",
+                    "focusable": "false",
+                    "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%222%22%20y%3D%224%22%20width%3D%2220%22%20height%3D%2216%22%20rx%3D%222%22%2F%3E%3Cpath%20d%3D%22m22%207-10%206L2%207%22%2F%3E%3C%2Fsvg%3E"
+                   },
+                   "styles": [
+                    "pq000dn"
+                   ]
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   "\n"
+                  ]
+                 },
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "body"
+                   },
+                   "tag": "div",
+                   "attributes": {}
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/element",
+                    "attrs": {
+                     "metadata": {
+                      "name": "label"
+                     },
+                     "tag": "span",
+                     "attributes": {
+                      "class": "contact-page__label"
+                     },
+                     "styles": [
+                      "pq000do"
+                     ]
+                    },
+                    "innerBlocks": [
+                     {
+                      "blockName": "etch/text",
+                      "attrs": {
+                       "metadata": {
+                        "name": "Text"
+                       },
+                       "content": "อีเมล"
+                      },
+                      "innerBlocks": [],
+                      "innerHTML": "",
+                      "innerContent": []
+                     }
+                    ],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     null,
+                     "\n"
+                    ]
+                   },
+                   {
+                    "blockName": "etch/element",
+                    "attrs": {
+                     "metadata": {
+                      "name": "link"
+                     },
+                     "tag": "a",
+                     "attributes": {
+                      "class": "contact-page__link",
+                      "href": "mailto:{options.metabox.clinic.email}"
+                     },
+                     "styles": [
+                      "pq000dp"
+                     ]
+                    },
+                    "innerBlocks": [
+                     {
+                      "blockName": "etch/text",
+                      "attrs": {
+                       "metadata": {
+                        "name": "Text"
+                       },
+                       "content": "{options.metabox.clinic.email}"
+                      },
+                      "innerBlocks": [],
+                      "innerHTML": "",
+                      "innerContent": []
+                     }
+                    ],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     null,
+                     "\n"
+                    ]
+                   }
+                  ],
+                  "innerHTML": "\n\n\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n\n",
+                 null,
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             }
+            ],
+            "innerHTML": "\n\n\n\n\n\n\n\n\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n\n",
+             null,
+             "\n\n",
+             null,
+             "\n\n",
+             null,
+             "\n\n",
+             null,
+             "\n"
+            ]
+           },
+           {
+            "blockName": "etch/element",
+            "attrs": {
+             "metadata": {
+              "name": "Social"
+             },
+             "tag": "div",
+             "attributes": {
+              "class": "contact-page__social"
+             },
+             "styles": [
+              "pq000dq"
+             ]
+            },
+            "innerBlocks": [
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "title"
+               },
+               "tag": "h2",
+               "attributes": {
+                "class": "contact-page__social-title"
+               },
+               "styles": [
+                "pq000dr"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/text",
+                "attrs": {
+                 "metadata": {
+                  "name": "Text"
+                 },
+                 "content": "Social Media"
+                },
+                "innerBlocks": [],
+                "innerHTML": "",
+                "innerContent": []
+               }
+              ],
+              "innerHTML": "\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n"
+              ]
+             },
+             {
+              "blockName": "etch/element",
+              "attrs": {
+               "metadata": {
+                "name": "social"
+               },
+               "tag": "ul",
+               "attributes": {
+                "class": "contact-split__social",
+                "aria-label": "โซเชียลมีเดีย"
+               },
+               "styles": [
+                "pnsoc01"
+               ]
+              },
+              "innerBlocks": [
+               {
+                "blockName": "etch/condition",
+                "attrs": {
+                 "metadata": {
+                  "name": "If options.metabox.clinic.facebook_url"
+                 },
+                 "condition": {
+                  "leftHand": "options.metabox.clinic.facebook_url",
+                  "operator": "isTruthy",
+                  "rightHand": null
+                 },
+                 "conditionString": "options.metabox.clinic.facebook_url"
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "Facebook"
+                   },
+                   "tag": "li",
+                   "attributes": {}
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/element",
+                    "attrs": {
+                     "metadata": {
+                      "name": "link"
+                     },
+                     "tag": "a",
+                     "attributes": {
+                      "class": "contact-split__social-link",
+                      "href": "{options.metabox.clinic.facebook_url}",
+                      "target": "_blank",
+                      "rel": "noopener",
+                      "aria-label": "Facebook"
+                     },
+                     "styles": [
+                      "pnsocl1"
+                     ]
+                    },
+                    "innerBlocks": [
+                     {
+                      "blockName": "etch/svg",
+                      "attrs": {
+                       "metadata": {
+                        "name": "Facebook icon"
+                       },
+                       "tag": "svg",
+                       "attributes": {
+                        "class": "contact-split__social-icon",
+                        "aria-hidden": "true",
+                        "focusable": "false",
+                        "src": "/wp-content/uploads/2026/10/social-facebook.svg"
+                       },
+                       "styles": [
+                        "pnsoci1"
+                       ]
+                      },
+                      "innerBlocks": [],
+                      "innerHTML": "\n\n",
+                      "innerContent": [
+                       "\n",
+                       "\n"
+                      ]
+                     }
+                    ],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     null,
+                     "\n"
+                    ]
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n"
+                ]
+               },
+               {
+                "blockName": "etch/element",
+                "attrs": {
+                 "metadata": {
+                  "name": "Instagram"
+                 },
+                 "tag": "li",
+                 "attributes": {}
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "link"
+                   },
+                   "tag": "a",
+                   "attributes": {
+                    "class": "contact-split__social-link",
+                    "href": "{options.metabox.clinic.instagram_url}",
+                    "target": "_blank",
+                    "rel": "noopener",
+                    "aria-label": "Instagram"
+                   },
+                   "styles": [
+                    "pnsocl1"
+                   ]
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/svg",
+                    "attrs": {
+                     "metadata": {
+                      "name": "Instagram icon"
+                     },
+                     "tag": "svg",
+                     "attributes": {
+                      "class": "contact-split__social-icon",
+                      "aria-hidden": "true",
+                      "focusable": "false",
+                      "src": "/wp-content/uploads/2026/10/social-instagram.svg"
+                     },
+                     "styles": [
+                      "pnsoci1"
+                     ]
+                    },
+                    "innerBlocks": [],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     "\n"
+                    ]
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n"
+                ]
+               },
+               {
+                "blockName": "etch/condition",
+                "attrs": {
+                 "metadata": {
+                  "name": "If options.metabox.clinic.tiktok_url"
+                 },
+                 "condition": {
+                  "leftHand": "options.metabox.clinic.tiktok_url",
+                  "operator": "isTruthy",
+                  "rightHand": null
+                 },
+                 "conditionString": "options.metabox.clinic.tiktok_url"
+                },
+                "innerBlocks": [
+                 {
+                  "blockName": "etch/element",
+                  "attrs": {
+                   "metadata": {
+                    "name": "TikTok"
+                   },
+                   "tag": "li",
+                   "attributes": {}
+                  },
+                  "innerBlocks": [
+                   {
+                    "blockName": "etch/element",
+                    "attrs": {
+                     "metadata": {
+                      "name": "link"
+                     },
+                     "tag": "a",
+                     "attributes": {
+                      "class": "contact-split__social-link",
+                      "href": "{options.metabox.clinic.tiktok_url}",
+                      "target": "_blank",
+                      "rel": "noopener",
+                      "aria-label": "TikTok"
+                     },
+                     "styles": [
+                      "pnsocl1"
+                     ]
+                    },
+                    "innerBlocks": [
+                     {
+                      "blockName": "etch/svg",
+                      "attrs": {
+                       "metadata": {
+                        "name": "TikTok icon"
+                       },
+                       "tag": "svg",
+                       "attributes": {
+                        "class": "contact-split__social-icon",
+                        "aria-hidden": "true",
+                        "focusable": "false",
+                        "src": "/wp-content/uploads/2026/10/social-tiktok.svg"
+                       },
+                       "styles": [
+                        "pnsoci1"
+                       ]
+                      },
+                      "innerBlocks": [],
+                      "innerHTML": "\n\n",
+                      "innerContent": [
+                       "\n",
+                       "\n"
+                      ]
+                     }
+                    ],
+                    "innerHTML": "\n\n",
+                    "innerContent": [
+                     "\n",
+                     null,
+                     "\n"
+                    ]
+                   }
+                  ],
+                  "innerHTML": "\n\n",
+                  "innerContent": [
+                   "\n",
+                   null,
+                   "\n"
+                  ]
+                 }
+                ],
+                "innerHTML": "\n\n",
+                "innerContent": [
+                 "\n",
+                 null,
+                 "\n"
+                ]
+               }
+              ],
+              "innerHTML": "\n\n\n\n\n\n",
+              "innerContent": [
+               "\n",
+               null,
+               "\n\n",
+               null,
+               "\n\n",
+               null,
+               "\n"
+              ]
+             }
+            ],
+            "innerHTML": "\n\n\n\n",
+            "innerContent": [
+             "\n",
+             null,
+             "\n\n",
+             null,
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n\n\n\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n\n",
+           null,
+           "\n\n",
+           null,
+           "\n"
+          ]
+         },
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Form"
+           },
+           "tag": "div",
+           "attributes": {
+            "class": "contact-split__form"
+           },
+           "styles": [
+            "ac2qg7s"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/element",
+            "attrs": {
+             "metadata": {
+              "name": "Map"
+             },
+             "tag": "iframe",
+             "attributes": {
+              "class": "contact-page__map",
+              "src": "https://www.google.com/maps?q=Pinn%20Pain%20Clinic%20130%20%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%88%206%20%E0%B8%96%E0%B8%99%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B9%8C%20%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B5%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%20%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B5%20%E0%B8%AA%E0%B8%A1%E0%B8%B8%E0%B8%97%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3&output=embed",
+              "title": "แผนที่ Pinn Pain Clinic",
+              "loading": "lazy",
+              "referrerpolicy": "no-referrer-when-downgrade"
+             },
+             "styles": [
+              "pq000ds"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n"
+    ]
+   },
+   "timestamp": "2026-10-24T10:29:40.320Z",
+   "styles": {
+    "etch-section-style": {
+     "type": "element",
+     "selector": ":where([data-etch-element=\"section\"])",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;",
+     "readonly": true
+    },
+    "etch-container-style": {
+     "type": "element",
+     "selector": ":where([data-etch-element=\"container\"])",
+     "collection": "default",
+     "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  max-inline-size: var(--content-width, 1366px);\n  align-self: center; margin-inline: auto;",
+     "readonly": true
+    },
+    "pq000dh": {
+     "type": "class",
+     "selector": ".contact-page__container",
+     "collection": "default",
+     "css": "gap: calc(var(--container-gap) * 1.5);",
+     "readonly": false
+    },
+    "pq000di": {
+     "type": "class",
+     "selector": ".contact-page__grid",
+     "collection": "default",
+     "css": "display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(min(100%, 40rem), 1fr));\n  gap: var(--container-gap);\n  align-items: center;\n  inline-size: 100%;",
+     "readonly": false
+    },
+    "pq000dj": {
+     "type": "class",
+     "selector": ".contact-page__info",
+     "collection": "default",
+     "css": "display: flex;\n  flex-direction: column;\n  gap: var(--space-m);\n\n  & .contact-page__th {\n    display: block;\n    margin-block-start: var(--space-xs);\n    font-size: var(--h3);\n  }",
+     "readonly": false
+    },
+    "i3nvnyu": {
+     "type": "class",
+     "selector": ".section-heading",
+     "collection": "default",
+     "css": "display: flex;\n  flex-direction: column;\n  max-inline-size: 50rem;",
+     "readonly": false
+    },
+    "j48sdv7": {
+     "type": "class",
+     "selector": ".eyebrow",
+     "collection": "default",
+     "css": "display: flex;\n  align-items: center;\n  gap: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: var(--primary);\n\n  &::before {\n    content: \"\";\n    inline-size: 2.4rem;\n    block-size: 2px;\n    background-color: var(--secondary);\n  }\n\n  .bg--dark & { color: var(--text-light); }",
+     "readonly": false
+    },
+    "31ish2w": {
+     "type": "class",
+     "selector": ".section-heading__intro",
+     "collection": "default",
+     "css": "color: var(--text-dark-muted);\n\n  .bg--dark & { color: var(--text-light-muted); }",
+     "readonly": false
+    },
+    "pq000dl": {
+     "type": "class",
+     "selector": ".contact-page__list",
+     "collection": "default",
+     "css": "display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));\n  gap: var(--space-s) var(--space-m);\n  padding: 0;\n  list-style: none;\n  color: var(--text-dark-muted);\n\n  & > :first-child { grid-column: 1 / -1; }",
+     "readonly": false
+    },
+    "pq000dm": {
+     "type": "class",
+     "selector": ".contact-page__item",
+     "collection": "default",
+     "css": "display: flex;\n  align-items: flex-start;\n  gap: var(--space-s);",
+     "readonly": false
+    },
+    "pq000dn": {
+     "type": "class",
+     "selector": ".contact-page__icon",
+     "collection": "default",
+     "css": "flex: none;\n  inline-size: 4.4rem;\n  block-size: 4.4rem;\n  padding: 1.1rem;\n  border-radius: var(--radius-circle);\n  background-color: var(--secondary-trans-20);\n  color: var(--secondary-dark);",
+     "readonly": false
+    },
+    "pq000do": {
+     "type": "class",
+     "selector": ".contact-page__label",
+     "collection": "default",
+     "css": "display: block;\n  font-weight: 600;\n  color: var(--primary);",
+     "readonly": false
+    },
+    "pq000dp": {
+     "type": "class",
+     "selector": ".contact-page__link",
+     "collection": "default",
+     "css": "color: inherit;\n  text-decoration-color: var(--secondary);\n  text-underline-offset: 0.4rem;\n\n  &:hover { color: var(--primary); }",
+     "readonly": false
+    },
+    "pq000dt": {
+     "type": "class",
+     "selector": ".contact-page__icon--line",
+     "collection": "default",
+     "css": "padding: 0.5rem;",
+     "readonly": false
+    },
+    "pq000dq": {
+     "type": "class",
+     "selector": ".contact-page__social",
+     "collection": "default",
+     "css": "display: flex;\n  flex-direction: column;\n  gap: var(--space-xs);",
+     "readonly": false
+    },
+    "pq000dr": {
+     "type": "class",
+     "selector": ".contact-page__social-title",
+     "collection": "default",
+     "css": "font-size: var(--h4);",
+     "readonly": false
+    },
+    "pnsoc01": {
+     "type": "class",
+     "selector": ".contact-split__social",
+     "collection": "default",
+     "css": "display: flex;\n  flex-wrap: wrap;\n  gap: var(--space-s);\n  padding: 0;\n  list-style: none;",
+     "readonly": false
+    },
+    "pnsocl1": {
+     "type": "class",
+     "selector": ".contact-split__social-link",
+     "collection": "default",
+     "css": "display: block;\n  transition: scale 0.2s ease;\n\n  &:hover,\n  &:focus-visible { scale: 1.1; }\n\n  @media (prefers-reduced-motion: reduce) { transition: none; }",
+     "readonly": false
+    },
+    "pnsoci1": {
+     "type": "class",
+     "selector": ".contact-split__social-icon",
+     "collection": "default",
+     "css": "display: block;\n  inline-size: 3.2rem;\n  block-size: 3.2rem;",
+     "readonly": false
+    },
+    "ac2qg7s": {
+     "type": "class",
+     "selector": ".contact-split__form",
+     "collection": "default",
+     "css": "background-color: var(--white);\n  border: 1px solid var(--primary-trans-20);\n  border-radius: var(--radius-s);\n\n  .wsf-form {\n    --wsf-form-color-primary: var(--primary);\n    --wsf-form-color-accent: var(--primary);\n    --wsf-form-color-base: var(--primary);\n    --wsf-form-font-family: inherit;\n    --wsf-field-color: var(--primary);\n    --wsf-field-label-color: var(--primary);\n    --wsf-field-color-background: var(--white);\n    --wsf-field-padding: var(--space-xs) var(--space-s);\n    --wsf-field-border-color: var(--primary-trans-20);\n    --wsf-field-border-color-hover: var(--primary-trans-50);\n    --wsf-field-border-color-focus: var(--secondary);\n    --wsf-field-border-radius: var(--radius-m);\n    --wsf-field-color-placeholder: var(--primary-trans-50);\n    --wsf-field-button-primary-color-background: var(--primary);\n    --wsf-field-button-primary-border-color: var(--primary);\n    --wsf-field-button-primary-color: var(--white);\n    --wsf-field-button-primary-color-background-hover: var(--secondary);\n    --wsf-field-button-primary-border-color-hover: var(--secondary);\n    --wsf-field-button-primary-color-hover: var(--white);\n    --wsf-field-button-primary-color-background-focus: var(--secondary);\n    --wsf-field-button-primary-border-color-focus: var(--secondary);\n    --wsf-field-button-primary-color-focus: var(--white);\n  }\n\n  .wsf-form :is(input, textarea):focus {\n    box-shadow: 0 0 0 0.3rem var(--secondary-trans-20);\n  }\n\n  .wsf-form label {\n    font-weight: 600;\n  }\n\n  .wsf-form button[type='submit'] {\n    min-block-size: 5.2rem;\n    border-radius: var(--radius-m);\n    font-weight: 600;\n  }\n\n  @media (--bp-s) {\n    padding: var(--space-m);\n  }",
+     "readonly": false
+    },
+    "pq000ds": {
+     "type": "class",
+     "selector": ".contact-page__map",
+     "collection": "default",
+     "css": "display: block;\n  inline-size: 100%;\n  block-size: clamp(36rem, 40vw, 48rem);\n  border: 0;\n  background-color: var(--neutral-ultra-light);",
+     "readonly": false
+    }
+   },
+   "customMediaDefinitions": {
+    "--bp-s": "(width <= 768px)"
+   },
+   "version": 2.1
+  }
+ ]
+}
