@@ -31,7 +31,7 @@
     KIT.colors.forEach(function (c) { colors[c.key] = null; });
     return { id: uid(), name: name || 'หน้าใหม่', header: 'header', sections: [], footer: 'footer',
              colors: colors, acss: { primary: null, secondary: null }, buttons: { primaryText: null, secondaryText: null },
-             root: 10, updated: Date.now(), edits: {}, images: {}, type: 'other' };
+             root: 10, updated: Date.now(), edits: {}, images: {}, type: 'other', skip: [] };
   }
 
   // edits[instance][key] = text · images[instance][slot] = image id (picture in IndexedDB)
@@ -90,6 +90,8 @@
     p.type = TYPE[src.type] ? src.type : /หน้าแรก|^home/i.test(p.name) ? 'home' : 'other';
     p.edits = cleanMap(src.edits, EDIT_KEY, function (v) { return typeof v === 'string' && v.length <= 5000; });
     p.images = cleanMap(src.images, IMG_KEY, function (v) { return typeof v === 'string' && IMG_ID.test(v); });
+    // planned slots the user chose not to use ("ไม่ใช้")
+    p.skip = (Array.isArray(src.skip) ? src.skip : []).filter(function (k) { return typeof k === 'string' && k.length < 40; });
     return p;
   }
 
@@ -538,7 +540,7 @@
   function pageCheck(p) {
     var t = typeOf(p), ids = p.sections.map(function (s) { return baseOf(s.id); }), problems = [];
     var items = (t ? t.sections : []).map(function (r) {
-      return { id: r.id, need: r.need, why: r.why, ok: ids.indexOf(r.id) >= 0 };
+      return { id: r.id, need: r.need, why: r.why, ok: ids.indexOf(r.id) >= 0 || (p.skip || []).indexOf(r.id) >= 0 };
     });
     var label = function (id) { return T[id] ? T[id].label : id; };
     var named = p.sections.map(function (s) { return s.id; }); // for messages: the variant's own name
@@ -574,13 +576,13 @@
                      missing.filter(function (i) { return i.need === 'required'; }).length };
   }
 
-  // add a missing section where the recipe puts it (before the first placed section that comes later)
-  function addRecommended(id) {
-    var p = page(), order = typeOf(p).sections.map(function (r) { return r.id; }), want = order.indexOf(id), at = null;
+  // where a planned section goes: before the first placed section that comes later in the page type's plan
+  function slotIndex(kind) {
+    var p = page(), order = typeOf(p).sections.map(function (r) { return r.id; }), want = order.indexOf(kind);
     for (var i = 0; i < p.sections.length; i++) {
-      if (order.indexOf(baseOf(p.sections[i].id)) > want) { at = i; break; }
+      if (order.indexOf(baseOf(p.sections[i].id)) > want) return i;
     }
-    insert(id, at);
+    return p.sections.length;
   }
 
   // rebuild the order from the recipe; sections already on the page keep their edits, extra ones are kept too
@@ -598,22 +600,64 @@
     else out = out.concat(extras);
     return out;
   }
-  function applyLayout() {
-    var p = page(), t = typeOf(p);
-    remember();
-    p.sections = layoutFor(p, t);
-    if (!p.header) p.header = 'header';
-    if (!p.footer) p.footer = 'footer';
-    selected = null;
-    save();
-    renderCanvas();
-    showGroup('section');
-    toast('จัดหน้าตามแบบ "' + t.label + '" แล้ว', true);
-  }
 
-  function renderStandards() {
-    var p = page(), c = pageCheck(p);
-    if (!$('#pageType') || !c.type) return;
+  // ================================================================ page plan: the page type's sections not placed yet are slots
+  var slotKind = null; // the slot whose templates the library lists (click a slot → only its kind)
+  function kindLabel(kind) { return kind === 'hero' ? 'Hero หน้าแรก' : T[kind] ? T[kind].label : kind; }
+  function variantsOf(kind) {
+    return KIT.templates.filter(function (t) { return t.group === 'section' && baseOf(t.id) === kind; });
+  }
+  function openSlots(p) {
+    var have = {};
+    p.sections.forEach(function (s) { have[baseOf(s.id)] = true; });
+    return typeOf(p).sections.filter(function (r) { return !have[r.id] && (p.skip || []).indexOf(r.id) < 0; });
+  }
+  function pickSlot(kind) {
+    slotKind = kind;
+    selected = null;
+    showGroup('section');
+    $('#library').scrollTop = 0;
+    renderSlots();
+  }
+  function renderSlots() {
+    var p = page(), list = $('#sections'), slots = openSlots(p);
+    $$('.pb-gap', list).forEach(function (g) { g.remove(); });
+    if (slotKind && !slots.some(function (r) { return r.id === slotKind; })) slotKind = null;
+    slots.forEach(function (r, n) {
+      var gap = el('div', 'pb-gap' + (slotKind === r.id ? ' is-target' : ''));
+      gap.dataset.kind = r.id;
+      gap.style.order = slotIndex(r.id) * 100 + n; // placed sections use i * 100 + 50
+      gap.setAttribute('role', 'button');
+      gap.tabIndex = 0;
+      var txt = el('div', 'pb-gap__text');
+      var title = el('b', '', kindLabel(r.id));
+      title.appendChild(el('span', 'pb-gap__need' + (r.need === 'required' ? ' is-required' : ''),
+        r.need === 'required' ? 'ต้องมี' : 'แนะนำ'));
+      txt.appendChild(title);
+      txt.appendChild(el('small', '', r.why));
+      gap.appendChild(txt);
+      var n2 = variantsOf(r.id).length;
+      gap.appendChild(el('span', 'pb-gap__pick', n2 > 1 ? 'เลือกแบบ (' + n2 + ')' : 'เลือก'));
+      var skip = el('button', 'pb-gap__skip', 'ไม่ใช้');
+      skip.type = 'button';
+      skip.title = 'ซ่อนช่องนี้ (กด "แสดงช่องที่ซ่อน" ด้านบนเพื่อเอากลับมา)';
+      skip.addEventListener('click', function (e) {
+        e.stopPropagation();
+        remember();
+        p.skip = (p.skip || []).concat(r.id);
+        if (slotKind === r.id) slotKind = null;
+        save();
+        renderCanvas();
+        showGroup(libGroup);
+        toast('ซ่อนช่อง ' + kindLabel(r.id) + ' แล้ว', true);
+      });
+      gap.appendChild(skip);
+      gap.title = 'คลิกเพื่อเลือกแบบ ' + kindLabel(r.id) + ' จากแถบซ้าย';
+      gap.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickSlot(r.id); }
+      });
+      list.appendChild(gap);
+    });
     var sel = $('#pageType');
     if (!sel.options.length) {
       PAGE_TYPES.forEach(function (t) {
@@ -623,41 +667,12 @@
         sel.appendChild(o);
       });
     }
-    sel.value = c.type.id;
-    $('#typeNote').textContent = c.type.note || '';
-    var badge = $('#stdScore'), allOk = !c.missing.length && !c.problems.length;
-    badge.textContent = allOk ? 'ครบแล้ว ✓' : c.done + '/' + c.total + (c.problems.length ? ' · ' + c.problems.length + ' ข้อควรแก้' : '');
-    badge.className = 'pb-badge ' + (allOk ? 'is-ok' : c.errors ? 'is-bad' : 'is-warn');
-    var list = $('#stdList');
-    list.innerHTML = '';
-    c.items.forEach(function (it) {
-      var li = el('li', 'pb-std__item ' + (it.ok ? 'is-ok' : it.need === 'required' ? 'is-bad' : 'is-warn'));
-      li.appendChild(el('span', 'pb-std__mark', it.ok ? '✓' : it.need === 'required' ? '!' : '○'));
-      var text = el('div', 'pb-std__text');
-      text.appendChild(el('div', 'pb-std__name', (T[it.id] ? T[it.id].label : it.id) +
-        (it.ok ? '' : it.need === 'required' ? ' · ต้องมี' : ' · แนะนำ')));
-      if (!it.ok) text.appendChild(el('div', 'pb-std__why', it.why));
-      li.title = it.why;
-      li.appendChild(text);
-      if (!it.ok) {
-        var b = el('button', 'pb-btn pb-btn--small', '+ เพิ่ม');
-        b.type = 'button';
-        b.title = 'เพิ่ม ' + T[it.id].label + ' ตรงตำแหน่งที่แนะนำ';
-        b.addEventListener('click', function () { addRecommended(it.id); });
-        li.appendChild(b);
-      }
-      list.appendChild(li);
-    });
-    var pr = $('#stdProblems');
-    pr.innerHTML = '';
-    c.problems.forEach(function (x) { pr.appendChild(el('div', 'pb-std__problem is-' + x.level, x.text)); });
-    var btn = $('#applyLayout');
-    var same = layoutFor(p, c.type).map(function (s) { return s.k; }).join() === p.sections.map(function (s) { return s.k; }).join();
-    btn.disabled = same && p.header && p.footer;
-    if (!btn.classList.contains('is-armed')) {
-      btn.textContent = btn.disabled ? 'เรียงตามแบบ "' + c.type.label + '" แล้ว' : 'จัดหน้าตามแบบ "' + c.type.label + '"';
-    }
-    btn.title = btn.disabled ? 'หน้านี้เรียงตามแบบแนะนำแล้ว' : 'เพิ่ม section ที่ขาดและเรียงลำดับใหม่ (เลิกทำได้)';
+    sel.value = typeOf(p).id;
+    var skipped = (p.skip || []).filter(function (k) { return typeOf(p).sections.some(function (r) { return r.id === k; }); });
+    $('#planNote').textContent = slots.length ? 'ช่องว่าง ' + slots.length + ' ช่อง — คลิกช่องเพื่อเลือกแบบ' : 'ครบตามโครงแล้ว';
+    $('#showSkipped').hidden = !skipped.length;
+    $('#showSkipped').textContent = 'แสดงช่องที่ซ่อน (' + skipped.length + ')';
+    return slots;
   }
 
   // ================================================================ library (left)
@@ -678,8 +693,13 @@
       b.tabIndex = on ? 0 : -1;
     });
     $$('#library .pb-group').forEach(function (box) { box.hidden = box.dataset.group !== group; });
+    if (group !== 'section') slotKind = null;
+    $$('.pb-card[data-group="section"]').forEach(function (c) { c.hidden = !!slotKind && baseOf(c.dataset.id) !== slotKind; });
+    $('#libAll').hidden = !slotKind;
     var p = page(), after = group === 'section' && selected && indexOf(selected) >= 0 ? items[selected] : null;
-    var hint = group === 'section'
+    var hint = group === 'section' && slotKind
+      ? 'เลือกแบบ ' + kindLabel(slotKind) + ' สำหรับช่องที่เลือก — กด + เพื่อใส่ หรือลากไปวาง'
+      : group === 'section'
       ? (after ? 'กด + เพื่อแทรกต่อจาก "' + T[after.id].label + '" · หรือลากไปวางตรงไหนก็ได้'
                : 'กด + เพื่อต่อท้ายหน้า (คลิก section ในหน้าเพื่อแทรกต่อจากตัวนั้น) · หรือลากไปวาง')
       : 'กด + เพื่อใช้ ' + (group === 'header' ? 'header' : 'footer') + ' นี้' +
@@ -687,7 +707,8 @@
     $('#libHint').textContent = hint;
     $$('.pb-card[data-group="' + group + '"] .pb-add').forEach(function (b) {
       var t = T[b.closest('.pb-card').dataset.id];
-      b.title = group === 'section' ? (after ? 'แทรกต่อจาก ' + T[after.id].label : 'ต่อท้ายหน้า') : 'ใช้ ' + t.label;
+      b.title = group === 'section' ? (slotKind ? 'ใส่ในช่อง ' + kindLabel(slotKind) :
+        after ? 'แทรกต่อจาก ' + T[after.id].label : 'ต่อท้ายหน้า') : 'ใช้ ' + t.label;
       b.setAttribute('aria-label', b.title + ': ' + t.label);
     });
     markSelected();
@@ -700,6 +721,8 @@
     ['header', 'footer'].forEach(function (slot) {
       $('#' + slot + 'Slot').classList.toggle('is-target', libGroup === slot);
     });
+    $$('#sections .pb-gap').forEach(function (g) { g.classList.toggle('is-target', g.dataset.kind === slotKind); });
+    $('#addSection').classList.toggle('is-target', libGroup === 'section' && !slotKind && !selected);
   }
 
   function renderLibrary() {
@@ -727,6 +750,7 @@
         var add = $('.pb-add', card);
         add.addEventListener('click', function () {
           var at = t.group === 'section' && selected && indexOf(selected) >= 0 ? indexOf(selected) + 1 : null;
+          if (t.group === 'section' && slotKind) { at = slotIndex(slotKind); slotKind = null; } // fill the picked slot
           insert(t.id, at);
         });
         var f = $('iframe', card);
@@ -884,7 +908,7 @@
     p.sections.forEach(function (s, i) {
       want[s.k] = true;
       if (!items[s.k]) list.appendChild(makeItem(s.k, s.id, null));
-      items[s.k].el.style.order = i;
+      items[s.k].el.style.order = i * 100 + 50;
       var up = $('[data-act="up"]', items[s.k].el), down = $('[data-act="down"]', items[s.k].el);
       up.disabled = i === 0;
       down.disabled = i === p.sections.length - 1;
@@ -895,10 +919,10 @@
       reset.hidden = !n;
       reset.title = 'คืนข้อความและรูปเดิมของ section นี้ (แก้ไว้ ' + n + ' จุด)';
     });
-    $('#stage').classList.toggle('is-empty', !p.sections.length);
+    var slots = renderSlots();
+    $('#stage').classList.toggle('is-empty', !p.sections.length && !slots.length);
     markUsed();
     markSelected();
-    renderStandards();
     updateViewLink();
   }
 
@@ -1047,10 +1071,9 @@
 
   // ================================================================ page menu (every page of the site, in the order made)
   function pageStatus(p) {
-    var c = pageCheck(p);
-    if (!c.missing.length && !c.problems.length) return { text: 'ครบตามมาตรฐาน', cls: 'is-ok' };
-    var n = c.missing.length + c.problems.length;
-    return { text: (c.errors ? 'ต้องแก้ ' : 'ควรแก้ ') + n + ' ข้อ', cls: c.errors ? 'is-bad' : 'is-warn' };
+    var gaps = openSlots(p), required = gaps.filter(function (r) { return r.need === 'required'; }).length;
+    if (!gaps.length) return { text: 'ครบตามโครง', cls: 'is-ok' };
+    return { text: 'ช่องว่าง ' + gaps.length, cls: required ? 'is-bad' : 'is-warn' };
   }
   function renderPageMenu() {
     var list = $('#pageList');
@@ -1187,11 +1210,11 @@
     if (t && t !== p.type) {
       p.type = t;
       save();
-      renderStandards();
+      renderCanvas();
       renderTop();
-      var c = pageCheck(p);
-      toast('ประเภทหน้าเปลี่ยนเป็น "' + typeOf(p).label + '" ตามชื่อ' +
-        (c.missing.length ? ' · ยังขาด ' + c.missing.length + ' section' : ''), true);
+      var gaps = openSlots(p).length;
+      toast('โครงหน้าเปลี่ยนเป็น "' + typeOf(p).label + '" ตามชื่อ' +
+        (gaps ? ' · มีช่องว่าง ' + gaps + ' ช่องให้เลือกแบบ' : ''), true);
     }
     if (nameBefore && JSON.parse(nameBefore).pages.some(function (p) { return p.id === page().id && p.name !== page().name; })) {
       remember(nameBefore);
@@ -1219,7 +1242,7 @@
       box.appendChild(lab);
     });
     $('#newName').value = '';
-    $('#newLayout').checked = true;
+    $('#newLayout').checked = false;
     $('#newDialog').showModal();
     $('#newName').focus();
   }
@@ -1246,26 +1269,32 @@
     var p = page(), renamed = !p.name.trim() || typeFromName(p.name) === p.type;
     p.type = TYPE[e.target.value] ? e.target.value : 'other';
     if (renamed) p.name = uniqueName(shortLabel(typeOf(p)), p);
+    slotKind = null;
     save();
-    renderStandards();
+    renderCanvas();
+    showGroup(libGroup);
     renderTop();
-    var c = pageCheck(p);
-    toast('ตั้งเป็นหน้า "' + typeOf(p).label + '" แล้ว' + (renamed ? ' · ชื่อหน้าเปลี่ยนเป็น "' + p.name + '"' : '') +
-      (c.missing.length ? ' · ยังขาด ' + c.missing.length + ' section กด "จัดหน้าตามแบบ" ได้' : ''), true);
+    var gaps = openSlots(p).length;
+    toast('โครงหน้า "' + typeOf(p).label + '"' + (renamed ? ' · ชื่อหน้าเปลี่ยนเป็น "' + p.name + '"' : '') +
+      (gaps ? ' · มีช่องว่าง ' + gaps + ' ช่องให้เลือกแบบ' : ''), true);
   });
-  // asks once in the page (window.confirm() is blocked in embedded viewers) when the page already has sections
-  $('#applyLayout').addEventListener('click', function () {
-    var b = $('#applyLayout');
-    if (page().sections.length && !b.classList.contains('is-armed')) {
-      b.classList.add('is-armed');
-      b.textContent = 'กดอีกครั้งเพื่อจัดหน้าใหม่';
-      clearTimeout(b._h);
-      b._h = setTimeout(function () { b.classList.remove('is-armed'); renderStandards(); }, 4000);
-      return;
-    }
-    clearTimeout(b._h);
-    b.classList.remove('is-armed');
-    applyLayout();
+  $('#showSkipped').addEventListener('click', function () {
+    remember();
+    page().skip = [];
+    save();
+    renderCanvas();
+  });
+  $('#addSection').addEventListener('click', function () {
+    slotKind = null;
+    selected = null;
+    showGroup('section');
+    $('#library').scrollTop = 0;
+    toast('เลือก section จากแถบซ้าย แล้วกด + (ต่อท้ายหน้า)');
+  });
+  $('#libAll').addEventListener('click', function () {
+    slotKind = null;
+    showGroup('section');
+    renderSlots();
   });
   $$('#deviceSeg button').forEach(function (b) {
     b.addEventListener('click', function () { state.device = b.dataset.device; save(); renderTop(); layout(); });
@@ -1298,7 +1327,7 @@
       return o;
     };
     var data = { format: 'etch-page-builder', version: 2, exported: new Date().toISOString(),
-      page: { name: p.name, type: p.type, root: p.root, colors: p.colors, acss: p.acss, buttons: p.buttons,
+      page: { name: p.name, type: p.type, skip: p.skip, root: p.root, colors: p.colors, acss: p.acss, buttons: p.buttons,
               header: p.header ? part('header:' + p.header, p.header) : null,
               footer: p.footer ? part('footer:' + p.footer, p.footer) : null,
               sections: p.sections.map(function (s) { return part(s.k, s.id); }) } };
@@ -1333,7 +1362,8 @@
         });
         var hdr = src.header === null ? null : idOf(src.header), ftr = src.footer === null ? null : idOf(src.footer);
         var p = normalizePage({ name: src.name || file.name.replace(/\.json$/i, ''), header: hdr, footer: ftr,
-          sections: secs, root: src.root, colors: src.colors, acss: src.acss, buttons: src.buttons, type: src.type });
+          sections: secs, root: src.root, colors: src.colors, acss: src.acss, buttons: src.buttons, type: src.type,
+          skip: src.skip });
         if (p.header) add('header:' + p.header, src.header);
         if (p.footer) add('footer:' + p.footer, src.footer);
         var edits = {}, pics = 0;
@@ -1452,10 +1482,10 @@
     body.appendChild(intro);
 
     var chk = pageCheck(p), notes = [];
-    chk.missing.forEach(function (i) { notes.push('ยังไม่มี ' + T[i.id].label + (i.need === 'required' ? ' (ต้องมี)' : ' (แนะนำ)')); });
+    chk.missing.forEach(function (i) { notes.push('ช่อง ' + kindLabel(i.id) + ' ยังว่าง' + (i.need === 'required' ? ' (ต้องมี)' : '')); });
     chk.problems.forEach(function (x) { notes.push(x.text); });
     if (notes.length) {
-      body.appendChild(el('div', 'pb-warn', 'มาตรฐานหน้า "' + chk.type.label + '": ' + notes.join(' · ')));
+      body.appendChild(el('div', 'pb-warn', 'เช็กก่อนส่ง (โครงหน้า "' + chk.type.label + '"): ' + notes.join(' · ')));
     }
 
     var bad = contrastIssues().filter(function (c) { return !c.ok; });
@@ -1569,7 +1599,7 @@
   $('#allPresets').addEventListener('click', openPresets);
 
   $$('#libTabs button').forEach(function (b) {
-    b.addEventListener('click', function () { showGroup(b.dataset.group); });
+    b.addEventListener('click', function () { slotKind = null; showGroup(b.dataset.group); renderSlots(); });
     b.addEventListener('keydown', function (e) {  // arrow keys move between tabs
       var tabs = $$('#libTabs button'), i = tabs.indexOf(b);
       if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
@@ -1580,10 +1610,13 @@
   });
   // clicks on the page outside the preview frames: a toolbar, an empty header / footer spot, the empty-page hint
   $('#stage').addEventListener('click', function (e) {
+    var gap = e.target.closest('.pb-gap');
+    if (gap) { pickSlot(gap.dataset.kind); return; }
     var item = e.target.closest('.pb-item');
+    if (item) { slotKind = null; }
     if (item) { if (item.dataset.key !== selected || groupOf(item.dataset.key) !== libGroup) showGroup(groupOf(item.dataset.key), item.dataset.key); return; }
     var slot = e.target.closest('.pb-slot');
-    if (slot) { showGroup(slot.dataset.slot, null); return; }
+    if (slot) { slotKind = null; showGroup(slot.dataset.slot, null); return; }
     if (e.target.closest('#emptyHint')) showGroup('section', null);
   });
 

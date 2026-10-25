@@ -61,35 +61,27 @@
       <button type="button" role="tab" data-group="footer">Footer</button>
     </div>
     <p class="pb-hint" id="libHint"></p>
+    <button type="button" class="pb-link pb-liball" id="libAll" hidden>← ดู section ทั้งหมด</button>
     <div id="library"></div>
     <p class="pb-hint pb-hint--edit">เปิด <b>✎ แก้เนื้อหา</b> แล้วคลิกข้อความหรือช่องรูปในหน้าเพื่อแก้</p>
   </aside>
 
   <main class="pb-canvas" id="canvas" aria-label="หน้าที่กำลังประกอบ">
     <div class="pb-stage" id="stage">
+      <div class="pb-plan">
+        <label class="pb-plan__type">โครงหน้า <select id="pageType" title="ประเภทหน้า: กำหนดช่อง section ที่วางเตรียมไว้"></select></label>
+        <span class="pb-plan__note" id="planNote"></span>
+        <button type="button" class="pb-link" id="showSkipped" hidden></button>
+      </div>
       <div class="pb-slot" id="headerSlot" data-slot="header"></div>
       <div class="pb-sections" id="sections"></div>
       <div class="pb-empty" id="emptyHint">ลาก section จากแถบซ้ายมาวางตรงนี้</div>
+      <button type="button" class="pb-addsec" id="addSection">+ เพิ่ม section</button>
       <div class="pb-slot" id="footerSlot" data-slot="footer"></div>
     </div>
   </main>
 
-  <aside class="pb-panel" aria-label="มาตรฐานหน้าและสี">
-    <section class="pb-sec">
-      <div class="pb-sec__head">
-        <h2>มาตรฐานหน้า</h2>
-        <span class="pb-badge" id="stdScore"></span>
-      </div>
-      <label class="pb-field">
-        <span>หน้านี้คือ</span>
-        <select id="pageType"></select>
-      </label>
-      <p class="pb-muted" id="typeNote"></p>
-      <ul class="pb-std" id="stdList"></ul>
-      <div class="pb-std__problems" id="stdProblems"></div>
-      <button type="button" class="pb-btn pb-btn--full" id="applyLayout">จัดหน้าตามแบบแนะนำ</button>
-    </section>
-
+  <aside class="pb-panel" aria-label="สีและปุ่ม">
     <section class="pb-sec">
       <div class="pb-sec__head">
         <h2>ชุดสีสำเร็จรูป</h2>
@@ -152,7 +144,7 @@
         <legend>ประเภทหน้า</legend>
         <div id="newTypes"></div>
       </fieldset>
-      <label class="pb-check"><input type="checkbox" id="newLayout" checked> ใส่ section ตามแบบแนะนำให้เลย</label>
+      <label class="pb-check"><input type="checkbox" id="newLayout"> ใส่ section ตัวอย่างให้ครบเลย (ไม่ติ๊ก = เว้นเป็นช่องว่าง ให้คลิกเลือกแบบทีละช่อง)</label>
       <button type="submit" class="pb-btn pb-btn--primary">สร้างหน้า</button>
     </div>
   </form>
