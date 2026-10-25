@@ -293,17 +293,7 @@ gradient_styles = {**BASE, **HEADING_STYLES, **BUTTONS_STYLES,
     &::before {
       background: color-mix(in srgb, var(--main-primary) 80%, transparent);
     }
-  }""") + "\n\n  " + ON_DARK + """
-
-  .main-buttons a {
-    gap: var(--space-xs);
-  }
-
-  .main-buttons svg {
-    flex: none;
-    inline-size: 1.25em;
-    block-size: 1.25em;
-  }"""),
+  }""") + "\n\n  " + ON_DARK),
     p + "-bg": style(".main-hero-gradient__bg", BG_CSS),
     p + "-img": style(".main-hero-gradient__img", BG_IMG_CSS),
     p + "-content": style(".main-hero-gradient__content", """display: flex;
@@ -316,7 +306,7 @@ outputs["main-hero-gradient"] = kit_payload(section("Hero Gradient", "main-hero-
     el("Content", "div", {"class": "main-hero-gradient__content"}, [p + "-content"], [
         heading("Business name · Area, City", *TEXT, tag="h1"),
         button_row(btn("LINE", "btn--secondary", LINE_URL, "Chat on LINE", blank=True),
-                   btn("Phone", "btn--secondary btn--outline", "tel:+6620000000", "Call 02-000-0000", "phone")),
+                   btn("Phone", "btn--secondary btn--outline", "tel:+6620000000", "Call 02-000-0000")),
     ]),
 ], behind=[cover_bg("main-hero-gradient", "mn-hg")]), gradient_styles)
 
