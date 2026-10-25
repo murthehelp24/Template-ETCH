@@ -6,8 +6,15 @@ loops (sample posts), dynamic images (placeholders) and the WordPress blocks use
 
     from render_preview import render
     body_html, css, scripts = render(payload)
+
+Editable spots are marked for the page builder (it writes the edits back into the copied .etch.txt):
+  data-pv-edit="t:<path>"            literal text of an etch/text block
+  data-pv-edit="p:<path>:<prop>"     text that shows one prop of a kit component (saved on that instance)
+  data-pv-img="i:<path>"             an empty dynamic image (preview only — Etch takes images from Media Library)
+<path> is the block's position in the payload: "g.0.2" = gutenbergBlock.innerBlocks[0].innerBlocks[2],
+"c.<id>.1.0" = components[<id>].blocks[1].innerBlocks[0].
 """
-import base64, html, json, re
+import base64, copy, html, json, re
 from urllib.parse import unquote
 
 # ================================================================ sample data for dynamic content
@@ -260,9 +267,23 @@ def interpolate(s, ctx, esc=None):
 
 
 # ================================================================ renderer
+EDITABLE_COMPONENT = re.compile(r"^Main")  # the kit's own components; library ones (menus) stay as shipped
+PROP_TEXT = re.compile(r"^\{props\.(\w+)\}\s*$")
+
+
+def _number(block, path):
+    block["_path"] = path
+    for i, kid in enumerate(block.get("innerBlocks") or []):
+        _number(kid, f"{path}.{i}")
+
+
 class Renderer:
     def __init__(self, payload):
-        self.p = payload
+        self.p = payload = copy.deepcopy(payload)  # paths are added to a copy, never to the payload itself
+        _number(payload["gutenbergBlock"], "g")
+        for cid, comp in (payload.get("components") or {}).items():
+            for i, b in enumerate(comp.get("blocks") or []):
+                _number(b, f"c.{cid}.{i}")
         self.styles = payload.get("styles") or {}
         self.components = {str(c["id"]): c for c in (payload.get("components") or {}).values()}
         self.id_class = {}
@@ -324,6 +345,23 @@ class Renderer:
             return  # plugin assets (Oh My Etch) are not available offline — see frame.js for the preview shim
         self.scripts.setdefault(sc.get("id") or str(len(self.scripts)), code)
 
+    # ---------------------------------------------------------------- editable spots
+    def edit_key(self, b, ctx):
+        """Key of an editable etch/text block, or None (dynamic text, markup, library components)."""
+        if b.get("blockName") != "etch/text":
+            return None
+        content = (b.get("attrs") or {}).get("content", "")
+        path = b.get("_path", "")
+        in_kit = path.startswith("g") or EDITABLE_COMPONENT.match(ctx.get("__comp__") or "")
+        if not in_kit:
+            return None
+        if "{" not in content and "<" not in content and content.strip():
+            return "t:" + path
+        m = PROP_TEXT.match(content)
+        if m and ctx.get("__inst__") and EDITABLE_COMPONENT.match(ctx.get("__comp__") or ""):
+            return f"p:{ctx['__inst__']}:{m.group(1)}"
+        return None
+
     # ---------------------------------------------------------------- blocks
     def blocks(self, blocks, ctx):
         return "".join(self.block(b, ctx) for b in blocks)
@@ -334,21 +372,27 @@ class Renderer:
         if name in ("etch/element", "etch/dynamic-element"):
             self.script(a)
             tag = tostr(value(a.get("tag") or "div", ctx)) or "div"
+            key = self.edit_key(kids[0], ctx) if len(kids) == 1 else None
+            if key:  # element holding just this text: mark the element itself, no extra wrapper
+                inner = interpolate(kids[0]["attrs"].get("content", ""), ctx, html.escape)
+                return self.element(tag, {**(a.get("attributes") or {}), "data-pv-edit": key}, inner, ctx)
             return self.element(tag, a.get("attributes"), self.blocks(kids, ctx), ctx)
         if name == "etch/text":
-            return interpolate(a.get("content", ""), ctx, html.escape)
+            out = interpolate(a.get("content", ""), ctx, html.escape)
+            key = self.edit_key(b, ctx)
+            return f'<span data-pv-edit="{key}">{out}</span>' if key else out
         if name == "etch/raw-html":
             return interpolate(a.get("content", ""), ctx)
         if name == "etch/svg":
             return self.svg(a, ctx)
         if name == "etch/dynamic-image":
-            return self.image(a, ctx)
+            return self.image(b, a, ctx)
         if name == "etch/condition":
             return self.blocks(kids, ctx) if truthy(_expr_value(a.get("conditionString", ""), ctx)) else ""
         if name == "etch/loop":
             return self.loop(a, kids, ctx)
         if name == "etch/component":
-            return self.component(a, kids, ctx)
+            return self.component(b, a, kids, ctx)
         if name == "etch/slot-placeholder":
             slots = ctx.get("__slots__") or {}
             slot = slots.get(a.get("name") or "default") or slots.get("")
@@ -398,9 +442,11 @@ class Renderer:
             root = re.sub(rf'\s{re.escape(k)}="[^"]*"', "", root)
         return f"<svg{root}{self.attrs(attrs, ctx, 'svg')}>" + markup[m.end():]
 
-    def image(self, a, ctx):
+    def image(self, b, a, ctx):
         attrs = dict(a.get("attributes") or {})
         cls = tostr(attrs.get("class", ""))
+        if "{" not in tostr(attrs.get("mediaId", "")):  # fixed image slot (not a post's featured image)
+            attrs["data-pv-img"] = "i:" + b.get("_path", "")
         attrs["src"] = LOGO if "logo" in cls else PHOTO
         attrs.setdefault("alt", "")
         return self.element("img", attrs, "", ctx)
@@ -434,7 +480,7 @@ class Renderer:
                 d[p["key"]] = p.get("default")
         return d
 
-    def component(self, a, kids, ctx):
+    def component(self, b, a, kids, ctx):
         comp = self.components.get(str(a.get("ref")))
         if not comp:
             return f"<!-- missing component {a.get('ref')} -->"
@@ -458,6 +504,7 @@ class Renderer:
         if loose and "" not in slots:
             slots[""] = (loose, ctx)
         c = {"site": SITE, "this": PAGE, "environment": {"current": "frontend"}, "props": props,
+             "__inst__": b.get("_path"), "__comp__": comp.get("key", ""),
              "slots": {n: {"empty": not s[0]} for n, s in slots.items()}, "__slots__": slots}
         # slots that the instance did not fill are empty
         c["slots"] = _SlotView(c["slots"])

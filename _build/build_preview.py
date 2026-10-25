@@ -79,9 +79,13 @@ ASSEMBLE = """
   var ids = q ? q.split(',') : Array.prototype.map.call(document.querySelectorAll('template[id^="tpl-"]'),
     function (t) { return t.id.slice(4); }).filter(function (id) { return id !== 'header-menubuilder'; });
   var here = document.currentScript;
-  ids.forEach(function (id) {
+  ids.forEach(function (id, i) {
     var t = document.getElementById('tpl-' + id);
-    if (t) here.parentNode.insertBefore(t.content.cloneNode(true), here);
+    if (!t) return;
+    var part = t.content.cloneNode(true);
+    // frame.js applies the builder's edits per stamped template (?pb=)
+    Array.prototype.forEach.call(part.children, function (el) { el.setAttribute('data-pv-inst', i); });
+    here.parentNode.insertBefore(part, here);
   });
 })();
 </script>"""

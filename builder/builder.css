@@ -31,9 +31,9 @@ h2, h3, p { margin: 0; }
 .pb-brand { display: flex; flex-direction: column; line-height: 1.2; margin-right: 6px; }
 .pb-brand strong { font-size: 15px; }
 .pb-brand span { color: var(--muted); font-size: 12px; }
-.pb-page { display: flex; align-items: center; gap: 6px; flex: 1 1 380px; min-width: 0; }
+.pb-page { display: flex; align-items: center; gap: 6px; flex: 1 1 380px; } /* no shrinking below its buttons: the bar wraps instead */
 .pb-page select { max-width: 170px; }
-.pb-page input { flex: 1; min-width: 120px; }
+.pb-page input { flex: 1; min-width: 120px; width: 120px; }
 .pb-page select, .pb-page input {
   height: 34px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
 }
@@ -43,6 +43,7 @@ h2, h3, p { margin: 0; }
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px;
   background: var(--surface); cursor: pointer; white-space: nowrap; user-select: none;
+  color: inherit; text-decoration: none;
 }
 .pb-btn:hover { background: var(--surface-2); }
 .pb-btn:focus-visible, .pb-seg button:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
@@ -53,6 +54,9 @@ h2, h3, p { margin: 0; }
 .pb-btn--small { height: 28px; padding: 0 9px; font-size: 13px; }
 .pb-btn.is-done { background: #e6f5ec; border-color: #9fd3b3; color: #1d6b3d; }
 
+.pb-toggle[aria-pressed="true"] { background: var(--brand-soft); border-color: #b9c8f2; color: var(--brand); font-weight: 600; }
+.pb-row--pic { grid-template-columns: 64px 1fr auto; }
+.pb-pic { width: 64px; height: 48px; object-fit: cover; border-radius: 6px; background: var(--surface-2); }
 .pb-seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
 .pb-seg button { height: 32px; padding: 0 12px; border: 0; background: none; cursor: pointer; }
 .pb-seg button + button { border-left: 1px solid var(--line); }
@@ -197,6 +201,12 @@ body.is-dragging iframe { pointer-events: none; }
 .pb-toast.has-action { pointer-events: auto; display: flex; align-items: center; gap: 12px; padding-right: 6px; }
 .pb-toast button { height: 28px; padding: 0 12px; border: 0; border-radius: 99px; background: #fff; color: #1d2330; font-weight: 600; cursor: pointer; }
 .pb-btn.is-armed { background: var(--danger); border-color: var(--danger); color: #fff; }
+
+/* phones: the page controls wrap onto their own lines */
+@media (max-width: 600px) {
+  .pb-page { flex-wrap: wrap; flex-basis: 100%; }
+  .pb-page select, .pb-page input { flex: 1 1 100%; max-width: none; }
+}
 
 /* small screens: stack the side panels */
 @media (max-width: 1100px) {
