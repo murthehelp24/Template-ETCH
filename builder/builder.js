@@ -517,6 +517,8 @@
   // ================================================================ page standards (right panel, top)
   var H1_SECTIONS = ['hero', 'page-hero', 'contact', 'blog', 'single-post', '404'];
   var ONLY_ON = { blog: 'blog', 'single-post': 'single', '404': '404' }; // sections that need their own template
+  // a variant counts as the section it varies (hero-image, hero-gradient … are a "hero" for the checklist)
+  function baseOf(id) { return /^hero-/.test(id) ? 'hero' : id; }
   function typeOf(p) { return TYPE[p.type] || TYPE.other || PAGE_TYPES[0]; }
   function shortLabel(t) { return t.label.replace(/\s*\(.*\)$/, ''); } // "บทความ (Posts page)" -> "บทความ"
   // the page name and the page type follow each other: a name that is a type ("เกี่ยวกับเรา", "about", "ติดต่อเรา 2",
@@ -534,22 +536,25 @@
 
   // what the page has against its type: recipe items (ok / missing) + problems
   function pageCheck(p) {
-    var t = typeOf(p), ids = p.sections.map(function (s) { return s.id; }), problems = [];
+    var t = typeOf(p), ids = p.sections.map(function (s) { return baseOf(s.id); }), problems = [];
     var items = (t ? t.sections : []).map(function (r) {
       return { id: r.id, need: r.need, why: r.why, ok: ids.indexOf(r.id) >= 0 };
     });
     var label = function (id) { return T[id] ? T[id].label : id; };
+    var named = p.sections.map(function (s) { return s.id; }); // for messages: the variant's own name
     if (!p.header) problems.push({ level: 'error', text: 'ยังไม่มี Header' });
     if (!p.footer) problems.push({ level: 'error', text: 'ยังไม่มี Footer' });
     var h1 = ids.filter(function (id) { return H1_SECTIONS.indexOf(id) >= 0; });
     if (h1.length > 1) {
-      problems.push({ level: 'warn', text: 'มี H1 ' + h1.length + ' ตัว (' + h1.map(label).join(', ') +
+      problems.push({ level: 'warn', text: 'มี H1 ' + h1.length + ' ตัว (' + named.filter(function (id) {
+        return H1_SECTIONS.indexOf(baseOf(id)) >= 0; }).map(label).join(', ') +
         ') — หน้าหนึ่งควรมี H1 ตัวเดียว เก็บไว้ section เดียว' });
     } else if (!h1.length && ids.length) {
       problems.push({ level: 'warn', text: 'ยังไม่มี H1 — ใส่ Hero หรือ Page Hero ไว้บนสุด (ช่วยเรื่อง SEO)' });
     }
     if (h1.length && H1_SECTIONS.indexOf(ids[0]) < 0) {
-      problems.push({ level: 'warn', text: 'section แรกควรเป็น ' + label(h1[0]) + ' (หัวข้อหลักของหน้า)' });
+      problems.push({ level: 'warn', text: 'section แรกควรเป็น ' + label(named[ids.indexOf(h1[0])]) +
+        ' (หัวข้อหลักของหน้า)' });
     }
     var seen = {};
     ids.forEach(function (id) {
@@ -573,7 +578,7 @@
   function addRecommended(id) {
     var p = page(), order = typeOf(p).sections.map(function (r) { return r.id; }), want = order.indexOf(id), at = null;
     for (var i = 0; i < p.sections.length; i++) {
-      if (order.indexOf(p.sections[i].id) > want) { at = i; break; }
+      if (order.indexOf(baseOf(p.sections[i].id)) > want) { at = i; break; }
     }
     insert(id, at);
   }
@@ -582,7 +587,8 @@
   function layoutFor(p, t) {
     var used = {}, out = [];
     t.sections.forEach(function (r) {
-      var s = p.sections.filter(function (x) { return x.id === r.id && !used[x.k]; })[0] || { k: uid(), id: r.id };
+      var s = p.sections.filter(function (x) { return baseOf(x.id) === r.id && !used[x.k]; })[0] ||
+              { k: uid(), id: r.id };
       used[s.k] = true;
       out.push(s);
     });
