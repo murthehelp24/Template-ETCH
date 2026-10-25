@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stats — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-band {
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+
+  :is(h1, h2, h3, h4, h5, h6),
+  .main-heading__eyebrow {
+    color: inherit;
+  }
+
+  .main-heading__intro {
+    color: var(--main-on-primary-muted);
+  }
+}
+
+.main-stats {
+  padding-block: var(--section-space-s);
+}
+
+.main-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(140 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.main-stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.main-stats__number {
+  font-size: var(--h1);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--main-accent);
+}
+
+.main-stats__label {
+  color: var(--main-on-primary-muted);
+}
+</style>
+</head>
+<body data-template="stats">
+<section data-etch-element="section" class="main-stats main-band"><div data-etch-element="container"><ul class="main-stats__grid"><li class="main-stats__item"><p class="main-stats__number">15+</p><p class="main-stats__label">Years of experience</p></li><li class="main-stats__item"><p class="main-stats__number">2,000+</p><p class="main-stats__label">Happy customers</p></li><li class="main-stats__item"><p class="main-stats__number">98%</p><p class="main-stats__label">Would recommend us</p></li><li class="main-stats__item"><p class="main-stats__number">24/7</p><p class="main-stats__label">Online support</p></li></ul></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

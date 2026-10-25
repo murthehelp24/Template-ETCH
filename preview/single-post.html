@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บทความเดี่ยว — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (width <= 992px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (width <= 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  background-color: var(--main-light);
+  box-shadow: 0 calc(4 * 1rem / var(--etch-root-px, 10)) calc(12 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+  transition: box-shadow 0.25s ease, translate 0.25s ease;
+
+  &:hover {
+    translate: 0 -3px;
+    box-shadow: 0 calc(12 * 1rem / var(--etch-root-px, 10)) calc(28 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.main-card__media {
+  margin: 0;
+}
+
+.main-card__img {
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 6 / 5;
+  object-fit: cover;
+}
+
+.main-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-s) var(--space-m) var(--space-m);
+}
+
+.main-pill {
+  align-self: flex-start;
+  padding: calc(var(--space-xs) / 2) var(--space-s);
+  border-radius: var(--radius-circle, 999px);
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.main-card__title {
+  font-size: var(--h5);
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--main-text);
+}
+
+.main-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.clickable-parent {
+  
+}
+
+.main-card__excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: var(--text-s);
+  color: var(--main-text-muted);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.main-card__more {
+  margin-block-start: auto;
+  padding-block-start: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 700;
+  color: var(--main-primary);
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: calc(600 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.main-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--main-primary);
+
+  &::before {
+    content: "";
+    inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+    block-size: 2px;
+    background-color: var(--main-accent);
+  }
+}
+
+.main-heading__intro {
+  color: var(--main-text-muted);
+}
+
+.main-social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-social__link {
+  /* colour of the ring + icon; the footer sets --main-social-color */
+  display: grid;
+  place-items: center;
+  inline-size: calc(44 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(44 * 1rem / var(--etch-root-px, 10));
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  color: var(--main-social-color, var(--main-primary));
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--main-accent);
+    border-color: var(--main-accent);
+    color: var(--main-on-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.main-social__icon {
+  display: block;
+  inline-size: calc(20 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(20 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-post__head {
+  --cover-overlap: min(calc(270 * 1rem / var(--etch-root-px, 10)), 18vw);
+  position: relative;
+  z-index: 1;
+  padding-block: var(--section-space-l) 0;
+  background: linear-gradient(180deg, var(--main-light) calc(100% - var(--cover-overlap)), transparent 0);
+}
+
+.main-post__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--content-gap);
+  inline-size: 100%;
+  text-align: center;
+}
+
+.main-post__title {
+  max-inline-size: calc(960 * 1rem / var(--etch-root-px, 10));
+  font-size: var(--h1);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--main-primary);
+}
+
+.main-post__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.main-post__date {
+  font-size: var(--text-s);
+  font-weight: 600;
+  color: var(--main-text-muted);
+}
+
+.main-post__cover {
+  inline-size: 100%;
+  max-inline-size: calc(960 * 1rem / var(--etch-root-px, 10));
+  margin: var(--space-m) 0 0;
+}
+
+.main-post__img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: var(--radius-m);
+}
+
+.main-post__body {
+  --cover-overlap: min(calc(270 * 1rem / var(--etch-root-px, 10)), 18vw);
+  margin-block-start: calc(var(--cover-overlap) * -1);
+  padding-block: var(--cover-overlap) var(--section-space-l);
+  background-color: var(--main-light-alt);
+}
+
+.main-post__prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  inline-size: 100%;
+  max-inline-size: calc(960 * 1rem / var(--etch-root-px, 10));
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-xl) var(--space-l);
+  background-color: var(--main-light);
+  color: var(--main-text);
+  font-size: var(--text-m);
+  line-height: 1.85;
+
+  & h2 {
+    margin-block-start: var(--space-s);
+    font-size: var(--h3);
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--main-primary);
+  }
+
+  & ul,
+  & ol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-inline-start: var(--space-m);
+  }
+
+  & li::marker {
+    color: var(--main-accent);
+  }
+
+  & img {
+    border-radius: var(--radius-m);
+  }
+
+  @media (width <= 768px) {
+    padding: var(--space-l) var(--space-m) var(--space-m);
+  }
+}
+
+.main-post__share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-block-start: var(--space-s);
+  padding-block-start: var(--space-m);
+  border-block-start: 1px solid var(--main-line);
+}
+
+.main-post__share-label {
+  margin-inline-end: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  color: var(--main-primary);
+}
+
+.main-post__related {
+  background-color: var(--main-light-alt);
+}
+
+.main-post__related-container {
+  gap: var(--space-l);
+}
+</style>
+</head>
+<body data-template="single-post">
+<main id="main"><section data-etch-element="section" class="main-post__head"><div data-etch-element="container"><div class="main-post__inner"><h1 class="main-post__title">About us</h1><div class="main-post__meta"><span class="main-pill">News</span><time class="main-post__date" datetime="2026-10-25">25 October 2026</time></div><figure class="main-post__cover"><img class="main-post__img" loading="eager" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure></div></div></section><section data-etch-element="section" class="main-post__body"><div data-etch-element="container"><div class="main-post__prose"><div class="entry-content wp-block-post-content"><p>This is sample article content so you can see how the post body looks. Real posts come from the
+WordPress editor (<code>core/post-content</code>).</p>
+<h2>A heading inside the article</h2>
+<p>Paragraphs use the body text size and a comfortable line height. <a href="#">Links use the theme colour</a>.</p>
+<ul><li>First point in a list</li><li>Second point with a little more text to wrap</li><li>Third point</li></ul>
+<blockquote><p>A short quote from a customer or an expert.</p></blockquote>
+<p>Closing paragraph with a call to action.</p></div><div class="main-post__share" aria-label="Share this post"><span class="main-post__share-label">Share</span><a class="main-social__link" href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/about/" aria-label="Share on Facebook" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="main-social__icon" aria-hidden="true" focusable="false"><path d="M14 8V6.5c0-.7.5-1 1-1h2V2h-3c-3 0-4 2-4 4.5V8H8v3.5h2V22h4V11.5h2.7l.3-3.5H14Z"/></svg></a><a class="main-social__link" href="https://twitter.com/intent/tweet?url=https://example.com/about/&amp;text=About us" aria-label="Share on X" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="main-social__icon" aria-hidden="true" focusable="false"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z"/></svg></a><a class="main-social__link" href="https://social-plugins.line.me/lineit/share?url=https://example.com/about/" aria-label="Share on LINE" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="main-social__icon" aria-hidden="true" focusable="false"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.8c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.5-1.7 2.2-3.3 2.2-5C22.4 6.6 17.9 3 12 3Z"/></svg></a></div></div></div></section><section data-etch-element="section" class="main-post__related"><div data-etch-element="container" class="main-post__related-container"><div class="main-heading main-heading--center"><h2>Related posts</h2></div><ul class="main-card-grid"><li class="main-card"><figure class="main-card__media"><img class="main-card__img" loading="lazy" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure><div class="main-card__body"><span class="main-pill">Guides</span><h3 class="main-card__title"><a class="main-card__link clickable-parent" href="/blog/post-1/">How to choose the right service for your home</a></h3><p class="main-card__excerpt">A practical checklist to compare options, prices and what to ask before you book.</p><span class="main-card__more" aria-hidden="true">Read more →</span></div></li><li class="main-card"><figure class="main-card__media"><img class="main-card__img" loading="lazy" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure><div class="main-card__body"><span class="main-pill">Tips</span><h3 class="main-card__title"><a class="main-card__link clickable-parent" href="/blog/post-2/">5 things to prepare before your first visit</a></h3><p class="main-card__excerpt">Bring these documents and questions so the first appointment goes smoothly.</p><span class="main-card__more" aria-hidden="true">Read more →</span></div></li><li class="main-card"><figure class="main-card__media"><img class="main-card__img" loading="lazy" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure><div class="main-card__body"><span class="main-pill">News</span><h3 class="main-card__title"><a class="main-card__link clickable-parent" href="/blog/post-3/">What our customers ask most often</a></h3><p class="main-card__excerpt">Answers to the questions we hear every week, in one place.</p><span class="main-card__more" aria-hidden="true">Read more →</span></div></li></ul></div></section></main>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

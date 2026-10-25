@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page Builder — Etch Template Kit</title>
+<link rel="stylesheet" href="builder.css">
+</head>
+<body>
+<header class="pb-top">
+  <div class="pb-brand">
+    <strong>Page Builder</strong>
+    <span>Etch Template Kit</span>
+  </div>
+
+  <div class="pb-page" aria-label="หน้าที่ประกอบไว้">
+    <select id="pageSelect" title="เลือกหน้าที่บันทึกไว้"></select>
+    <input id="pageName" type="text" placeholder="ชื่อหน้า เช่น หน้าแรก ลูกค้า A" aria-label="ชื่อหน้า">
+    <button type="button" class="pb-btn" id="newPage" title="สร้างหน้าใหม่">+ หน้าใหม่</button>
+    <button type="button" class="pb-btn" id="dupPage" title="ทำสำเนาหน้านี้">สำเนา</button>
+    <button type="button" class="pb-btn pb-btn--ghost" id="delPage" title="ลบหน้านี้">ลบ</button>
+  </div>
+
+  <div class="pb-seg" role="group" aria-label="ขนาดจอ" id="deviceSeg">
+    <button type="button" data-device="desktop" title="1440px">Desktop</button>
+    <button type="button" data-device="tablet" title="768px">Tablet</button>
+    <button type="button" data-device="mobile" title="375px">Mobile</button>
+  </div>
+
+  <div class="pb-seg" role="group" aria-label="root font size" id="rootSeg">
+    <button type="button" data-root="10" title="html { font-size: 62.5% }">1rem = 10px</button>
+    <button type="button" data-root="16" title="html { font-size: 100% }">1rem = 16px</button>
+  </div>
+
+  <div class="pb-actions">
+    <button type="button" class="pb-btn" id="exportJson">Export JSON</button>
+    <label class="pb-btn" for="importJson">Import JSON</label>
+    <input type="file" id="importJson" accept="application/json,.json" hidden>
+    <button type="button" class="pb-btn pb-btn--primary" id="exportEtch">Export สำหรับ Etch</button>
+  </div>
+</header>
+
+<div class="pb-main">
+  <aside class="pb-library" aria-label="รายการ template">
+    <p class="pb-hint">ลากการ์ดไปวางในหน้า หรือกด <b>+</b> เพื่อต่อท้าย</p>
+    <div id="library"></div>
+  </aside>
+
+  <main class="pb-canvas" id="canvas" aria-label="หน้าที่กำลังประกอบ">
+    <div class="pb-stage" id="stage">
+      <div class="pb-slot" id="headerSlot" data-slot="header"></div>
+      <div class="pb-sections" id="sections"></div>
+      <div class="pb-empty" id="emptyHint">ลาก section จากแถบซ้ายมาวางตรงนี้</div>
+      <div class="pb-slot" id="footerSlot" data-slot="footer"></div>
+    </div>
+  </main>
+
+  <aside class="pb-panel" aria-label="ตั้งค่าสี">
+    <h2>สีของ template</h2>
+    <p class="pb-muted">ค่าใน <code>:where(:root)</code> — เปลี่ยนแล้วเห็นผลทันทีทุก section</p>
+    <div id="mainColors"></div>
+    <button type="button" class="pb-btn pb-btn--ghost pb-btn--full" id="resetColors">คืนค่าทั้งหมดให้ตาม ACSS</button>
+
+    <h3>จำลองสี ACSS</h3>
+    <p class="pb-muted">สีตั้งต้นของเว็บ (ตั้งใน ACSS ไม่ได้ export) — ปุ่ม <code>btn--*</code> ใช้สีชุดนี้</p>
+    <div id="acssColors"></div>
+
+    <div class="pb-note">
+      <b>หมายเหตุ</b> ภาพในนี้จำลอง ACSS แบบใกล้เคียง (ฟอนต์ ระยะ ขนาดตัวอักษร) — ตรวจหน้าจริงใน Etch อีกครั้งก่อนส่งงาน
+    </div>
+  </aside>
+</div>
+
+<dialog class="pb-dialog" id="etchDialog" aria-labelledby="etchTitle">
+  <form method="dialog" class="pb-dialog__head">
+    <h2 id="etchTitle">Export สำหรับ Etch</h2>
+    <button class="pb-btn pb-btn--ghost" value="close" aria-label="ปิด">✕</button>
+  </form>
+  <div class="pb-dialog__body" id="etchBody"></div>
+</dialog>
+
+<div class="pb-toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="kit-data.js"></script>
+<script src="builder.js"></script>
+</body>
+</html>

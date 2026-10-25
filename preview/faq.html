@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: calc(600 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.main-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--main-primary);
+
+  &::before {
+    content: "";
+    inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+    block-size: 2px;
+    background-color: var(--main-accent);
+  }
+}
+
+.main-heading__intro {
+  color: var(--main-text-muted);
+}
+
+.main-faq {
+  background-color: var(--main-light);
+}
+
+.main-faq__container {
+  gap: var(--space-l);
+}
+
+.main-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  inline-size: 100%;
+  max-inline-size: calc(820 * 1rem / var(--etch-root-px, 10));
+  margin-inline: auto;
+}
+
+.main-faq__item {
+  overflow: hidden;
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-m);
+  transition: border-color 0.2s ease;
+
+  &:hover,
+  &[open] {
+    border-color: var(--main-accent);
+  }
+
+  &[open] .main-faq__question::after {
+    content: "−";
+    background-color: var(--main-accent);
+  }
+}
+
+.main-faq__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-s);
+  padding: var(--space-s) var(--space-m);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: "+";
+    display: grid;
+    flex: none;
+    place-items: center;
+    inline-size: calc(32 * 1rem / var(--etch-root-px, 10));
+    block-size: calc(32 * 1rem / var(--etch-root-px, 10));
+    border-radius: 50%;
+    background-color: var(--main-line-on-primary);
+    font-size: var(--text-l);
+    line-height: 1;
+    transition: background-color 0.2s ease;
+  }
+
+  @media (width <= 768px) {
+    padding-inline: var(--space-s);
+  }
+}
+
+.main-faq__answer {
+  padding: var(--space-s) var(--space-m);
+  background-color: var(--main-light);
+  color: var(--main-text);
+
+  @media (width <= 768px) {
+    padding-inline: var(--space-s);
+  }
+}
+</style>
+</head>
+<body data-template="faq">
+<section data-etch-element="section" class="main-faq"><div data-etch-element="container" class="main-faq__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow">FAQ</p><h2>Frequently asked questions</h2></div><div class="main-faq__list"><details class="main-faq__item"><summary class="main-faq__question">What services do you offer?</summary><div class="main-faq__answer"><p>Briefly list your main services and who they are for.</p></div></details><details class="main-faq__item"><summary class="main-faq__question">Do I need to book in advance?</summary><div class="main-faq__answer"><p>Explain how to book — phone, LINE or the contact form — and walk-in policy.</p></div></details><details class="main-faq__item"><summary class="main-faq__question">How much does it cost?</summary><div class="main-faq__answer"><p>Give a price range or explain how pricing is decided.</p></div></details><details class="main-faq__item"><summary class="main-faq__question">Which payment methods do you accept?</summary><div class="main-faq__answer"><p>Cash, bank transfer, credit card, QR payment …</p></div></details><details class="main-faq__item"><summary class="main-faq__question">How long does it take?</summary><div class="main-faq__answer"><p>Typical time for a first visit or project.</p></div></details><details class="main-faq__item"><summary class="main-faq__question">Is there parking?</summary><div class="main-faq__answer"><p>Parking details or nearby public transport.</p></div></details></div></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>
