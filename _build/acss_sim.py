@@ -115,8 +115,9 @@ h4 {{ font-size: var(--h4); }} h5 {{ font-size: var(--h5); }} h6 {{ font-size: v
   transition: background-color .2s ease, border-color .2s ease, color .2s ease;
 }}
 :where([class*="btn--"]):hover {{ background-color: var(--btn-bg-hover); border-color: var(--btn-bg-hover); }}
-.btn--primary {{ --btn-bg: var(--primary); --btn-text: var(--white); --btn-bg-hover: var(--primary-hover); }}
-.btn--secondary {{ --btn-bg: var(--secondary); --btn-text: var(--black); --btn-bg-hover: var(--secondary-hover); }}
+/* --pv-btn-*-text: button text colour picked in the page builder (ACSS sets it on the real site) */
+.btn--primary {{ --btn-bg: var(--primary); --btn-text: var(--pv-btn-primary-text, var(--white)); --btn-bg-hover: var(--primary-hover); }}
+.btn--secondary {{ --btn-bg: var(--secondary); --btn-text: var(--pv-btn-secondary-text, var(--black)); --btn-bg-hover: var(--secondary-hover); }}
 .btn--accent {{ --btn-bg: var(--accent); --btn-text: var(--white); --btn-bg-hover: var(--accent-hover); }}
 .btn--outline {{ background-color: transparent; color: var(--btn-bg); }}
 .btn--outline:hover {{ background-color: var(--btn-bg); border-color: var(--btn-bg); color: var(--btn-text); }}

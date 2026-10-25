@@ -30,8 +30,8 @@
     var colors = {};
     KIT.colors.forEach(function (c) { colors[c.key] = null; });
     return { id: uid(), name: name || 'หน้าใหม่', header: 'header', sections: [], footer: 'footer',
-             colors: colors, acss: { primary: null, secondary: null }, root: 10, updated: Date.now(),
-             edits: {}, images: {} };
+             colors: colors, acss: { primary: null, secondary: null }, buttons: { primaryText: null, secondaryText: null },
+             root: 10, updated: Date.now(), edits: {}, images: {} };
   }
 
   // edits[instance][key] = text · images[instance][slot] = image id (picture in IndexedDB)
@@ -74,6 +74,7 @@
     p.root = src.root === 16 ? 16 : 10;
     Object.keys(p.colors).forEach(function (k) { var v = (src.colors || {})[k]; p.colors[k] = HEX.test(v) ? v : null; });
     ['primary', 'secondary'].forEach(function (k) { var v = (src.acss || {})[k]; p.acss[k] = HEX.test(v) ? v : null; });
+    ['primaryText', 'secondaryText'].forEach(function (k) { var v = (src.buttons || {})[k]; p.buttons[k] = HEX.test(v) ? v : null; });
     if (typeof src.updated === 'number') p.updated = src.updated;
     p.edits = cleanMap(src.edits, EDIT_KEY, function (v) { return typeof v === 'string' && v.length <= 5000; });
     p.images = cleanMap(src.images, IMG_KEY, function (v) { return typeof v === 'string' && IMG_ID.test(v); });
@@ -217,7 +218,7 @@
 
   // rec = a placed section; thumbnails in the library get colours only
   function frameState(rec) {
-    var p = page(), msg = { type: 'pv-state', colors: p.colors, acss: p.acss, root: p.root };
+    var p = page(), msg = { type: 'pv-state', colors: p.colors, acss: p.acss, buttons: p.buttons, root: p.root };
     if (rec) {
       msg.edit = state.edit !== false;
       msg.edits = p.edits[rec.key] || {};
@@ -241,7 +242,8 @@
     var hex = function (v) { return v ? v.slice(1) : ''; };
     a.href = KIT.page + '?pb=' + encodeURIComponent(p.id) + '&t=' + ids.join(',') + '&root=' + p.root +
       '&c=' + KIT.colors.map(function (c) { return hex(p.colors[c.key]); }).join(',') +
-      '&a=' + hex(p.acss.primary) + ',' + hex(p.acss.secondary);
+      '&a=' + hex(p.acss.primary) + ',' + hex(p.acss.secondary) +
+      '&b=' + hex(p.buttons.primaryText) + ',' + hex(p.buttons.secondaryText);
   }
 
   function broadcast() {
@@ -251,65 +253,160 @@
     });
   }
 
-  function colorRow(key, label, sub, val, custom, onChange, onReset) {
+  // one colour: swatch (opens the picker), name, hint, hex field, ↺ back to the default
+  function colorRow(o) {
     var row = document.createElement('div');
     row.className = 'pb-color';
-    row.innerHTML = '<input type="color" aria-label="' + label + '">' +
-      '<div><div class="pb-color__label"></div><code class="pb-color__var"></code><div class="pb-color__desc"></div></div>' +
+    row.innerHTML = '<label class="pb-swatch"><input type="color"></label>' +
+      '<div class="pb-color__text"><div class="pb-color__label"></div><div class="pb-color__desc"></div></div>' +
       '<input class="pb-color__hex" type="text" spellcheck="false" maxlength="7">' +
-      '<button type="button" class="pb-color__state"></button>';
-    $('.pb-color__label', row).textContent = label;
-    var parts = sub.split(' · ');
-    $('.pb-color__var', row).textContent = parts[0];
-    $('.pb-color__desc', row).textContent = parts[1] || '';
-    var picker = $('input[type="color"]', row), hex = $('.pb-color__hex', row), st = $('.pb-color__state', row);
-    picker.value = val; hex.value = val;
-    st.textContent = custom ? '↺ ตาม ACSS' : 'ตาม ACSS';
-    st.classList.toggle('is-custom', custom);
-    st.title = custom ? 'คลิกเพื่อกลับไปใช้ค่าจาก ACSS' : 'ใช้ค่าตั้งต้น (ยังไม่ได้แก้)';
+      '<button type="button" class="pb-color__reset">↺</button>';
+    $('.pb-color__label', row).textContent = o.label;
+    $('.pb-color__desc', row).textContent = o.hint || '';
+    $('.pb-color__desc', row).title = o.hint || '';
+    if (o.tip) row.title = o.tip;
+    var picker = $('input[type="color"]', row), hex = $('.pb-color__hex', row), reset = $('.pb-color__reset', row);
+    var sw = $('.pb-swatch', row);
+    picker.setAttribute('aria-label', 'เลือก' + o.label);
+    hex.setAttribute('aria-label', 'รหัสสี ' + o.label);
+    picker.value = hex.value = o.value;
+    sw.style.background = o.value;
+    reset.hidden = !o.custom;
+    reset.title = o.resetTip || 'กลับไปใช้ค่าเริ่มต้น';
+    reset.setAttribute('aria-label', reset.title);
     // one undo step per finished colour change (dragging the picker sends many 'input' events)
     var before = null;
     function start() { if (!before) before = snapshot(); }
     function finish() { if (before) { remember(before); before = null; } }
-    picker.addEventListener('input', function () { start(); hex.value = picker.value; onChange(picker.value, false); });
-    picker.addEventListener('change', function () { start(); finish(); onChange(picker.value, true); });
+    picker.addEventListener('input', function () {
+      start(); hex.value = picker.value; sw.style.background = picker.value; o.set(picker.value, false);
+    });
+    picker.addEventListener('change', function () { start(); finish(); o.set(picker.value, true); });
     hex.addEventListener('change', function () {
       var v = hex.value.trim();
-      if (/^#?[0-9a-f]{6}$/i.test(v)) { start(); finish(); v = v[0] === '#' ? v : '#' + v; onChange(v.toLowerCase(), true); }
+      if (/^#?[0-9a-f]{6}$/i.test(v)) { start(); finish(); v = v[0] === '#' ? v : '#' + v; o.set(v.toLowerCase(), true); }
       else { hex.value = picker.value; toast('ใส่สีแบบ #rrggbb เช่น #1e3a5f'); }
     });
-    st.addEventListener('click', function () { if (custom) { remember(); onReset(); } });
+    reset.addEventListener('click', function () { remember(); o.set(null, true); });
     return row;
   }
 
+  // button text colours: ACSS sets them on the real site; these are the preview defaults (acss_sim.py)
+  var BTN_TEXT = { primaryText: '#ffffff', secondaryText: '#000000' };
+  function buttonValue(k) { return page().buttons[k] || BTN_TEXT[k]; }
+
+  // ready-made palettes: the five template colours + both buttons; all pairs pass the contrast check
+  var PRESETS = [
+    ['น้ำเงินทอง', '#1e3a5f', '#b7791f', '#ffffff', '#1a1a1a', '#ffffff', '#1e3a5f', '#ffffff', '#e8a33d', '#1a1a1a'],
+    ['เขียวป่า', '#1f4d3a', '#a8741a', '#ffffff', '#1b1f1d', '#ffffff', '#1f4d3a', '#ffffff', '#d9a441', '#1b1f1d'],
+    ['ฟ้าคลินิก', '#0b5563', '#2aa198', '#ffffff', '#15262b', '#ffffff', '#0b5563', '#ffffff', '#f2a65a', '#15262b'],
+    ['ดำแดง', '#1f1d1a', '#d62828', '#ffffff', '#1a1a1a', '#ffffff', '#c1121f', '#ffffff', '#1f1d1a', '#ffffff'],
+    ['ม่วงหรู', '#3b2a6b', '#a0781a', '#ffffff', '#1d1830', '#ffffff', '#3b2a6b', '#ffffff', '#f2c14e', '#1d1830'],
+    ['น้ำตาลอบอุ่น', '#5c3a21', '#b5651d', '#fffaf3', '#2b1d12', '#ffffff', '#5c3a21', '#ffffff', '#d98f4e', '#2b1d12'],
+    ['เทาเรียบ', '#2b2f36', '#2563eb', '#ffffff', '#1f2328', '#ffffff', '#2563eb', '#ffffff', '#2b2f36', '#ffffff'],
+    ['ชมพูอ่อนโยน', '#7a2e4f', '#c2577a', '#fff9fa', '#2a1820', '#ffffff', '#7a2e4f', '#ffffff', '#e7a1b0', '#2a1820']
+  ];
+  function presetValues() {
+    return KIT.colors.map(effective).concat([acssValue('primary'), buttonValue('primaryText'),
+      acssValue('secondary'), buttonValue('secondaryText')]);
+  }
+  function applyPreset(pr) {
+    var p = page();
+    remember();
+    KIT.colors.forEach(function (c, i) { p.colors[c.key] = pr[i + 1]; });
+    p.acss = { primary: pr[6], secondary: pr[8] };
+    p.buttons = { primaryText: pr[7], secondaryText: pr[9] };
+    save();
+    broadcast();
+    renderColors();
+    toast('ใช้ชุดสี "' + pr[0] + '" แล้ว', true);
+  }
+  function renderPresets() {
+    var box = $('#presets');
+    if (!box) return;
+    box.innerHTML = '';
+    var now = presetValues().join(',');
+    PRESETS.forEach(function (pr) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'pb-preset';
+      b.setAttribute('aria-pressed', String(pr.slice(1).join(',') === now));
+      b.title = 'ใช้ชุดสี ' + pr[0];
+      var chips = document.createElement('span');
+      chips.className = 'pb-preset__chips';
+      [pr[1], pr[2], pr[3], pr[6], pr[8]].forEach(function (c) {
+        var i = document.createElement('i');
+        i.style.background = c;
+        chips.appendChild(i);
+      });
+      var name = document.createElement('span');
+      name.textContent = pr[0];
+      b.appendChild(chips);
+      b.appendChild(name);
+      b.addEventListener('click', function () { applyPreset(pr); });
+      box.appendChild(b);
+    });
+  }
+
+  function changed(final) {
+    broadcast();
+    renderContrast();
+    renderButtonPreview();
+    if (final) { save(); renderColors(); }
+  }
+
   function renderColors() {
+    var p = page();
     var box = $('#mainColors');
     box.innerHTML = '';
     KIT.colors.forEach(function (c) {
       var l = LABELS[c.key] || [c.key, ''];
-      box.appendChild(colorRow(c.key, l[0], '--' + c.key + ' · ' + l[1], effective(c), !!page().colors[c.key],
-        function (v, final) {
-          page().colors[c.key] = v;
-          broadcast();
-          renderContrast();
-          if (final) { save(); renderColors(); }
-        },
-        function () { page().colors[c.key] = null; broadcast(); save(); renderColors(); }));
+      box.appendChild(colorRow({
+        label: l[0], hint: l[1], tip: '--' + c.key + ' ใน :where(:root)', value: effective(c), custom: !!p.colors[c.key],
+        resetTip: 'กลับไปใช้สีตาม ACSS (var(--' + c.acss + '))',
+        set: function (v, final) { p.colors[c.key] = v; changed(final); }
+      }));
     });
+    // button background = ACSS Primary / Secondary. The template colours that follow those ACSS colours are
+    // pinned first, so changing a button never repaints the header or headings by surprise.
+    function pin(acssKey) {
+      var pinned = [];
+      KIT.colors.forEach(function (c) {
+        if (c.acss === acssKey && !p.colors[c.key]) { p.colors[c.key] = effective(c); pinned.push(LABELS[c.key][0]); }
+      });
+      if (pinned.length) toast('ล็อก ' + pinned.join(', ') + ' ไว้ที่สีเดิม เพื่อไม่ให้เปลี่ยนตามปุ่ม');
+    }
+    var bb = $('#buttonColors');
+    bb.innerHTML = '';
+    [['primary', 'primaryText', 'ปุ่มหลัก'], ['secondary', 'secondaryText', 'ปุ่มรอง']].forEach(function (b) {
+      var head = document.createElement('div');
+      head.className = 'pb-color__group';
+      head.textContent = b[2] + (b[0] === 'primary' ? ' (btn--primary · ปุ่มใน Hero, CTA)' : ' (btn--secondary · ปุ่มบน header)');
+      bb.appendChild(head);
+      bb.appendChild(colorRow({
+        label: 'สีพื้น', hint: 'ACSS ' + (b[0] === 'primary' ? 'Primary' : 'Secondary'),
+        value: acssValue(b[0]), custom: !!p.acss[b[0]], resetTip: 'กลับไปใช้สีตั้งต้นของ ACSS',
+        set: function (v, final) { if (v) pin(b[0]); p.acss[b[0]] = v; changed(final); }
+      }));
+      bb.appendChild(colorRow({
+        label: 'สีตัวอักษร', hint: 'บนปุ่มทึบ', value: buttonValue(b[1]), custom: !!p.buttons[b[1]],
+        resetTip: 'กลับไปใช้สีตั้งต้น',
+        set: function (v, final) { p.buttons[b[1]] = v; changed(final); }
+      }));
+    });
+    renderPresets();
+    renderButtonPreview();
     renderContrast();
-    var ab = $('#acssColors');
-    ab.innerHTML = '';
-    ['primary', 'secondary'].forEach(function (k) {
-      ab.appendChild(colorRow(k, k === 'primary' ? 'ACSS Primary' : 'ACSS Secondary', '--' + k, acssValue(k),
-        !!page().acss[k],
-        function (v, final) {
-          page().acss[k] = v;
-          broadcast();
-          renderContrast();
-          if (final) { save(); renderColors(); }
-        },
-        function () { page().acss[k] = null; broadcast(); save(); renderColors(); }));
-    });
+  }
+
+  function renderButtonPreview() {
+    var box = $('#btnPreview');
+    if (!box) return;
+    box.style.setProperty('--demo-primary', acssValue('primary'));
+    box.style.setProperty('--demo-primary-text', buttonValue('primaryText'));
+    box.style.setProperty('--demo-secondary', acssValue('secondary'));
+    box.style.setProperty('--demo-secondary-text', buttonValue('secondaryText'));
+    box.style.setProperty('--demo-bg', effective(KIT.colors.filter(function (c) { return c.key === 'main-light'; })[0]));
   }
 
   // ================================================================ contrast (WCAG 2.x)
@@ -329,11 +426,18 @@
     ['main-text', 'main-light', 'ตัวอักษรบนพื้นอ่อน', 4.5],
     ['main-on-primary', 'main-primary', 'ตัวอักษรบน header / footer / FAQ', 4.5],
     ['main-primary', 'main-light', 'หัวข้อและลิงก์บนพื้นอ่อน', 4.5],
-    ['main-on-primary', 'main-accent', 'ไอคอนตอน hover (บนสีเน้น)', 3]
+    ['main-on-primary', 'main-accent', 'ไอคอนตอน hover (บนสีเน้น)', 3],
+    ['btn-primary-text', 'btn-primary', 'ตัวอักษรบนปุ่มหลัก', 4.5],
+    ['btn-secondary-text', 'btn-secondary', 'ตัวอักษรบนปุ่มรอง', 4.5],
+    ['btn-primary', 'main-light', 'ปุ่มหลักแบบเส้นขอบบนพื้นอ่อน', 4.5]
   ];
   function contrastIssues() {
     var eff = {};
     KIT.colors.forEach(function (c) { eff[c.key] = effective(c); });
+    eff['btn-primary'] = acssValue('primary');
+    eff['btn-secondary'] = acssValue('secondary');
+    eff['btn-primary-text'] = buttonValue('primaryText');
+    eff['btn-secondary-text'] = buttonValue('secondaryText');
     return PAIRS.map(function (pr) {
       var r = ratio(eff[pr[0]], eff[pr[1]]);
       return { label: pr[2], ratio: r, min: pr[3], ok: r >= pr[3] };
@@ -343,7 +447,8 @@
     var box = $('#contrast');
     if (!box) return;
     box.innerHTML = '';
-    contrastIssues().forEach(function (c) {
+    var all = contrastIssues(), bad = all.filter(function (c) { return !c.ok; });
+    all.forEach(function (c) {
       var row = document.createElement('div');
       row.className = 'pb-contrast__row' + (c.ok ? '' : ' is-bad');
       row.title = 'ค่าที่แนะนำอย่างน้อย ' + c.min + ':1';
@@ -357,6 +462,11 @@
       row.appendChild(mark); row.appendChild(text); row.appendChild(val);
       box.appendChild(row);
     });
+    var sum = $('#contrastSummary');
+    sum.textContent = bad.length ? 'อ่านยาก ' + bad.length + ' จุด — กดดูว่าคู่ไหน' : 'อ่านง่ายครบทั้ง ' + all.length + ' คู่';
+    sum.className = bad.length ? 'is-bad' : 'is-ok';
+    if (bad.length && !renderContrast.opened) { $('#contrastBox').open = true; renderContrast.opened = true; }
+    if (!bad.length) renderContrast.opened = false;
   }
 
   // ================================================================ library (left)
@@ -777,6 +887,7 @@
     remember();
     Object.keys(page().colors).forEach(function (k) { page().colors[k] = null; });
     page().acss = { primary: null, secondary: null };
+    page().buttons = { primaryText: null, secondaryText: null };
     save(); renderColors(); broadcast();
     toast('คืนค่าสีแล้ว', true);
   });
@@ -800,7 +911,7 @@
       return o;
     };
     var data = { format: 'etch-page-builder', version: 2, exported: new Date().toISOString(),
-      page: { name: p.name, root: p.root, colors: p.colors, acss: p.acss,
+      page: { name: p.name, root: p.root, colors: p.colors, acss: p.acss, buttons: p.buttons,
               header: p.header ? part('header:' + p.header, p.header) : null,
               footer: p.footer ? part('footer:' + p.footer, p.footer) : null,
               sections: p.sections.map(function (s) { return part(s.k, s.id); }) } };
@@ -835,7 +946,7 @@
         });
         var hdr = src.header === null ? null : idOf(src.header), ftr = src.footer === null ? null : idOf(src.footer);
         var p = normalizePage({ name: src.name || file.name.replace(/\.json$/i, ''), header: hdr, footer: ftr,
-          sections: secs, root: src.root, colors: src.colors, acss: src.acss });
+          sections: secs, root: src.root, colors: src.colors, acss: src.acss, buttons: src.buttons });
         if (p.header) add('header:' + p.header, src.header);
         if (p.footer) add('footer:' + p.footer, src.footer);
         var edits = {}, pics = 0;
@@ -978,10 +1089,16 @@
     cbtn.style.marginTop = '8px';
     cbtn.addEventListener('click', function () { copy(colorLines(), cbtn); });
     s1.appendChild(cbtn);
-    if (p.acss.primary || p.acss.secondary) {
-      s1.appendChild(el('p', '', 'ทดลองสี ACSS ไว้: ' +
-        (p.acss.primary ? 'Primary ' + p.acss.primary + ' ' : '') + (p.acss.secondary ? 'Secondary ' + p.acss.secondary : '') +
-        ' — ตั้งค่านี้ใน ACSS Dashboard (ไม่ได้อยู่ในไฟล์ template)'));
+    if (p.acss.primary || p.acss.secondary || p.buttons.primaryText || p.buttons.secondaryText) {
+      var lines = [];
+      if (p.acss.primary) lines.push('Primary (พื้นปุ่มหลัก btn--primary): ' + p.acss.primary);
+      if (p.buttons.primaryText) lines.push('ตัวอักษรปุ่มหลัก: ' + p.buttons.primaryText);
+      if (p.acss.secondary) lines.push('Secondary (พื้นปุ่มรอง btn--secondary): ' + p.acss.secondary);
+      if (p.buttons.secondaryText) lines.push('ตัวอักษรปุ่มรอง: ' + p.buttons.secondaryText);
+      s1.appendChild(el('h3', '', 'สีปุ่ม — ตั้งใน ACSS Dashboard'));
+      s1.appendChild(el('p', '', 'ปุ่มเป็นของ ACSS จึงไม่อยู่ในไฟล์ template: ตั้งสี Primary / Secondary ในหน้าสีของ ACSS ' +
+        'และสีตัวอักษรของปุ่มในหน้าตั้งค่าปุ่มของ ACSS (สี Primary / Secondary ถูกใช้ที่อื่นในเว็บด้วย)'));
+      s1.appendChild(el('pre', 'pb-code', lines.join('\n')));
     }
     s1.appendChild(el('p', '', 'เว็บนี้ทดลองที่ 1rem = ' + p.root + 'px — template ใช้ to-rem() จึงได้ขนาดเท่ากันทั้ง 10px และ 16px'));
 

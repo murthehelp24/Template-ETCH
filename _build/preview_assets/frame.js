@@ -30,6 +30,11 @@
       if (HEX.test(a[k])) root.style.setProperty('--' + k, a[k]);
       else root.style.removeProperty('--' + k);
     });
+    var bt = state.buttons || {};
+    [['primaryText', '--pv-btn-primary-text'], ['secondaryText', '--pv-btn-secondary-text']].forEach(function (b) {
+      if (HEX.test(bt[b[0]])) root.style.setProperty(b[1], bt[b[0]]);
+      else root.style.removeProperty(b[1]);
+    });
     report();
   }
 
@@ -49,12 +54,14 @@
     if (d.type === 'pv-state') { apply(d); content(d); }
   });
 
-  // standalone use (preview pages, builder "ดูทั้งหน้า"): ?root=16&c=1e3a5f,,,,ffffff&a=,e8a33d
-  // c = the five --main-* colours in order, a = ACSS primary, secondary; empty = default
+  // standalone use (preview pages, builder "ดูทั้งหน้า"): ?root=16&c=1e3a5f,,,,ffffff&a=,e8a33d&b=ffffff,
+  // c = the five --main-* colours in order, a = ACSS primary, secondary, b = button text (primary, secondary);
+  // empty = default
   var q = new URLSearchParams(location.search);
-  if (q.has('root') || q.has('c') || q.has('a')) {
+  if (q.has('root') || q.has('c') || q.has('a') || q.has('b')) {
     var list = function (s) { return (s || '').split(',').map(function (v) { return v ? '#' + v : null; }); };
-    var cs = list(q.get('c')), as = list(q.get('a')), st = { root: Number(q.get('root')), colors: {}, acss: {} };
+    var cs = list(q.get('c')), as = list(q.get('a')), bs = list(q.get('b'));
+    var st = { root: Number(q.get('root')), colors: {}, acss: {}, buttons: { primaryText: bs[0], secondaryText: bs[1] } };
     MAIN.forEach(function (k, i) { st.colors[k] = cs[i]; });
     ACSS.forEach(function (k, i) { st.acss[k] = as[i]; });
     apply(st);

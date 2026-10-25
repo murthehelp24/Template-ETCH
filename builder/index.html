@@ -59,18 +59,38 @@
   </main>
 
   <aside class="pb-panel" aria-label="ตั้งค่าสี">
-    <h2>สีของ template</h2>
-    <p class="pb-muted">ค่าใน <code>:where(:root)</code> — เปลี่ยนแล้วเห็นผลทันทีทุก section</p>
-    <div id="mainColors"></div>
-    <button type="button" class="pb-btn pb-btn--ghost pb-btn--full" id="resetColors">คืนค่าทั้งหมดให้ตาม ACSS</button>
+    <section class="pb-sec">
+      <h2>ชุดสีสำเร็จรูป</h2>
+      <div class="pb-presets" id="presets"></div>
+    </section>
 
-    <h3>อ่านง่ายไหม</h3>
-    <p class="pb-muted">contrast ของสีที่ใช้คู่กัน (WCAG: ตัวอักษรทั่วไปควรได้ 4.5:1 ขึ้นไป)</p>
-    <div class="pb-contrast" id="contrast" aria-live="polite"></div>
+    <section class="pb-sec">
+      <div class="pb-sec__head">
+        <h2>สีของ template</h2>
+        <button type="button" class="pb-link" id="resetColors" title="กลับไปใช้สีเริ่มต้นทั้งหมด (สีของ template ตาม ACSS และปุ่มแบบตั้งต้น)">คืนค่าเริ่มต้น</button>
+      </div>
+      <div id="mainColors"></div>
+    </section>
 
-    <h3>จำลองสี ACSS</h3>
-    <p class="pb-muted">สีตั้งต้นของเว็บ (ตั้งใน ACSS ไม่ได้ export) — ปุ่ม <code>btn--*</code> ใช้สีชุดนี้</p>
-    <div id="acssColors"></div>
+    <section class="pb-sec">
+      <h2>สีปุ่ม</h2>
+      <div class="pb-btnpreview" id="btnPreview" aria-hidden="true">
+        <span class="pb-demo pb-demo--primary">ปุ่มหลัก</span>
+        <span class="pb-demo pb-demo--primary pb-demo--outline">เส้นขอบ</span>
+        <span class="pb-demo pb-demo--secondary">ปุ่มรอง</span>
+      </div>
+      <div id="buttonColors"></div>
+      <p class="pb-muted">ปุ่มเป็นของ ACSS: บนเว็บจริงตั้งใน ACSS (หน้า Export บอกค่าให้)</p>
+    </section>
+
+    <section class="pb-sec">
+      <h2>อ่านง่ายไหม</h2>
+      <details class="pb-contrast" id="contrastBox">
+        <summary id="contrastSummary"></summary>
+        <div id="contrast" aria-live="polite"></div>
+        <p class="pb-muted">เกณฑ์ WCAG: ตัวอักษรควรได้ 4.5:1 ขึ้นไป ไอคอน 3:1</p>
+      </details>
+    </section>
 
     <div class="pb-note">
       <b>หมายเหตุ</b> ภาพในนี้จำลอง ACSS แบบใกล้เคียง (ฟอนต์ ระยะ ขนาดตัวอักษร) — ตรวจหน้าจริงใน Etch อีกครั้งก่อนส่งงาน
