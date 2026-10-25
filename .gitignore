@@ -2,3 +2,5 @@ __pycache__/
 .DS_Store
 _build/private-terms.txt
 dist/
+.dev.vars
+.wrangler/

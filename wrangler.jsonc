@@ -1,4 +1,5 @@
-// Cloudflare Worker that serves the Page Builder as static files (Workers Builds runs `npx wrangler deploy`).
+// Cloudflare Worker that serves the Page Builder as static files behind a password
+// (Workers Builds runs `npx wrangler deploy`).
 // "name" must match the Worker in the Cloudflare dashboard.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
@@ -8,11 +9,15 @@
   "build": {
     "command": "python3 _build/build_site.py"
   },
+  // worker/index.js asks for the password (secret BUILDER_PASSWORD) before any file is served —
+  // run_worker_first makes every request, including the static files, go through it
+  "main": "worker/index.js",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
   },
-  // workers.dev stays OFF until a login (Cloudflare Access) protects it: the builder carries every .etch.txt.
-  // Turn it on only together with that protection — see README "เอา Page Builder ขึ้นเว็บ"
-  "workers_dev": false,
+  // safe to keep on: without the secret the Worker refuses every request (503)
+  "workers_dev": true,
   "preview_urls": false
 }
