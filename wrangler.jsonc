@@ -1,0 +1,17 @@
+// Cloudflare Worker that serves the Page Builder as static files (Workers Builds runs `npx wrangler deploy`).
+// "name" must match the Worker in the Cloudflare dashboard.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "template-etch",
+  "compatibility_date": "2026-10-01",
+  // put the site together in dist/ before every deploy (only builder/ + preview/ + _build/site/ are published)
+  "build": {
+    "command": "python3 _build/build_site.py"
+  },
+  "assets": {
+    "directory": "./dist"
+  },
+  // the site is reached through Cloudflare Access only — see README "เอา Page Builder ขึ้นเว็บ"
+  "workers_dev": true,
+  "preview_urls": false
+}

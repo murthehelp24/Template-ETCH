@@ -1,4 +1,4 @@
-# Cloudflare Pages response headers (copied to dist/ by _build/build_site.py)
+# Cloudflare static-asset response headers (copied to dist/ by _build/build_site.py)
 /*
   X-Robots-Tag: noindex, nofollow
   X-Content-Type-Options: nosniff
