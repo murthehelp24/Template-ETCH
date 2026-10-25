@@ -119,7 +119,8 @@
     '.pv-editing [data-pv-edit]:hover{outline:2px dashed rgb(47 91 211/.75);outline-offset:2px}' +
     '[data-pv-edit][contenteditable]{outline:2px solid #2f5bd3!important;outline-offset:2px;background:rgb(47 91 211/.08)}' +
     '.pv-editing [data-pv-img]{cursor:pointer}' +
-    '.pv-editing [data-pv-img]:hover{outline:3px dashed rgb(47 91 211/.85);outline-offset:-3px}';
+    '.pv-editing [data-pv-img]:hover,.pv-editing .pv-cover-hover{outline:3px dashed rgb(47 91 211/.85);outline-offset:-3px}' +
+    '.pv-cover-pointer,.pv-cover-pointer *{cursor:pointer}';
   document.head.appendChild(css);
 
   function send(msg) { if (window.parent !== window) window.parent.postMessage(msg, '*'); }
@@ -200,9 +201,27 @@
       startEdit(el, e);
       return;
     }
-    var img = e.target.closest && e.target.closest('[data-pv-img]');
+    var img = (e.target.closest && e.target.closest('[data-pv-img]')) || coverImage(e);
     if (img) { e.preventDefault(); e.stopPropagation(); pickImage(img); }
   }, true);
+
+  // a background photo sits under an overlay (hero-image, hero-gradient): find the image slot under the pointer,
+  // unless the pointer is on something of its own (a link, a button, a text to edit)
+  function coverImage(e) {
+    if (!e.target.closest || e.target.closest('a, button, input, select, textarea, [data-pv-edit]')) return null;
+    var under = document.elementsFromPoint ? document.elementsFromPoint(e.clientX, e.clientY) : [];
+    for (var i = 0; i < under.length; i++) if (under[i].hasAttribute('data-pv-img')) return under[i];
+    return null;
+  }
+  var hovered = null;
+  document.addEventListener('pointermove', function (e) {
+    var img = editing && !(e.target.closest && e.target.closest('[data-pv-img]')) ? coverImage(e) : null;
+    if (img === hovered) return;
+    if (hovered) hovered.classList.remove('pv-cover-hover');
+    hovered = img;
+    if (img) img.classList.add('pv-cover-hover');
+    root.classList.toggle('pv-cover-pointer', !!img);
+  });
 
   // "ดูทั้งหน้า": page.html?pb=<id> — the saved page (same browser storage as the builder) gives the edits
   // and pictures for each stamped template, in the order of ?t=

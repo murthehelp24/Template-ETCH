@@ -34,7 +34,7 @@ COVER_CSS = """position: relative;
   isolation: isolate;
   overflow: hidden;
   justify-content: center;
-  min-block-size: 72rem;
+  min-block-size: 80rem; /* same height as the colour-panel hero */
   padding-block: var(--section-space-xl);
 
   &::before {
@@ -236,7 +236,7 @@ panel_styles = {**BASE, **HEADING_STYLES, **BUTTONS_STYLES,
     p + "-grid": style(".main-hero-panel__grid", """display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   inline-size: 100%;
-  min-block-size: 64rem;
+  min-block-size: 80rem; /* same height as the full-image heroes */
 
   @media (width <= 992px) {
     grid-template-columns: 1fr;
@@ -315,7 +315,7 @@ gradient_styles = {**BASE, **HEADING_STYLES, **BUTTONS_STYLES,
 outputs["main-hero-gradient"] = kit_payload(section("Hero Gradient", "main-hero-gradient", [p], [
     el("Content", "div", {"class": "main-hero-gradient__content"}, [p + "-content"], [
         heading("Business name · Area, City", *TEXT, tag="h1"),
-        button_row(btn("LINE", "btn--secondary", LINE_URL, "Chat on LINE", "line", blank=True),
+        button_row(btn("LINE", "btn--secondary", LINE_URL, "Chat on LINE", blank=True),
                    btn("Phone", "btn--secondary btn--outline", "tel:+6620000000", "Call 02-000-0000", "phone")),
     ]),
 ], behind=[cover_bg("main-hero-gradient", "mn-hg")]), gradient_styles)
