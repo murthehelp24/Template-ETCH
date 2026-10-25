@@ -9,6 +9,7 @@ ROOT = os.path.dirname(HERE)
 SRC = os.path.join(HERE, "src")
 JOBS = [
     ("build_header_ome.py", "etch-header/site-header-ohmyetch.etch.txt"),
+    ("build_header_variants.py", "etch-header"),  # reads the file above
     ("build_header_menubuilder.py", "etch-header/site-header.etch.txt"),
     ("build_footer.py", "etch-footer/main-footer.etch.txt"),
     ("build_sections.py", "etch-sections"),
