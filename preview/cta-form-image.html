@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CTA ฟอร์ม บนรูป — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: calc(600 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.main-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--main-primary);
+
+  &::before {
+    content: "";
+    inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+    block-size: 2px;
+    background-color: var(--main-accent);
+  }
+}
+
+.main-heading__intro {
+  color: var(--main-text-muted);
+}
+
+.main-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.main-form {
+  /* plain HTML form: set its action to your form endpoint (Formspree, a form plugin …) */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-s);
+  inline-size: 100%;
+
+  @media (width <= 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-xs) / 2);
+}
+
+.main-form__field--wide {
+  grid-column: 1 / -1;
+}
+
+.main-form__label {
+  font-size: var(--text-s);
+  font-weight: 600;
+  color: var(--main-text);
+}
+
+.main-form__input {
+  inline-size: 100%;
+  padding: calc(12 * 1rem / var(--etch-root-px, 10)) calc(14 * 1rem / var(--etch-root-px, 10));
+  border: 1px solid var(--main-line);
+  border-radius: var(--radius-s);
+  background-color: var(--main-light);
+  color: var(--main-text);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: var(--main-text-muted);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--main-primary);
+    box-shadow: 0 0 0 3px var(--main-accent-soft);
+  }
+
+  &:is(textarea) {
+    min-block-size: calc(120 * 1rem / var(--etch-root-px, 10));
+    resize: vertical;
+  }
+}
+
+.main-form__submit {
+  grid-column: 1 / -1;
+}
+
+.main-form__note {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: var(--text-s);
+  color: var(--main-text-muted);
+}
+
+.main-form-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  padding: var(--space-l);
+  border-radius: var(--radius-l);
+  background-color: var(--main-light);
+  color: var(--main-text);
+  box-shadow: 0 calc(12 * 1rem / var(--etch-root-px, 10)) calc(28 * 1rem / var(--etch-root-px, 10)) var(--main-shadow);
+
+  /* stays primary inside a dark section, whose headings inherit the light text colour */
+  & .main-form-card__title {
+    color: var(--main-primary);
+  }
+
+  @media (width <= 600px) {
+    padding: var(--space-m);
+  }
+}
+
+.main-form-card__title {
+  margin: 0;
+  font-size: var(--h4);
+}
+
+.main-cta-form-image {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  /* the photo is darkened with the primary colour, strongest on the left behind the text */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--main-primary) 92%, transparent) 30%,
+      color-mix(in srgb, var(--main-primary) 55%, transparent));
+  }
+
+  color: var(--main-on-primary);
+
+  :is(h1, h2, h3, h4, h5, h6),
+  .main-heading__eyebrow {
+    color: inherit;
+  }
+
+  .main-heading__intro {
+    color: var(--main-on-primary-muted);
+  }
+}
+
+.main-cta-form-image__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  margin: 0;
+}
+
+.main-cta-form-image__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  background-color: var(--main-primary);
+}
+
+.main-cta-form-image__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(360 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--container-gap);
+  align-items: center;
+}
+
+.main-cta-form-image__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--content-gap);
+}
+</style>
+</head>
+<body data-template="cta-form-image">
+<section data-etch-element="section" class="main-cta-form-image"><figure class="main-cta-form-image__bg"><img class="main-cta-form-image__img" loading="lazy" data-pv-img="i:g.0.0" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure><div data-etch-element="container"><div class="main-cta-form-image__grid"><div class="main-cta-form-image__info"><div class="main-heading"><p class="main-heading__eyebrow" data-pv-edit="t:g.1.0.0.0.0.0">Contact us</p><h2 data-pv-edit="t:g.1.0.0.0.1.0">Let's talk about what you need</h2><p class="main-heading__intro" data-pv-edit="t:g.1.0.0.0.2.0">Send us a message and we'll get back to you, or reach us directly by phone or LINE.</p></div><div class="main-buttons"><a class="btn--secondary" href="https://line.me/R/ti/p/@example" target="_blank" rel="noopener" data-pv-edit="t:g.1.0.0.1.0.0">Chat on LINE</a><a class="btn--secondary btn--outline" href="tel:020000000" data-pv-edit="t:g.1.0.0.1.1.0">02-000-0000</a></div></div><div class="main-form-card"><h3 class="main-form-card__title" data-pv-edit="t:g.1.0.1.0.0">Send us a message</h3><form class="main-form" action="https://formspree.io/f/your-form-id" method="post"><div class="main-form__field"><label class="main-form__label" for="cta-image-name" data-pv-edit="t:g.1.0.1.1.0.0.0">Name *</label><input class="main-form__input" id="cta-image-name" name="cta-image-name" placeholder="Your name" type="text" required=""></div><div class="main-form__field"><label class="main-form__label" for="cta-image-phone" data-pv-edit="t:g.1.0.1.1.1.0.0">Phone *</label><input class="main-form__input" id="cta-image-phone" name="cta-image-phone" placeholder="08x-xxx-xxxx" type="tel" required=""></div><div class="main-form__field main-form__field--wide"><label class="main-form__label" for="cta-image-email" data-pv-edit="t:g.1.0.1.1.2.0.0">Email</label><input class="main-form__input" id="cta-image-email" name="cta-image-email" placeholder="you@example.com" type="email"></div><div class="main-form__field main-form__field--wide"><label class="main-form__label" for="cta-image-message" data-pv-edit="t:g.1.0.1.1.3.0.0">Message</label><textarea class="main-form__input" id="cta-image-message" name="cta-image-message" placeholder="How can we help?"></textarea></div><div class="main-form__submit"><button class="btn--primary" type="submit" data-pv-edit="t:g.1.0.1.1.4.0.0">Send message</button></div><p class="main-form__note" data-pv-edit="t:g.1.0.1.1.5.0">We reply within one business day. Your details stay private.</p></form></div></div></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

@@ -558,7 +558,7 @@
   var H1_SECTIONS = ['hero', 'page-hero', 'contact', 'blog', 'single-post', '404'];
   var ONLY_ON = { blog: 'blog', 'single-post': 'single', '404': '404' }; // sections that need their own template
   // a variant counts as the section it varies (hero-image … are a "hero", stats-cards … are "stats")
-  function baseOf(id) { var m = /^(hero|features|split|stats|steps|reviews)-/.exec(id); return m ? m[1] : id; }
+  function baseOf(id) { var m = /^(hero|features|split|stats|steps|reviews|faq|cta)-/.exec(id); return m ? m[1] : id; }
   function typeOf(p) { return TYPE[p.type] || TYPE.other || PAGE_TYPES[0]; }
   function shortLabel(t) { return t.label.replace(/\s*\(.*\)$/, ''); } // "บทความ (Posts page)" -> "บทความ"
   // the page name and the page type follow each other: a name that is a type ("เกี่ยวกับเรา", "about", "ติดต่อเรา 2",
@@ -634,7 +634,7 @@
     });
     var extras = p.sections.filter(function (s) { return !used[s.k]; });
     // the contact CTA closes a page: anything else goes before it
-    if (out.length && out[out.length - 1].id === 'cta') out.splice.apply(out, [out.length - 1, 0].concat(extras));
+    if (out.length && baseOf(out[out.length - 1].id) === 'cta') out.splice.apply(out, [out.length - 1, 0].concat(extras));
     else out = out.concat(extras);
     return out;
   }
