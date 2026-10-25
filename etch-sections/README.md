@@ -38,7 +38,17 @@
 | `main-reviews-band.etch.txt` | Reviews พื้นสีหลัก: 3 รีวิวในกรอบเส้น บนสี primary | หน้าไหนก็ได้ |
 | `main-reviews-split.etch.txt` | Reviews คะแนน + รีวิว: หัวข้อ + คะแนน 4.9 ★ ซ้าย · 4 รีวิว 2×2 ขวา | หน้าแรก / หน้ารีวิว |
 | `main-faq.etch.txt` | คำถามที่พบบ่อย เปิด/ปิดได้ | หน้าไหนก็ได้ |
+| `main-faq-split.etch.txt` | FAQ หัวข้อ + กล่องติดต่อ: หัวข้อ + กล่อง "ยังมีคำถาม?" สีหลักซ้าย (ติดตอนเลื่อน) · คำถามแบบเส้นขวา | หน้าไหนก็ได้ (ใช้ FAQ แบบเดียวต่อหน้าก็พอ) |
+| `main-faq-cards.etch.txt` | FAQ การ์ด: 6 การ์ด "Q." แสดงคำตอบทุกข้อ ไม่ต้องกดเปิด | หน้าบริการ |
+| `main-faq-minimal.etch.txt` | FAQ เรียบ: คำถามเลข 01–06 แบบเส้นคั่น + ลิงก์ "Contact us" ใต้รายการ | หน้าไหนก็ได้ |
+| `main-faq-image.etch.txt` | FAQ + รูป: รูปซ้าย · คำถามในกล่องสีอ่อนขวา (เปิดแล้วเป็นสีเน้น) | หน้าแรก / เกี่ยวกับเรา |
 | `main-cta.etch.txt` | Component **Main CTA** (`MainCta`) ติดต่อ + แผนที่ | ท้ายหน้าต่างๆ — วางซ้ำได้ทุกหน้า |
+| `main-cta-form.etch.txt` | CTA ฟอร์ม + ข้อมูลติดต่อ: หัวข้อ + โทร / LINE / อีเมล / เวลาเปิดซ้าย · การ์ดฟอร์มขวา | ท้ายหน้า / หน้าติดต่อ |
+| `main-cta-form-band.etch.txt` | CTA ฟอร์ม พื้นสีหลัก: หัวข้อ + checklist + ปุ่มโทรบนสีหลัก · ฟอร์มขอให้โทรกลับ (ชื่อ เบอร์ ข้อความ) | ท้ายหน้าแรก / หน้าบริการ |
+| `main-cta-form-image.etch.txt` | CTA ฟอร์ม บนรูป: รูปพื้นหลัง + สีหลักไล่ · ปุ่ม LINE + เบอร์ · การ์ดฟอร์มขวา | ท้ายหน้าแรก |
+| `main-cta-form-map.etch.txt` | CTA ฟอร์ม + แผนที่: หัวข้อกลาง · ฟอร์มกับ Google Map คู่กัน · ข้อมูลติดต่อแถวล่าง | หน้าติดต่อ |
+
+**ฟอร์มใน CTA** เป็น HTML ธรรมดา (`<form class="main-form" action="https://formspree.io/f/your-form-id" method="post">`) — หลังวางใน Etch ให้เปลี่ยน `action` เป็น URL ของบริการรับฟอร์ม (เช่น สร้างฟอร์มที่ formspree.io แล้วเอา URL มาใส่) หรือแทนทั้งฟอร์มด้วย block ของปลั๊กอินฟอร์มที่ใช้อยู่ (Fluent Forms, WS Form …) โดยคงกล่อง `main-form-card` ไว้ · แผนที่ใน `cta-form-map` เปลี่ยนที่ `src` ของ iframe (Google Maps → Share → Embed a map)
 | `main-contact.etch.txt` | Component **Main Contact** (`MainContact`) | หน้า Contact |
 | `main-blog.etch.txt` | การ์ดบทความ + pagination (loop `mainQuery`) | Posts page หรือ template Archive/Index |
 | `main-single-post.etch.txt` | `<main>` บทความเดี่ยว + แชร์ + related (loop `mainRelatedPosts`) | template **Single** |

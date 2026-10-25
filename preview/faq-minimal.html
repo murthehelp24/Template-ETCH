@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ เรียบ — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: calc(600 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.main-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--main-primary);
+
+  &::before {
+    content: "";
+    inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+    block-size: 2px;
+    background-color: var(--main-accent);
+  }
+}
+
+.main-heading__intro {
+  color: var(--main-text-muted);
+}
+
+.main-faq-minimal {
+  background-color: var(--main-light);
+}
+
+.main-faq-minimal__container {
+  gap: var(--space-l);
+}
+
+.main-faq-minimal__list {
+  inline-size: 100%;
+  max-inline-size: calc(820 * 1rem / var(--etch-root-px, 10));
+  margin-inline: auto;
+  counter-reset: main-faq;
+}
+
+.main-faq-minimal__item {
+  border-block-end: 1px solid var(--main-line);
+  counter-increment: main-faq;
+}
+
+.main-faq-minimal__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-s);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+  justify-content: flex-start;
+  padding-block: var(--space-m);
+  font-size: var(--text-l);
+  color: var(--main-text);
+
+  /* 01, 02 … before the question */
+  &::before {
+    content: counter(main-faq, decimal-leading-zero);
+    flex: none;
+    min-inline-size: calc(36 * 1rem / var(--etch-root-px, 10));
+    font-weight: 800;
+    color: var(--main-accent);
+  }
+
+  &::after {
+    content: "+";
+    display: grid;
+    flex: none;
+    place-items: center;
+    inline-size: calc(32 * 1rem / var(--etch-root-px, 10));
+    block-size: calc(32 * 1rem / var(--etch-root-px, 10));
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--main-primary);
+    font-size: var(--text-l);
+    line-height: 1;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  [open] > &::after {
+    content: "−";
+    background-color: var(--main-accent);
+    color: var(--main-on-primary);
+  }
+
+  &::after {
+    margin-inline-start: auto;
+    border: 1.5px solid var(--main-line);
+  }
+}
+
+.main-faq-minimal__answer {
+  padding: 0 var(--space-xl) var(--space-m) calc(36 * 1rem / var(--etch-root-px, 10));
+  padding-inline-start: calc(calc(36 * 1rem / var(--etch-root-px, 10)) + var(--space-s));
+  color: var(--main-text-muted);
+
+  p {
+    margin: 0;
+  }
+}
+
+.main-faq-minimal__more {
+  margin: 0;
+  text-align: center;
+  color: var(--main-text-muted);
+}
+
+.main-faq-minimal__link {
+  font-weight: 700;
+  color: var(--main-primary);
+  text-decoration-color: var(--main-accent);
+  text-underline-offset: calc(4 * 1rem / var(--etch-root-px, 10));
+}
+</style>
+</head>
+<body data-template="faq-minimal">
+<section data-etch-element="section" class="main-faq-minimal"><div data-etch-element="container" class="main-faq-minimal__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow" data-pv-edit="t:g.0.0.0.0">FAQ</p><h2 data-pv-edit="t:g.0.0.1.0">Frequently asked questions</h2></div><div class="main-faq-minimal__list"><details class="main-faq-minimal__item" open=""><summary class="main-faq-minimal__question" data-pv-edit="t:g.0.1.0.0.0">What services do you offer?</summary><div class="main-faq-minimal__answer"><p data-pv-edit="t:g.0.1.0.1.0.0">Briefly list your main services and who they are for.</p></div></details><details class="main-faq-minimal__item"><summary class="main-faq-minimal__question" data-pv-edit="t:g.0.1.1.0.0">Do I need to book in advance?</summary><div class="main-faq-minimal__answer"><p data-pv-edit="t:g.0.1.1.1.0.0">Explain how to book — phone, LINE or the contact form — and walk-in policy.</p></div></details><details class="main-faq-minimal__item"><summary class="main-faq-minimal__question" data-pv-edit="t:g.0.1.2.0.0">How much does it cost?</summary><div class="main-faq-minimal__answer"><p data-pv-edit="t:g.0.1.2.1.0.0">Give a price range or explain how pricing is decided.</p></div></details><details class="main-faq-minimal__item"><summary class="main-faq-minimal__question" data-pv-edit="t:g.0.1.3.0.0">Which payment methods do you accept?</summary><div class="main-faq-minimal__answer"><p data-pv-edit="t:g.0.1.3.1.0.0">Cash, bank transfer, credit card, QR payment …</p></div></details><details class="main-faq-minimal__item"><summary class="main-faq-minimal__question" data-pv-edit="t:g.0.1.4.0.0">How long does it take?</summary><div class="main-faq-minimal__answer"><p data-pv-edit="t:g.0.1.4.1.0.0">Typical time for a first visit or project.</p></div></details><details class="main-faq-minimal__item"><summary class="main-faq-minimal__question" data-pv-edit="t:g.0.1.5.0.0">Is there parking?</summary><div class="main-faq-minimal__answer"><p data-pv-edit="t:g.0.1.5.1.0.0">Parking details or nearby public transport.</p></div></details></div><p class="main-faq-minimal__more"><span data-pv-edit="t:g.0.2.0">More questions? </span><a class="main-faq-minimal__link" href="/contact/" data-pv-edit="t:g.0.2.1.0">Contact us →</a></p></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

@@ -74,6 +74,7 @@
     var a = e.target.closest && e.target.closest('a[href]');
     if (a) e.preventDefault();
   }, true);
+  document.addEventListener('submit', function (e) { e.preventDefault(); }, true); // template forms stay put
 
   // ---------------------------------------------------------------- edited text and pictures
   var editing = false, scopeOf = function () { return [document]; };
