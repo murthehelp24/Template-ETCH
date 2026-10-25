@@ -346,20 +346,6 @@ ACTIONS_CSS = """display: flex;
 
   @media (width <= 768px) {
     display: none;
-  }
-
-  /* phone button — no own style record so its ACSS btn classes survive the paste */
-  .site-header__phone {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    white-space: nowrap;
-
-    svg {
-      inline-size: 1em;
-      block-size: 1em;
-      flex: 0 0 auto;
-    }
   }"""
 
 
@@ -508,8 +494,6 @@ burger["attrs"]["metadata"] = {"name": "Menu Toggle"}
 burger["attrs"]["attributes"]["ariaLabel"] = "Open menu"
 burger["attrs"]["attributes"].pop("customIdForThisToggle", None)
 
-phone_path = cont0["innerBlocks"][2]["innerBlocks"][1]["innerBlocks"][0]  # svg block
-
 header = el("Site Header", "header", {
     "data-etch-element": "section",
     "data-overlay-header": "false",
@@ -536,12 +520,6 @@ header = el("Site Header", "header", {
                    el("CTA", "a", {"href": "https://line.me/R/ti/p/@example", "target": "_blank", "rel": "noopener",
                                    "class": "btn--secondary"},
                       None, [text("Chat on LINE")]),
-                   el("Phone", "a", {"href": "tel:+6620000000",
-                                     "class": "site-header__phone btn--secondary btn--outline"},
-                      None, [
-                          phone_path,
-                          el("Number", "span", {}, None, [text("02-000-0000")]),
-                      ]),
                ]),
                burger,
            ])

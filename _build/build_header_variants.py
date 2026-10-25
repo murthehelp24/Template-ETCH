@@ -15,7 +15,7 @@ S, OUT = sys.argv[1], sys.argv[2]
 BASE = json.load(open(os.path.join(OUT, "site-header-ohmyetch.etch.txt"), encoding="utf-8"))
 
 # ---------------------------------------------------------------- CSS (one class style per variant)
-LIGHT_CSS = """/* light bar: dark text on the light colour, primary buttons */
+LIGHT_CSS = """/* light bar: dark text on the light colour, primary button */
   .main-header__bar {
     background-color: var(--main-light);
     color: var(--main-text);
@@ -135,7 +135,7 @@ TOPBAR_CSS = """/* a thin info strip above the bar (inside it, so hide-on-scroll
     text-decoration: underline;
   }
 
-  /* phones: the hours and phone only */
+  /* phones: the opening hours only */
   @media (width <= 768px) {
     .main-header__topbar-inner {
       justify-content: center;
@@ -169,7 +169,7 @@ FLOATING_CSS = """/* the bar floats: a rounded, shadowed band with space around 
     border-radius: 999px;
   }"""
 
-RIGHT_CSS = """/* menu next to a single button on the right */
+RIGHT_CSS = """/* menu on the right, next to the button */
   .main-header__bar {
     padding-block: var(--space-s);
   }
@@ -218,7 +218,6 @@ def topbar():
                el("Info", "div", {"class": "main-header__topbar-group"}, None, [
                    topbar_item("Address", "address", "123 Example Road, Bangkok", extra="address"),
                    topbar_item("Hours", "hours", "Mon–Sat 09:00–18:00"),
-                   topbar_item("Phone", "phone", "02-000-0000", "tel:+6620000000"),
                ]),
                el("Links", "div", {"class": "main-header__topbar-group main-header__topbar-group--extra"}, None, [
                    topbar_item("Email", "email", "hello@example.com", "mailto:hello@example.com"),
@@ -237,13 +236,8 @@ def build(name, label, css):
     a["styles"] = a["styles"] + ["mh-v-" + name]
     p["styles"]["mh-v-" + name] = style(".main-header--" + name, css)
 
-    actions = find(header, "Actions")
-    cta, phone = actions["innerBlocks"]
-    if name == "light":  # on a light bar the primary buttons stand out (secondary is meant for the dark bar)
-        cta["attrs"]["attributes"]["class"] = "btn--primary"
-        phone["attrs"]["attributes"]["class"] = "main-header__phone btn--primary btn--outline"
-    if name == "right":  # one call to action keeps the right side light next to the menu
-        set_children(actions, [cta])
+    if name == "light":  # on a light bar the primary button stands out (secondary is meant for the dark bar)
+        find(header, "Actions")["innerBlocks"][0]["attrs"]["attributes"]["class"] = "btn--primary"
     if name == "topbar":
         bar = find(header, "Bar")
         set_children(bar, [topbar()] + bar["innerBlocks"])

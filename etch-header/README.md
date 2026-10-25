@@ -5,9 +5,9 @@
 | `site-header-ohmyetch.etch.txt` (ใหม่) | Oh My Etch — Navigation Menu + Navigation Menu Mobile | ปลั๊กอิน **Oh My Etch** (ทดสอบกับ 1.5.8) |
 | `site-header-ohmyetch-light.etch.txt` | เหมือนบรรทัดบน — **พื้นสว่าง**: พื้นสีอ่อน ตัวอักษรเข้ม ปุ่ม `btn--primary` | Oh My Etch |
 | `site-header-ohmyetch-center.etch.txt` | **โลโก้กลาง**: จอ ≥1200px โลโก้กลางแถวบน ปุ่มขวา เมนูกึ่งกลางแถวล่าง | Oh My Etch |
-| `site-header-ohmyetch-topbar.etch.txt` | **แถบข้อมูลด้านบน**: ที่อยู่ · เวลาเปิด · โทร · อีเมล · LINE (มือถือเหลือเวลาเปิด + โทร) | Oh My Etch |
+| `site-header-ohmyetch-topbar.etch.txt` | **แถบข้อมูลด้านบน**: ที่อยู่ · เวลาเปิด · อีเมล · LINE (มือถือเหลือเวลาเปิด) | Oh My Etch |
 | `site-header-ohmyetch-floating.etch.txt` | **ลอยมุมโค้ง**: แถบเมนูโค้ง มีเงา เว้นขอบรอบ ปุ่มกลม | Oh My Etch |
-| `site-header-ohmyetch-right.etch.txt` | **เมนูชิดขวา**: เมนูชิดขวาติดปุ่มเดียว (ไม่มีปุ่มเบอร์โทรบนแถบ) | Oh My Etch |
+| `site-header-ohmyetch-right.etch.txt` | **เมนูชิดขวา**: เมนูชิดขวาติดปุ่ม Chat on LINE | Oh My Etch |
 | `site-header.etch.txt` (เดิม) | ชุด MenuWrapper / MenuDropdown / ToggleButton | ไม่ต้องมีปลั๊กอินเพิ่ม (script อยู่ใน component) |
 
 วิธีวางเหมือนกันทั้งสองไฟล์: เปิดไฟล์ → Select All → Copy → ใน Etch คลิกขวา → **Paste**
@@ -27,7 +27,7 @@ Page Builder มี header ให้เลือก 6 แบบ (Oh My Etch ท�
 - เมนู: แก้ใน **Nav → Nav List** ที่เดียว — เมนูมือถือ (drawer) สร้างตามเมนู desktop อัตโนมัติ เพราะ `menuId` ของ **Nav** และ **Mobile Menu** ตรงกัน (`main-menu`) ถ้าเปลี่ยนต้องเปลี่ยนทั้งคู่
   - ลิงก์ธรรมดา: Item → Link (`a.main-header__link`)
   - Dropdown: Item → Trigger (ข้อความ) + Dropdown (ลิงก์ `a.main-header__dropdown-link`) — `contentId` ของ Trigger กับ Dropdown ต้องตรงกัน และไม่ซ้ำกับ dropdown อื่น
-- ปุ่ม CTA / เบอร์โทร มี 2 ชุด: ใน **Actions** (บนแถบ) และใน **Mobile Menu → slot after** (ท้าย drawer)
+- ปุ่ม **Chat on LINE** มี 2 ที่: ใน **Actions** (บนแถบ) และใน **Mobile Menu → slot after** (ท้าย drawer) — แก้ลิงก์ LINE ทั้งสองที่ (header ทุกแบบไม่มีปุ่มเบอร์โทร)
 - **สี**: ใช้สีกลางของชุด template (`--main-primary` = พื้นแถบ/dropdown/drawer, `--main-on-primary` = ตัวอักษร, `--main-accent` = เส้นใต้และ hover) แก้ที่ style `:where(:root)` ที่เดียว ดู [README หลัก](../README.md#สี)
 - ปุ่มบนแถบใช้ `btn--secondary` (ปุ่ม primary จะกลืนกับพื้นแถบที่เป็นสี primary)
 - ความสูงโลโก้: `--main-header-logo-height` ใน custom style `:root:has(.main-header)` (40px, มือถือ 32px)
@@ -38,7 +38,6 @@ Sticky / overlay / hide-on-scroll / skip-link ใช้ data attributes ชุ�
 **หมายเหตุทางเทคนิค**
 - Etch มีบั๊กตอน paste: class prop ใน group ที่มี condition ซ้อน (styling ของ Nav) จะไม่ถูกแปลง id → จึงจัด nav ผ่าน `.main-header__container > [data-ome-nav-menu-root]` แทน
 - ACSS ใส่ typography ปุ่ม (ตัวพิมพ์ใหญ่/หนา) ให้ `<button>` ทุกตัว → reset ไว้ใน `.main-header` และ `.main-header__drawer`
-- ปุ่มเบอร์โทรใช้ custom style `a.main-header__phone` (ใช้ได้ทั้งบนแถบและใน drawer และไม่ทำให้คลาส `btn--*` หาย)
 
 ---
 
@@ -53,7 +52,7 @@ Sticky / overlay / hide-on-scroll / skip-link ใช้ data attributes ชุ�
 3. แก้ 4 จุด:
    - **Logo Image** → เลือกรูปโลโก้จาก Media Library (ตอนวางจะเป็น placeholder "No image source provided")
    - **Menu Link / Services Dropdown** → เปลี่ยน label + linkUrl
-   - **CTA** / **Phone** → ข้อความ, `href`, เบอร์โทร
+   - **CTA** → ข้อความ และลิงก์ LINE (`href`)
    - สีมาจากสีกลางของชุด template (`:where(:root)`) — ดู [README หลัก](../README.md#สี); ความสูงโลโก้แก้ที่ `--header-logo-height` ใน `.site-header`
 
 ## ตัวเลือก (data attributes บน `<header>`)
@@ -71,7 +70,7 @@ Sticky / overlay / hide-on-scroll / skip-link ใช้ data attributes ชุ�
 
 ## Layout
 
-- Desktop: โลโก้ซ้าย · เมนู · ปุ่ม CTA + เบอร์โทร ขวา
+- Desktop: โลโก้ซ้าย · เมนู · ปุ่ม Chat on LINE ขวา
 - 769–1199px: โลโก้ซ้าย · ปุ่ม + hamburger ขวา
 - ≤768px: โลโก้ซ้าย · hamburger ขวา (เมนู off-canvas จากขวา)
 
