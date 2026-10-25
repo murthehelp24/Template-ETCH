@@ -7,7 +7,7 @@
 | โฟลเดอร์ | ไฟล์ |
 |---|---|
 | [etch-header](etch-header/README.md) | `site-header-ohmyetch` (แนะนำ, ต้องมีปลั๊กอิน Oh My Etch) + 5 แบบ: พื้นสว่าง · โลโก้กลาง · แถบข้อมูล · ลอยมุมโค้ง · เมนูชิดขวา · `site-header` (Menu Builder — มีในชุด แต่ไม่อยู่ใน builder) |
-| [etch-footer](etch-footer/README.md) | `main-footer` (component + ปุ่ม LINE/โทรลอย) |
+| [etch-footer](etch-footer/README.md) | `main-footer` (component + ปุ่ม LINE/โทรลอย) + 5 แบบ: พื้นสว่าง · กึ่งกลาง · กล่องชวนติดต่อ · แผนที่ · แถวเดียว |
 | [etch-sections](etch-sections/README.md) | hero (+ 4 แบบ: ภาพเต็มจอ · ภาพ + สีไล่ · รูปซ้อน · พื้นสีหลัก) · page-hero · features · split · stats · steps · reviews · faq · cta · contact · blog · single-post · 404 |
 | [builder](#page-builder-ประกอบหน้าก่อนไปทำใน-etch) | **Page Builder** — ลากวาง section ประกอบหน้า ดูผลก่อนไปทำใน Etch (เปิด `builder/index.html`) |
 | `preview` | หน้า preview ของแต่ละ template (สร้างอัตโนมัติจาก `.etch.txt`) |

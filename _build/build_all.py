@@ -12,6 +12,7 @@ JOBS = [
     ("build_header_variants.py", "etch-header"),  # reads the file above
     ("build_header_menubuilder.py", "etch-header/site-header.etch.txt"),
     ("build_footer.py", "etch-footer/main-footer.etch.txt"),
+    ("build_footer_variants.py", "etch-footer"),  # reads the file above
     ("build_sections.py", "etch-sections"),
     ("build_sections_more.py", "etch-sections"),
     ("build_hero_more.py", "etch-sections"),
