@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.main-404 {
+  padding-block: var(--section-space-xl);
+  background-color: var(--main-light-alt);
+}
+
+.main-404__container {
+  align-items: center;
+  gap: var(--content-gap);
+  text-align: center;
+}
+
+.main-404__code {
+  font-size: clamp(calc(80 * 1rem / var(--etch-root-px, 10)), 18vw, calc(180 * 1rem / var(--etch-root-px, 10)));
+  font-weight: 800;
+  line-height: 1;
+  color: var(--main-primary);
+
+  &::after {
+    content: "";
+    display: block;
+    inline-size: calc(60 * 1rem / var(--etch-root-px, 10));
+    block-size: calc(4 * 1rem / var(--etch-root-px, 10));
+    margin: var(--space-s) auto 0;
+    border-radius: var(--radius-circle, 999px);
+    background-color: var(--main-accent);
+  }
+}
+
+.main-404__text {
+  max-inline-size: calc(520 * 1rem / var(--etch-root-px, 10));
+  color: var(--main-text-muted);
+}
+</style>
+</head>
+<body data-template="404">
+<main id="main"><section data-etch-element="section" class="main-404"><div data-etch-element="container" class="main-404__container"><p class="main-404__code" aria-hidden="true">404</p><h1>Page not found</h1><p class="main-404__text">The page you are looking for may have moved or no longer exists.</p><div class="main-buttons"><a class="btn--primary" href="/">Back to home</a><a class="btn--primary btn--outline" href="/contact/">Contact us</a></div></div></section></main>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

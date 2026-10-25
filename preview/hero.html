@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero หน้าแรก — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: calc(600 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.main-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--main-primary);
+
+  &::before {
+    content: "";
+    inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+    block-size: 2px;
+    background-color: var(--main-accent);
+  }
+}
+
+.main-heading__intro {
+  color: var(--main-text-muted);
+}
+
+.main-media__img {
+  /* image ratio: set --main-media-ratio on a parent */
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: var(--main-media-ratio, 4 / 3);
+  border-radius: var(--radius-m);
+  background-color: var(--main-light-alt);
+  object-fit: cover;
+}
+
+.main-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.main-checks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-checks__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.main-checks__icon {
+  flex: none;
+  inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+  block-size: calc(24 * 1rem / var(--etch-root-px, 10));
+  padding: calc(var(--space-xs) / 2);
+  border-radius: 50%;
+  background-color: var(--main-accent-soft);
+  color: var(--main-primary);
+}
+
+.main-hero {
+  padding-block: var(--section-space-l);
+  background-color: var(--main-light-alt);
+}
+
+.main-hero__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(400 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--container-gap);
+  align-items: center;
+}
+
+.main-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--content-gap);
+}
+
+.main-hero__media {
+  --main-media-ratio: 5 / 4;
+  margin: 0;
+}
+</style>
+</head>
+<body data-template="hero">
+<section data-etch-element="section" class="main-hero"><div data-etch-element="container"><div class="main-hero__grid"><div class="main-hero__content"><div class="main-heading"><p class="main-heading__eyebrow">Welcome</p><h1>A clear headline that says what you do and for whom</h1><p class="main-heading__intro">One or two sentences about the main benefit. Keep it short and specific.</p></div><div class="main-buttons"><a class="btn--primary" href="/contact/">Book now</a><a class="btn--primary btn--outline" href="/services/">Our services</a></div><ul class="main-checks"><li class="main-checks__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-checks__icon" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Short trust point</span></li><li class="main-checks__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-checks__icon" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Another reason to choose you</span></li><li class="main-checks__item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="main-checks__icon" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Free consultation</span></li></ul></div><figure class="main-hero__media"><img class="main-media__img" loading="eager" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 400 300&#x27; preserveAspectRatio=&#x27;xMidYMid slice&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;300&#x27; fill=&#x27;%23b8bfc9&#x27; fill-opacity=&#x27;.35&#x27;/&gt; &lt;circle cx=&#x27;290&#x27; cy=&#x27;95&#x27; r=&#x27;34&#x27; fill=&#x27;%23ffffff&#x27; fill-opacity=&#x27;.6&#x27;/&gt; &lt;path d=&#x27;M0 300 L120 150 L200 240 L260 180 L400 300 Z&#x27; fill=&#x27;%23778293&#x27; fill-opacity=&#x27;.45&#x27;/&gt;&lt;/svg&gt;" alt=""></figure></div></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>

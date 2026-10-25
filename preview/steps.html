@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steps — preview</title>
+<link rel="stylesheet" href="assets/acss-sim.css">
+<style>
+:where(:root) {
+  /* ===== MAIN TEMPLATE COLOURS — change colours here only =====
+     Header, footer and every main-* section use these variables.
+     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */
+  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */
+  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */
+  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */
+  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */
+  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */
+
+  /* derived from the five colours above — no need to edit */
+  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));
+  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);
+  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);
+  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);
+  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);
+  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));
+  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);
+}
+
+:where([data-etch-element="section"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:where([data-etch-element="container"]) {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: var(--content-width, 1366px);
+  align-self: center; margin-inline: auto;
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: calc(600 * 1rem / var(--etch-root-px, 10));
+}
+
+.main-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.main-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--main-primary);
+
+  &::before {
+    content: "";
+    inline-size: calc(24 * 1rem / var(--etch-root-px, 10));
+    block-size: 2px;
+    background-color: var(--main-accent);
+  }
+}
+
+.main-heading__intro {
+  color: var(--main-text-muted);
+}
+
+.main-steps {
+  background-color: var(--main-light-alt);
+}
+
+.main-steps__container {
+  gap: var(--container-gap);
+}
+
+.main-steps__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(220 * 1rem / var(--etch-root-px, 10))), 1fr));
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: main-step;
+}
+
+.main-steps__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  counter-increment: main-step;
+
+  /* step number — added automatically, in order */
+  &::before {
+    content: counter(main-step, decimal-leading-zero);
+    display: grid;
+    place-items: center;
+    inline-size: calc(56 * 1rem / var(--etch-root-px, 10));
+    block-size: calc(56 * 1rem / var(--etch-root-px, 10));
+    margin-block-end: var(--space-xs);
+    border-radius: 50%;
+    background-color: var(--main-primary);
+    box-shadow: 0 0 0 calc(6 * 1rem / var(--etch-root-px, 10)) var(--main-accent-soft);
+    color: var(--main-on-primary);
+    font-size: var(--text-l);
+    font-weight: 800;
+  }
+}
+
+.main-steps__title {
+  font-size: var(--h4);
+  color: var(--main-text);
+}
+
+.main-steps__text {
+  color: var(--main-text-muted);
+}
+</style>
+</head>
+<body data-template="steps">
+<section data-etch-element="section" class="main-steps"><div data-etch-element="container" class="main-steps__container"><div class="main-heading main-heading--center"><p class="main-heading__eyebrow">How it works</p><h2>Four simple steps</h2><p class="main-heading__intro">Explain what the customer can expect from start to finish.</p></div><ol class="main-steps__list"><li class="main-steps__item"><h3 class="main-steps__title">Contact us</h3><p class="main-steps__text">Call, chat on LINE or send the form.</p></li><li class="main-steps__item"><h3 class="main-steps__title">Consultation</h3><p class="main-steps__text">We listen and recommend the right option.</p></li><li class="main-steps__item"><h3 class="main-steps__title">Service</h3><p class="main-steps__text">Our team does the work with care.</p></li><li class="main-steps__item"><h3 class="main-steps__title">Follow-up</h3><p class="main-steps__text">We check the result and stay in touch.</p></li></ol></div></section>
+<script src="assets/frame.js"></script>
+
+</body>
+</html>
