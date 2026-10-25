@@ -197,7 +197,7 @@ h2, h3, p { margin: 0; }
 
 .pb-bar {
   /* toolbar lives in the gutter left of the page so it never covers template content */
-  position: absolute; top: 0; left: -46px; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  position: absolute; top: 50%; left: -46px; transform: translateY(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 2px;
   padding: 4px; border-radius: 9px; background: #1d2330; color: #fff;
   opacity: .55; transition: opacity .15s; box-shadow: var(--shadow);
 }
