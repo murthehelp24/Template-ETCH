@@ -4,3 +4,4 @@ _build/private-terms.txt
 dist/
 .dev.vars
 .wrangler/
+node_modules/
