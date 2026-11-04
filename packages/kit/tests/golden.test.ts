@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { catalog } from "../src/catalog";
-import { goldenPaths, loadGolden, stripTs } from "./helpers";
+import { serialize } from "../src/etch/lib";
+import { goldenPaths, goldenText, loadGolden, stripTs, stripTsText } from "./helpers";
 
 // every template the TypeScript kit builds must equal its golden file, the build time aside;
 // templates not ported yet show up as todo so the report says how many are left
@@ -19,7 +20,10 @@ describe("TypeScript build equals the golden files", () => {
       continue;
     }
     it(path, () => {
-      expect(stripTs(entry.build())).toEqual(stripTs(golden[path]));
+      const p = entry.build();
+      expect(stripTs(p)).toEqual(stripTs(golden[path]));
+      // toEqual ignores key order; the written file must match byte for byte (styles paste in key order)
+      expect(stripTsText(serialize(p))).toBe(stripTsText(goldenText(path)));
     });
   }
 });
