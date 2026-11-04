@@ -216,3 +216,22 @@ packages/kit/
   - แช่แข็ง golden ใหม่จาก commit นั้น (บันทึก hash ใหม่ในแผนนี้)
   - แก้ TS ตาม
   - ห้ามแก้ golden ด้วยมือ
+
+## บันทึกระหว่างทำ (ต่างจากแผน / เพิ่มจากแผน)
+
+- **Task 5:** `golden.test.ts` เทียบไฟล์ที่ serialize แล้ว**ทีละ byte** ด้วยตั้งแต่ Task 5
+  เพราะ `toEqual` ไม่สนลำดับ key แต่ Etch วาง style ตามลำดับ key (ทดลองสลับ style สองตัวแล้ว: `toEqual` ผ่าน, byte check ล้ม)
+- **Task 7:** เพิ่ม `pyReplace` ใน py-compat
+  เพราะ `str.replace` ของ Python แทนทุกตัว ส่วน `String.replace` แทนตัวแรก และตีความ `$` ในข้อความใหม่
+- **Task 9:** CSS ระดับบนสุดของ header ทั้งสามสคริปต์ (34 ค่าคงที่)
+  - ดึงด้วย `ast` ของ Python (ค่าตามที่ Python คำนวณ) เป็น `headers/*Css.ts` แทนการพิมพ์ใหม่
+  - ตรวจแล้วว่าไม่มีค่าคงที่ตัวไหนถูกกำหนดค่าซ้ำ และทุกค่าตรงกับ Python 34/34
+- **Task 10:** audit เทียบกับ `_build/audit.py` ด้วยวิธีนี้:
+  - `make_audit_fixtures.py` สร้างไฟล์ที่ผิดทุกกติกา แล้วรัน `audit.py` ตัวจริงเก็บ output ไว้
+  - TS ต้องพิมพ์ออกมาเหมือนกันทุกบรรทัด
+- **Task 10:** สคริปต์ตรวจ SAME อยู่ที่ `packages/kit/scripts/same-as-head.sh`
+  - คืนไฟล์ที่ต่างกันแค่ timestamp ให้เอง และ exit 1 ถ้ามี DIFF
+  - CI job `kit-ts` ใช้สคริปต์เดียวกัน
+- **ยังไม่ทำ (รอผู้ใช้ตอบ Step 5):**
+  - ให้ `build_all.py` เรียก `pnpm build:kit` แทนสคริปต์ Python
+  - ลบสคริปต์ Python ของ kit ใน `_build/`

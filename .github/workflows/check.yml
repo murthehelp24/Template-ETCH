@@ -19,3 +19,21 @@ jobs:
           python-version: "3.12"
       # rebuild templates + audit, then make sure the committed preview / builder data is up to date
       - run: python3 _build/check.py
+
+  kit-ts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      # golden 58/58, audit and unit tests
+      - run: pnpm test
+      # the TypeScript kit must write the committed .etch.txt files (the timestamp aside)
+      - run: pnpm build:kit
+      - run: packages/kit/scripts/same-as-head.sh
