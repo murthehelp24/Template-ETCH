@@ -1,0 +1,4603 @@
+{
+ "comps": {
+  "1836": {
+   "id": 1836,
+   "legacyId": "",
+   "name": "Drawer",
+   "key": "OmeDrawer",
+   "properties": [
+    {
+     "name": "Identity",
+     "key": "identity",
+     "description": "Shared identifier used to connect this drawer with one or more triggers.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Drawer ID",
+       "key": "drawerId",
+       "description": "Unique drawer ID used by triggers that should open this drawer.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": ""
+      }
+     ]
+    },
+    {
+     "name": "Settings",
+     "key": "settings",
+     "description": "Controls slide direction, default open state, and dismissal behavior.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Direction",
+       "key": "direction",
+       "description": "Edge the drawer should slide from.",
+       "type": {
+        "primitive": "string",
+        "specialized": "select"
+       },
+       "default": "bottom",
+       "options": [
+        "bottom",
+        "right",
+        "top",
+        "left"
+       ],
+       "selectOptionsString": "Bottom : bottom\nRight : right\nTop : top\nLeft : left"
+      },
+      {
+       "name": "Default Open",
+       "key": "defaultOpen",
+       "description": "Opens the drawer automatically when the runtime initializes.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": false
+      },
+      {
+       "name": "Dismissible",
+       "key": "dismissible",
+       "description": "Allows overlay click and Escape to close the active drawer.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": true
+      }
+     ]
+    },
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Classes applied to the drawer surface.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Root class style preset for the drawer surface.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-drawer-default"
+       ]
+      }
+     ]
+    }
+   ],
+   "description": "Drawer content root targeted by remote triggers and rendered in a shared runtime host.",
+   "blocks": [
+    {
+     "type": "etch/condition",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/element",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [
+        {
+         "type": "etch/element",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/text",
+             "version": 1,
+             "context": {
+              "name": "Text"
+             },
+             "options": {},
+             "children": [],
+             "text": "Set a Drawer ID",
+             "id": "yaw34la",
+             "parentId": "j9dn6an"
+            }
+           ],
+           "attributes": {
+            "data-ome-inline-docs-title": ""
+           },
+           "styles": [
+            "ome-inline-docs__title"
+           ],
+           "tag": "p",
+           "id": "j9dn6an",
+           "parentId": "3uf39zx"
+          },
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/text",
+             "version": 1,
+             "context": {
+              "name": "Text"
+             },
+             "options": {},
+             "children": [],
+             "text": "Use the same Drawer ID on this Drawer and the Target Drawer ID on any Drawer Trigger that should open it.",
+             "id": "uh469qm",
+             "parentId": "0zeawh8"
+            }
+           ],
+           "attributes": {
+            "data-ome-inline-docs-body": ""
+           },
+           "styles": [
+            "ome-inline-docs__body"
+           ],
+           "tag": "p",
+           "id": "0zeawh8",
+           "parentId": "3uf39zx"
+          }
+         ],
+         "attributes": {
+          "data-ome-inline-docs-callout": "",
+          "data-ome-inline-docs-tone": "warning"
+         },
+         "styles": [
+          "ome-inline-docs__callout",
+          "ome-inline-docs__callout-warning"
+         ],
+         "tag": "div",
+         "id": "3uf39zx",
+         "parentId": "0wlmumu"
+        }
+       ],
+       "attributes": {
+        "data-ome-inline-docs": ""
+       },
+       "styles": [
+        "ome-inline-docs"
+       ],
+       "tag": "div",
+       "id": "0wlmumu",
+       "parentId": "4b2tpu4"
+      }
+     ],
+     "conditionString": "environment.current === \"etch\" && props.identity.drawerId === \"\"",
+     "id": "4b2tpu4",
+     "parentId": null
+    },
+    {
+     "type": "etch/element",
+     "version": 1,
+     "context": {},
+     "script": {
+      "code": "import \"/wp-content/plugins/oh-my-etch/assets/dist/assets/components/drawer.js?ver=1.5.8\";"
+     },
+     "options": {},
+     "children": [
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "3g39nkq",
+       "parentId": "c8hc0xq"
+      }
+     ],
+     "attributes": {
+      "data-ome-drawer-root": "",
+      "data-ome-drawer-id": "{props.identity.drawerId}",
+      "data-ome-state": "closed",
+      "data-ome-direction": "{props.settings.direction}",
+      "data-ome-default-open": "{props.settings.defaultOpen}",
+      "data-ome-dismissible": "{props.settings.dismissible}",
+      "class": "ome-drawer {props.styling.class}",
+      "hidden": ""
+     },
+     "styles": [
+      "f8iqt6m"
+     ],
+     "tag": "div",
+     "id": "c8hc0xq",
+     "parentId": null
+    }
+   ]
+  },
+  "1837": {
+   "id": 1837,
+   "legacyId": "",
+   "name": "Drawer Trigger",
+   "key": "OmeDrawerTrigger",
+   "properties": [
+    {
+     "name": "Targeting",
+     "key": "targeting",
+     "description": "Connect this trigger to a drawer root by ID.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Target Drawer ID",
+       "key": "targetDrawerId",
+       "description": "ID of the drawer this trigger should open. Must match identity.drawerId.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": ""
+      }
+     ]
+    },
+    {
+     "name": "Content",
+     "key": "content",
+     "description": "Fallback content used when the trigger slot is empty.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Label",
+       "key": "label",
+       "description": "Fallback trigger label used only when the trigger slot is empty.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": ""
+      }
+     ]
+    },
+    {
+     "name": "Settings",
+     "key": "settings",
+     "description": "Behavior flags for the trigger button.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Disabled",
+       "key": "disabled",
+       "description": "Disables the trigger so it cannot open the drawer.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": false
+      }
+     ]
+    },
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Classes applied to the trigger button.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Default style preset for the trigger button.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-drawer-trigger-default"
+       ]
+      }
+     ]
+    }
+   ],
+   "description": "Button that opens a drawer by target drawer ID.",
+   "blocks": [
+    {
+     "type": "etch/condition",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/element",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [
+        {
+         "type": "etch/element",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/text",
+             "version": 1,
+             "context": {
+              "name": "Text"
+             },
+             "options": {},
+             "children": [],
+             "text": "Connect this trigger to a Drawer",
+             "id": "c1fi3p5",
+             "parentId": "sws9o9n"
+            }
+           ],
+           "attributes": {
+            "data-ome-inline-docs-title": ""
+           },
+           "styles": [
+            "ome-inline-docs__title"
+           ],
+           "tag": "p",
+           "id": "sws9o9n",
+           "parentId": "4mp5gxd"
+          },
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/text",
+             "version": 1,
+             "context": {
+              "name": "Text"
+             },
+             "options": {},
+             "children": [],
+             "text": "Set Target Drawer ID to the same value as the Drawer ID on the Drawer component.",
+             "id": "fynu1cz",
+             "parentId": "952uphv"
+            }
+           ],
+           "attributes": {
+            "data-ome-inline-docs-body": ""
+           },
+           "styles": [
+            "ome-inline-docs__body"
+           ],
+           "tag": "p",
+           "id": "952uphv",
+           "parentId": "4mp5gxd"
+          }
+         ],
+         "attributes": {
+          "data-ome-inline-docs-callout": "",
+          "data-ome-inline-docs-tone": "warning"
+         },
+         "styles": [
+          "ome-inline-docs__callout",
+          "ome-inline-docs__callout-warning"
+         ],
+         "tag": "div",
+         "id": "4mp5gxd",
+         "parentId": "g7f29l3"
+        }
+       ],
+       "attributes": {
+        "data-ome-inline-docs": ""
+       },
+       "styles": [
+        "ome-inline-docs"
+       ],
+       "tag": "div",
+       "id": "g7f29l3",
+       "parentId": "cd2pdw0"
+      }
+     ],
+     "conditionString": "environment.current === \"etch\" && props.targeting.targetDrawerId === \"\"",
+     "id": "cd2pdw0",
+     "parentId": null
+    },
+    {
+     "type": "etch/element",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/condition",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [
+        {
+         "type": "etch/raw-html",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [],
+         "content": "{props.content.label}",
+         "unsafe": "",
+         "id": "6o940v3",
+         "parentId": "xpz1b52"
+        }
+       ],
+       "conditionString": "slots.default.empty",
+       "id": "xpz1b52",
+       "parentId": "1clymui"
+      },
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "1zgw1x8",
+       "parentId": "1clymui"
+      }
+     ],
+     "attributes": {
+      "type": "button",
+      "data-ome-drawer-trigger": "",
+      "data-ome-target-drawer-id": "{props.targeting.targetDrawerId}",
+      "data-ome-disabled": "{props.settings.disabled}",
+      "aria-haspopup": "dialog",
+      "aria-expanded": "false",
+      "class": "ome-drawer__trigger {props.styling.class}"
+     },
+     "styles": [
+      "6awf2r3"
+     ],
+     "tag": "button",
+     "id": "1clymui",
+     "parentId": null
+    }
+   ]
+  },
+  "1838": {
+   "id": 1838,
+   "legacyId": "",
+   "name": "Drawer Close",
+   "key": "OmeDrawerClose",
+   "properties": [
+    {
+     "name": "Settings",
+     "key": "settings",
+     "description": "Behavior flags for the close button.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Disabled",
+       "key": "disabled",
+       "description": "Disables the close button.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": false
+      }
+     ]
+    },
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Classes applied to the close button.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Default style preset for the close button.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-drawer-close-default"
+       ]
+      }
+     ]
+    }
+   ],
+   "description": "Button that closes the active drawer.",
+   "blocks": [
+    {
+     "type": "etch/element",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "276hdfm",
+       "parentId": "029jgtp"
+      }
+     ],
+     "attributes": {
+      "type": "button",
+      "data-ome-drawer-close": "",
+      "data-ome-disabled": "{props.settings.disabled}",
+      "class": "ome-drawer__close {props.styling.class}"
+     },
+     "styles": [
+      "zcp4z84"
+     ],
+     "tag": "button",
+     "id": "029jgtp",
+     "parentId": null
+    }
+   ]
+  },
+  "1843": {
+   "id": 1843,
+   "legacyId": "",
+   "name": "Navigation Menu",
+   "key": "OmeNavigationMenu",
+   "properties": [
+    {
+     "name": "Structure",
+     "key": "structure",
+     "description": "Choose the element used for the navigation menu root.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "HTML Tag",
+       "key": "tag",
+       "description": "HTML tag used for the menu root element.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": "nav"
+      }
+     ]
+    },
+    {
+     "name": "Identity",
+     "key": "identity",
+     "description": "Shared identifier used by mobile helpers to find and mirror this desktop menu.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Menu ID",
+       "key": "menuId",
+       "description": "Shared menu ID that Navigation Menu Mobile uses to connect to this menu.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": ""
+      }
+     ]
+    },
+    {
+     "name": "Settings",
+     "key": "settings",
+     "description": "Controls root orientation and optional animated viewport behavior.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Orientation",
+       "key": "orientation",
+       "description": "Changes keyboard navigation semantics and layout direction for the root menu.",
+       "type": {
+        "primitive": "string",
+        "specialized": "select"
+       },
+       "default": "horizontal",
+       "options": [
+        "horizontal",
+        "vertical"
+       ],
+       "selectOptionsString": "Horizontal : horizontal\nVertical : vertical"
+      },
+      {
+       "name": "Use Animated Menu",
+       "key": "useAnimatedMenu",
+       "description": "Enables the generated viewport that animates dropdown panel changes.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": false
+      },
+      {
+       "name": "Use Full Width",
+       "key": "useFullWidth",
+       "description": "Allows the animated viewport to align to a wider container instead of the trigger width.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": false
+      },
+      {
+       "name": "Full Width Enabled",
+       "key": "full_width_enabled",
+       "description": "Shows the full-width target selector only when full-width mode is enabled.",
+       "type": {
+        "primitive": "string",
+        "specialized": "condition"
+       },
+       "properties": [
+        {
+         "name": "Full Width Target Selector",
+         "key": "fullWidthTargetSelector",
+         "description": "Selector used to measure the width target when full-width mode is enabled.",
+         "type": {
+          "primitive": "string"
+         },
+         "default": ""
+        }
+       ],
+       "default": "props.settings.useFullWidth"
+      }
+     ]
+    },
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Classes applied to the menu root and optional animated viewport.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Root class style preset for the desktop menu wrapper.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-nav-menu-default"
+       ]
+      },
+      {
+       "name": "Animated Menu Enabled",
+       "key": "animated_menu_enabled",
+       "description": "Shows the viewport class only when animated menu mode is enabled.",
+       "type": {
+        "primitive": "string",
+        "specialized": "condition"
+       },
+       "properties": [
+        {
+         "name": "Viewport CSS Class",
+         "key": "viewportClass",
+         "description": "Class style preset for the generated animated viewport container.",
+         "type": {
+          "primitive": "array",
+          "specialized": "class"
+         },
+         "default": [
+          "ome-nav-menu-default__viewport"
+         ]
+        }
+       ],
+       "default": "props.settings.useAnimatedMenu"
+      }
+     ]
+    },
+    {
+     "name": "Accessibility",
+     "key": "accessibility",
+     "description": "Accessible naming for the navigation landmark.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Nav Aria Label",
+       "key": "navAriaLabel",
+       "description": "Accessible name applied to the nav landmark via aria-label.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": "Main"
+      }
+     ]
+    }
+   ],
+   "description": "Navigation menu container that manages expansion state and keyboard navigation.",
+   "blocks": [
+    {
+     "type": "etch/dynamic-element",
+     "version": 1,
+     "context": {},
+     "script": {
+      "code": "import \"/wp-content/plugins/oh-my-etch/assets/dist/assets/components/navigation-menu.js?ver=1.5.8\";"
+     },
+     "options": {},
+     "children": [
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "sj7inhy",
+       "parentId": "pkl9amt"
+      },
+      {
+       "type": "etch/condition",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [
+        {
+         "type": "etch/element",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [],
+         "attributes": {
+          "data-ome-nav-menu-viewport": "",
+          "data-ome-state": "closed",
+          "class": "ome-nav-menu__viewport {props.styling.viewportClass}"
+         },
+         "styles": [
+          "4i6tl4o"
+         ],
+         "tag": "div",
+         "id": "60th2ty",
+         "parentId": "4uq7gvn"
+        }
+       ],
+       "conditionString": "props.settings.useAnimatedMenu",
+       "id": "4uq7gvn",
+       "parentId": "pkl9amt"
+      }
+     ],
+     "attributes": {
+      "data-ome-nav-menu-root": "",
+      "data-ome-menu-id": "{props.identity.menuId}",
+      "data-ome-orientation": "{props.settings.orientation}",
+      "data-ome-use-animated-menu": "{props.settings.useAnimatedMenu}",
+      "data-ome-use-full-width": "{props.settings.useFullWidth}",
+      "data-ome-full-width-target-selector": "{props.settings.fullWidthTargetSelector}",
+      "aria-label": "{props.accessibility.navAriaLabel}",
+      "class": "ome-nav-menu {props.styling.class}",
+      "tag": "{props.structure.tag}"
+     },
+     "styles": [
+      "1bfgwq9"
+     ],
+     "id": "pkl9amt",
+     "parentId": null
+    }
+   ]
+  },
+  "1844": {
+   "id": 1844,
+   "legacyId": "",
+   "name": "Navigation Menu List",
+   "key": "OmeNavigationMenuList",
+   "properties": [
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Classes applied to the authored list of navigation items.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Default style preset for the navigation list wrapper.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-nav-menu-default__list"
+       ]
+      }
+     ]
+    }
+   ],
+   "description": "Container for navigation menu items.",
+   "blocks": [
+    {
+     "type": "etch/element",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "ocjdszn",
+       "parentId": "8lfj3r6"
+      }
+     ],
+     "attributes": {
+      "data-ome-nav-menu-list": "",
+      "class": "ome-nav-menu__list {props.styling.class}"
+     },
+     "styles": [
+      "6sx4edd"
+     ],
+     "tag": "ul",
+     "id": "8lfj3r6",
+     "parentId": null
+    }
+   ]
+  },
+  "1845": {
+   "id": 1845,
+   "legacyId": "",
+   "name": "Navigation Menu Item",
+   "key": "OmeNavigationMenuItem",
+   "properties": [
+    {
+     "name": "Settings",
+     "key": "settings",
+     "description": "Behavior flags for the authored menu item wrapper.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Disabled",
+       "key": "disabled",
+       "description": "Disables this item and any trigger it contains.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": false
+      }
+     ]
+    },
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Classes applied to the authored menu item wrapper.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Default style preset for the navigation item wrapper.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-nav-menu-default__item"
+       ]
+      }
+     ]
+    }
+   ],
+   "description": "Individual navigation menu item with optional dropdown.",
+   "blocks": [
+    {
+     "type": "etch/element",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "cfrv4kh",
+       "parentId": "4208rta"
+      }
+     ],
+     "attributes": {
+      "data-ome-nav-menu-item": "",
+      "data-ome-disabled": "{props.settings.disabled}",
+      "data-ome-state": "closed",
+      "class": "ome-nav-menu__item {props.styling.class}"
+     },
+     "styles": [
+      "ft91ow7"
+     ],
+     "tag": "li",
+     "id": "4208rta",
+     "parentId": null
+    }
+   ]
+  },
+  "1846": {
+   "id": 1846,
+   "legacyId": "",
+   "name": "Navigation Menu Trigger",
+   "key": "OmeNavigationMenuTrigger",
+   "properties": [
+    {
+     "name": "Identity",
+     "key": "identity",
+     "description": "Connects this trigger to its content panel via aria-controls.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Content ID",
+       "key": "contentId",
+       "description": "Set this to the same value as the Content ID on the matching Navigation Menu Content so aria-controls points at the right panel.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": ""
+      }
+     ]
+    },
+    {
+     "name": "Settings",
+     "key": "settings",
+     "description": "Controls trigger interaction mode, disabled state, and optional arrow display.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Disabled",
+       "key": "disabled",
+       "description": "Disables the trigger so it cannot open or close its panel.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": false
+      },
+      {
+       "name": "Show Arrow",
+       "key": "showArrow",
+       "description": "Shows the chevron icon inside the trigger button.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": false
+      },
+      {
+       "name": "Trigger Action",
+       "key": "triggerAction",
+       "description": "Chooses whether the trigger opens on hover or click. In Etch, hover behaves like click for reliable editing.",
+       "type": {
+        "primitive": "string",
+        "specialized": "select"
+       },
+       "default": "hover",
+       "options": [
+        "hover",
+        "click"
+       ],
+       "selectOptionsString": "Hover : hover\nClick : click"
+      }
+     ]
+    },
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Classes applied to the trigger button.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Default style preset for the navigation trigger button.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-nav-menu-default__trigger"
+       ]
+      }
+     ]
+    }
+   ],
+   "description": "Button that toggles navigation dropdown content.",
+   "blocks": [
+    {
+     "type": "etch/element",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "s58unsb",
+       "parentId": "4cj6kl9"
+      },
+      {
+       "type": "etch/condition",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [
+        {
+         "type": "etch/element",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [],
+           "attributes": {
+            "fill": "none",
+            "stroke": "currentColor",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round",
+            "stroke-width": "1.5",
+            "d": "M18 9s-4.419 6-6 6s-6-6-6-6"
+           },
+           "styles": [],
+           "tag": "path",
+           "id": "hb3uup6",
+           "parentId": "tyzzset"
+          }
+         ],
+         "attributes": {
+          "xmlns": "http://www.w3.org/2000/svg",
+          "width": "1em",
+          "height": "1em",
+          "viewBox": "0 0 24 24",
+          "data-ome-nav-menu-trigger-chevron": "",
+          "aria-hidden": "true"
+         },
+         "styles": [],
+         "tag": "svg",
+         "id": "tyzzset",
+         "parentId": "mhqj8i0"
+        }
+       ],
+       "conditionString": "props.settings.showArrow",
+       "id": "mhqj8i0",
+       "parentId": "4cj6kl9"
+      }
+     ],
+     "attributes": {
+      "type": "button",
+      "data-ome-nav-menu-trigger": "",
+      "data-ome-trigger-action": "{props.settings.triggerAction}",
+      "data-ome-state": "closed",
+      "data-ome-disabled": "{props.settings.disabled}",
+      "aria-expanded": "false",
+      "aria-controls": "{props.identity.contentId}",
+      "class": "ome-nav-menu__trigger {props.styling.class}"
+     },
+     "styles": [
+      "wrp3p90"
+     ],
+     "tag": "button",
+     "id": "4cj6kl9",
+     "parentId": null
+    }
+   ]
+  },
+  "1847": {
+   "id": 1847,
+   "legacyId": "",
+   "name": "Navigation Menu Content",
+   "key": "OmeNavigationMenuContent",
+   "properties": [
+    {
+     "name": "Identity",
+     "key": "identity",
+     "description": "Connects this panel to its trigger so the trigger can point at it via aria-controls.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Content ID",
+       "key": "contentId",
+       "description": "Stable id for this panel. Set the same value as the Content ID on the matching Navigation Menu Trigger so its aria-controls points here.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": ""
+      }
+     ]
+    },
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Classes applied to the dropdown or mega-menu content panel.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Default style preset for the content panel wrapper.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-nav-menu-default__content"
+       ]
+      }
+     ]
+    }
+   ],
+   "description": "Dropdown panel content for navigation menu.",
+   "blocks": [
+    {
+     "type": "etch/element",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "e86e2kl",
+       "parentId": "l8ap0c1"
+      }
+     ],
+     "attributes": {
+      "data-ome-nav-menu-content": "",
+      "data-ome-state": "closed",
+      "hidden": "",
+      "id": "{props.identity.contentId}",
+      "class": "ome-nav-menu__content {props.styling.class}"
+     },
+     "styles": [
+      "io73bjc"
+     ],
+     "tag": "div",
+     "id": "l8ap0c1",
+     "parentId": null
+    }
+   ]
+  },
+  "1848": {
+   "id": 1848,
+   "legacyId": "",
+   "name": "Navigation Menu Mobile Item",
+   "key": "OmeNavigationMenuMobileItem",
+   "properties": [
+    {
+     "name": "Structure",
+     "key": "structure",
+     "description": "Choose the wrapper element used for this explicit mobile node.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "HTML Tag",
+       "key": "tag",
+       "description": "HTML tag used for the authored mobile item wrapper.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": "div"
+      }
+     ]
+    },
+    {
+     "name": "Settings",
+     "key": "settings",
+     "description": "Controls whether this extracted mobile node behaves like a submenu trigger or a link.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Use As",
+       "key": "useAs",
+       "description": "Chooses whether this node becomes a submenu trigger or a direct link in the mobile drawer.",
+       "type": {
+        "primitive": "string",
+        "specialized": "select"
+       },
+       "default": "trigger",
+       "options": [
+        "trigger",
+        "link"
+       ],
+       "selectOptionsString": "Trigger : trigger\nLink : link"
+      }
+     ]
+    },
+    {
+     "name": "Content",
+     "key": "content",
+     "description": "Defines the visible label used by the generated mobile drawer UI.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Label",
+       "key": "label",
+       "description": "Label used for this node inside the generated mobile drawer.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": ""
+      }
+     ]
+    },
+    {
+     "name": "Link Mode",
+     "key": "link_mode",
+     "description": "Shows link settings only when this node is configured to render as a link.",
+     "type": {
+      "primitive": "string",
+      "specialized": "condition"
+     },
+     "properties": [
+      {
+       "name": "Link",
+       "key": "link",
+       "description": "Link settings used when this explicit mobile node renders as a link.",
+       "type": {
+        "primitive": "object",
+        "specialized": "group"
+       },
+       "properties": [
+        {
+         "name": "Href",
+         "key": "href",
+         "description": "Destination URL used only when settings.useAs is set to link.",
+         "type": {
+          "primitive": "string"
+         },
+         "default": ""
+        }
+       ]
+      }
+     ],
+     "default": "props.settings.useAs === 'link'"
+    },
+    {
+     "name": "Styling",
+     "key": "styling",
+     "description": "Optional classes applied to the authored mobile item wrapper.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Optional class list for the authored wrapper element.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": []
+      }
+     ]
+    }
+   ],
+   "description": "Explicit mobile navigation node for complex Navigation Menu content trees.",
+   "blocks": [
+    {
+     "type": "etch/dynamic-element",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/slot-placeholder",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [],
+       "slotName": "default",
+       "id": "37ayj2q",
+       "parentId": "f3u4t0r"
+      }
+     ],
+     "attributes": {
+      "tag": "{props.structure.tag}",
+      "data-ome-nav-menu-mobile-item": "",
+      "data-ome-nav-menu-mobile-item-type": "{props.settings.useAs}",
+      "data-ome-nav-menu-mobile-item-label": "{props.content.label}",
+      "data-ome-nav-menu-mobile-item-href": "{props.link.href}",
+      "class": "{props.styling.class}"
+     },
+     "styles": [],
+     "id": "f3u4t0r",
+     "parentId": null
+    }
+   ]
+  },
+  "1849": {
+   "id": 1849,
+   "legacyId": "",
+   "name": "Navigation Menu Mobile",
+   "key": "OmeNavigationMenuMobile",
+   "properties": [
+    {
+     "name": "Identity",
+     "key": "identity",
+     "description": "Shared identifier used to find the desktop Navigation Menu and wire the internal Drawer.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Menu ID",
+       "key": "menuId",
+       "description": "Must match Navigation Menu.identity.menuId so this helper can mirror that menu and connect its drawer.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": "ome-mobile-nav"
+      }
+     ]
+    },
+    {
+     "name": "Settings",
+     "key": "settings",
+     "description": "Controls the internal drawer direction and dismissal behavior.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Drawer Direction",
+       "key": "drawerDirection",
+       "description": "Edge the internal drawer should slide from.",
+       "type": {
+        "primitive": "string",
+        "specialized": "select"
+       },
+       "default": "left",
+       "options": [
+        "left",
+        "right",
+        "top",
+        "bottom"
+       ],
+       "selectOptionsString": "Left : left\nRight : right\nTop : top\nBottom : bottom"
+      },
+      {
+       "name": "Dismissible",
+       "key": "dismissible",
+       "description": "Allows overlay click and Escape to close the mobile drawer.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": true
+      }
+     ]
+    },
+    {
+     "name": "Content",
+     "key": "content",
+     "description": "Accessible labels and fallback button text used by the generated mobile UI.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Show Trigger Label",
+       "key": "showTriggerLabel",
+       "description": "When enabled, the trigger displays visible label text. When disabled, only an icon is shown and a separate aria label is used for accessibility.",
+       "type": {
+        "primitive": "boolean"
+       },
+       "default": true
+      },
+      {
+       "name": "Trigger Label Enabled",
+       "key": "trigger_label_enabled",
+       "description": "Trigger label settings visible only when Show Trigger Label is enabled.",
+       "type": {
+        "primitive": "string",
+        "specialized": "condition"
+       },
+       "properties": [
+        {
+         "name": "Trigger Label",
+         "key": "triggerLabel",
+         "description": "Visible label text and accessible name for the drawer trigger.",
+         "type": {
+          "primitive": "string"
+         },
+         "default": "Menu"
+        }
+       ],
+       "default": "props.content.showTriggerLabel"
+      },
+      {
+       "name": "Trigger Aria Label Enabled",
+       "key": "trigger_aria_label_enabled",
+       "description": "Aria label settings visible only when Show Trigger Label is disabled.",
+       "type": {
+        "primitive": "string",
+        "specialized": "condition"
+       },
+       "properties": [
+        {
+         "name": "Trigger Aria Label",
+         "key": "triggerAriaLabel",
+         "description": "Screen-reader-only label for the trigger button when no visible label is shown.",
+         "type": {
+          "primitive": "string"
+         },
+         "default": "Menu"
+        }
+       ],
+       "default": "!props.content.showTriggerLabel"
+      },
+      {
+       "name": "Back Button Label",
+       "key": "backButtonLabel",
+       "description": "Fallback label used by the back button when the backButton slot is empty.",
+       "type": {
+        "primitive": "string"
+       },
+       "default": "Back"
+      }
+     ]
+    },
+    {
+     "name": "Root Styling",
+     "key": "rootStyling",
+     "description": "Classes applied to the mobile helper wrapper.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "CSS Class",
+       "key": "class",
+       "description": "Root class style preset for the mobile helper wrapper.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Control Styling",
+     "key": "controlStyling",
+     "description": "Classes applied to the trigger, back button, and close button.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Trigger CSS Class",
+       "key": "triggerClass",
+       "description": "Class preset for the drawer trigger button.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__trigger"
+       ]
+      },
+      {
+       "name": "Back Button CSS Class",
+       "key": "backButtonClass",
+       "description": "Class preset for the back button.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__back"
+       ]
+      },
+      {
+       "name": "Close Button CSS Class",
+       "key": "closeButtonClass",
+       "description": "Class preset for the close button.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__close"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Drawer Styling",
+     "key": "drawerStyling",
+     "description": "Classes applied to the internal drawer shell, header, and content area.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Drawer CSS Class",
+       "key": "drawerClass",
+       "description": "Class preset for the internal drawer root.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__drawer"
+       ]
+      },
+      {
+       "name": "Header CSS Class",
+       "key": "headerClass",
+       "description": "Class preset for the drawer header row.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__header"
+       ]
+      },
+      {
+       "name": "Content CSS Class",
+       "key": "contentClass",
+       "description": "Class preset for the drawer content wrapper.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__content"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Menu Styling",
+     "key": "menuStyling",
+     "description": "Classes applied to the generated mobile lists, items, links, submenu triggers, and next icons.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "List CSS Class",
+       "key": "listClass",
+       "description": "Class preset for generated root and child lists.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__list"
+       ]
+      },
+      {
+       "name": "Item CSS Class",
+       "key": "itemClass",
+       "description": "Class preset for generated mobile menu items.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__item"
+       ]
+      },
+      {
+       "name": "Link CSS Class",
+       "key": "linkClass",
+       "description": "Class preset for generated mobile links.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__link"
+       ]
+      },
+      {
+       "name": "Submenu Trigger CSS Class",
+       "key": "submenuTriggerClass",
+       "description": "Class preset for generated submenu trigger buttons.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__submenu-trigger"
+       ]
+      },
+      {
+       "name": "Next Icon CSS Class",
+       "key": "nextIconClass",
+       "description": "Class preset for the chevron shown on generated submenu triggers.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__next-icon"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Slot Styling",
+     "key": "slotStyling",
+     "description": "Classes applied to the wrappers that render the before and after slots.",
+     "type": {
+      "primitive": "object",
+      "specialized": "group"
+     },
+     "properties": [
+      {
+       "name": "Before Slot CSS Class",
+       "key": "beforeClass",
+       "description": "Class preset for the wrapper around the before slot.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__before"
+       ]
+      },
+      {
+       "name": "After Slot CSS Class",
+       "key": "afterClass",
+       "description": "Class preset for the wrapper around the after slot.",
+       "type": {
+        "primitive": "array",
+        "specialized": "class"
+       },
+       "default": [
+        "ome-mobile-nav-default__after"
+       ]
+      }
+     ]
+    }
+   ],
+   "description": "Mobile navigation drawer that mirrors a linked Navigation Menu using a deterministic generated structure.",
+   "blocks": [
+    {
+     "type": "etch/condition",
+     "version": 1,
+     "context": {},
+     "options": {},
+     "children": [
+      {
+       "type": "etch/condition",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [
+        {
+         "type": "etch/element",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/text",
+               "version": 1,
+               "context": {
+                "name": "Text"
+               },
+               "options": {},
+               "children": [],
+               "text": "Connect this mobile menu to a Navigation Menu",
+               "id": "iw65a4h",
+               "parentId": "ob2kmtb"
+              }
+             ],
+             "attributes": {
+              "data-ome-inline-docs-title": ""
+             },
+             "styles": [
+              "ome-inline-docs__title"
+             ],
+             "tag": "p",
+             "id": "ob2kmtb",
+             "parentId": "a6n5f7q"
+            },
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/text",
+               "version": 1,
+               "context": {
+                "name": "Text"
+               },
+               "options": {},
+               "children": [],
+               "text": "Set Menu ID to the same value as the Menu ID on the Navigation Menu you want this mobile drawer to mirror.",
+               "id": "ht1lxd6",
+               "parentId": "8wsmd5k"
+              }
+             ],
+             "attributes": {
+              "data-ome-inline-docs-body": ""
+             },
+             "styles": [
+              "ome-inline-docs__body"
+             ],
+             "tag": "p",
+             "id": "8wsmd5k",
+             "parentId": "a6n5f7q"
+            }
+           ],
+           "attributes": {
+            "data-ome-inline-docs-callout": "",
+            "data-ome-inline-docs-tone": "warning"
+           },
+           "styles": [
+            "ome-inline-docs__callout",
+            "ome-inline-docs__callout-warning"
+           ],
+           "tag": "div",
+           "id": "a6n5f7q",
+           "parentId": "a3h5yn9"
+          }
+         ],
+         "attributes": {
+          "data-ome-inline-docs": ""
+         },
+         "styles": [
+          "ome-inline-docs"
+         ],
+         "tag": "div",
+         "id": "a3h5yn9",
+         "parentId": "67d8t74"
+        }
+       ],
+       "conditionString": "environment.current === \"etch\" && props.identity.menuId === \"\"",
+       "id": "67d8t74",
+       "parentId": "03x6fhn"
+      },
+      {
+       "type": "etch/element",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [
+        {
+         "type": "etch/element",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/condition",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "attributes": {
+                  "x1": "3",
+                  "y1": "6",
+                  "x2": "21",
+                  "y2": "6",
+                  "stroke": "currentColor",
+                  "stroke-width": "2",
+                  "stroke-linecap": "round"
+                 },
+                 "styles": [],
+                 "tag": "line",
+                 "id": "4pzdwdm",
+                 "parentId": "dn3o71o"
+                },
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "attributes": {
+                  "x1": "3",
+                  "y1": "12",
+                  "x2": "21",
+                  "y2": "12",
+                  "stroke": "currentColor",
+                  "stroke-width": "2",
+                  "stroke-linecap": "round"
+                 },
+                 "styles": [],
+                 "tag": "line",
+                 "id": "einvrom",
+                 "parentId": "dn3o71o"
+                },
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "attributes": {
+                  "x1": "3",
+                  "y1": "18",
+                  "x2": "21",
+                  "y2": "18",
+                  "stroke": "currentColor",
+                  "stroke-width": "2",
+                  "stroke-linecap": "round"
+                 },
+                 "styles": [],
+                 "tag": "line",
+                 "id": "69r9kgn",
+                 "parentId": "dn3o71o"
+                }
+               ],
+               "attributes": {
+                "xmlns": "http://www.w3.org/2000/svg",
+                "width": "24",
+                "height": "24",
+                "viewBox": "0 0 24 24",
+                "fill": "none",
+                "aria-hidden": "true"
+               },
+               "styles": [],
+               "tag": "svg",
+               "id": "dn3o71o",
+               "parentId": "f4goq3l"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/raw-html",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "content": "{props.content.triggerLabel}",
+                 "unsafe": "",
+                 "id": "khje7rq",
+                 "parentId": "dnazl4u"
+                }
+               ],
+               "attributes": {
+                "data-ome-mobile-nav-sr-label": ""
+               },
+               "styles": [],
+               "tag": "span",
+               "id": "dnazl4u",
+               "parentId": "f4goq3l"
+              }
+             ],
+             "attributes": {
+              "type": "button",
+              "data-ome-drawer-trigger": "",
+              "data-ome-target-drawer-id": "etch-preview-mobile-nav",
+              "aria-haspopup": "dialog",
+              "aria-expanded": "false",
+              "class": "{props.controlStyling.triggerClass}"
+             },
+             "styles": [],
+             "tag": "button",
+             "id": "f4goq3l",
+             "parentId": "y03o40r"
+            }
+           ],
+           "conditionString": "props.content.showTriggerLabel",
+           "id": "y03o40r",
+           "parentId": "4vmsims"
+          },
+          {
+           "type": "etch/condition",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "attributes": {
+                  "x1": "3",
+                  "y1": "6",
+                  "x2": "21",
+                  "y2": "6",
+                  "stroke": "currentColor",
+                  "stroke-width": "2",
+                  "stroke-linecap": "round"
+                 },
+                 "styles": [],
+                 "tag": "line",
+                 "id": "1nylff7",
+                 "parentId": "ptoy4pp"
+                },
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "attributes": {
+                  "x1": "3",
+                  "y1": "12",
+                  "x2": "21",
+                  "y2": "12",
+                  "stroke": "currentColor",
+                  "stroke-width": "2",
+                  "stroke-linecap": "round"
+                 },
+                 "styles": [],
+                 "tag": "line",
+                 "id": "3h33psr",
+                 "parentId": "ptoy4pp"
+                },
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "attributes": {
+                  "x1": "3",
+                  "y1": "18",
+                  "x2": "21",
+                  "y2": "18",
+                  "stroke": "currentColor",
+                  "stroke-width": "2",
+                  "stroke-linecap": "round"
+                 },
+                 "styles": [],
+                 "tag": "line",
+                 "id": "ghk2jkr",
+                 "parentId": "ptoy4pp"
+                }
+               ],
+               "attributes": {
+                "xmlns": "http://www.w3.org/2000/svg",
+                "width": "24",
+                "height": "24",
+                "viewBox": "0 0 24 24",
+                "fill": "none",
+                "aria-hidden": "true"
+               },
+               "styles": [],
+               "tag": "svg",
+               "id": "ptoy4pp",
+               "parentId": "wro9fwj"
+              }
+             ],
+             "attributes": {
+              "type": "button",
+              "data-ome-drawer-trigger": "",
+              "data-ome-target-drawer-id": "etch-preview-mobile-nav",
+              "aria-haspopup": "dialog",
+              "aria-expanded": "false",
+              "class": "{props.controlStyling.triggerClass}",
+              "aria-label": "{props.content.triggerAriaLabel}"
+             },
+             "styles": [],
+             "tag": "button",
+             "id": "wro9fwj",
+             "parentId": "37dbh8w"
+            }
+           ],
+           "conditionString": "! props.content.showTriggerLabel",
+           "id": "37dbh8w",
+           "parentId": "4vmsims"
+          }
+         ],
+         "attributes": {},
+         "styles": [],
+         "tag": "div",
+         "id": "4vmsims",
+         "parentId": "b3friz4"
+        },
+        {
+         "type": "etch/element",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/condition",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/text",
+                   "version": 1,
+                   "context": {
+                    "name": "Text"
+                   },
+                   "options": {},
+                   "children": [],
+                   "text": "{props.content.triggerLabel}",
+                   "id": "4c8kogf",
+                   "parentId": "b3clu4w"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-drawer-title": "",
+                  "data-ome-mobile-nav-sr-label": ""
+                 },
+                 "styles": [],
+                 "tag": "span",
+                 "id": "b3clu4w",
+                 "parentId": "p0xdxi0"
+                }
+               ],
+               "conditionString": "props.content.showTriggerLabel",
+               "id": "p0xdxi0",
+               "parentId": "ilwq9ir"
+              },
+              {
+               "type": "etch/condition",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/text",
+                   "version": 1,
+                   "context": {
+                    "name": "Text"
+                   },
+                   "options": {},
+                   "children": [],
+                   "text": "{props.content.triggerAriaLabel}",
+                   "id": "s81gpj9",
+                   "parentId": "6dwh7h3"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-drawer-title": "",
+                  "data-ome-mobile-nav-sr-label": ""
+                 },
+                 "styles": [],
+                 "tag": "span",
+                 "id": "6dwh7h3",
+                 "parentId": "r2dwh5z"
+                }
+               ],
+               "conditionString": "! props.content.showTriggerLabel",
+               "id": "r2dwh5z",
+               "parentId": "ilwq9ir"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/condition",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [],
+                     "attributes": {
+                      "fill": "none",
+                      "stroke": "currentColor",
+                      "stroke-width": "2",
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round",
+                      "d": "M15 18l-6-6 6-6"
+                     },
+                     "styles": [],
+                     "tag": "path",
+                     "id": "b42bvfj",
+                     "parentId": "hizwnd7"
+                    }
+                   ],
+                   "attributes": {
+                    "xmlns": "http://www.w3.org/2000/svg",
+                    "width": "20",
+                    "height": "20",
+                    "viewBox": "0 0 24 24",
+                    "aria-hidden": "true"
+                   },
+                   "styles": [],
+                   "tag": "svg",
+                   "id": "hizwnd7",
+                   "parentId": "1nuk2nl"
+                  },
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/raw-html",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [],
+                     "content": "{props.content.backButtonLabel}",
+                     "unsafe": "",
+                     "id": "qrc48ai",
+                     "parentId": "rbk5jel"
+                    }
+                   ],
+                   "attributes": {},
+                   "styles": [],
+                   "tag": "span",
+                   "id": "rbk5jel",
+                   "parentId": "1nuk2nl"
+                  }
+                 ],
+                 "conditionString": "slots.backButton.empty",
+                 "id": "1nuk2nl",
+                 "parentId": "junfwys"
+                },
+                {
+                 "type": "etch/slot-placeholder",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "slotName": "backButton",
+                 "id": "imu5gwu",
+                 "parentId": "junfwys"
+                }
+               ],
+               "attributes": {
+                "type": "button",
+                "data-ome-mobile-nav-back": "",
+                "data-ome-mobile-nav-back-label": "{props.content.backButtonLabel}",
+                "class": "{props.controlStyling.backButtonClass}",
+                "hidden": "",
+                "aria-label": "Go back"
+               },
+               "styles": [],
+               "tag": "button",
+               "id": "junfwys",
+               "parentId": "ilwq9ir"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [],
+                   "attributes": {
+                    "fill": "none",
+                    "stroke": "currentColor",
+                    "stroke-width": "2",
+                    "stroke-linecap": "round",
+                    "d": "M18 6L6 18M6 6l12 12"
+                   },
+                   "styles": [],
+                   "tag": "path",
+                   "id": "lguubtg",
+                   "parentId": "j7iis81"
+                  }
+                 ],
+                 "attributes": {
+                  "xmlns": "http://www.w3.org/2000/svg",
+                  "width": "20",
+                  "height": "20",
+                  "viewBox": "0 0 24 24",
+                  "aria-hidden": "true"
+                 },
+                 "styles": [],
+                 "tag": "svg",
+                 "id": "j7iis81",
+                 "parentId": "uvggz9j"
+                },
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/raw-html",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [],
+                   "content": "Close menu",
+                   "unsafe": "",
+                   "id": "ttx9sqn",
+                   "parentId": "8zs48yk"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-mobile-nav-sr-label": ""
+                 },
+                 "styles": [],
+                 "tag": "span",
+                 "id": "8zs48yk",
+                 "parentId": "uvggz9j"
+                }
+               ],
+               "attributes": {
+                "type": "button",
+                "data-ome-drawer-close": "",
+                "class": "{props.controlStyling.closeButtonClass}",
+                "aria-label": "Close menu"
+               },
+               "styles": [],
+               "tag": "button",
+               "id": "uvggz9j",
+               "parentId": "ilwq9ir"
+              }
+             ],
+             "attributes": {
+              "data-ome-mobile-nav-header": "",
+              "class": "{props.drawerStyling.headerClass}"
+             },
+             "styles": [],
+             "tag": "div",
+             "id": "ilwq9ir",
+             "parentId": "rzvrub1"
+            },
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/condition",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/slot-placeholder",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [],
+                       "slotName": "before",
+                       "id": "2emj9pr",
+                       "parentId": "gyo93xd"
+                      }
+                     ],
+                     "attributes": {
+                      "data-ome-mobile-nav-slot-before": "",
+                      "class": "{props.slotStyling.beforeClass}"
+                     },
+                     "styles": [],
+                     "tag": "div",
+                     "id": "gyo93xd",
+                     "parentId": "4xg3b17"
+                    },
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/element",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [
+                            {
+                             "type": "etch/raw-html",
+                             "version": 1,
+                             "context": {},
+                             "options": {},
+                             "children": [],
+                             "content": "Link 1",
+                             "unsafe": "",
+                             "id": "lufhgff",
+                             "parentId": "1rtweep"
+                            }
+                           ],
+                           "attributes": {},
+                           "styles": [],
+                           "tag": "span",
+                           "id": "1rtweep",
+                           "parentId": "zo0semr"
+                          }
+                         ],
+                         "attributes": {
+                          "data-ome-mobile-nav-link": "",
+                          "class": "{props.menuStyling.linkClass}",
+                          "href": "#"
+                         },
+                         "styles": [],
+                         "tag": "a",
+                         "id": "zo0semr",
+                         "parentId": "fsdgrqu"
+                        }
+                       ],
+                       "attributes": {
+                        "data-ome-mobile-nav-item": "",
+                        "data-ome-mobile-nav-item-type": "link",
+                        "class": "{props.menuStyling.itemClass}"
+                       },
+                       "styles": [],
+                       "tag": "li",
+                       "id": "fsdgrqu",
+                       "parentId": "lu3n6lz"
+                      },
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/element",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [
+                            {
+                             "type": "etch/raw-html",
+                             "version": 1,
+                             "context": {},
+                             "options": {},
+                             "children": [],
+                             "content": "Link 2",
+                             "unsafe": "",
+                             "id": "zw32tpw",
+                             "parentId": "qo04ixz"
+                            }
+                           ],
+                           "attributes": {},
+                           "styles": [],
+                           "tag": "span",
+                           "id": "qo04ixz",
+                           "parentId": "ig18cs5"
+                          }
+                         ],
+                         "attributes": {
+                          "data-ome-mobile-nav-link": "",
+                          "class": "{props.menuStyling.linkClass}",
+                          "href": "#"
+                         },
+                         "styles": [],
+                         "tag": "a",
+                         "id": "ig18cs5",
+                         "parentId": "ft74mgd"
+                        }
+                       ],
+                       "attributes": {
+                        "data-ome-mobile-nav-item": "",
+                        "data-ome-mobile-nav-item-type": "link",
+                        "class": "{props.menuStyling.itemClass}"
+                       },
+                       "styles": [],
+                       "tag": "li",
+                       "id": "ft74mgd",
+                       "parentId": "lu3n6lz"
+                      },
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/element",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [
+                            {
+                             "type": "etch/raw-html",
+                             "version": 1,
+                             "context": {},
+                             "options": {},
+                             "children": [],
+                             "content": "Nested",
+                             "unsafe": "",
+                             "id": "c33o6ao",
+                             "parentId": "zdvopi9"
+                            }
+                           ],
+                           "attributes": {},
+                           "styles": [],
+                           "tag": "span",
+                           "id": "zdvopi9",
+                           "parentId": "wwkwi7j"
+                          },
+                          {
+                           "type": "etch/element",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [
+                            {
+                             "type": "etch/element",
+                             "version": 1,
+                             "context": {},
+                             "options": {},
+                             "children": [
+                              {
+                               "type": "etch/element",
+                               "version": 1,
+                               "context": {},
+                               "options": {},
+                               "children": [],
+                               "attributes": {
+                                "fill": "none",
+                                "stroke": "currentColor",
+                                "stroke-width": "2",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                "d": "M9 6l6 6-6 6"
+                               },
+                               "styles": [],
+                               "tag": "path",
+                               "id": "qyqax7t",
+                               "parentId": "22kikcg"
+                              }
+                             ],
+                             "attributes": {
+                              "xmlns": "http://www.w3.org/2000/svg",
+                              "width": "16",
+                              "height": "16",
+                              "viewBox": "0 0 24 24",
+                              "fill": "none",
+                              "aria-hidden": "true"
+                             },
+                             "styles": [],
+                             "tag": "svg",
+                             "id": "22kikcg",
+                             "parentId": "ajo8dqg"
+                            }
+                           ],
+                           "attributes": {
+                            "data-ome-mobile-nav-next-icon": "",
+                            "class": "{props.menuStyling.nextIconClass}",
+                            "aria-hidden": "true"
+                           },
+                           "styles": [],
+                           "tag": "span",
+                           "id": "ajo8dqg",
+                           "parentId": "wwkwi7j"
+                          }
+                         ],
+                         "attributes": {
+                          "type": "button",
+                          "data-ome-mobile-nav-submenu-trigger": "",
+                          "class": "{props.menuStyling.submenuTriggerClass}"
+                         },
+                         "styles": [],
+                         "tag": "button",
+                         "id": "wwkwi7j",
+                         "parentId": "mgs01n6"
+                        }
+                       ],
+                       "attributes": {
+                        "data-ome-mobile-nav-item": "",
+                        "data-ome-mobile-nav-item-type": "submenu",
+                        "class": "{props.menuStyling.itemClass}"
+                       },
+                       "styles": [],
+                       "tag": "li",
+                       "id": "mgs01n6",
+                       "parentId": "lu3n6lz"
+                      }
+                     ],
+                     "attributes": {
+                      "data-ome-mobile-nav-list": "",
+                      "class": "{props.menuStyling.listClass}",
+                      "role": "menu"
+                     },
+                     "styles": [],
+                     "tag": "ul",
+                     "id": "lu3n6lz",
+                     "parentId": "4xg3b17"
+                    },
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/slot-placeholder",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [],
+                       "slotName": "after",
+                       "id": "bd9mygv",
+                       "parentId": "1mfkap6"
+                      }
+                     ],
+                     "attributes": {
+                      "data-ome-mobile-nav-slot-after": "",
+                      "class": "{props.slotStyling.afterClass}"
+                     },
+                     "styles": [],
+                     "tag": "div",
+                     "id": "1mfkap6",
+                     "parentId": "4xg3b17"
+                    }
+                   ],
+                   "attributes": {
+                    "data-ome-mobile-nav-panel": ""
+                   },
+                   "styles": [],
+                   "tag": "div",
+                   "id": "4xg3b17",
+                   "parentId": "o0t92e4"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-mobile-nav-static-preview": ""
+                 },
+                 "styles": [],
+                 "tag": "div",
+                 "id": "o0t92e4",
+                 "parentId": "5ugc6gc"
+                }
+               ],
+               "conditionString": "environment.current === \"etch\"",
+               "id": "5ugc6gc",
+               "parentId": "s0xgkf2"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [],
+                       "attributes": {
+                        "data-ome-mobile-nav-link": "",
+                        "class": "{props.menuStyling.linkClass}"
+                       },
+                       "styles": [],
+                       "tag": "a",
+                       "id": "3g1h6sl",
+                       "parentId": "nxm877e"
+                      }
+                     ],
+                     "attributes": {
+                      "data-ome-mobile-nav-item": "",
+                      "class": "{props.menuStyling.itemClass}"
+                     },
+                     "styles": [],
+                     "tag": "li",
+                     "id": "nxm877e",
+                     "parentId": "u9uybfh"
+                    },
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/element",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [
+                            {
+                             "type": "etch/element",
+                             "version": 1,
+                             "context": {},
+                             "options": {},
+                             "children": [],
+                             "attributes": {
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "2",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "d": "M9 6l6 6-6 6"
+                             },
+                             "styles": [],
+                             "tag": "path",
+                             "id": "ovtzvqg",
+                             "parentId": "rr3labo"
+                            }
+                           ],
+                           "attributes": {
+                            "xmlns": "http://www.w3.org/2000/svg",
+                            "width": "16",
+                            "height": "16",
+                            "viewBox": "0 0 24 24",
+                            "fill": "none",
+                            "aria-hidden": "true"
+                           },
+                           "styles": [],
+                           "tag": "svg",
+                           "id": "rr3labo",
+                           "parentId": "eqgx17o"
+                          }
+                         ],
+                         "attributes": {
+                          "data-ome-mobile-nav-next-icon": "",
+                          "class": "{props.menuStyling.nextIconClass}",
+                          "aria-hidden": "true"
+                         },
+                         "styles": [],
+                         "tag": "span",
+                         "id": "eqgx17o",
+                         "parentId": "0e486b4"
+                        }
+                       ],
+                       "attributes": {
+                        "type": "button",
+                        "data-ome-mobile-nav-submenu-trigger": "",
+                        "class": "{props.menuStyling.submenuTriggerClass}"
+                       },
+                       "styles": [],
+                       "tag": "button",
+                       "id": "0e486b4",
+                       "parentId": "fz7j58t"
+                      }
+                     ],
+                     "attributes": {
+                      "data-ome-mobile-nav-item": "",
+                      "class": "{props.menuStyling.itemClass}"
+                     },
+                     "styles": [],
+                     "tag": "li",
+                     "id": "fz7j58t",
+                     "parentId": "u9uybfh"
+                    }
+                   ],
+                   "attributes": {
+                    "data-ome-mobile-nav-list": "",
+                    "class": "{props.menuStyling.listClass}",
+                    "role": "menu"
+                   },
+                   "styles": [],
+                   "tag": "ul",
+                   "id": "u9uybfh",
+                   "parentId": "5zxt1bd"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-mobile-nav-panel": ""
+                 },
+                 "styles": [],
+                 "tag": "div",
+                 "id": "5zxt1bd",
+                 "parentId": "0id3l57"
+                }
+               ],
+               "attributes": {
+                "data-ome-mobile-nav-template": "",
+                "hidden": ""
+               },
+               "styles": [],
+               "tag": "div",
+               "id": "0id3l57",
+               "parentId": "s0xgkf2"
+              },
+              {
+               "type": "etch/condition",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/slot-placeholder",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [],
+                   "slotName": "before",
+                   "id": "x0zpg8m",
+                   "parentId": "4kc8711"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-mobile-nav-slot-before": "",
+                  "class": "{props.slotStyling.beforeClass}",
+                  "hidden": ""
+                 },
+                 "styles": [],
+                 "tag": "div",
+                 "id": "4kc8711",
+                 "parentId": "mbbdt1g"
+                }
+               ],
+               "conditionString": "environment.current === \"frontend\" || environment.current === \"gutenberg\"",
+               "id": "mbbdt1g",
+               "parentId": "s0xgkf2"
+              },
+              {
+               "type": "etch/condition",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/slot-placeholder",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [],
+                   "slotName": "after",
+                   "id": "dauwjim",
+                   "parentId": "mrlw3q1"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-mobile-nav-slot-after": "",
+                  "class": "{props.slotStyling.afterClass}",
+                  "hidden": ""
+                 },
+                 "styles": [],
+                 "tag": "div",
+                 "id": "mrlw3q1",
+                 "parentId": "cw4bnpg"
+                }
+               ],
+               "conditionString": "environment.current === \"frontend\" || environment.current === \"gutenberg\"",
+               "id": "cw4bnpg",
+               "parentId": "s0xgkf2"
+              }
+             ],
+             "attributes": {
+              "data-ome-mobile-nav-panels": ""
+             },
+             "styles": [],
+             "tag": "div",
+             "id": "s0xgkf2",
+             "parentId": "rzvrub1"
+            }
+           ],
+           "attributes": {
+            "data-ome-mobile-nav-content": "",
+            "class": "{props.drawerStyling.contentClass}"
+           },
+           "styles": [],
+           "tag": "div",
+           "id": "rzvrub1",
+           "parentId": "2ff3j2c"
+          }
+         ],
+         "attributes": {
+          "data-ome-drawer-root": "",
+          "data-ome-drawer-id": "etch-preview-mobile-nav",
+          "data-ome-state": "closed",
+          "data-ome-direction": "{props.settings.drawerDirection}",
+          "data-ome-dismissible": "{props.settings.dismissible}",
+          "class": "{props.drawerStyling.drawerClass}",
+          "hidden": ""
+         },
+         "styles": [],
+         "tag": "div",
+         "id": "2ff3j2c",
+         "parentId": "b3friz4"
+        }
+       ],
+       "attributes": {
+        "data-ome-mobile-nav-root": "",
+        "data-ome-menu-id": "etch-preview-mobile-nav",
+        "class": "ome-mobile-nav {props.rootStyling.class}"
+       },
+       "styles": [
+        "uj0cb4j"
+       ],
+       "tag": "div",
+       "id": "b3friz4",
+       "parentId": "03x6fhn"
+      }
+     ],
+     "conditionString": "environment.current === \"etch\" && props.identity.menuId === \"\"",
+     "id": "03x6fhn",
+     "parentId": null
+    },
+    {
+     "type": "etch/element",
+     "version": 1,
+     "context": {},
+     "script": {
+      "code": "import \"/wp-content/plugins/oh-my-etch/assets/dist/assets/components/navigation-menu-mobile.js?ver=1.5.8\";"
+     },
+     "options": {},
+     "children": [
+      {
+       "type": "etch/element",
+       "version": 1,
+       "context": {},
+       "options": {},
+       "children": [
+        {
+         "type": "etch/condition",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [],
+               "attributes": {
+                "x1": "3",
+                "y1": "6",
+                "x2": "21",
+                "y2": "6",
+                "stroke": "currentColor",
+                "stroke-width": "2",
+                "stroke-linecap": "round"
+               },
+               "styles": [],
+               "tag": "line",
+               "id": "ej8ahdw",
+               "parentId": "vh6vpni"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [],
+               "attributes": {
+                "x1": "3",
+                "y1": "12",
+                "x2": "21",
+                "y2": "12",
+                "stroke": "currentColor",
+                "stroke-width": "2",
+                "stroke-linecap": "round"
+               },
+               "styles": [],
+               "tag": "line",
+               "id": "3i7ymcl",
+               "parentId": "vh6vpni"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [],
+               "attributes": {
+                "x1": "3",
+                "y1": "18",
+                "x2": "21",
+                "y2": "18",
+                "stroke": "currentColor",
+                "stroke-width": "2",
+                "stroke-linecap": "round"
+               },
+               "styles": [],
+               "tag": "line",
+               "id": "drnxcr0",
+               "parentId": "vh6vpni"
+              }
+             ],
+             "attributes": {
+              "xmlns": "http://www.w3.org/2000/svg",
+              "width": "24",
+              "height": "24",
+              "viewBox": "0 0 24 24",
+              "fill": "none",
+              "aria-hidden": "true"
+             },
+             "styles": [],
+             "tag": "svg",
+             "id": "vh6vpni",
+             "parentId": "6s3k4pj"
+            },
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/raw-html",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [],
+               "content": "{props.content.triggerLabel}",
+               "unsafe": "",
+               "id": "lr85tmi",
+               "parentId": "kb5f4li"
+              }
+             ],
+             "attributes": {
+              "data-ome-mobile-nav-sr-label": ""
+             },
+             "styles": [],
+             "tag": "span",
+             "id": "kb5f4li",
+             "parentId": "6s3k4pj"
+            }
+           ],
+           "attributes": {
+            "type": "button",
+            "data-ome-drawer-trigger": "",
+            "data-ome-target-drawer-id": "{props.identity.menuId}",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "class": "{props.controlStyling.triggerClass}"
+           },
+           "styles": [],
+           "tag": "button",
+           "id": "6s3k4pj",
+           "parentId": "qdfk29l"
+          }
+         ],
+         "conditionString": "props.content.showTriggerLabel",
+         "id": "qdfk29l",
+         "parentId": "r654f1c"
+        },
+        {
+         "type": "etch/condition",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [],
+               "attributes": {
+                "x1": "3",
+                "y1": "6",
+                "x2": "21",
+                "y2": "6",
+                "stroke": "currentColor",
+                "stroke-width": "2",
+                "stroke-linecap": "round"
+               },
+               "styles": [],
+               "tag": "line",
+               "id": "0j4udjo",
+               "parentId": "jeulf7s"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [],
+               "attributes": {
+                "x1": "3",
+                "y1": "12",
+                "x2": "21",
+                "y2": "12",
+                "stroke": "currentColor",
+                "stroke-width": "2",
+                "stroke-linecap": "round"
+               },
+               "styles": [],
+               "tag": "line",
+               "id": "0x690fb",
+               "parentId": "jeulf7s"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [],
+               "attributes": {
+                "x1": "3",
+                "y1": "18",
+                "x2": "21",
+                "y2": "18",
+                "stroke": "currentColor",
+                "stroke-width": "2",
+                "stroke-linecap": "round"
+               },
+               "styles": [],
+               "tag": "line",
+               "id": "x41s8xi",
+               "parentId": "jeulf7s"
+              }
+             ],
+             "attributes": {
+              "xmlns": "http://www.w3.org/2000/svg",
+              "width": "24",
+              "height": "24",
+              "viewBox": "0 0 24 24",
+              "fill": "none",
+              "aria-hidden": "true"
+             },
+             "styles": [],
+             "tag": "svg",
+             "id": "jeulf7s",
+             "parentId": "np4akzk"
+            }
+           ],
+           "attributes": {
+            "type": "button",
+            "data-ome-drawer-trigger": "",
+            "data-ome-target-drawer-id": "{props.identity.menuId}",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "class": "{props.controlStyling.triggerClass}",
+            "aria-label": "{props.content.triggerAriaLabel}"
+           },
+           "styles": [],
+           "tag": "button",
+           "id": "np4akzk",
+           "parentId": "l49e722"
+          }
+         ],
+         "conditionString": "! props.content.showTriggerLabel",
+         "id": "l49e722",
+         "parentId": "r654f1c"
+        }
+       ],
+       "attributes": {},
+       "styles": [],
+       "tag": "div",
+       "id": "r654f1c",
+       "parentId": "dx09jjn"
+      },
+      {
+       "type": "etch/element",
+       "version": 1,
+       "context": {},
+       "script": {
+        "code": "import \"/wp-content/plugins/oh-my-etch/assets/dist/assets/components/drawer.js?ver=1.5.8\";"
+       },
+       "options": {},
+       "children": [
+        {
+         "type": "etch/element",
+         "version": 1,
+         "context": {},
+         "options": {},
+         "children": [
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/condition",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/text",
+                 "version": 1,
+                 "context": {
+                  "name": "Text"
+                 },
+                 "options": {},
+                 "children": [],
+                 "text": "{props.content.triggerLabel}",
+                 "id": "o7sus4g",
+                 "parentId": "mnkvu69"
+                }
+               ],
+               "attributes": {
+                "data-ome-drawer-title": "",
+                "data-ome-mobile-nav-sr-label": ""
+               },
+               "styles": [],
+               "tag": "span",
+               "id": "mnkvu69",
+               "parentId": "qnlngyw"
+              }
+             ],
+             "conditionString": "props.content.showTriggerLabel",
+             "id": "qnlngyw",
+             "parentId": "efr3jld"
+            },
+            {
+             "type": "etch/condition",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/text",
+                 "version": 1,
+                 "context": {
+                  "name": "Text"
+                 },
+                 "options": {},
+                 "children": [],
+                 "text": "{props.content.triggerAriaLabel}",
+                 "id": "roit5gx",
+                 "parentId": "361nzj7"
+                }
+               ],
+               "attributes": {
+                "data-ome-drawer-title": "",
+                "data-ome-mobile-nav-sr-label": ""
+               },
+               "styles": [],
+               "tag": "span",
+               "id": "361nzj7",
+               "parentId": "ny1sihd"
+              }
+             ],
+             "conditionString": "! props.content.showTriggerLabel",
+             "id": "ny1sihd",
+             "parentId": "efr3jld"
+            },
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/condition",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [],
+                   "attributes": {
+                    "fill": "none",
+                    "stroke": "currentColor",
+                    "stroke-width": "2",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "d": "M15 18l-6-6 6-6"
+                   },
+                   "styles": [],
+                   "tag": "path",
+                   "id": "3tgywze",
+                   "parentId": "sr9ed9s"
+                  }
+                 ],
+                 "attributes": {
+                  "xmlns": "http://www.w3.org/2000/svg",
+                  "width": "20",
+                  "height": "20",
+                  "viewBox": "0 0 24 24",
+                  "aria-hidden": "true"
+                 },
+                 "styles": [],
+                 "tag": "svg",
+                 "id": "sr9ed9s",
+                 "parentId": "r62yrdn"
+                },
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/raw-html",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [],
+                   "content": "{props.content.backButtonLabel}",
+                   "unsafe": "",
+                   "id": "b54qc2d",
+                   "parentId": "05krhuj"
+                  }
+                 ],
+                 "attributes": {},
+                 "styles": [],
+                 "tag": "span",
+                 "id": "05krhuj",
+                 "parentId": "r62yrdn"
+                }
+               ],
+               "conditionString": "slots.backButton.empty",
+               "id": "r62yrdn",
+               "parentId": "d82ldrd"
+              },
+              {
+               "type": "etch/slot-placeholder",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [],
+               "slotName": "backButton",
+               "id": "j20n1kr",
+               "parentId": "d82ldrd"
+              }
+             ],
+             "attributes": {
+              "type": "button",
+              "data-ome-mobile-nav-back": "",
+              "data-ome-mobile-nav-back-label": "{props.content.backButtonLabel}",
+              "class": "{props.controlStyling.backButtonClass}",
+              "hidden": "",
+              "aria-label": "Go back"
+             },
+             "styles": [],
+             "tag": "button",
+             "id": "d82ldrd",
+             "parentId": "efr3jld"
+            },
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "attributes": {
+                  "fill": "none",
+                  "stroke": "currentColor",
+                  "stroke-width": "2",
+                  "stroke-linecap": "round",
+                  "d": "M18 6L6 18M6 6l12 12"
+                 },
+                 "styles": [],
+                 "tag": "path",
+                 "id": "87ec30x",
+                 "parentId": "e1ugql9"
+                }
+               ],
+               "attributes": {
+                "xmlns": "http://www.w3.org/2000/svg",
+                "width": "20",
+                "height": "20",
+                "viewBox": "0 0 24 24",
+                "aria-hidden": "true"
+               },
+               "styles": [],
+               "tag": "svg",
+               "id": "e1ugql9",
+               "parentId": "c8b6y5g"
+              },
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/raw-html",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "content": "Close menu",
+                 "unsafe": "",
+                 "id": "m534nx3",
+                 "parentId": "svwz1pd"
+                }
+               ],
+               "attributes": {
+                "data-ome-mobile-nav-sr-label": ""
+               },
+               "styles": [],
+               "tag": "span",
+               "id": "svwz1pd",
+               "parentId": "c8b6y5g"
+              }
+             ],
+             "attributes": {
+              "type": "button",
+              "data-ome-drawer-close": "",
+              "class": "{props.controlStyling.closeButtonClass}",
+              "aria-label": "Close menu"
+             },
+             "styles": [],
+             "tag": "button",
+             "id": "c8b6y5g",
+             "parentId": "efr3jld"
+            }
+           ],
+           "attributes": {
+            "data-ome-mobile-nav-header": "",
+            "class": "{props.drawerStyling.headerClass}"
+           },
+           "styles": [],
+           "tag": "div",
+           "id": "efr3jld",
+           "parentId": "62w2r1v"
+          },
+          {
+           "type": "etch/element",
+           "version": 1,
+           "context": {},
+           "options": {},
+           "children": [
+            {
+             "type": "etch/condition",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/slot-placeholder",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [],
+                     "slotName": "before",
+                     "id": "89puzhw",
+                     "parentId": "qjp2ltz"
+                    }
+                   ],
+                   "attributes": {
+                    "data-ome-mobile-nav-slot-before": "",
+                    "class": "{props.slotStyling.beforeClass}"
+                   },
+                   "styles": [],
+                   "tag": "div",
+                   "id": "qjp2ltz",
+                   "parentId": "sxa6jos"
+                  },
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/raw-html",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [],
+                           "content": "Link 1",
+                           "unsafe": "",
+                           "id": "en49bt5",
+                           "parentId": "cw6roko"
+                          }
+                         ],
+                         "attributes": {},
+                         "styles": [],
+                         "tag": "span",
+                         "id": "cw6roko",
+                         "parentId": "kwimaie"
+                        }
+                       ],
+                       "attributes": {
+                        "data-ome-mobile-nav-link": "",
+                        "class": "{props.menuStyling.linkClass}",
+                        "href": "#"
+                       },
+                       "styles": [],
+                       "tag": "a",
+                       "id": "kwimaie",
+                       "parentId": "1sgwf37"
+                      }
+                     ],
+                     "attributes": {
+                      "data-ome-mobile-nav-item": "",
+                      "data-ome-mobile-nav-item-type": "link",
+                      "class": "{props.menuStyling.itemClass}"
+                     },
+                     "styles": [],
+                     "tag": "li",
+                     "id": "1sgwf37",
+                     "parentId": "qnz1w2k"
+                    },
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/raw-html",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [],
+                           "content": "Link 2",
+                           "unsafe": "",
+                           "id": "3zjgy98",
+                           "parentId": "vcuyvpi"
+                          }
+                         ],
+                         "attributes": {},
+                         "styles": [],
+                         "tag": "span",
+                         "id": "vcuyvpi",
+                         "parentId": "svycbkp"
+                        }
+                       ],
+                       "attributes": {
+                        "data-ome-mobile-nav-link": "",
+                        "class": "{props.menuStyling.linkClass}",
+                        "href": "#"
+                       },
+                       "styles": [],
+                       "tag": "a",
+                       "id": "svycbkp",
+                       "parentId": "yo2ounn"
+                      }
+                     ],
+                     "attributes": {
+                      "data-ome-mobile-nav-item": "",
+                      "data-ome-mobile-nav-item-type": "link",
+                      "class": "{props.menuStyling.itemClass}"
+                     },
+                     "styles": [],
+                     "tag": "li",
+                     "id": "yo2ounn",
+                     "parentId": "qnz1w2k"
+                    },
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/raw-html",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [],
+                           "content": "Nested",
+                           "unsafe": "",
+                           "id": "34v0azp",
+                           "parentId": "m02z37g"
+                          }
+                         ],
+                         "attributes": {},
+                         "styles": [],
+                         "tag": "span",
+                         "id": "m02z37g",
+                         "parentId": "8xrjjrr"
+                        },
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/element",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [
+                            {
+                             "type": "etch/element",
+                             "version": 1,
+                             "context": {},
+                             "options": {},
+                             "children": [],
+                             "attributes": {
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "2",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "d": "M9 6l6 6-6 6"
+                             },
+                             "styles": [],
+                             "tag": "path",
+                             "id": "3zgcvcp",
+                             "parentId": "bqtxkld"
+                            }
+                           ],
+                           "attributes": {
+                            "xmlns": "http://www.w3.org/2000/svg",
+                            "width": "16",
+                            "height": "16",
+                            "viewBox": "0 0 24 24",
+                            "fill": "none",
+                            "aria-hidden": "true"
+                           },
+                           "styles": [],
+                           "tag": "svg",
+                           "id": "bqtxkld",
+                           "parentId": "3zlng8s"
+                          }
+                         ],
+                         "attributes": {
+                          "data-ome-mobile-nav-next-icon": "",
+                          "class": "{props.menuStyling.nextIconClass}",
+                          "aria-hidden": "true"
+                         },
+                         "styles": [],
+                         "tag": "span",
+                         "id": "3zlng8s",
+                         "parentId": "8xrjjrr"
+                        }
+                       ],
+                       "attributes": {
+                        "type": "button",
+                        "data-ome-mobile-nav-submenu-trigger": "",
+                        "class": "{props.menuStyling.submenuTriggerClass}"
+                       },
+                       "styles": [],
+                       "tag": "button",
+                       "id": "8xrjjrr",
+                       "parentId": "wv5xq9i"
+                      }
+                     ],
+                     "attributes": {
+                      "data-ome-mobile-nav-item": "",
+                      "data-ome-mobile-nav-item-type": "submenu",
+                      "class": "{props.menuStyling.itemClass}"
+                     },
+                     "styles": [],
+                     "tag": "li",
+                     "id": "wv5xq9i",
+                     "parentId": "qnz1w2k"
+                    }
+                   ],
+                   "attributes": {
+                    "data-ome-mobile-nav-list": "",
+                    "class": "{props.menuStyling.listClass}",
+                    "role": "menu"
+                   },
+                   "styles": [],
+                   "tag": "ul",
+                   "id": "qnz1w2k",
+                   "parentId": "sxa6jos"
+                  },
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/slot-placeholder",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [],
+                     "slotName": "after",
+                     "id": "zkqfozr",
+                     "parentId": "vqbbyfs"
+                    }
+                   ],
+                   "attributes": {
+                    "data-ome-mobile-nav-slot-after": "",
+                    "class": "{props.slotStyling.afterClass}"
+                   },
+                   "styles": [],
+                   "tag": "div",
+                   "id": "vqbbyfs",
+                   "parentId": "sxa6jos"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-mobile-nav-panel": ""
+                 },
+                 "styles": [],
+                 "tag": "div",
+                 "id": "sxa6jos",
+                 "parentId": "0moj7i4"
+                }
+               ],
+               "attributes": {
+                "data-ome-mobile-nav-static-preview": ""
+               },
+               "styles": [],
+               "tag": "div",
+               "id": "0moj7i4",
+               "parentId": "u2h5tgs"
+              }
+             ],
+             "conditionString": "environment.current === \"etch\"",
+             "id": "u2h5tgs",
+             "parentId": "nzlvk3h"
+            },
+            {
+             "type": "etch/element",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/element",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [],
+                     "attributes": {
+                      "data-ome-mobile-nav-link": "",
+                      "class": "{props.menuStyling.linkClass}"
+                     },
+                     "styles": [],
+                     "tag": "a",
+                     "id": "37ernsq",
+                     "parentId": "oykf9yu"
+                    }
+                   ],
+                   "attributes": {
+                    "data-ome-mobile-nav-item": "",
+                    "class": "{props.menuStyling.itemClass}"
+                   },
+                   "styles": [],
+                   "tag": "li",
+                   "id": "oykf9yu",
+                   "parentId": "3c9teoa"
+                  },
+                  {
+                   "type": "etch/element",
+                   "version": 1,
+                   "context": {},
+                   "options": {},
+                   "children": [
+                    {
+                     "type": "etch/element",
+                     "version": 1,
+                     "context": {},
+                     "options": {},
+                     "children": [
+                      {
+                       "type": "etch/element",
+                       "version": 1,
+                       "context": {},
+                       "options": {},
+                       "children": [
+                        {
+                         "type": "etch/element",
+                         "version": 1,
+                         "context": {},
+                         "options": {},
+                         "children": [
+                          {
+                           "type": "etch/element",
+                           "version": 1,
+                           "context": {},
+                           "options": {},
+                           "children": [],
+                           "attributes": {
+                            "fill": "none",
+                            "stroke": "currentColor",
+                            "stroke-width": "2",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "d": "M9 6l6 6-6 6"
+                           },
+                           "styles": [],
+                           "tag": "path",
+                           "id": "hnfdp23",
+                           "parentId": "pxfnmfk"
+                          }
+                         ],
+                         "attributes": {
+                          "xmlns": "http://www.w3.org/2000/svg",
+                          "width": "16",
+                          "height": "16",
+                          "viewBox": "0 0 24 24",
+                          "fill": "none",
+                          "aria-hidden": "true"
+                         },
+                         "styles": [],
+                         "tag": "svg",
+                         "id": "pxfnmfk",
+                         "parentId": "uvrpr13"
+                        }
+                       ],
+                       "attributes": {
+                        "data-ome-mobile-nav-next-icon": "",
+                        "class": "{props.menuStyling.nextIconClass}",
+                        "aria-hidden": "true"
+                       },
+                       "styles": [],
+                       "tag": "span",
+                       "id": "uvrpr13",
+                       "parentId": "3hr7d3c"
+                      }
+                     ],
+                     "attributes": {
+                      "type": "button",
+                      "data-ome-mobile-nav-submenu-trigger": "",
+                      "class": "{props.menuStyling.submenuTriggerClass}"
+                     },
+                     "styles": [],
+                     "tag": "button",
+                     "id": "3hr7d3c",
+                     "parentId": "yso78f1"
+                    }
+                   ],
+                   "attributes": {
+                    "data-ome-mobile-nav-item": "",
+                    "class": "{props.menuStyling.itemClass}"
+                   },
+                   "styles": [],
+                   "tag": "li",
+                   "id": "yso78f1",
+                   "parentId": "3c9teoa"
+                  }
+                 ],
+                 "attributes": {
+                  "data-ome-mobile-nav-list": "",
+                  "class": "{props.menuStyling.listClass}",
+                  "role": "menu"
+                 },
+                 "styles": [],
+                 "tag": "ul",
+                 "id": "3c9teoa",
+                 "parentId": "z49e13r"
+                }
+               ],
+               "attributes": {
+                "data-ome-mobile-nav-panel": ""
+               },
+               "styles": [],
+               "tag": "div",
+               "id": "z49e13r",
+               "parentId": "vze5usi"
+              }
+             ],
+             "attributes": {
+              "data-ome-mobile-nav-template": "",
+              "hidden": ""
+             },
+             "styles": [],
+             "tag": "div",
+             "id": "vze5usi",
+             "parentId": "nzlvk3h"
+            },
+            {
+             "type": "etch/condition",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/slot-placeholder",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "slotName": "before",
+                 "id": "1bqdfkz",
+                 "parentId": "1x9w4hx"
+                }
+               ],
+               "attributes": {
+                "data-ome-mobile-nav-slot-before": "",
+                "class": "{props.slotStyling.beforeClass}",
+                "hidden": ""
+               },
+               "styles": [],
+               "tag": "div",
+               "id": "1x9w4hx",
+               "parentId": "r7wghix"
+              }
+             ],
+             "conditionString": "environment.current === \"frontend\" || environment.current === \"gutenberg\"",
+             "id": "r7wghix",
+             "parentId": "nzlvk3h"
+            },
+            {
+             "type": "etch/condition",
+             "version": 1,
+             "context": {},
+             "options": {},
+             "children": [
+              {
+               "type": "etch/element",
+               "version": 1,
+               "context": {},
+               "options": {},
+               "children": [
+                {
+                 "type": "etch/slot-placeholder",
+                 "version": 1,
+                 "context": {},
+                 "options": {},
+                 "children": [],
+                 "slotName": "after",
+                 "id": "wc6tndb",
+                 "parentId": "fxhjzju"
+                }
+               ],
+               "attributes": {
+                "data-ome-mobile-nav-slot-after": "",
+                "class": "{props.slotStyling.afterClass}",
+                "hidden": ""
+               },
+               "styles": [],
+               "tag": "div",
+               "id": "fxhjzju",
+               "parentId": "kzns8sf"
+              }
+             ],
+             "conditionString": "environment.current === \"frontend\" || environment.current === \"gutenberg\"",
+             "id": "kzns8sf",
+             "parentId": "nzlvk3h"
+            }
+           ],
+           "attributes": {
+            "data-ome-mobile-nav-panels": ""
+           },
+           "styles": [],
+           "tag": "div",
+           "id": "nzlvk3h",
+           "parentId": "62w2r1v"
+          }
+         ],
+         "attributes": {
+          "data-ome-mobile-nav-content": "",
+          "class": "{props.drawerStyling.contentClass}"
+         },
+         "styles": [],
+         "tag": "div",
+         "id": "62w2r1v",
+         "parentId": "gp6e025"
+        }
+       ],
+       "attributes": {
+        "data-ome-drawer-root": "",
+        "data-ome-drawer-id": "{props.identity.menuId}",
+        "data-ome-state": "closed",
+        "data-ome-direction": "{props.settings.drawerDirection}",
+        "data-ome-dismissible": "{props.settings.dismissible}",
+        "class": "{props.drawerStyling.drawerClass}",
+        "hidden": ""
+       },
+       "styles": [],
+       "tag": "div",
+       "id": "gp6e025",
+       "parentId": "dx09jjn"
+      }
+     ],
+     "attributes": {
+      "data-ome-mobile-nav-root": "",
+      "data-ome-menu-id": "{props.identity.menuId}",
+      "class": "ome-mobile-nav {props.rootStyling.class}"
+     },
+     "styles": [
+      "uj0cb4j"
+     ],
+     "tag": "div",
+     "id": "dx09jjn",
+     "parentId": null
+    }
+   ]
+  }
+ },
+ "styles": [
+  {
+   "id": "ome-drawer-default",
+   "selector": ".ome-drawer-default",
+   "type": "class",
+   "collection": "default",
+   "css": "--ome-drawer-overlay-color: rgba(0, 0, 0, 0.5); --ome-drawer-animation-duration: 250ms; background: var(--body-bg-color, #fff); color: var(--text-color, inherit); padding: var(--space-m, 1.5rem); border-radius: var(--radius, 0.5rem); box-shadow: var(--box-shadow-l, 0 25px 50px -12px rgba(0, 0, 0, 0.25)); transition: transform var(--ome-drawer-animation-duration, 250ms) var(--transition-timing, ease)"
+  },
+  {
+   "id": "ome-drawer-trigger-default",
+   "selector": ".ome-drawer-trigger-default",
+   "type": "class",
+   "collection": "default",
+   "css": "--_border-color: var(--border-color-dark, #d1d5db); --_transition-duration: var(--transition-duration, 180ms); --_transition-easing: var(--transition-timing, ease); padding: var(--btn-padding-block, 0.5rem) var(--btn-padding-inline, 1rem); background: var(--body-bg-color, #fff); color: var(--text-color, inherit); border: var(--border-width, 1px) var(--border-style, solid) var(--_border-color); border-radius: var(--radius, 0.375rem); cursor: pointer; transition: background-color var(--_transition-duration) var(--_transition-easing), border-color var(--_transition-duration) var(--_transition-easing); &:hover { --_border-color: var(--text-dark-muted, #9ca3af); } &:focus-visible { outline: var(--focus-width, 2px) solid var(--focus-color, #6f87ff); outline-offset: var(--focus-offset, 2px); }"
+  },
+  {
+   "id": "ome-drawer-title-default",
+   "selector": ".ome-drawer-title-default",
+   "type": "class",
+   "collection": "default",
+   "css": "font-size: var(--text-l, 1.5rem); font-weight: var(--heading-font-weight, 600); color: var(--heading-color, inherit); line-height: var(--heading-line-height, 1.25)"
+  },
+  {
+   "id": "ome-drawer-description-default",
+   "selector": ".ome-drawer-description-default",
+   "type": "class",
+   "collection": "default",
+   "css": "font-size: var(--text-m, 1rem); color: var(--text-color, inherit)"
+  },
+  {
+   "id": "ome-drawer-close-default",
+   "selector": ".ome-drawer-close-default",
+   "type": "class",
+   "collection": "default",
+   "css": "--_padding: calc(var(--space-s, 1rem) / 2); --_color: var(--text-color, inherit); --_transition-duration: var(--transition-duration, 180ms); --_transition-easing: var(--transition-timing, ease); padding: calc( var(--space-s, 1rem) / 2); background: transparent; color: var(--_color); border: none; border-radius: 0; appearance: none; -webkit-appearance: none; cursor: pointer; transition: background-color var(--_transition-duration) var(--_transition-easing), opacity var(--_transition-duration) var(--_transition-easing); &:hover { opacity: 0.8; } &:focus-visible { outline: var(--focus-width, 2px) solid var(--focus-color, #6f87ff); outline-offset: var(--focus-offset, 2px); }"
+  },
+  {
+   "id": "ome-drawer__authored-root",
+   "selector": ":where([data-ome-drawer-root])",
+   "type": "custom",
+   "collection": "default",
+   "css": "display: block; &[hidden] { display: none; }"
+  },
+  {
+   "id": "ome-drawer__host",
+   "selector": ":where([data-ome-drawer-host])",
+   "type": "custom",
+   "collection": "default",
+   "css": "position: fixed; inset: 0; z-index: 9999; display: none; &[data-ome-state=\"open\"] { display: block; } & [data-ome-drawer-host-overlay] { position: absolute; inset: 0; background: var(--ome-drawer-overlay-color, rgba(0, 0, 0, 0.5)); opacity: 0; transition: opacity var(--ome-drawer-animation-duration, 250ms) ease; } &[data-ome-state=\"open\"] [data-ome-drawer-host-overlay] { opacity: 1; } [data-ome-drawer-host-content] { position: absolute; pointer-events: none; display: flex; flex-direction: column; overflow: auto; } [data-ome-drawer-host-content] > [data-ome-drawer-root] { pointer-events: auto; transition: transform var(--ome-drawer-animation-duration, 250ms) ease; } [data-ome-drawer-host-handle] { display: none; } &[data-ome-direction=\"bottom\"] [data-ome-drawer-host-handle] { display: block; } &[data-ome-direction=\"bottom\"] [data-ome-drawer-host-content] { left: 0; right: 0; bottom: 0; max-height: 90vh; } &[data-ome-direction=\"top\"] [data-ome-drawer-host-content] { left: 0; right: 0; top: 0; max-height: 90vh; } &[data-ome-direction=\"right\"] [data-ome-drawer-host-content] { top: 0; right: 0; bottom: 0; max-width: 90vw; } &[data-ome-direction=\"left\"] [data-ome-drawer-host-content] { top: 0; left: 0; bottom: 0; max-width: 90vw; }"
+  },
+  {
+   "id": "ome-drawer__controls-disabled",
+   "selector": ":where([data-ome-drawer-trigger]),\n:where([data-ome-drawer-close])",
+   "type": "custom",
+   "collection": "default",
+   "css": "&[data-ome-disabled=\"true\"] { pointer-events: none; }"
+  },
+  {
+   "id": "ome-drawer__page",
+   "selector": "html",
+   "type": "tag",
+   "collection": "default",
+   "css": "&:has([data-ome-drawer-host][data-ome-state=\"open\"]) { scrollbar-gutter: stable; }"
+  },
+  {
+   "id": "ome-nav-menu-default",
+   "selector": ".ome-nav-menu-default",
+   "type": "class",
+   "collection": "default",
+   "css": "--_motion-distance: 20%"
+  },
+  {
+   "id": "ome-nav-menu-default__viewport",
+   "selector": ".ome-nav-menu-default__viewport",
+   "type": "class",
+   "collection": "default",
+   "css": "--_transition-duration: var(--transition-duration, 150ms); --_transition-timing: var(--transition-timing, ease)"
+  },
+  {
+   "id": "ome-nav-menu-base",
+   "selector": ":where([data-ome-nav-menu-root])",
+   "type": "custom",
+   "collection": "default",
+   "css": "position: relative; > [data-ome-nav-menu-list] { display: flex; list-style: none; margin: 0; padding: 0; } &[data-ome-orientation=\"vertical\"] > [data-ome-nav-menu-list] { flex-direction: column; } > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] { position: relative; } & [data-ome-nav-menu-content][hidden] { display: none !important; } &:not([data-ome-use-animated-menu=\"true\"]) > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] > [data-ome-nav-menu-content] { position: absolute; top: 100%; left: 0; z-index: 100; } &[data-ome-orientation=\"vertical\"]:not([data-ome-use-animated-menu=\"true\"]) > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] > [data-ome-nav-menu-content] { top: 0; left: 100%; } &:not([data-ome-use-animated-menu=\"true\"]) > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] > [data-ome-nav-menu-content][data-ome-state=\"closed\"] { visibility: hidden; } &:not([data-ome-use-animated-menu=\"true\"]) > [data-ome-nav-menu-list] > [data-ome-nav-menu-item] > [data-ome-nav-menu-content][data-ome-state=\"open\"] { visibility: visible; } > [data-ome-nav-menu-viewport] { display: none; } > [data-ome-nav-menu-viewport][data-ome-animated=\"true\"] { display: block; } > [data-ome-nav-menu-viewport][data-ome-preview=\"true\"] { display: block; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport] { position: absolute; left: 0; top: 100%; z-index: 100; overflow: hidden; width: var(--ome-nav-menu-viewport-width, 100%); height: var(--ome-nav-menu-viewport-height, 0px); transform: translateX(var(--ome-nav-menu-viewport-offset-x, 0px)); transition: height var(--_transition-duration, var(--transition-duration, 150ms)) var(--_transition-timing, var(--transition-timing, ease)), transform var(--_transition-duration, var(--transition-duration, 150ms)) var(--_transition-timing, var(--transition-timing, ease)); } &[data-ome-preview-viewport=\"true\"] > [data-ome-nav-menu-viewport] { position: absolute; left: 0; top: 100%; z-index: 100; overflow: hidden; width: var(--ome-nav-menu-viewport-width, 100%); height: var(--ome-nav-menu-viewport-height, 0px); transform: translateX(var(--ome-nav-menu-viewport-offset-x, 0px)); transition: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-state=\"open\"], &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-state=\"closing\"] { visibility: visible; } &[data-ome-preview-viewport=\"true\"] > [data-ome-nav-menu-viewport][data-ome-state=\"open\"] { visibility: visible; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-state=\"closed\"] { --ome-nav-menu-viewport-height: 0px; visibility: hidden; pointer-events: none; } &[data-ome-preview-viewport=\"true\"] > [data-ome-nav-menu-viewport][data-ome-state=\"closed\"] { --ome-nav-menu-viewport-height: 0px; visibility: hidden; pointer-events: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-state=\"closing\"] { pointer-events: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content] { width: 100%; overflow: hidden; } &[data-ome-preview-viewport=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content] { width: 100%; overflow: hidden; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content] > [data-ome-nav-menu-motion-layer] { transform: translateX(0); will-change: transform; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content] { position: absolute; top: 0; left: 0; z-index: 1; visibility: hidden; opacity: 0; transform: translateX(0); pointer-events: none; will-change: transform, opacity; transition: opacity 150ms ease, transform 150ms ease; } &[data-ome-preview-viewport=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content] { position: absolute; top: 0; left: 0; z-index: 1; visibility: hidden; opacity: 0; transform: translateX(0); pointer-events: none; will-change: auto; transition: none; animation: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-presence=\"mounted\"] { visibility: visible; opacity: 1; transform: translateX(0); pointer-events: auto; } &[data-ome-preview-viewport=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-presence=\"mounted\"] { visibility: visible; opacity: 1; transform: translateX(0); pointer-events: auto; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-presence=\"unmountSuspended\"] { visibility: visible; opacity: 0; pointer-events: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-motion=\"from-start\"] { animation: ome-nav-menu-enter-from-start 150ms ease; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content][data-ome-motion=\"from-start\"] { animation: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content][data-ome-motion=\"from-start\"] > [data-ome-nav-menu-motion-layer] { animation: ome-nav-menu-enter-from-start 150ms ease; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-motion=\"from-end\"] { animation: ome-nav-menu-enter-from-end 150ms ease; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content][data-ome-motion=\"from-end\"] { animation: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content][data-ome-motion=\"from-end\"] > [data-ome-nav-menu-motion-layer] { animation: ome-nav-menu-enter-from-end 150ms ease; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-motion=\"to-start\"] { animation: ome-nav-menu-exit-to-start 150ms ease; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content][data-ome-motion=\"to-start\"] { animation: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content][data-ome-motion=\"to-start\"] > [data-ome-nav-menu-motion-layer] { animation: ome-nav-menu-exit-to-start 150ms ease; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport] > [data-ome-nav-menu-content][data-ome-motion=\"to-end\"] { animation: ome-nav-menu-exit-to-end 150ms ease; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content][data-ome-motion=\"to-end\"] { animation: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport][data-ome-full-width=\"true\"] > [data-ome-nav-menu-content][data-ome-motion=\"to-end\"] > [data-ome-nav-menu-motion-layer] { animation: ome-nav-menu-exit-to-end 150ms ease; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport]:not([data-ome-full-width=\"true\"]) > [data-ome-nav-menu-content][data-ome-motion] { animation: none; } &[data-ome-use-animated-menu=\"true\"] > [data-ome-nav-menu-viewport]:not([data-ome-full-width=\"true\"]) > [data-ome-nav-menu-content] { transition: none; } & [data-ome-nav-menu-trigger-chevron] { transition: transform var(--transition-duration, 250ms) ease; } & [data-ome-nav-menu-trigger][data-ome-state=\"open\"] [data-ome-nav-menu-trigger-chevron] { transform: rotate(180deg); }"
+  },
+  {
+   "id": "ome-nav-menu-default__list",
+   "selector": ".ome-nav-menu-default__list",
+   "type": "class",
+   "collection": "default",
+   "css": "justify-content: flex-start; align-items: stretch; gap: 0"
+  },
+  {
+   "id": "ome-nav-menu-default__item",
+   "selector": ".ome-nav-menu-default__item",
+   "type": "class",
+   "collection": "default",
+   "css": "min-inline-size: 0"
+  },
+  {
+   "id": "ome-nav-menu-default__trigger",
+   "selector": ".ome-nav-menu-default__trigger",
+   "type": "class",
+   "collection": "default",
+   "css": "cursor: pointer; background: transparent; border: none; display: inline-flex; align-items: center; gap: var(--space-xs, 0.25rem); &[data-ome-disabled=\"true\"] { cursor: not-allowed; }"
+  },
+  {
+   "id": "ome-nav-menu-default__content",
+   "selector": ".ome-nav-menu-default__content",
+   "type": "class",
+   "collection": "default",
+   "css": "inline-size: max-content; max-inline-size: none; display: flex; flex-direction: column"
+  },
+  {
+   "id": "ome-mobile-nav-default",
+   "selector": ".ome-mobile-nav-default",
+   "type": "class",
+   "collection": "default",
+   "css": "color: var(--text-dark, inherit)"
+  },
+  {
+   "id": "ome-mobile-nav-default__trigger",
+   "selector": ".ome-mobile-nav-default__trigger",
+   "type": "class",
+   "collection": "default",
+   "css": "--_padding: var(--space-2xs, 0.5rem); --_background: transparent; --_color: inherit; --_border-width: 0; --_border-style: solid; --_border-color: transparent; --_border-radius: var(--radius, 0.5rem); --_target-size: 44px; display: inline-flex; align-items: center; justify-content: center; min-width: var(--_target-size); min-height: var(--_target-size); padding: var(--_padding); background: var(--_background); color: var(--_color); border: var(--_border-width) var(--_border-style) var(--_border-color); border-radius: var(--_border-radius); cursor: pointer"
+  },
+  {
+   "id": "ome-mobile-nav-default__drawer",
+   "selector": ".ome-mobile-nav-default__drawer",
+   "type": "class",
+   "collection": "default",
+   "css": "--ome-drawer-overlay-color: rgba(0, 0, 0, 0.5); --ome-drawer-animation-duration: 250ms; background: var(--body-bg-color, #fff); color: var(--text-color, inherit); box-shadow: var(--box-shadow-l, 0 25px 50px -12px rgba(0, 0, 0, 0.25))"
+  },
+  {
+   "id": "ome-mobile-nav-default__header",
+   "selector": ".ome-mobile-nav-default__header",
+   "type": "class",
+   "collection": "default",
+   "css": "--_padding-block: var(--space-2xs, 0.5rem); --_padding-inline: var(--space-s, 1rem); --_border-width: 0 0 1px 0; --_border-style: solid; --_border-color: var(--border-light, #e5e7eb); display: flex; align-items: center; justify-content: space-between; gap: var(--space-xs, 0.75rem); padding: var(--_padding-block) var(--_padding-inline); border-width: var(--_border-width); border-style: var(--_border-style); border-color: var(--_border-color)"
+  },
+  {
+   "id": "ome-mobile-nav-default__content",
+   "selector": ".ome-mobile-nav-default__content",
+   "type": "class",
+   "collection": "default",
+   "css": "--_min-width: 280px; --_min-height: 100dvh; --_background: var(--body-bg-color, #fff); --_color: inherit; --_panel-background: var(--body-bg-color, #fff); --_panel-transition-duration: var(--transition-duration, 250ms); --_panel-transition-timing: var(--transition-timing, ease)"
+  },
+  {
+   "id": "ome-mobile-nav-default__back",
+   "selector": ".ome-mobile-nav-default__back",
+   "type": "class",
+   "collection": "default",
+   "css": "--_gap: var(--space-3xs, 0.375rem); --_padding: var(--space-2xs, 0.5rem); --_background: transparent; --_color: inherit; --_border-width: 0; --_border-style: solid; --_border-color: transparent; --_border-radius: var(--radius, 0.5rem); --_target-size: 44px; display: inline-flex; align-items: center; gap: var(--_gap); min-width: var(--_target-size); min-height: var(--_target-size); padding: var(--_padding); background: var(--_background); color: var(--_color); border: var(--_border-width) var(--_border-style) var(--_border-color); border-radius: var(--_border-radius); cursor: pointer; font: inherit"
+  },
+  {
+   "id": "ome-mobile-nav-default__close",
+   "selector": ".ome-mobile-nav-default__close",
+   "type": "class",
+   "collection": "default",
+   "css": "--_padding: var(--space-2xs, 0.5rem); --_background: transparent; --_color: inherit; --_border-width: 0; --_border-style: solid; --_border-color: transparent; --_border-radius: var(--radius, 0.5rem); --_target-size: 44px; display: inline-flex; align-items: center; justify-content: center; min-width: var(--_target-size); min-height: var(--_target-size); margin-inline-start: auto; padding: var(--_padding); background: var(--_background); color: var(--_color); border: var(--_border-width) var(--_border-style) var(--_border-color); border-radius: var(--_border-radius); cursor: pointer"
+  },
+  {
+   "id": "ome-mobile-nav-default__list",
+   "selector": ".ome-mobile-nav-default__list",
+   "type": "class",
+   "collection": "default",
+   "css": "display: grid; gap: 0"
+  },
+  {
+   "id": "ome-mobile-nav-default__item",
+   "selector": ".ome-mobile-nav-default__item",
+   "type": "class",
+   "collection": "default",
+   "css": "display: flex; align-items: stretch; gap: 0"
+  },
+  {
+   "id": "ome-mobile-nav-default__link",
+   "selector": ".ome-mobile-nav-default__link",
+   "type": "class",
+   "collection": "default",
+   "css": "--_padding-block: var(--space-xs, 0.75rem); --_padding-inline: var(--space-s, 1rem); --_color: inherit; --_font-size: var(--text-m, 1rem); --_min-height: 44px; --_border-width: 0 0 1px 0; --_border-style: solid; --_border-color: var(--border-light, #e5e7eb); display: flex; align-items: center; width: 100%; min-height: var(--_min-height); padding: var(--_padding-block) var(--_padding-inline); color: var(--_color); font-size: var(--_font-size); text-decoration: none; border-width: var(--_border-width); border-style: var(--_border-style); border-color: var(--_border-color)"
+  },
+  {
+   "id": "ome-mobile-nav-default__submenu-trigger",
+   "selector": ".ome-mobile-nav-default__submenu-trigger",
+   "type": "class",
+   "collection": "default",
+   "css": "--_padding-block: var(--space-xs, 0.75rem); --_padding-inline: var(--space-s, 1rem); --_background: transparent; --_color: inherit; --_font-size: var(--text-m, 1rem); --_min-height: 44px; --_border-width: 0 0 1px 0; --_border-style: solid; --_border-color: var(--border-light, #e5e7eb); display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: var(--_min-height); padding: var(--_padding-block) var(--_padding-inline); background: var(--_background); color: var(--_color); font: inherit; font-size: var(--_font-size); text-align: start; border-width: var(--_border-width); border-style: var(--_border-style); border-color: var(--_border-color); cursor: pointer"
+  },
+  {
+   "id": "ome-mobile-nav-default__next-icon",
+   "selector": ".ome-mobile-nav-default__next-icon",
+   "type": "class",
+   "collection": "default",
+   "css": "--_size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: var(--_size); height: var(--_size); flex-shrink: 0"
+  },
+  {
+   "id": "ome-mobile-nav-default__before",
+   "selector": ".ome-mobile-nav-default__before",
+   "type": "class",
+   "collection": "default",
+   "css": "--_padding-block: var(--space-xs, 0.75rem); --_padding-inline: var(--space-s, 1rem); padding: var(--_padding-block) var(--_padding-inline)"
+  },
+  {
+   "id": "ome-mobile-nav-default__after",
+   "selector": ".ome-mobile-nav-default__after",
+   "type": "class",
+   "collection": "default",
+   "css": "--_padding-block: var(--space-xs, 0.75rem); --_padding-inline: var(--space-s, 1rem); padding: var(--_padding-block) var(--_padding-inline)"
+  },
+  {
+   "id": "ome-mobile-nav-root",
+   "selector": ":where([data-ome-mobile-nav-root])",
+   "type": "custom",
+   "collection": "default",
+   "css": "display: contents"
+  },
+  {
+   "id": "ome-mobile-nav-drawer",
+   "selector": ":where([data-ome-drawer-root][data-ome-drawer-id])",
+   "type": "custom",
+   "collection": "default",
+   "css": "& [data-ome-mobile-nav-content] { display: flex; flex-direction: column; min-width: var(--_min-width, 280px); min-height: var(--_min-height, 100dvh); background: var(--_background, var(--body-bg-color, #fff)); color: var(--_color, inherit); } & [data-ome-mobile-nav-panels] { position: relative; display: flex; flex: 1; flex-direction: column; overflow: hidden; } & [data-ome-mobile-nav-panels] > [data-ome-mobile-nav-panel] { position: absolute; inset: 0; width: 100%; overflow-y: auto; background: var(--_panel-background, var(--body-bg-color, #fff)); transition: transform var( --_panel-transition-duration, var(--transition-duration, 250ms) ) var(--_panel-transition-timing, var(--transition-timing, ease)), opacity var( --_panel-transition-duration, var(--transition-duration, 250ms) ) var(--_panel-transition-timing, var(--transition-timing, ease)); } & [data-ome-mobile-nav-list] { list-style: none; margin: 0; padding: 0; } & [data-ome-mobile-nav-item] { list-style: none; margin: 0; padding: 0; } & [data-ome-mobile-nav-item][data-ome-mobile-nav-item-type=\"link-branch\"] { display: grid; grid-template-columns: minmax(0, 1fr) auto; } & [data-ome-mobile-nav-item][data-ome-mobile-nav-item-type=\"link-branch\"] > [data-ome-mobile-nav-link] { min-width: 0; } & [data-ome-mobile-nav-item][data-ome-mobile-nav-item-type=\"link-branch\"] > [data-ome-mobile-nav-submenu-trigger] { width: auto; min-width: 44px; justify-content: center; } & [data-ome-mobile-nav-back][hidden] { display: none; } & [data-ome-mobile-nav-sr-label] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; } & [data-ome-mobile-nav-template] { display: none; }"
+  },
+  {
+   "id": "ome-mobile-nav-preview",
+   "selector": ":where([data-ome-mobile-nav-root]) [data-ome-mobile-nav-static-preview]",
+   "type": "custom",
+   "collection": "default",
+   "css": "display: flex; flex-direction: column; gap: var(--space-s, 1rem)"
+  },
+  {
+   "id": "ome-mobile-nav-preview-panel",
+   "selector": ":where([data-ome-mobile-nav-root])\n\t[data-ome-mobile-nav-static-preview]\n\t> [data-ome-mobile-nav-panel]",
+   "type": "custom",
+   "collection": "default",
+   "css": "position: static; inset: auto; width: 100%; transform: none; opacity: 1; background: var(--_panel-background, var(--body-bg-color, #fff))"
+  },
+  {
+   "id": "nyywu5h",
+   "selector": ".ome-drawer__description",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "4i6tl4o",
+   "selector": ".ome-nav-menu__viewport",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "1bfgwq9",
+   "selector": ".ome-nav-menu",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "6sx4edd",
+   "selector": ".ome-nav-menu__list",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "ft91ow7",
+   "selector": ".ome-nav-menu__item",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "wrp3p90",
+   "selector": ".ome-nav-menu__trigger",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "io73bjc",
+   "selector": ".ome-nav-menu__content",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "uj0cb4j",
+   "selector": ".ome-mobile-nav",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "f8iqt6m",
+   "selector": ".ome-drawer",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "6awf2r3",
+   "selector": ".ome-drawer__trigger",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "zcp4z84",
+   "selector": ".ome-drawer__close",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  },
+  {
+   "id": "tjahseh",
+   "selector": ".ome-drawer__title",
+   "type": "class",
+   "collection": "default",
+   "css": ""
+  }
+ ]
+}

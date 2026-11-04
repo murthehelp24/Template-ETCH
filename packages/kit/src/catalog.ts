@@ -1,5 +1,8 @@
 /** Every template the kit builds, in the build order of _build/build_all.py (filled in by Tasks 5–9). */
 import type { Payload } from "./etch/lib";
+import * as ome from "./headers/ome";
+import * as omeVariants from "./headers/omeVariants";
+import * as menuBuilder from "./headers/menuBuilder";
 import * as footer from "./footers/footer";
 import * as footerVariants from "./footers/footerVariants";
 import * as sections from "./sections/sections";
@@ -29,6 +32,11 @@ function group(dir: string, names: string[], build: () => Record<string, Payload
 }
 
 export const catalog: CatalogEntry[] = [
+  // build_header_ome.py, build_header_variants.py (reads the header just built), build_header_menubuilder.py
+  { path: "etch-header/site-header-ohmyetch.etch.txt", build: () => ome.build() },
+  ...group("etch-header", ["site-header-ohmyetch-light", "site-header-ohmyetch-center", "site-header-ohmyetch-topbar",
+    "site-header-ohmyetch-floating", "site-header-ohmyetch-right"], () => omeVariants.build(ome.build())),
+  { path: "etch-header/site-header.etch.txt", build: () => menuBuilder.build() },
   // build_footer.py, then build_footer_variants.py (which reads the footer just built)
   { path: "etch-footer/main-footer.etch.txt", build: () => footer.build() },
   ...group("etch-footer", ["main-footer-light", "main-footer-center", "main-footer-map", "main-footer-compact"],
