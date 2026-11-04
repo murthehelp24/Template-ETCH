@@ -43,3 +43,8 @@ export function b64encode(s: string): string {
 export function b64decode(s: string): string {
   return Buffer.from(s, "base64").toString("utf8");
 }
+
+/** Python's str.replace(old, new): every occurrence, and "$" in the new text is plain text (unlike String.replace). */
+export function pyReplace(s: string, old: string, replacement: string): string {
+  return s.split(old).join(replacement);
+}

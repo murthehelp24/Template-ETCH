@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { b64decode, b64encode, formatG, pyDumps } from "../src/etch/pycompat";
+import { b64decode, b64encode, formatG, pyDumps, pyReplace } from "../src/etch/pycompat";
 
 describe("formatG — Python f'{x:g}'", () => {
   it.each([
@@ -42,5 +42,11 @@ describe("base64 — utf-8 like base64.b64encode(s.encode())", () => {
   it("round-trips Thai text", () => {
     expect(b64encode("ไทย")).toBe("4LmE4LiX4Lii");
     expect(b64decode("4LmE4LiX4Lii")).toBe("ไทย");
+  });
+});
+
+describe("pyReplace — str.replace", () => {
+  it("replaces every occurrence and keeps $ as text", () => {
+    expect(pyReplace("a-b-a", "a", "$&x")).toBe("$&x-b-$&x");
   });
 });

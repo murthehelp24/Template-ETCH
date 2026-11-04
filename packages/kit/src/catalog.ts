@@ -2,6 +2,7 @@
 import type { Payload } from "./etch/lib";
 import * as sections from "./sections/sections";
 import * as sectionsMore from "./sections/sectionsMore";
+import * as heroMore from "./sections/heroMore";
 
 export interface CatalogEntry {
   /** output path relative to the kit root, e.g. "etch-sections/main-faq.etch.txt" */
@@ -28,4 +29,7 @@ export const catalog: CatalogEntry[] = [
   // build_sections_more.py
   ...group("etch-sections", ["main-hero", "main-page-hero", "main-features", "main-split", "main-stats", "main-steps",
     "main-reviews", "main-404"], sectionsMore.build),
+  // build_hero_more.py
+  ...group("etch-sections", ["main-hero-image", "main-hero-collage", "main-hero-panel", "main-hero-gradient"],
+    heroMore.build),
 ];
