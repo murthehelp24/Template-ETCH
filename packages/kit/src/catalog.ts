@@ -5,6 +5,7 @@ import * as sectionsMore from "./sections/sectionsMore";
 import * as heroMore from "./sections/heroMore";
 import * as featuresMore from "./sections/featuresMore";
 import * as contentMore from "./sections/contentMore";
+import * as faqCtaMore from "./sections/faqCtaMore";
 
 export interface CatalogEntry {
   /** output path relative to the kit root, e.g. "etch-sections/main-faq.etch.txt" */
@@ -42,4 +43,7 @@ export const catalog: CatalogEntry[] = [
     "main-split-full", "main-stats-light", "main-stats-cards", "main-stats-split", "main-stats-image",
     "main-steps-line", "main-steps-vertical", "main-steps-cards", "main-steps-band", "main-reviews-featured",
     "main-reviews-band", "main-reviews-split"], contentMore.build),
+  // build_faq_cta_more.py
+  ...group("etch-sections", ["main-faq-split", "main-faq-cards", "main-faq-minimal", "main-faq-image",
+    "main-cta-form", "main-cta-form-band", "main-cta-form-image", "main-cta-form-map"], faqCtaMore.build),
 ];
