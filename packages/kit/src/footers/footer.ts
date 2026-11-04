@@ -1,0 +1,147 @@
+/** Paste-ready, project-agnostic footer (MainFooter component). Port of _build/build_footer.py.
+ * Colours come from kit COLORS, social icons from kit socialList. */
+import { type Attrs, type Block, type Payload, block, cond, el, img, nowIso, prop, style, svg, text } from "../etch/lib";
+import { BASE, SOCIAL_PROPS, SOCIAL_STYLES, icon, kitPayload, socialList } from "../kit";
+
+const COMP_ID = 990001; // any id: Etch maps it to the target's component id by key on paste
+
+const ROOT_CSS = `--main-social-color: var(--main-on-primary);
+  --main-footer-logo-width: 16rem;
+
+  padding-block-start: var(--section-space-s);
+  padding-inline: var(--gutter);
+  background-color: var(--main-primary);
+  color: var(--main-on-primary);`;
+
+const GRID_CSS = `display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--grid-gap);
+  padding-block-end: var(--space-l);
+
+  @media (width <= 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width <= 768px) {
+    grid-template-columns: 1fr;
+  }`;
+
+const LINK_CSS = `display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-s);
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--main-accent);
+  }`;
+
+const styles = () => ({
+  "etch-container-style": BASE["etch-container-style"]!,
+  ...SOCIAL_STYLES,
+  "mf-root": style(".main-footer", ROOT_CSS),
+  "mf-container": style(".main-footer__container", "gap: var(--container-gap);"),
+  "mf-grid": style(".main-footer__grid", GRID_CSS),
+  "mf-col": style(".main-footer__col", "display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n"
+    + "  gap: var(--space-s);"),
+  "mf-brand": style(".main-footer__brand", "max-inline-size: 44rem;\n\n  @media (width <= 992px) {\n"
+    + "    grid-column: 1 / -1;\n  }"),
+  "mf-logo-img": style(".main-footer__logo-img", "display: block;\n  inline-size: var(--main-footer-logo-width);\n"
+    + "  block-size: auto;"),
+  "mf-text": style(".main-footer__text", "font-style: normal;\n  font-size: var(--text-s);\n"
+    + "  color: var(--main-on-primary-muted);\n  white-space: pre-line;"),
+  "mf-title": style(".main-footer__title", "font-size: var(--text-m);\n  font-weight: 600;\n  color: inherit;"),
+  "mf-list": style(".main-footer__list", "display: flex;\n  flex-direction: column;\n  gap: var(--space-xs);\n"
+    + "  margin: 0;\n  padding: 0;\n  list-style: none;"),
+  "mf-link": style(".main-footer__link", LINK_CSS),
+  "mf-icon": style(".main-footer__icon", "display: block;\n  inline-size: 1.25em;\n  block-size: 1.25em;\n"
+    + "  flex-shrink: 0;"),
+  "mf-bottom": style(".main-footer__bottom", `margin-block-start: var(--space-l);
+  margin-inline: calc(var(--gutter) * -1);
+  padding: var(--space-xs) var(--gutter);
+  border-block-start: 1px solid var(--main-line-on-primary);
+  font-size: var(--text-s);
+  text-align: center;
+  color: var(--main-on-primary-muted);`),
+});
+
+function linkItem(label: string, href: string): Block {
+  return el("Item", "li", {}, null, [
+    el("Link", "a", { class: "main-footer__link", href }, ["mf-link"], [text(label)])]);
+}
+
+function linkCol(name: string, title: string, links: [string, string][]): Block {
+  return el(name, "nav", { class: "main-footer__col", "aria-label": title }, ["mf-col"], [
+    el("Title", "h2", { class: "main-footer__title" }, ["mf-title"], [text(title)]),
+    el("List", "ul", { class: "main-footer__list" }, ["mf-list"], links.map(([l, h]) => linkItem(l, h))),
+  ]);
+}
+
+function iconLink(name: string, href: string, iconName: string, label: string, extra: Attrs | null = null): Block {
+  const a = { class: "main-footer__link", href, ...(extra || {}) };
+  return el(name, "a", a, ["mf-link"], [svg(`${name} icon`, icon(iconName), "main-footer__icon", ["mf-icon"]),
+    text(label)]);
+}
+
+function blocks(): Block[] {
+  return [el("Main Footer", "footer", { class: "main-footer" }, ["mf-root"], [
+    el("Container", "div", { "data-etch-element": "container", class: "main-footer__container" },
+      ["etch-container-style", "mf-container"], [
+        el("Grid", "div", { class: "main-footer__grid" }, ["mf-grid"], [
+          el("Brand", "div", { class: "main-footer__col main-footer__brand" }, ["mf-col", "mf-brand"], [
+            el("Logo", "a", { href: "/", "aria-label": "{site.name}" }, null, [
+              img("Logo Image", { class: "main-footer__logo-img", mediaId: "", alt: "{site.name}",
+                loading: "lazy" }, ["mf-logo-img"])]),
+            el("Description", "p", { class: "main-footer__text" }, ["mf-text"], [text("{props.description}")]),
+          ]),
+          linkCol("Menu", "Menu", [["Home", "/"], ["About", "/about/"], ["Blog", "/blog/"],
+            ["Contact", "/contact/"], ["Privacy Policy", "/privacy-policy/"]]),
+          linkCol("Services", "Services", [["Service 1", "/services/service-1/"],
+            ["Service 2", "/services/service-2/"],
+            ["Service 3", "/services/service-3/"],
+            ["Service 4", "/services/service-4/"]]),
+          el("Contact", "div", { class: "main-footer__col" }, ["mf-col"], [
+            el("Title", "h2", { class: "main-footer__title" }, ["mf-title"], [text("{props.contactTitle}")]),
+            cond("If address", "props.address", el("Address", "address", { class: "main-footer__text" },
+              ["mf-text"], [text("{props.address}")])),
+            cond("If hours", "props.hours", el("Hours", "p", { class: "main-footer__text" }, ["mf-text"],
+              [text("{props.hours}")])),
+            cond("If phone", "props.phone", iconLink("Phone", "tel:{props.phone}", "phone", "{props.phone}")),
+            cond("If email", "props.email", iconLink("Email", "mailto:{props.email}", "email",
+              "{props.email}")),
+            cond("If map", "props.mapUrl", iconLink("Map", "{props.mapUrl}", "address", "{props.mapLabel}",
+              { target: "_blank", rel: "noopener" })),
+            socialList(),
+          ]),
+        ]),
+      ]),
+    el("Bottom", "div", { class: "main-footer__bottom" }, ["mf-bottom"], [
+      el("Copyright", "p", {}, null, [
+        text('Copyright © {site.currentDate.dateFormat("Y")} {site.name}. {props.copyrightNote}')])]),
+  ])];
+}
+
+const properties = () => [
+  prop("Description", "description", "Short description of the business — one or two sentences."),
+  prop("Contact Title", "contactTitle", "Contact"),
+  prop("Address", "address", "123 Example Road, Bangkok 10110", "Line breaks are kept"),
+  prop("Opening Hours", "hours", "Mon–Sat 09:00–18:00"),
+  prop("Phone", "phone", "02-000-0000", "Empty = hidden"),
+  prop("Email", "email", "hello@example.com", "Empty = hidden"),
+  prop("Map URL", "mapUrl", "https://maps.google.com/", "Empty = hidden"),
+  prop("Map Label", "mapLabel", "View on Google Maps"),
+  ...SOCIAL_PROPS,
+  prop("Copyright Note", "copyrightNote", "All rights reserved."),
+];
+
+/** main-footer.etch.txt */
+export function build(now: () => string = nowIso): Payload {
+  const component = { id: COMP_ID, legacyId: "", name: "Main Footer", key: "MainFooter",
+    description: "Project-agnostic site footer. Edit the property "
+      + "defaults here so every template's footer updates at once.",
+    blocks: blocks(), properties: properties() };
+  const instance = block("etch/component", { ref: COMP_ID, attributes: {} });
+  return kitPayload(instance, styles(), { [String(COMP_ID)]: component }, null, now);
+}

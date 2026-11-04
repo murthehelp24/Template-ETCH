@@ -1,5 +1,7 @@
 /** Every template the kit builds, in the build order of _build/build_all.py (filled in by Tasks 5–9). */
 import type { Payload } from "./etch/lib";
+import * as footer from "./footers/footer";
+import * as footerVariants from "./footers/footerVariants";
 import * as sections from "./sections/sections";
 import * as sectionsMore from "./sections/sectionsMore";
 import * as heroMore from "./sections/heroMore";
@@ -27,6 +29,10 @@ function group(dir: string, names: string[], build: () => Record<string, Payload
 }
 
 export const catalog: CatalogEntry[] = [
+  // build_footer.py, then build_footer_variants.py (which reads the footer just built)
+  { path: "etch-footer/main-footer.etch.txt", build: () => footer.build() },
+  ...group("etch-footer", ["main-footer-light", "main-footer-center", "main-footer-map", "main-footer-compact"],
+    () => footerVariants.build(footer.build())),
   // build_sections.py
   ...group("etch-sections", ["main-faq", "main-cta", "main-blog", "main-single-post", "main-contact"], sections.build),
   // build_sections_more.py
