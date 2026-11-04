@@ -1,0 +1,3076 @@
+{
+ "timestamp": "2026-01-01T00:00:00.000Z",
+ "icons": {
+  "address": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>",
+  "email": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><path d=\"m22 7-10 6L2 7\"/></svg>",
+  "facebook": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M14 8V6.5c0-.7.5-1 1-1h2V2h-3c-3 0-4 2-4 4.5V8H8v3.5h2V22h4V11.5h2.7l.3-3.5H14Z\"/></svg>",
+  "hours": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 6v6l4 2\"/></svg>",
+  "line": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.8c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.5-1.7 2.2-3.3 2.2-5C22.4 6.6 17.9 3 12 3Z\"/></svg>",
+  "line-box": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-4 -4 32 32\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M3 -4h18a7 7 0 0 1 7 7v18a7 7 0 0 1-7 7H3a7 7 0 0 1-7-7V3a7 7 0 0 1 7-7zM19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314\"/></svg>",
+  "line-button": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-4 -4 32 32\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M3 -4h18a7 7 0 0 1 7 7v18a7 7 0 0 1-7 7H3a7 7 0 0 1-7-7V3a7 7 0 0 1 7-7zM19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314\"/></svg>",
+  "phone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z\"/></svg>",
+  "tiktok": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-1 -1 26 26\" fill=\"currentColor\"><path d=\"M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.890-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z\"/></svg>",
+  "x": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z\"/></svg>",
+  "instagram": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><circle cx=\"17.5\" cy=\"6.5\" r=\"0.6\" fill=\"currentColor\"/></svg>",
+  "youtube": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8ZM10 15.2V8.8l5.5 3.2Z\"/></svg>",
+  "check": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6 9 17l-5-5\"/></svg>",
+  "arrow-right": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg>",
+  "star": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9Z\"/></svg>",
+  "quote": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9.5 6C6 7.2 4 9.9 4 13.5V18h6v-6H7c0-2.3 1.2-3.9 3.3-4.6Zm10 0C16 7.2 14 9.9 14 13.5V18h6v-6h-3c0-2.3 1.2-3.9 3.3-4.6Z\"/></svg>",
+  "shield": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z\"/><path d=\"m9 12 2 2 4-4\"/></svg>",
+  "heart": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z\"/></svg>",
+  "users": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"8\" r=\"4\"/><path d=\"M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1\"/><path d=\"M16 4a4 4 0 0 1 0 8\"/><path d=\"M22 21v-1a6 6 0 0 0-4-5.6\"/></svg>",
+  "award": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"9\" r=\"6\"/><path d=\"m8.5 14-1.5 8 5-3 5 3-1.5-8\"/></svg>"
+ },
+ "constants": {
+  "COLORS_CSS": "/* ===== MAIN TEMPLATE COLOURS — change colours here only =====\n     Header, footer and every main-* section use these variables.\n     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */\n  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */\n  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */\n  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */\n  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */\n  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */\n\n  /* derived from the five colours above — no need to edit */\n  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));\n  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);\n  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);\n  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);\n  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);\n  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));\n  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);",
+  "COLORS": {
+   "main-colors": {
+    "type": "custom",
+    "selector": ":where(:root)",
+    "collection": "default",
+    "css": "/* ===== MAIN TEMPLATE COLOURS — change colours here only =====\n     Header, footer and every main-* section use these variables.\n     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */\n  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */\n  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */\n  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */\n  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */\n  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */\n\n  /* derived from the five colours above — no need to edit */\n  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));\n  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);\n  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);\n  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);\n  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);\n  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));\n  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);"
+   }
+  },
+  "BASE": {
+   "etch-section-style": {
+    "type": "element",
+    "selector": ":where([data-etch-element=\"section\"])",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;"
+   },
+   "etch-container-style": {
+    "type": "element",
+    "selector": ":where([data-etch-element=\"container\"])",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  display: flex;\n  flex-direction: column;\n  max-inline-size: var(--content-width, 1366px);\n  align-self: center; margin-inline: auto;"
+   }
+  },
+  "SEC": {
+   "data-etch-element": "section"
+  },
+  "CON": {
+   "data-etch-element": "container"
+  },
+  "HEADING_STYLES": {
+   "mn-heading": {
+    "type": "class",
+    "selector": ".main-heading",
+    "collection": "default",
+    "css": "display: flex;\n  flex-direction: column;\n  gap: var(--space-xs);\n  max-inline-size: to-rem(600px);"
+   },
+   "mn-heading-center": {
+    "type": "class",
+    "selector": ".main-heading--center",
+    "collection": "default",
+    "css": "align-items: center;\n  margin-inline: auto;\n  text-align: center;"
+   },
+   "mn-eyebrow": {
+    "type": "class",
+    "selector": ".main-heading__eyebrow",
+    "collection": "default",
+    "css": "display: flex;\n  align-items: center;\n  gap: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: var(--main-primary);\n\n  &::before {\n    content: \"\";\n    inline-size: to-rem(24px);\n    block-size: 2px;\n    background-color: var(--main-accent);\n  }"
+   },
+   "mn-intro": {
+    "type": "class",
+    "selector": ".main-heading__intro",
+    "collection": "default",
+    "css": "color: var(--main-text-muted);"
+   }
+  },
+  "BAND_STYLES": {
+   "mn-band": {
+    "type": "class",
+    "selector": ".main-band",
+    "collection": "default",
+    "css": "background-color: var(--main-primary);\n  color: var(--main-on-primary);\n\n  :is(h1, h2, h3, h4, h5, h6),\n  .main-heading__eyebrow {\n    color: inherit;\n  }\n\n  .main-heading__intro {\n    color: var(--main-on-primary-muted);\n  }"
+   }
+  },
+  "SOCIAL_STYLES": {
+   "mn-social": {
+    "type": "class",
+    "selector": ".main-social",
+    "collection": "default",
+    "css": "display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: var(--space-xs);\n  margin: 0;\n  padding: 0;\n  list-style: none;"
+   },
+   "mn-social-link": {
+    "type": "class",
+    "selector": ".main-social__link",
+    "collection": "default",
+    "css": "/* colour of the ring + icon; the footer sets --main-social-color */\n  display: grid;\n  place-items: center;\n  inline-size: to-rem(44px);\n  block-size: to-rem(44px);\n  border: 1.5px solid currentColor;\n  border-radius: 50%;\n  color: var(--main-social-color, var(--main-primary));\n  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;\n\n  &:hover,\n  &:focus-visible {\n    background-color: var(--main-accent);\n    border-color: var(--main-accent);\n    color: var(--main-on-primary);\n  }\n\n  @media (prefers-reduced-motion: reduce) {\n    transition: none;\n  }"
+   },
+   "mn-social-icon": {
+    "type": "class",
+    "selector": ".main-social__icon",
+    "collection": "default",
+    "css": "display: block;\n  inline-size: to-rem(20px);\n  block-size: to-rem(20px);"
+   }
+  },
+  "SOCIALS": [
+   [
+    "line",
+    "LINE"
+   ],
+   [
+    "facebook",
+    "Facebook"
+   ],
+   [
+    "instagram",
+    "Instagram"
+   ],
+   [
+    "tiktok",
+    "TikTok"
+   ],
+   [
+    "youtube",
+    "YouTube"
+   ]
+  ],
+  "SOCIAL_PROPS": [
+   {
+    "name": "LINE URL",
+    "key": "lineUrl",
+    "keyTouched": true,
+    "type": {
+     "primitive": "string"
+    },
+    "default": "https://line.me/R/ti/p/@example",
+    "description": "Empty = hidden"
+   },
+   {
+    "name": "Facebook URL",
+    "key": "facebookUrl",
+    "keyTouched": true,
+    "type": {
+     "primitive": "string"
+    },
+    "default": "https://facebook.com/",
+    "description": "Empty = hidden"
+   },
+   {
+    "name": "Instagram URL",
+    "key": "instagramUrl",
+    "keyTouched": true,
+    "type": {
+     "primitive": "string"
+    },
+    "default": "https://instagram.com/",
+    "description": "Empty = hidden"
+   },
+   {
+    "name": "TikTok URL",
+    "key": "tiktokUrl",
+    "keyTouched": true,
+    "type": {
+     "primitive": "string"
+    },
+    "default": "",
+    "description": "Empty = hidden"
+   },
+   {
+    "name": "YouTube URL",
+    "key": "youtubeUrl",
+    "keyTouched": true,
+    "type": {
+     "primitive": "string"
+    },
+    "default": "",
+    "description": "Empty = hidden"
+   }
+  ],
+  "CARD_STYLES": {
+   "mn-card-grid": {
+    "type": "class",
+    "selector": ".main-card-grid",
+    "collection": "default",
+    "css": "display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: var(--grid-gap);\n  inline-size: 100%;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n\n  @media (width <= 992px) {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n\n  @media (width <= 768px) {\n    grid-template-columns: 1fr;\n  }"
+   },
+   "mn-card": {
+    "type": "class",
+    "selector": ".main-card",
+    "collection": "default",
+    "css": "position: relative;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  border-radius: var(--radius-l);\n  background-color: var(--main-light);\n  box-shadow: 0 to-rem(4px) to-rem(12px) var(--main-shadow);\n  transition: box-shadow 0.25s ease, translate 0.25s ease;\n\n  &:hover {\n    translate: 0 -3px;\n    box-shadow: 0 to-rem(12px) to-rem(28px) var(--main-shadow);\n  }\n\n  @media (prefers-reduced-motion: reduce) {\n    transition: none;\n  }"
+   },
+   "mn-card-media": {
+    "type": "class",
+    "selector": ".main-card__media",
+    "collection": "default",
+    "css": "margin: 0;"
+   },
+   "mn-card-img": {
+    "type": "class",
+    "selector": ".main-card__img",
+    "collection": "default",
+    "css": "inline-size: 100%;\n  block-size: auto;\n  aspect-ratio: 6 / 5;\n  object-fit: cover;"
+   },
+   "mn-card-body": {
+    "type": "class",
+    "selector": ".main-card__body",
+    "collection": "default",
+    "css": "display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: var(--space-xs);\n  padding: var(--space-s) var(--space-m) var(--space-m);"
+   },
+   "mn-pill": {
+    "type": "class",
+    "selector": ".main-pill",
+    "collection": "default",
+    "css": "align-self: flex-start;\n  padding: calc(var(--space-xs) / 2) var(--space-s);\n  border-radius: var(--radius-circle, 999px);\n  background-color: var(--main-primary);\n  color: var(--main-on-primary);\n  font-size: var(--text-xs);\n  font-weight: 500;\n  line-height: 1.6;"
+   },
+   "mn-card-title": {
+    "type": "class",
+    "selector": ".main-card__title",
+    "collection": "default",
+    "css": "font-size: var(--h5);\n  font-weight: 700;\n  line-height: 1.45;\n  color: var(--main-text);"
+   },
+   "mn-card-link": {
+    "type": "class",
+    "selector": ".main-card__link",
+    "collection": "default",
+    "css": "color: inherit;\n  text-decoration: none;"
+   },
+   "acss-clickable-parent": {
+    "type": "class",
+    "selector": ".clickable-parent",
+    "collection": "default",
+    "css": ""
+   },
+   "mn-card-excerpt": {
+    "type": "class",
+    "selector": ".main-card__excerpt",
+    "collection": "default",
+    "css": "display: -webkit-box;\n  overflow: hidden;\n  font-size: var(--text-s);\n  color: var(--main-text-muted);\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;"
+   },
+   "mn-card-more": {
+    "type": "class",
+    "selector": ".main-card__more",
+    "collection": "default",
+    "css": "margin-block-start: auto;\n  padding-block-start: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 700;\n  color: var(--main-primary);"
+   }
+  },
+  "MEDIA_STYLES": {
+   "mn-media-img": {
+    "type": "class",
+    "selector": ".main-media__img",
+    "collection": "default",
+    "css": "/* image ratio: set --main-media-ratio on a parent */\n  display: block;\n  inline-size: 100%;\n  block-size: auto;\n  aspect-ratio: var(--main-media-ratio, 4 / 3);\n  border-radius: var(--radius-m);\n  background-color: var(--main-light-alt);\n  object-fit: cover;"
+   }
+  },
+  "BUTTONS_STYLES": {
+   "mn-buttons": {
+    "type": "class",
+    "selector": ".main-buttons",
+    "collection": "default",
+    "css": "display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: var(--space-s);"
+   }
+  },
+  "CHECKS_STYLES": {
+   "mn-checks": {
+    "type": "class",
+    "selector": ".main-checks",
+    "collection": "default",
+    "css": "display: flex;\n  flex-direction: column;\n  gap: var(--space-xs);\n  margin: 0;\n  padding: 0;\n  list-style: none;"
+   },
+   "mn-checks-item": {
+    "type": "class",
+    "selector": ".main-checks__item",
+    "collection": "default",
+    "css": "display: flex;\n  align-items: flex-start;\n  gap: var(--space-xs);"
+   },
+   "mn-checks-icon": {
+    "type": "class",
+    "selector": ".main-checks__icon",
+    "collection": "default",
+    "css": "flex: none;\n  inline-size: to-rem(24px);\n  block-size: to-rem(24px);\n  padding: calc(var(--space-xs) / 2);\n  border-radius: 50%;\n  background-color: var(--main-accent-soft);\n  color: var(--main-primary);"
+   }
+  }
+ },
+ "calls": [
+  [
+   "icon",
+   [
+    "star"
+   ],
+   {},
+   "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJtMTIgMi41IDIuOSA2IDYuNi45LTQuOCA0LjYgMS4yIDYuNUwxMiAxNy40bC01LjkgMy4xIDEuMi02LjUtNC44LTQuNiA2LjYtLjlaIi8+PC9zdmc+"
+  ],
+  [
+   "heading",
+   [
+    "Eyebrow",
+    "Title"
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Heading"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "main-heading"
+     },
+     "styles": [
+      "mn-heading"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Eyebrow"
+       },
+       "tag": "p",
+       "attributes": {
+        "class": "main-heading__eyebrow"
+       },
+       "styles": [
+        "mn-eyebrow"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "Eyebrow"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Title"
+       },
+       "tag": "h2",
+       "attributes": {}
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "Title"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "heading",
+   [
+    "Eyebrow",
+    "Title",
+    "Intro"
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Heading"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "main-heading"
+     },
+     "styles": [
+      "mn-heading"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Eyebrow"
+       },
+       "tag": "p",
+       "attributes": {
+        "class": "main-heading__eyebrow"
+       },
+       "styles": [
+        "mn-eyebrow"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "Eyebrow"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Title"
+       },
+       "tag": "h2",
+       "attributes": {}
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "Title"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Intro"
+       },
+       "tag": "p",
+       "attributes": {
+        "class": "main-heading__intro"
+       },
+       "styles": [
+        "mn-intro"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "Intro"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "heading",
+   [
+    null,
+    "Only a title",
+    null,
+    "h1"
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Heading"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "main-heading"
+     },
+     "styles": [
+      "mn-heading"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Title"
+       },
+       "tag": "h1",
+       "attributes": {}
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "Only a title"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "heading",
+   [
+    "E",
+    "T",
+    "I"
+   ],
+   {
+    "center": true
+   },
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Heading"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "main-heading main-heading--center"
+     },
+     "styles": [
+      "mn-heading",
+      "mn-heading-center"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Eyebrow"
+       },
+       "tag": "p",
+       "attributes": {
+        "class": "main-heading__eyebrow"
+       },
+       "styles": [
+        "mn-eyebrow"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "E"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Title"
+       },
+       "tag": "h2",
+       "attributes": {}
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "T"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Intro"
+       },
+       "tag": "p",
+       "attributes": {
+        "class": "main-heading__intro"
+       },
+       "styles": [
+        "mn-intro"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "I"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "heading",
+   [
+    "E",
+    "T"
+   ],
+   {
+    "tag": "h3",
+    "center": true
+   },
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Heading"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "main-heading main-heading--center"
+     },
+     "styles": [
+      "mn-heading",
+      "mn-heading-center"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Eyebrow"
+       },
+       "tag": "p",
+       "attributes": {
+        "class": "main-heading__eyebrow"
+       },
+       "styles": [
+        "mn-eyebrow"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "E"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Title"
+       },
+       "tag": "h3",
+       "attributes": {}
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "T"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "social_link",
+   [
+    "LINE",
+    "{props.lineUrl}",
+    "line",
+    "LINE"
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "LINE"
+     },
+     "tag": "a",
+     "attributes": {
+      "class": "main-social__link",
+      "href": "{props.lineUrl}",
+      "aria-label": "LINE",
+      "target": "_blank",
+      "rel": "noopener"
+     },
+     "styles": [
+      "mn-social-link"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/svg",
+      "attrs": {
+       "metadata": {
+        "name": "LINE icon"
+       },
+       "tag": "svg",
+       "attributes": {
+        "class": "main-social__icon",
+        "aria-hidden": "true",
+        "focusable": "false",
+        "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTIgM0M2LjUgMyAyIDYuNiAyIDExYzAgMy45IDMuNSA3LjIgOC4zIDcuOS4zLjEuOC4yLjkuNS4xLjMuMS43IDAgMWwtLjEuOGMwIC4zLS4yIDEgLjkuNiAxLjEtLjUgNi0zLjUgOC4yLTYgMS41LTEuNyAyLjItMy4zIDIuMi01QzIyLjQgNi42IDE3LjkgMyAxMiAzWiIvPjwvc3ZnPg=="
+       },
+       "styles": [
+        "mn-social-icon"
+       ]
+      },
+      "innerBlocks": [],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "social_link",
+   [
+    "Share",
+    "https://x.com/",
+    "x",
+    "X",
+    false
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Share"
+     },
+     "tag": "a",
+     "attributes": {
+      "class": "main-social__link",
+      "href": "https://x.com/",
+      "aria-label": "X"
+     },
+     "styles": [
+      "mn-social-link"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/svg",
+      "attrs": {
+       "metadata": {
+        "name": "Share icon"
+       },
+       "tag": "svg",
+       "attributes": {
+        "class": "main-social__icon",
+        "aria-hidden": "true",
+        "focusable": "false",
+        "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTcuOCAzaDMuMWwtNi44IDcuOEwyMiAyMWgtNi4ybC00LjktNi40TDUuMyAyMUgyLjJsNy4zLTguM0wyIDNoNi40bDQuNCA1LjhMMTcuOCAzWm0tMS4xIDE2LjJoMS43TDcuNCA0LjdINS42bDExLjEgMTQuNVoiLz48L3N2Zz4="
+       },
+       "styles": [
+        "mn-social-icon"
+       ]
+      },
+      "innerBlocks": [],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "social_list",
+   [],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Social"
+     },
+     "tag": "ul",
+     "attributes": {
+      "class": "main-social",
+      "aria-label": "Social media"
+     },
+     "styles": [
+      "mn-social"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If LINE"
+       },
+       "condition": {
+        "leftHand": "props.lineUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.lineUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "LINE"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.lineUrl}",
+            "aria-label": "LINE",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "LINE icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTIgM0M2LjUgMyAyIDYuNiAyIDExYzAgMy45IDMuNSA3LjIgOC4zIDcuOS4zLjEuOC4yLjkuNS4xLjMuMS43IDAgMWwtLjEuOGMwIC4zLS4yIDEgLjkuNiAxLjEtLjUgNi0zLjUgOC4yLTYgMS41LTEuNyAyLjItMy4zIDIuMi01QzIyLjQgNi42IDE3LjkgMyAxMiAzWiIvPjwvc3ZnPg=="
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If Facebook"
+       },
+       "condition": {
+        "leftHand": "props.facebookUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.facebookUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Facebook"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.facebookUrl}",
+            "aria-label": "Facebook",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "Facebook icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTQgOFY2LjVjMC0uNy41LTEgMS0xaDJWMmgtM2MtMyAwLTQgMi00IDQuNVY4SDh2My41aDJWMjJoNFYxMS41aDIuN2wuMy0zLjVIMTRaIi8+PC9zdmc+"
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If Instagram"
+       },
+       "condition": {
+        "leftHand": "props.instagramUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.instagramUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Instagram"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.instagramUrl}",
+            "aria-label": "Instagram",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "Instagram icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjUiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTcuNSIgY3k9IjYuNSIgcj0iMC42IiBmaWxsPSJjdXJyZW50Q29sb3IiLz48L3N2Zz4="
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If TikTok"
+       },
+       "condition": {
+        "leftHand": "props.tiktokUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.tiktokUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "TikTok"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.tiktokUrl}",
+            "aria-label": "TikTok",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "TikTok icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xIC0xIDI2IDI2IiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGQ9Ik0xMi41MjUuMDJjMS4zMS0uMDIgMi42MS0uMDEgMy45MS0uMDIuMDggMS41My42MyAzLjA5IDEuNzUgNC4xNyAxLjEyIDEuMTEgMi43IDEuNjIgNC4yNCAxLjc5djQuMDNjLTEuNDQtLjA1LTIuODkwLS4zNS00LjItLjk3LS41Ny0uMjYtMS4xLS41OS0xLjYyLS45My0uMDEgMi45Mi4wMSA1Ljg0LS4wMiA4Ljc1LS4wOCAxLjQtLjU0IDIuNzktMS4zNSAzLjk0LTEuMzEgMS45Mi0zLjU4IDMuMTctNS45MSAzLjIxLTEuNDMuMDgtMi44Ni0uMzEtNC4wOC0xLjAzLTIuMDItMS4xOS0zLjQ0LTMuMzctMy42NS01LjcxLS4wMi0uNS0uMDMtMS0uMDEtMS40OS4xOC0xLjkgMS4xMi0zLjcyIDIuNTgtNC45NiAxLjY2LTEuNDQgMy45OC0yLjEzIDYuMTUtMS43Mi4wMiAxLjQ4LS4wNCAyLjk2LS4wNCA0LjQ0LS45OS0uMzItMi4xNS0uMjMtMy4wMi4zNy0uNjMuNDEtMS4xMSAxLjA0LTEuMzYgMS43NS0uMjEuNTEtLjE1IDEuMDctLjE0IDEuNjEuMjQgMS42NCAxLjgyIDMuMDIgMy41IDIuODcgMS4xMi0uMDEgMi4xOS0uNjYgMi43Ny0xLjYxLjE5LS4zMy40LS42Ny40MS0xLjA2LjEtMS43OS4wNi0zLjU3LjA3LTUuMzYuMDEtNC4wMy0uMDEtOC4wNS4wMi0xMi4wN3oiLz48L3N2Zz4="
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If YouTube"
+       },
+       "condition": {
+        "leftHand": "props.youtubeUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.youtubeUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "YouTube"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.youtubeUrl}",
+            "aria-label": "YouTube",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "YouTube icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMS42IDcuMmEyLjUgMi41IDAgMCAwLTEuOC0xLjhDMTguMiA1IDEyIDUgMTIgNXMtNi4yIDAtNy44LjRhMi41IDIuNSAwIDAgMC0xLjggMS44QzIgOC44IDIgMTIgMiAxMnMwIDMuMi40IDQuOGEyLjUgMi41IDAgMCAwIDEuOCAxLjhDNS44IDE5IDEyIDE5IDEyIDE5czYuMiAwIDcuOC0uNGEyLjUgMi41IDAgMCAwIDEuOC0xLjhjLjQtMS42LjQtNC44LjQtNC44czAtMy4yLS40LTQuOFpNMTAgMTUuMlY4LjhsNS41IDMuMloiLz48L3N2Zz4="
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n\n\n\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "social_list",
+   [
+    "Follow us"
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Social"
+     },
+     "tag": "ul",
+     "attributes": {
+      "class": "main-social",
+      "aria-label": "Follow us"
+     },
+     "styles": [
+      "mn-social"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If LINE"
+       },
+       "condition": {
+        "leftHand": "props.lineUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.lineUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "LINE"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.lineUrl}",
+            "aria-label": "LINE",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "LINE icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTIgM0M2LjUgMyAyIDYuNiAyIDExYzAgMy45IDMuNSA3LjIgOC4zIDcuOS4zLjEuOC4yLjkuNS4xLjMuMS43IDAgMWwtLjEuOGMwIC4zLS4yIDEgLjkuNiAxLjEtLjUgNi0zLjUgOC4yLTYgMS41LTEuNyAyLjItMy4zIDIuMi01QzIyLjQgNi42IDE3LjkgMyAxMiAzWiIvPjwvc3ZnPg=="
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If Facebook"
+       },
+       "condition": {
+        "leftHand": "props.facebookUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.facebookUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Facebook"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.facebookUrl}",
+            "aria-label": "Facebook",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "Facebook icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTQgOFY2LjVjMC0uNy41LTEgMS0xaDJWMmgtM2MtMyAwLTQgMi00IDQuNVY4SDh2My41aDJWMjJoNFYxMS41aDIuN2wuMy0zLjVIMTRaIi8+PC9zdmc+"
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If Instagram"
+       },
+       "condition": {
+        "leftHand": "props.instagramUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.instagramUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Instagram"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.instagramUrl}",
+            "aria-label": "Instagram",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "Instagram icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjUiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTcuNSIgY3k9IjYuNSIgcj0iMC42IiBmaWxsPSJjdXJyZW50Q29sb3IiLz48L3N2Zz4="
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If TikTok"
+       },
+       "condition": {
+        "leftHand": "props.tiktokUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.tiktokUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "TikTok"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.tiktokUrl}",
+            "aria-label": "TikTok",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "TikTok icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xIC0xIDI2IDI2IiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGQ9Ik0xMi41MjUuMDJjMS4zMS0uMDIgMi42MS0uMDEgMy45MS0uMDIuMDggMS41My42MyAzLjA5IDEuNzUgNC4xNyAxLjEyIDEuMTEgMi43IDEuNjIgNC4yNCAxLjc5djQuMDNjLTEuNDQtLjA1LTIuODkwLS4zNS00LjItLjk3LS41Ny0uMjYtMS4xLS41OS0xLjYyLS45My0uMDEgMi45Mi4wMSA1Ljg0LS4wMiA4Ljc1LS4wOCAxLjQtLjU0IDIuNzktMS4zNSAzLjk0LTEuMzEgMS45Mi0zLjU4IDMuMTctNS45MSAzLjIxLTEuNDMuMDgtMi44Ni0uMzEtNC4wOC0xLjAzLTIuMDItMS4xOS0zLjQ0LTMuMzctMy42NS01LjcxLS4wMi0uNS0uMDMtMS0uMDEtMS40OS4xOC0xLjkgMS4xMi0zLjcyIDIuNTgtNC45NiAxLjY2LTEuNDQgMy45OC0yLjEzIDYuMTUtMS43Mi4wMiAxLjQ4LS4wNCAyLjk2LS4wNCA0LjQ0LS45OS0uMzItMi4xNS0uMjMtMy4wMi4zNy0uNjMuNDEtMS4xMSAxLjA0LTEuMzYgMS43NS0uMjEuNTEtLjE1IDEuMDctLjE0IDEuNjEuMjQgMS42NCAxLjgyIDMuMDIgMy41IDIuODcgMS4xMi0uMDEgMi4xOS0uNjYgMi43Ny0xLjYxLjE5LS4zMy40LS42Ny40MS0xLjA2LjEtMS43OS4wNi0zLjU3LjA3LTUuMzYuMDEtNC4wMy0uMDEtOC4wNS4wMi0xMi4wN3oiLz48L3N2Zz4="
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If YouTube"
+       },
+       "condition": {
+        "leftHand": "props.youtubeUrl",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "props.youtubeUrl"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Item"
+         },
+         "tag": "li",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "YouTube"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-social__link",
+            "href": "{props.youtubeUrl}",
+            "aria-label": "YouTube",
+            "target": "_blank",
+            "rel": "noopener"
+           },
+           "styles": [
+            "mn-social-link"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/svg",
+            "attrs": {
+             "metadata": {
+              "name": "YouTube icon"
+             },
+             "tag": "svg",
+             "attributes": {
+              "class": "main-social__icon",
+              "aria-hidden": "true",
+              "focusable": "false",
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMS42IDcuMmEyLjUgMi41IDAgMCAwLTEuOC0xLjhDMTguMiA1IDEyIDUgMTIgNXMtNi4yIDAtNy44LjRhMi41IDIuNSAwIDAgMC0xLjggMS44QzIgOC44IDIgMTIgMiAxMnMwIDMuMi40IDQuOGEyLjUgMi41IDAgMCAwIDEuOCAxLjhDNS44IDE5IDEyIDE5IDEyIDE5czYuMiAwIDcuOC0uNGEyLjUgMi41IDAgMCAwIDEuOC0xLjhjLjQtMS42LjQtNC44LjQtNC44czAtMy4yLS40LTQuOFpNMTAgMTUuMlY4LjhsNS41IDMuMloiLz48L3N2Zz4="
+             },
+             "styles": [
+              "mn-social-icon"
+             ]
+            },
+            "innerBlocks": [],
+            "innerHTML": "\n\n",
+            "innerContent": [
+             "\n",
+             "\n"
+            ]
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n\n\n\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "card",
+   [
+    "item"
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Card"
+     },
+     "tag": "li",
+     "attributes": {
+      "class": "main-card"
+     },
+     "styles": [
+      "mn-card"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If image"
+       },
+       "condition": {
+        "leftHand": "item.image.id",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "item.image.id"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Media"
+         },
+         "tag": "figure",
+         "attributes": {
+          "class": "main-card__media"
+         },
+         "styles": [
+          "mn-card-media"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/dynamic-image",
+          "attrs": {
+           "metadata": {
+            "name": "Image"
+           },
+           "tag": "img",
+           "attributes": {
+            "class": "main-card__img",
+            "mediaId": "{item.image.id}",
+            "loading": "lazy"
+           },
+           "styles": [
+            "mn-card-img"
+           ]
+          },
+          "innerBlocks": [],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Body"
+       },
+       "tag": "div",
+       "attributes": {
+        "class": "main-card__body"
+       },
+       "styles": [
+        "mn-card-body"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/loop",
+        "attrs": {
+         "metadata": {
+          "name": "Categories"
+         },
+         "itemId": "cat",
+         "target": "item.categories"
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Pill"
+           },
+           "tag": "span",
+           "attributes": {
+            "class": "main-pill"
+           },
+           "styles": [
+            "mn-pill"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/text",
+            "attrs": {
+             "metadata": {
+              "name": "Text"
+             },
+             "content": "{cat.name}"
+            },
+            "innerBlocks": [],
+            "innerHTML": "",
+            "innerContent": []
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       },
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Title"
+         },
+         "tag": "h2",
+         "attributes": {
+          "class": "main-card__title"
+         },
+         "styles": [
+          "mn-card-title"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Link"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-card__link clickable-parent",
+            "href": "{item.permalink.relative}"
+           },
+           "styles": [
+            "mn-card-link",
+            "acss-clickable-parent"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/text",
+            "attrs": {
+             "metadata": {
+              "name": "Text"
+             },
+             "content": "{item.title}"
+            },
+            "innerBlocks": [],
+            "innerHTML": "",
+            "innerContent": []
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       },
+       {
+        "blockName": "etch/condition",
+        "attrs": {
+         "metadata": {
+          "name": "If excerpt"
+         },
+         "condition": {
+          "leftHand": "item.excerpt",
+          "operator": "isTruthy",
+          "rightHand": null
+         },
+         "conditionString": "item.excerpt"
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Excerpt"
+           },
+           "tag": "p",
+           "attributes": {
+            "class": "main-card__excerpt"
+           },
+           "styles": [
+            "mn-card-excerpt"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/text",
+            "attrs": {
+             "metadata": {
+              "name": "Text"
+             },
+             "content": "{item.excerpt}"
+            },
+            "innerBlocks": [],
+            "innerHTML": "",
+            "innerContent": []
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       },
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "More"
+         },
+         "tag": "span",
+         "attributes": {
+          "class": "main-card__more",
+          "aria-hidden": "true"
+         },
+         "styles": [
+          "mn-card-more"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/text",
+          "attrs": {
+           "metadata": {
+            "name": "Text"
+           },
+           "content": "Read more →"
+          },
+          "innerBlocks": [],
+          "innerHTML": "",
+          "innerContent": []
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n\n\n\n\n\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n\n",
+       null,
+       "\n\n",
+       null,
+       "\n\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "card",
+   [
+    "post",
+    "h3"
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Card"
+     },
+     "tag": "li",
+     "attributes": {
+      "class": "main-card"
+     },
+     "styles": [
+      "mn-card"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/condition",
+      "attrs": {
+       "metadata": {
+        "name": "If image"
+       },
+       "condition": {
+        "leftHand": "post.image.id",
+        "operator": "isTruthy",
+        "rightHand": null
+       },
+       "conditionString": "post.image.id"
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Media"
+         },
+         "tag": "figure",
+         "attributes": {
+          "class": "main-card__media"
+         },
+         "styles": [
+          "mn-card-media"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/dynamic-image",
+          "attrs": {
+           "metadata": {
+            "name": "Image"
+           },
+           "tag": "img",
+           "attributes": {
+            "class": "main-card__img",
+            "mediaId": "{post.image.id}",
+            "loading": "lazy"
+           },
+           "styles": [
+            "mn-card-img"
+           ]
+          },
+          "innerBlocks": [],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Body"
+       },
+       "tag": "div",
+       "attributes": {
+        "class": "main-card__body"
+       },
+       "styles": [
+        "mn-card-body"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/loop",
+        "attrs": {
+         "metadata": {
+          "name": "Categories"
+         },
+         "itemId": "cat",
+         "target": "post.categories"
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Pill"
+           },
+           "tag": "span",
+           "attributes": {
+            "class": "main-pill"
+           },
+           "styles": [
+            "mn-pill"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/text",
+            "attrs": {
+             "metadata": {
+              "name": "Text"
+             },
+             "content": "{cat.name}"
+            },
+            "innerBlocks": [],
+            "innerHTML": "",
+            "innerContent": []
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       },
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Title"
+         },
+         "tag": "h3",
+         "attributes": {
+          "class": "main-card__title"
+         },
+         "styles": [
+          "mn-card-title"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Link"
+           },
+           "tag": "a",
+           "attributes": {
+            "class": "main-card__link clickable-parent",
+            "href": "{post.permalink.relative}"
+           },
+           "styles": [
+            "mn-card-link",
+            "acss-clickable-parent"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/text",
+            "attrs": {
+             "metadata": {
+              "name": "Text"
+             },
+             "content": "{post.title}"
+            },
+            "innerBlocks": [],
+            "innerHTML": "",
+            "innerContent": []
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       },
+       {
+        "blockName": "etch/condition",
+        "attrs": {
+         "metadata": {
+          "name": "If excerpt"
+         },
+         "condition": {
+          "leftHand": "post.excerpt",
+          "operator": "isTruthy",
+          "rightHand": null
+         },
+         "conditionString": "post.excerpt"
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/element",
+          "attrs": {
+           "metadata": {
+            "name": "Excerpt"
+           },
+           "tag": "p",
+           "attributes": {
+            "class": "main-card__excerpt"
+           },
+           "styles": [
+            "mn-card-excerpt"
+           ]
+          },
+          "innerBlocks": [
+           {
+            "blockName": "etch/text",
+            "attrs": {
+             "metadata": {
+              "name": "Text"
+             },
+             "content": "{post.excerpt}"
+            },
+            "innerBlocks": [],
+            "innerHTML": "",
+            "innerContent": []
+           }
+          ],
+          "innerHTML": "\n\n",
+          "innerContent": [
+           "\n",
+           null,
+           "\n"
+          ]
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       },
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "More"
+         },
+         "tag": "span",
+         "attributes": {
+          "class": "main-card__more",
+          "aria-hidden": "true"
+         },
+         "styles": [
+          "mn-card-more"
+         ]
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/text",
+          "attrs": {
+           "metadata": {
+            "name": "Text"
+           },
+           "content": "Read more →"
+          },
+          "innerBlocks": [],
+          "innerHTML": "",
+          "innerContent": []
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n\n\n\n\n\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n\n",
+       null,
+       "\n\n",
+       null,
+       "\n\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "media_img",
+   [],
+   {},
+   {
+    "blockName": "etch/dynamic-image",
+    "attrs": {
+     "metadata": {
+      "name": "Image"
+     },
+     "tag": "img",
+     "attributes": {
+      "class": "main-media__img",
+      "mediaId": "",
+      "loading": "lazy"
+     },
+     "styles": [
+      "mn-media-img"
+     ]
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "media_img",
+   [
+    "Photo",
+    true
+   ],
+   {},
+   {
+    "blockName": "etch/dynamic-image",
+    "attrs": {
+     "metadata": {
+      "name": "Photo"
+     },
+     "tag": "img",
+     "attributes": {
+      "class": "main-media__img",
+      "mediaId": "",
+      "loading": "eager"
+     },
+     "styles": [
+      "mn-media-img"
+     ]
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "buttons",
+   [
+    "Learn more",
+    "/about/",
+    "Contact us",
+    "/contact/"
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Buttons"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "main-buttons"
+     },
+     "styles": [
+      "mn-buttons"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Primary"
+       },
+       "tag": "a",
+       "attributes": {
+        "class": "btn--primary",
+        "href": "/about/"
+       }
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "Learn more"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Secondary"
+       },
+       "tag": "a",
+       "attributes": {
+        "class": "btn--primary btn--outline",
+        "href": "/contact/"
+       }
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/text",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "content": "Contact us"
+        },
+        "innerBlocks": [],
+        "innerHTML": "",
+        "innerContent": []
+       }
+      ],
+      "innerHTML": "\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "checks",
+   [
+    [
+     "One",
+     "Two"
+    ]
+   ],
+   {},
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Checks"
+     },
+     "tag": "ul",
+     "attributes": {
+      "class": "main-checks"
+     },
+     "styles": [
+      "mn-checks"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Item"
+       },
+       "tag": "li",
+       "attributes": {
+        "class": "main-checks__item"
+       },
+       "styles": [
+        "mn-checks-item"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/svg",
+        "attrs": {
+         "metadata": {
+          "name": "Check icon"
+         },
+         "tag": "svg",
+         "attributes": {
+          "class": "main-checks__icon",
+          "aria-hidden": "true",
+          "focusable": "false",
+          "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCA2IDkgMTdsLTUtNSIvPjwvc3ZnPg=="
+         },
+         "styles": [
+          "mn-checks-icon"
+         ]
+        },
+        "innerBlocks": [],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         "\n"
+        ]
+       },
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "tag": "span",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/text",
+          "attrs": {
+           "metadata": {
+            "name": "Text"
+           },
+           "content": "One"
+          },
+          "innerBlocks": [],
+          "innerHTML": "",
+          "innerContent": []
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n\n",
+       null,
+       "\n"
+      ]
+     },
+     {
+      "blockName": "etch/element",
+      "attrs": {
+       "metadata": {
+        "name": "Item"
+       },
+       "tag": "li",
+       "attributes": {
+        "class": "main-checks__item"
+       },
+       "styles": [
+        "mn-checks-item"
+       ]
+      },
+      "innerBlocks": [
+       {
+        "blockName": "etch/svg",
+        "attrs": {
+         "metadata": {
+          "name": "Check icon"
+         },
+         "tag": "svg",
+         "attributes": {
+          "class": "main-checks__icon",
+          "aria-hidden": "true",
+          "focusable": "false",
+          "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCA2IDkgMTdsLTUtNSIvPjwvc3ZnPg=="
+         },
+         "styles": [
+          "mn-checks-icon"
+         ]
+        },
+        "innerBlocks": [],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         "\n"
+        ]
+       },
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "Text"
+         },
+         "tag": "span",
+         "attributes": {}
+        },
+        "innerBlocks": [
+         {
+          "blockName": "etch/text",
+          "attrs": {
+           "metadata": {
+            "name": "Text"
+           },
+           "content": "Two"
+          },
+          "innerBlocks": [],
+          "innerHTML": "",
+          "innerContent": []
+         }
+        ],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         null,
+         "\n"
+        ]
+       }
+      ],
+      "innerHTML": "\n\n\n\n",
+      "innerContent": [
+       "\n",
+       null,
+       "\n\n",
+       null,
+       "\n"
+      ]
+     }
+    ],
+    "innerHTML": "\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ]
+ ],
+ "kit_payload": {
+  "args": [
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Box"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "main-heading"
+     },
+     "styles": [
+      "mn-heading"
+     ]
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   },
+   {
+    "mn-heading": {
+     "type": "class",
+     "selector": ".main-heading",
+     "collection": "default",
+     "css": "display: flex;\n  flex-direction: column;\n  gap: var(--space-xs);\n  max-inline-size: to-rem(600px);"
+    },
+    "mn-heading-center": {
+     "type": "class",
+     "selector": ".main-heading--center",
+     "collection": "default",
+     "css": "align-items: center;\n  margin-inline: auto;\n  text-align: center;"
+    },
+    "mn-eyebrow": {
+     "type": "class",
+     "selector": ".main-heading__eyebrow",
+     "collection": "default",
+     "css": "display: flex;\n  align-items: center;\n  gap: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: var(--main-primary);\n\n  &::before {\n    content: \"\";\n    inline-size: to-rem(24px);\n    block-size: 2px;\n    background-color: var(--main-accent);\n  }"
+    },
+    "mn-intro": {
+     "type": "class",
+     "selector": ".main-heading__intro",
+     "collection": "default",
+     "css": "color: var(--main-text-muted);"
+    }
+   }
+  ],
+  "result": {
+   "type": "block",
+   "gutenbergBlock": {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Box"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "main-heading"
+     },
+     "styles": [
+      "mn-heading"
+     ]
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   },
+   "timestamp": "2026-01-01T00:00:00.000Z",
+   "styles": {
+    "main-colors": {
+     "type": "custom",
+     "selector": ":where(:root)",
+     "collection": "default",
+     "css": "/* ===== MAIN TEMPLATE COLOURS — change colours here only =====\n     Header, footer and every main-* section use these variables.\n     By default they follow ACSS: changing Primary / Secondary in ACSS changes the templates too. */\n  --main-primary: var(--primary, #1e3a5f);    /* brand: header, footer, FAQ, headings, links, tags */\n  --main-accent: var(--secondary, #e8a33d);   /* highlight: underlines, hover, eyebrow line, active */\n  --main-light: var(--white, #fff);           /* light backgrounds: sections, cards, article box */\n  --main-text: var(--text-dark, #1a1a1a);     /* text on light backgrounds */\n  --main-on-primary: var(--white, #fff);      /* text and icons on the primary colour */\n\n  /* derived from the five colours above — no need to edit */\n  --main-light-alt: color-mix(in srgb, var(--main-primary) 6%, var(--main-light));\n  --main-text-muted: color-mix(in srgb, var(--main-text) 72%, transparent);\n  --main-on-primary-muted: color-mix(in srgb, var(--main-on-primary) 78%, transparent);\n  --main-line: color-mix(in srgb, var(--main-primary) 18%, transparent);\n  --main-line-on-primary: color-mix(in srgb, var(--main-on-primary) 18%, transparent);\n  --main-accent-soft: color-mix(in srgb, var(--main-accent) 20%, var(--main-light));\n  --main-shadow: color-mix(in srgb, var(--main-text) 12%, transparent);"
+    },
+    "mn-heading": {
+     "type": "class",
+     "selector": ".main-heading",
+     "collection": "default",
+     "css": "display: flex;\n  flex-direction: column;\n  gap: var(--space-xs);\n  max-inline-size: to-rem(600px);"
+    },
+    "mn-heading-center": {
+     "type": "class",
+     "selector": ".main-heading--center",
+     "collection": "default",
+     "css": "align-items: center;\n  margin-inline: auto;\n  text-align: center;"
+    },
+    "mn-eyebrow": {
+     "type": "class",
+     "selector": ".main-heading__eyebrow",
+     "collection": "default",
+     "css": "display: flex;\n  align-items: center;\n  gap: var(--space-xs);\n  font-size: var(--text-s);\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: var(--main-primary);\n\n  &::before {\n    content: \"\";\n    inline-size: to-rem(24px);\n    block-size: 2px;\n    background-color: var(--main-accent);\n  }"
+    },
+    "mn-intro": {
+     "type": "class",
+     "selector": ".main-heading__intro",
+     "collection": "default",
+     "css": "color: var(--main-text-muted);"
+    }
+   },
+   "version": 2.1
+  }
+ }
+}
