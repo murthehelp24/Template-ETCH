@@ -1,0 +1,1471 @@
+{
+ "timestamp": "2026-01-01T00:00:00.000Z",
+ "cases": [
+  [
+   "text",
+   [
+    "Hello"
+   ],
+   {
+    "blockName": "etch/text",
+    "attrs": {
+     "metadata": {
+      "name": "Text"
+     },
+     "content": "Hello"
+    },
+    "innerBlocks": [],
+    "innerHTML": "",
+    "innerContent": []
+   }
+  ],
+  [
+   "text",
+   [
+    "สวัสดี {props.title}"
+   ],
+   {
+    "blockName": "etch/text",
+    "attrs": {
+     "metadata": {
+      "name": "Text"
+     },
+     "content": "สวัสดี {props.title}"
+    },
+    "innerBlocks": [],
+    "innerHTML": "",
+    "innerContent": []
+   }
+  ],
+  [
+   "block",
+   [
+    "etch/slot-content",
+    {
+     "name": "default"
+    }
+   ],
+   {
+    "blockName": "etch/slot-content",
+    "attrs": {
+     "name": "default"
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "block",
+   [
+    "etch/slot-content",
+    {
+     "name": "default"
+    },
+    [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     },
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ]
+   ],
+   {
+    "blockName": "etch/slot-content",
+    "attrs": {
+     "name": "default"
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     },
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ],
+    "innerHTML": "\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "el",
+   [
+    "Box",
+    "div"
+   ],
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Box"
+     },
+     "tag": "div",
+     "attributes": {}
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "el",
+   [
+    "Box",
+    "div",
+    {
+     "class": "a b"
+    },
+    [
+     "mn-a"
+    ],
+    [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ]
+   ],
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Box"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "a b"
+     },
+     "styles": [
+      "mn-a"
+     ]
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "el",
+   [
+    "Box",
+    "div",
+    {
+     "class": "a"
+    },
+    [],
+    [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     },
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     },
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ]
+   ],
+   {
+    "blockName": "etch/element",
+    "attrs": {
+     "metadata": {
+      "name": "Box"
+     },
+     "tag": "div",
+     "attributes": {
+      "class": "a"
+     }
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     },
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     },
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ],
+    "innerHTML": "\n\n\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "img",
+   [
+    "Image",
+    {
+     "class": "x",
+     "mediaId": ""
+    },
+    [
+     "mn-x"
+    ]
+   ],
+   {
+    "blockName": "etch/dynamic-image",
+    "attrs": {
+     "metadata": {
+      "name": "Image"
+     },
+     "tag": "img",
+     "attributes": {
+      "class": "x",
+      "mediaId": ""
+     },
+     "styles": [
+      "mn-x"
+     ]
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "svg",
+   [
+    "Icon",
+    "data:image/svg+xml;base64,AAA"
+   ],
+   {
+    "blockName": "etch/svg",
+    "attrs": {
+     "metadata": {
+      "name": "Icon"
+     },
+     "tag": "svg",
+     "attributes": {
+      "aria-hidden": "true",
+      "focusable": "false",
+      "src": "data:image/svg+xml;base64,AAA"
+     }
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "svg",
+   [
+    "Icon",
+    "data:image/svg+xml;base64,AAA",
+    "main-icon",
+    [
+     "mn-icon"
+    ]
+   ],
+   {
+    "blockName": "etch/svg",
+    "attrs": {
+     "metadata": {
+      "name": "Icon"
+     },
+     "tag": "svg",
+     "attributes": {
+      "class": "main-icon",
+      "aria-hidden": "true",
+      "focusable": "false",
+      "src": "data:image/svg+xml;base64,AAA"
+     },
+     "styles": [
+      "mn-icon"
+     ]
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "svg",
+   [
+    "Icon",
+    "data:image/svg+xml;base64,AAA",
+    "",
+    []
+   ],
+   {
+    "blockName": "etch/svg",
+    "attrs": {
+     "metadata": {
+      "name": "Icon"
+     },
+     "tag": "svg",
+     "attributes": {
+      "aria-hidden": "true",
+      "focusable": "false",
+      "src": "data:image/svg+xml;base64,AAA"
+     }
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "cond",
+   [
+    "If x",
+    "props.x",
+    {
+     "blockName": "etch/text",
+     "attrs": {
+      "metadata": {
+       "name": "Text"
+      },
+      "content": "Hello"
+     },
+     "innerBlocks": [],
+     "innerHTML": "",
+     "innerContent": []
+    }
+   ],
+   {
+    "blockName": "etch/condition",
+    "attrs": {
+     "metadata": {
+      "name": "If x"
+     },
+     "condition": {
+      "leftHand": "props.x",
+      "operator": "isTruthy",
+      "rightHand": null
+     },
+     "conditionString": "props.x"
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "cond",
+   [
+    "If x",
+    "props.x",
+    [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     },
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ]
+   ],
+   {
+    "blockName": "etch/condition",
+    "attrs": {
+     "metadata": {
+      "name": "If x"
+     },
+     "condition": {
+      "leftHand": "props.x",
+      "operator": "isTruthy",
+      "rightHand": null
+     },
+     "conditionString": "props.x"
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     },
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ],
+    "innerHTML": "\n\n\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "loop",
+   [
+    "Posts",
+    "item",
+    [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ]
+   ],
+   {
+    "blockName": "etch/loop",
+    "attrs": {
+     "metadata": {
+      "name": "Posts"
+     },
+     "itemId": "item"
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "loop",
+   [
+    "Posts",
+    "item",
+    [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ],
+    "mainRelatedPosts",
+    "this.related",
+    {
+     "count": "3"
+    }
+   ],
+   {
+    "blockName": "etch/loop",
+    "attrs": {
+     "metadata": {
+      "name": "Posts"
+     },
+     "itemId": "item",
+     "loopId": "mainRelatedPosts",
+     "target": "this.related",
+     "loopParams": {
+      "count": "3"
+     }
+    },
+    "innerBlocks": [
+     {
+      "blockName": "etch/text",
+      "attrs": {
+       "metadata": {
+        "name": "Text"
+       },
+       "content": "Hello"
+      },
+      "innerBlocks": [],
+      "innerHTML": "",
+      "innerContent": []
+     }
+    ],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     null,
+     "\n"
+    ]
+   }
+  ],
+  [
+   "slot_placeholder",
+   [
+    "default"
+   ],
+   {
+    "blockName": "etch/slot-placeholder",
+    "attrs": {
+     "name": "default"
+    },
+    "innerBlocks": [],
+    "innerHTML": "\n\n",
+    "innerContent": [
+     "\n",
+     "\n"
+    ]
+   }
+  ],
+  [
+   "prop",
+   [
+    "Title",
+    "title",
+    "Hello"
+   ],
+   {
+    "name": "Title",
+    "key": "title",
+    "keyTouched": true,
+    "type": {
+     "primitive": "string"
+    },
+    "default": "Hello"
+   }
+  ],
+  [
+   "prop",
+   [
+    "Title",
+    "title",
+    "Hello",
+    "Shown at the top"
+   ],
+   {
+    "name": "Title",
+    "key": "title",
+    "keyTouched": true,
+    "type": {
+     "primitive": "string"
+    },
+    "default": "Hello",
+    "description": "Shown at the top"
+   }
+  ],
+  [
+   "prop",
+   [
+    "Count",
+    "count",
+    3,
+    "",
+    "number"
+   ],
+   {
+    "name": "Count",
+    "key": "count",
+    "keyTouched": true,
+    "type": {
+     "primitive": "number"
+    },
+    "default": 3
+   }
+  ],
+  [
+   "data_uri",
+   [
+    "<svg viewBox=\"0 0 24 24\"><path d=\"M0 0h24\"/></svg>"
+   ],
+   "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGQ9Ik0wIDBoMjQiLz48L3N2Zz4="
+  ],
+  [
+   "data_uri",
+   [
+    "<svg>ไทย</svg>"
+   ],
+   "data:image/svg+xml;base64,PHN2Zz7guYTguJfguKI8L3N2Zz4="
+  ],
+  [
+   "portable",
+   [
+    "inline-size: 1.4rem;"
+   ],
+   "inline-size: to-rem(14px);"
+  ],
+  [
+   "portable",
+   [
+    "padding: .5rem 2rem 0.8rem;"
+   ],
+   "padding: to-rem(5px) to-rem(20px) to-rem(8px);"
+  ],
+  [
+   "portable",
+   [
+    "gap: 12.5rem; x: 1e-5rem"
+   ],
+   "gap: to-rem(125px); x: 1e-5rem"
+  ],
+  [
+   "portable",
+   [
+    "a: 0rem; b: 10rem;"
+   ],
+   "a: to-rem(0px); b: to-rem(100px);"
+  ],
+  [
+   "portable",
+   [
+    "keep: var(--space-xs-rem); x2rem; .4rem-x; 3remx; -2rem"
+   ],
+   "keep: var(--space-xs-rem); x2rem; to-rem(4px)-x; 3remx; -2rem"
+  ],
+  [
+   "portable",
+   [
+    "เว้น 2rem ไทย2rem"
+   ],
+   "เว้น to-rem(20px) ไทย2rem"
+  ],
+  [
+   "portable",
+   [
+    "none"
+   ],
+   "none"
+  ],
+  [
+   "style",
+   [
+    ".a",
+    "margin: 1.2rem;"
+   ],
+   {
+    "type": "class",
+    "selector": ".a",
+    "collection": "default",
+    "css": "margin: to-rem(12px);"
+   }
+  ],
+  [
+   "style",
+   [
+    ":where(:root)",
+    "--x: 1rem;",
+    "custom"
+   ],
+   {
+    "type": "custom",
+    "selector": ":where(:root)",
+    "collection": "default",
+    "css": "--x: to-rem(10px);"
+   }
+  ]
+ ],
+ "payload": [
+  [
+   [
+    {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Box"
+      },
+      "tag": "div",
+      "attributes": {
+       "class": "a"
+      },
+      "styles": [
+       "mn-a"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "In"
+        },
+        "tag": "span",
+        "attributes": {},
+        "styles": [
+         "mn-b"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n"
+     ]
+    },
+    {
+     "mn-a": {
+      "type": "class",
+      "selector": ".a",
+      "collection": "default",
+      "css": "x: to-rem(10px);"
+     },
+     "mn-b": {
+      "type": "class",
+      "selector": ".b",
+      "collection": "default",
+      "css": ""
+     },
+     "mn-unused": {
+      "type": "class",
+      "selector": ".c",
+      "collection": "default",
+      "css": ""
+     }
+    }
+   ],
+   {
+    "type": "block",
+    "gutenbergBlock": {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Box"
+      },
+      "tag": "div",
+      "attributes": {
+       "class": "a"
+      },
+      "styles": [
+       "mn-a"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "In"
+        },
+        "tag": "span",
+        "attributes": {},
+        "styles": [
+         "mn-b"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n"
+     ]
+    },
+    "timestamp": "2026-01-01T00:00:00.000Z",
+    "styles": {
+     "mn-a": {
+      "type": "class",
+      "selector": ".a",
+      "collection": "default",
+      "css": "x: to-rem(10px);"
+     },
+     "mn-b": {
+      "type": "class",
+      "selector": ".b",
+      "collection": "default",
+      "css": ""
+     },
+     "mn-unused": {
+      "type": "class",
+      "selector": ".c",
+      "collection": "default",
+      "css": ""
+     }
+    },
+    "version": 2.1
+   },
+   "{\"type\":\"block\",\"gutenbergBlock\":{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Box\"},\"tag\":\"div\",\"attributes\":{\"class\":\"a\"},\"styles\":[\"mn-a\"]},\"innerBlocks\":[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"In\"},\"tag\":\"span\",\"attributes\":{},\"styles\":[\"mn-b\"]},\"innerBlocks\":[],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",\"\\n\"]}],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",null,\"\\n\"]},\"timestamp\":\"2026-01-01T00:00:00.000Z\",\"styles\":{\"mn-a\":{\"type\":\"class\",\"selector\":\".a\",\"collection\":\"default\",\"css\":\"x: to-rem(10px);\"},\"mn-b\":{\"type\":\"class\",\"selector\":\".b\",\"collection\":\"default\",\"css\":\"\"},\"mn-unused\":{\"type\":\"class\",\"selector\":\".c\",\"collection\":\"default\",\"css\":\"\"}},\"version\":2.1}"
+  ],
+  [
+   [
+    {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Box"
+      },
+      "tag": "div",
+      "attributes": {
+       "class": "a"
+      },
+      "styles": [
+       "mn-a"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "In"
+        },
+        "tag": "span",
+        "attributes": {},
+        "styles": [
+         "mn-b"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n"
+     ]
+    },
+    {
+     "mn-a": {
+      "type": "class",
+      "selector": ".a",
+      "collection": "default",
+      "css": "x: to-rem(10px);"
+     },
+     "mn-b": {
+      "type": "class",
+      "selector": ".b",
+      "collection": "default",
+      "css": ""
+     },
+     "mn-unused": {
+      "type": "class",
+      "selector": ".c",
+      "collection": "default",
+      "css": ""
+     }
+    },
+    {
+     "990001": {
+      "key": "K",
+      "blocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "C"
+         },
+         "tag": "div",
+         "attributes": {},
+         "styles": [
+          "mn-b"
+         ]
+        },
+        "innerBlocks": [],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         "\n"
+        ]
+       }
+      ],
+      "properties": []
+     }
+    }
+   ],
+   {
+    "type": "block",
+    "gutenbergBlock": {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Box"
+      },
+      "tag": "div",
+      "attributes": {
+       "class": "a"
+      },
+      "styles": [
+       "mn-a"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "In"
+        },
+        "tag": "span",
+        "attributes": {},
+        "styles": [
+         "mn-b"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n"
+     ]
+    },
+    "timestamp": "2026-01-01T00:00:00.000Z",
+    "styles": {
+     "mn-a": {
+      "type": "class",
+      "selector": ".a",
+      "collection": "default",
+      "css": "x: to-rem(10px);"
+     },
+     "mn-b": {
+      "type": "class",
+      "selector": ".b",
+      "collection": "default",
+      "css": ""
+     },
+     "mn-unused": {
+      "type": "class",
+      "selector": ".c",
+      "collection": "default",
+      "css": ""
+     }
+    },
+    "components": {
+     "990001": {
+      "key": "K",
+      "blocks": [
+       {
+        "blockName": "etch/element",
+        "attrs": {
+         "metadata": {
+          "name": "C"
+         },
+         "tag": "div",
+         "attributes": {},
+         "styles": [
+          "mn-b"
+         ]
+        },
+        "innerBlocks": [],
+        "innerHTML": "\n\n",
+        "innerContent": [
+         "\n",
+         "\n"
+        ]
+       }
+      ],
+      "properties": []
+     }
+    },
+    "version": 2.1
+   },
+   "{\"type\":\"block\",\"gutenbergBlock\":{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Box\"},\"tag\":\"div\",\"attributes\":{\"class\":\"a\"},\"styles\":[\"mn-a\"]},\"innerBlocks\":[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"In\"},\"tag\":\"span\",\"attributes\":{},\"styles\":[\"mn-b\"]},\"innerBlocks\":[],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",\"\\n\"]}],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",null,\"\\n\"]},\"timestamp\":\"2026-01-01T00:00:00.000Z\",\"styles\":{\"mn-a\":{\"type\":\"class\",\"selector\":\".a\",\"collection\":\"default\",\"css\":\"x: to-rem(10px);\"},\"mn-b\":{\"type\":\"class\",\"selector\":\".b\",\"collection\":\"default\",\"css\":\"\"},\"mn-unused\":{\"type\":\"class\",\"selector\":\".c\",\"collection\":\"default\",\"css\":\"\"}},\"components\":{\"990001\":{\"key\":\"K\",\"blocks\":[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"C\"},\"tag\":\"div\",\"attributes\":{},\"styles\":[\"mn-b\"]},\"innerBlocks\":[],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",\"\\n\"]}],\"properties\":[]}},\"version\":2.1}"
+  ],
+  [
+   [
+    {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Box"
+      },
+      "tag": "div",
+      "attributes": {
+       "class": "a"
+      },
+      "styles": [
+       "mn-a"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "In"
+        },
+        "tag": "span",
+        "attributes": {},
+        "styles": [
+         "mn-b"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n"
+     ]
+    },
+    {
+     "mn-a": {
+      "type": "class",
+      "selector": ".a",
+      "collection": "default",
+      "css": "x: to-rem(10px);"
+     },
+     "mn-b": {
+      "type": "class",
+      "selector": ".b",
+      "collection": "default",
+      "css": ""
+     },
+     "mn-unused": {
+      "type": "class",
+      "selector": ".c",
+      "collection": "default",
+      "css": ""
+     }
+    },
+    null,
+    {
+     "loopA": {
+      "key": "loopA",
+      "config": {}
+     }
+    }
+   ],
+   {
+    "type": "block",
+    "gutenbergBlock": {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Box"
+      },
+      "tag": "div",
+      "attributes": {
+       "class": "a"
+      },
+      "styles": [
+       "mn-a"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "In"
+        },
+        "tag": "span",
+        "attributes": {},
+        "styles": [
+         "mn-b"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n"
+     ]
+    },
+    "timestamp": "2026-01-01T00:00:00.000Z",
+    "styles": {
+     "mn-a": {
+      "type": "class",
+      "selector": ".a",
+      "collection": "default",
+      "css": "x: to-rem(10px);"
+     },
+     "mn-b": {
+      "type": "class",
+      "selector": ".b",
+      "collection": "default",
+      "css": ""
+     },
+     "mn-unused": {
+      "type": "class",
+      "selector": ".c",
+      "collection": "default",
+      "css": ""
+     }
+    },
+    "loops": {
+     "loopA": {
+      "key": "loopA",
+      "config": {}
+     }
+    },
+    "version": 2.1
+   },
+   "{\"type\":\"block\",\"gutenbergBlock\":{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Box\"},\"tag\":\"div\",\"attributes\":{\"class\":\"a\"},\"styles\":[\"mn-a\"]},\"innerBlocks\":[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"In\"},\"tag\":\"span\",\"attributes\":{},\"styles\":[\"mn-b\"]},\"innerBlocks\":[],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",\"\\n\"]}],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",null,\"\\n\"]},\"timestamp\":\"2026-01-01T00:00:00.000Z\",\"styles\":{\"mn-a\":{\"type\":\"class\",\"selector\":\".a\",\"collection\":\"default\",\"css\":\"x: to-rem(10px);\"},\"mn-b\":{\"type\":\"class\",\"selector\":\".b\",\"collection\":\"default\",\"css\":\"\"},\"mn-unused\":{\"type\":\"class\",\"selector\":\".c\",\"collection\":\"default\",\"css\":\"\"}},\"loops\":{\"loopA\":{\"key\":\"loopA\",\"config\":{}}},\"version\":2.1}"
+  ],
+  [
+   [
+    {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Box"
+      },
+      "tag": "div",
+      "attributes": {
+       "class": "a"
+      },
+      "styles": [
+       "mn-a"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "In"
+        },
+        "tag": "span",
+        "attributes": {},
+        "styles": [
+         "mn-b"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n"
+     ]
+    },
+    {
+     "mn-a": {
+      "type": "class",
+      "selector": ".a",
+      "collection": "default",
+      "css": "x: to-rem(10px);"
+     },
+     "mn-b": {
+      "type": "class",
+      "selector": ".b",
+      "collection": "default",
+      "css": ""
+     },
+     "mn-unused": {
+      "type": "class",
+      "selector": ".c",
+      "collection": "default",
+      "css": ""
+     }
+    },
+    {},
+    {}
+   ],
+   {
+    "type": "block",
+    "gutenbergBlock": {
+     "blockName": "etch/element",
+     "attrs": {
+      "metadata": {
+       "name": "Box"
+      },
+      "tag": "div",
+      "attributes": {
+       "class": "a"
+      },
+      "styles": [
+       "mn-a"
+      ]
+     },
+     "innerBlocks": [
+      {
+       "blockName": "etch/element",
+       "attrs": {
+        "metadata": {
+         "name": "In"
+        },
+        "tag": "span",
+        "attributes": {},
+        "styles": [
+         "mn-b"
+        ]
+       },
+       "innerBlocks": [],
+       "innerHTML": "\n\n",
+       "innerContent": [
+        "\n",
+        "\n"
+       ]
+      }
+     ],
+     "innerHTML": "\n\n",
+     "innerContent": [
+      "\n",
+      null,
+      "\n"
+     ]
+    },
+    "timestamp": "2026-01-01T00:00:00.000Z",
+    "styles": {
+     "mn-a": {
+      "type": "class",
+      "selector": ".a",
+      "collection": "default",
+      "css": "x: to-rem(10px);"
+     },
+     "mn-b": {
+      "type": "class",
+      "selector": ".b",
+      "collection": "default",
+      "css": ""
+     },
+     "mn-unused": {
+      "type": "class",
+      "selector": ".c",
+      "collection": "default",
+      "css": ""
+     }
+    },
+    "version": 2.1
+   },
+   "{\"type\":\"block\",\"gutenbergBlock\":{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Box\"},\"tag\":\"div\",\"attributes\":{\"class\":\"a\"},\"styles\":[\"mn-a\"]},\"innerBlocks\":[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"In\"},\"tag\":\"span\",\"attributes\":{},\"styles\":[\"mn-b\"]},\"innerBlocks\":[],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",\"\\n\"]}],\"innerHTML\":\"\\n\\n\",\"innerContent\":[\"\\n\",null,\"\\n\"]},\"timestamp\":\"2026-01-01T00:00:00.000Z\",\"styles\":{\"mn-a\":{\"type\":\"class\",\"selector\":\".a\",\"collection\":\"default\",\"css\":\"x: to-rem(10px);\"},\"mn-b\":{\"type\":\"class\",\"selector\":\".b\",\"collection\":\"default\",\"css\":\"\"},\"mn-unused\":{\"type\":\"class\",\"selector\":\".c\",\"collection\":\"default\",\"css\":\"\"}},\"version\":2.1}"
+  ]
+ ]
+}
