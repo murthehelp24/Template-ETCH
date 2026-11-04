@@ -4,6 +4,7 @@ import * as sections from "./sections/sections";
 import * as sectionsMore from "./sections/sectionsMore";
 import * as heroMore from "./sections/heroMore";
 import * as featuresMore from "./sections/featuresMore";
+import * as contentMore from "./sections/contentMore";
 
 export interface CatalogEntry {
   /** output path relative to the kit root, e.g. "etch-sections/main-faq.etch.txt" */
@@ -36,4 +37,9 @@ export const catalog: CatalogEntry[] = [
   // build_features_more.py
   ...group("etch-sections", ["main-features-image", "main-features-numbered", "main-features-band",
     "main-features-cards", "main-features-list"], featuresMore.build),
+  // build_content_more.py
+  ...group("etch-sections", ["main-split-overlap", "main-split-band", "main-split-stats", "main-split-images",
+    "main-split-full", "main-stats-light", "main-stats-cards", "main-stats-split", "main-stats-image",
+    "main-steps-line", "main-steps-vertical", "main-steps-cards", "main-steps-band", "main-reviews-featured",
+    "main-reviews-band", "main-reviews-split"], contentMore.build),
 ];
